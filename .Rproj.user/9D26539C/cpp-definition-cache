@@ -1,17 +1,2 @@
 [
-    {
-        "definitions" : [
-            {
-                "column" : 5,
-                "file" : "/Users/Shai/GitHub/infomap_ecology_package/src/twotimes.cpp",
-                "kind" : 6,
-                "line" : 9,
-                "name" : "timesTwo(int)",
-                "parent_name" : "",
-                "usr" : "c:@F@timesTwo#I#"
-            }
-        ],
-        "file" : "/Users/Shai/GitHub/infomap_ecology_package/src/twotimes.cpp",
-        "file_last_write" : 1583953353.000000
-    }
 ]

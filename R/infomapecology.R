@@ -21,6 +21,4 @@
 #'
 #' @references A dynamical perspective to community detection in ecological networks.
 #'
-#' @useDynLib infomapecology
-#' @importFrom Rcpp sourceCpp
 NULL
