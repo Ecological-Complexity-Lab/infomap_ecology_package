@@ -1,2 +1,0 @@
-CXX=clang++
-PKG_CXXFLAGS = -std=c++14

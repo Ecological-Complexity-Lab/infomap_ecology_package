@@ -31,7 +31,8 @@
 #' @importFrom stringr str_count
 #' @importFrom tidyr separate
 #'
-run_infomap_link_list <- function(x, infomap_executable='Infomap', input_file=NULL, flow_model=NULL, silent=F, trials=20, two_level=T, seed=123, ...){ # edges is an edge list with node names (not ids) or a matrix with row and column names
+run_infomap_monolayer <- function(x, infomap_executable='Infomap', input_file=NULL, flow_model=NULL, silent=F, trials=20, two_level=T, seed=123, ...){
+  if(check_infomap(infomap_executable)==F){stop('Error in Infomap')}
   if(class(x)!='infomap_link_list'){stop('x must be of class monolayer')}
 
   # Infomap arguments

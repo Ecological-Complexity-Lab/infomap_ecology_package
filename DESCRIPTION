@@ -1,6 +1,6 @@
 Package: infomapecology
 Type: Package
-Title: Community detection using Infomap, for ecological networks
+Title: Community detection using Infomap, inspired by ecological networks
 Version: 0.1.0
 Author: Shai Pilosof
 Maintainer: Shai Pilosof <pilos@post.bgu.ac.il>
@@ -10,8 +10,10 @@ Encoding: UTF-8
 LazyData: true
 LinkingTo: Rcpp
 Imports:
-  tidyverse,
-  igraph
+  attempt,
+  igraph,
+  magrittr,
+  tidyverse
 Suggests:
   bipartite
 RoxygenNote: 7.0.2

@@ -1,22 +1,18 @@
-#' Arabidopsis QTL data on gravitropism
+#' Pollen movement data
 #'
-#' Data from a QTL experiment on gravitropism in
-#' Arabidopsis, with data on 162 recombinant inbred lines (Ler x
-#' Cvi). The outcome is the root tip angle (in degrees) at two-minute
-#' increments over eight hours.
+#' Data on conspecific and heterospecific movement of pollen grains.
 #'
 #' @docType data
 #'
 #' @usage data(tur2016)
 #'
-#' @format An object of class \code{"cross"}; see \code{\link[qtl]{read.cross}}.
-#'
 #' @keywords datasets
 #'
-#' @references Moore et al. (2013) Genetics 195:1077-1086
+#' @references Tur C, Sáez A, Traveset A, Aizen MA. Evaluating the effects of pollinator-mediated interactions using pollen transfer networks: evidence of widespread facilitation in south Andean plant communities. Ecol Lett. 2016;19: 576–586.
+#'
 #' (\href{https://www.ncbi.nlm.nih.gov/pubmed/23979570}{PubMed})
 #'
-#' @source \href{https://phenome.jax.org/projects/Moore1b}{QTL Archive}
+#' @source \href{https://figshare.com/articles/Data_package_from_Evaluating_the_effects_of_pollinator_mediated_interactions_using_pollen_transfer_networks_evidence_of_widespread_facilitation_in_south_Andean_plant_communities_Tur_et_al_2016_/2242447}{Data on Figshare}
 #'
 #' @examples
 #' data(tur2016)

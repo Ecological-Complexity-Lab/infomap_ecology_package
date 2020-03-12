@@ -5,5 +5,9 @@
 \alias{infomapecology}
 \title{infomapecology: A package for running Infomap with ecological networks}
 \description{
-Many cool stuff
+Wrapper functions to run Infomap. Inspired by ecological data.
+Also includes several data sets
+}
+\references{
+A dynamical perspective...
 }
