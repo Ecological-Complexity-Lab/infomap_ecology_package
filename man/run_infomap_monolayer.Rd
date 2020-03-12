@@ -7,48 +7,72 @@
 run_infomap_monolayer(
   x,
   infomap_executable = "Infomap",
-  input_file = NULL,
   flow_model = NULL,
   silent = F,
-  trials = 20,
+  trials = 100,
   two_level = T,
   seed = 123,
   ...
 )
 }
 \arguments{
-\item{x}{A monolayer object. Ignored if an input file is provided.}
+\item{x}{An object of class \code{infomap_link_list}.}
 
-\item{infomap_executable}{Name of Infomap standalone file (default is Infomap).}
+\item{infomap_executable}{Name of Infomap standalone file.}
 
-\item{input_file}{Name of an external input file. Overrides x}
+\item{flow_model}{See details
+\href{https://www.mapequation.org/infomap/#ParamsAlgorithm}{here}.}
 
-\item{flow_model}{See details in https://www.mapequation.org/infomap/#ParamsAlgorithm.}
+\item{silent}{Run in silent mode (argumnt --silent in Infomap).}
 
-\item{silent}{Run in silent mode (argumnt --silent in Infomap)}
+\item{trials}{Number of trials to run (argumnt -N in Infomap).}
 
-\item{trials}{Number of trials to run (argumnt -N in Infomap)}
+\item{two_level}{Do not use hierarchical partitioning (argumnt -2 in
+Infomap). See details.}
 
-\item{two_level}{Do not use hierarchical partitioning (argumnt -2 in Infomap)}
+\item{seed}{Seed value for random number generation (argumnt --seed in
+Infomap).}
 
-\item{seed}{Seed value for random number generation (argumnt --seed in Infomap)}
-
-\item{...}{additional Infomap arguments as detailed in https://www.mapequation.org/infomap/#Parameters.}
+\item{...}{additional Infomap arguments as detailed
+\href{https://www.mapequation.org/infomap/#Parameters}{here}.}
 }
 \value{
-A list:
-\itemize{
-  \item \code{L} The value of the map equation
-  \item \code{modules} A tibble with node IDs. For each node, the number of module levels (e.g., 2 levels if it belongs to module 3 within module 2), and module affiliation, by levels.
-  \item \code{module_affiliation} A tibble with node id, name, module affiliations and node attributes (metadata).
-}
+A list: \itemize{ \item \code{L} The value of the map equation \item
+  \code{modules} A tibble with node id, module affiliations and node attributes if they exist. }
 }
 \description{
-Run Infomap for monolayer networks using a \code{monolayer} class object, or
-using an external file. Returns the value of the map equation and a tibble
-with modules, If using a \code{monolayer} object, also returns a tibble with
-module affiliations that includes additional node metadata (if exists).
+Run Infomap for monolayer networks using an \code{infomap_link_list} class
+object created with \code{create_infomap_linklist}. Returns the value of the
+map equation and a tibble with modules that includes additional node metadata
+(if exists).
+}
+\details{
+All of Infomap's arguments are detailed in
+  \href{https://www.mapequation.org/infomap/#Parameters}{https://www.mapequation.org/infomap/#Parameters}.
+
+
+
+
+
+
+
+
+
+
+  Note on hierarchical partitioning: In Infomaps tree output, the \code{path}
+  column is a tree-like format, like that: 1:3:4:2. The last integer after
+  the colon indicates the ID of the leaf in the module, and not the ID of the
+  node. In this example, the node is the 2nd leaf in module 4 which is nested
+  in module 3 which is nested in module 1. \code{run_infomap_monolayer}
+  automatically parses this output to levels. In this example, there are 3
+  module levels and the last is the leaf level. This will create columns:
+  \code{module_level1, module_level2, module_level3, module_level4}. The
+  column \code{levels} will show 3 because it ignires the leaf level. In case
+  a node has fewwer levels because its node is not partitioned, then the
+  missing levels will show an NA value. Continuing this example, a second
+  node in the same network with a path 2:1:5 will be the 5th leaf in module 1
+  of module 2. The values for this node will be: \code{module_level1=2, module_level2=1, module_level3=5, module_level4=NA}.
 }
 \seealso{
-\code{create_network_object, monolayer}
+\code{create_monolayer_object, monolayer}
 }

@@ -7,17 +7,20 @@
 matrix_to_list_bipartite(x, group_names = c("set_cols", "set_rows"))
 }
 \arguments{
-\item{x}{An incidence matrix}
+\item{x}{An incidence matrix.}
 
-\item{group_names}{Name of the groups in the columns and rows (e.g., parasites and hosts)}
+\item{group_names}{Name of the groups in the columns and rows, respectively (e.g., parasites and hosts).}
 }
 \value{
-A \code{monolayer} object
+A \code{monolayer} object.
 }
 \description{
-Convert an incidence matrix to an edge list. Assigns column and row names if those do not exist.
+Convert an incidence matrix to an edge list.
+}
+\details{
+Assigns column and row names if those do not exist.
 Cannot handle node attributes/metadata. Always assumes an undirected network.
 }
 \seealso{
-\code{create_network_object, monolayer}
+\code{create_monolayer_object, monolayer}
 }

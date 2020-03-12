@@ -1,10 +1,10 @@
 #' Check if Infomap's standalone file is installed.
 #'
-#' Attempts to run Infomap via the \code{system} command.
+#' Attempts to run Infomap via the \code{system} command to make sure it works propoerly.
 #'
-#' @return An error if Infomap is not installed correctly, or version number of it is.
+#' @return FALSE and an error if Infomap is not installed correctly. TRUE (and version number) if it is.
 #'
-#' @details For now, this package depends on Infomap's stand-alone version. We are working on incorporating Infomap directly into the package.
+#' @details For now, this package depends on Infomap's stand-alone version. Futre versions or another package will incorporate Infomap directly into R.
 #'
 #' @importFrom attempt attempt
 #' @export

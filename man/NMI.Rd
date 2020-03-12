@@ -15,12 +15,12 @@ Value between 0 (no mutual information) to 1 (complete mutual
 }
 \description{
 Calculate normalized mutual information based on a confusion matrix. Very
-useful to compare between two partition structures of a network.
+useful for comparing between two partition structures of a network.
 }
 \details{
 If the partitions are exactly the same then all the nodes that
   appear in a given module in the first network will also appear in the same
-  module in the second. In this case, the confusion matrix will have all the
+  module in the second network. In this case, the confusion matrix will have all the
   values on the diagonal, and NMI=1.
 }
 \references{

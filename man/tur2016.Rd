@@ -6,7 +6,8 @@
 \title{Pollen movement data}
 \format{An object of class \code{spec_tbl_df} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 338 rows and 4 columns.}
 \source{
-\href{https://figshare.com/articles/Data_package_from_Evaluating_the_effects_of_pollinator_mediated_interactions_using_pollen_transfer_networks_evidence_of_widespread_facilitation_in_south_Andean_plant_communities_Tur_et_al_2016_/2242447}{Data on Figshare}
+\href{https://figshare.com/articles/Data_package_from_Evaluating_the_effects_of_pollinator_mediated_interactions_using_pollen_transfer_networks_evidence_of_widespread_facilitation_in_south_Andean_plant_communities_Tur_et_al_2016_/2242447}{Data
+  on Figshare}
 }
 \usage{
 data(tur2016)
@@ -18,8 +19,11 @@ Data on conspecific and heterospecific movement of pollen grains.
 data(tur2016)
 }
 \references{
-Tur C, Sáez A, Traveset A, Aizen MA. Evaluating the effects of pollinator-mediated interactions using pollen transfer networks: evidence of widespread facilitation in south Andean plant communities. Ecol Lett. 2016;19: 576–586.
+Tur C, Sáez A, Traveset A, Aizen MA. Evaluating the effects of
+  pollinator-mediated interactions using pollen transfer networks: evidence
+  of widespread facilitation in south Andean plant communities. Ecol Lett.
+  2016;19: 576–586.
 
-(\href{https://www.ncbi.nlm.nih.gov/pubmed/23979570}{PubMed})
+\href{https://onlinelibrary.wiley.com/doi/abs/10.1111/ele.12594}{Link to paper}
 }
 \keyword{datasets}

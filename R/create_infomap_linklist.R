@@ -2,15 +2,17 @@
 #'
 #' Takes a monolayer object and returns a link list and a tibble with nodes.
 #'
-#' @param x A monolayer object created by, e.g., create_network_object
-#' @param make_directed for undirected networks, create two sets of edges
-#' @param write_to_file write the link list into a file.
-#' @param output_file the name of the output file (default is 'infomap_link_list.txt')
-#' @return A list
+#' @param x A monolayer object created with \code{create_monolayer_object}.
+#' @param Make_directed for undirected networks, create two sets of edges.
+#' @param Write_to_file write the link list into a file?
+#' @param Output_file the name of the output file (default is 'infomap_link_list.txt')
+#'
+#' @return An object of class \code{infomap_link_list}, which is a list:
 #' \itemize{
 #'   \item \code{edge_list_infomap} A link list (format: from, to, weight) formatted for Infomap, with node IDs
 #'   \item \code{nodes} A tibble with node IDs, names and possibly other attributes.
 #' }
+#'
 #' @export
 #' @import dplyr
 #' @import magrittr

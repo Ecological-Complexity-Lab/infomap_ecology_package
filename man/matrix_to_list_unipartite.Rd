@@ -7,7 +7,7 @@
 matrix_to_list_unipartite(x, directed)
 }
 \arguments{
-\item{x}{An adjacency or incidence matrix}
+\item{x}{An adjacency or incidence matrix.}
 
 \item{directed}{Is the network directed?}
 }
@@ -15,9 +15,11 @@ matrix_to_list_unipartite(x, directed)
 A \code{monolayer} object
 }
 \description{
-Convert an adjacency matrix to an edge list. Assigns column and row names if those do not exist.
-Cannot handle node attributes/metadata.
+Convert an adjacency matrix to an edge list.
+}
+\details{
+Assigns column and row names if those do not exist. Cannot handle node attributes/metadata.
 }
 \seealso{
-\code{create_network_object, monolayer}
+\code{create_monolayer_object, monolayer}
 }

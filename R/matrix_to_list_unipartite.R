@@ -1,12 +1,15 @@
 #' Adjacency matrix to edge list conversion
 #'
-#' Convert an adjacency matrix to an edge list. Assigns column and row names if those do not exist.
-#' Cannot handle node attributes/metadata.
+#' Convert an adjacency matrix to an edge list.
 #'
-#' @param x An adjacency or incidence matrix
+#' @details Assigns column and row names if those do not exist. Cannot handle node attributes/metadata.
+#'
+#' @param x An adjacency or incidence matrix.
 #' @param directed Is the network directed?
+#'
 #' @return A \code{monolayer} object
-#' @seealso \code{create_network_object, monolayer}
+#'
+#' @seealso \code{create_monolayer_object, monolayer}
 #'
 #' @export
 #' @import dplyr

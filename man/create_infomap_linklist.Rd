@@ -12,16 +12,16 @@ create_infomap_linklist(
 )
 }
 \arguments{
-\item{x}{A monolayer object created by, e.g., create_network_object}
+\item{x}{A monolayer object created with \code{create_monolayer_object}.}
 
-\item{make_directed}{for undirected networks, create two sets of edges}
+\item{Make_directed}{for undirected networks, create two sets of edges.}
 
-\item{write_to_file}{write the link list into a file.}
+\item{Write_to_file}{write the link list into a file?}
 
-\item{output_file}{the name of the output file (default is 'infomap_link_list.txt')}
+\item{Output_file}{the name of the output file (default is 'infomap_link_list.txt')}
 }
 \value{
-A list
+An object of class \code{infomap_link_list}, which is a list:
 \itemize{
   \item \code{edge_list_infomap} A link list (format: from, to, weight) formatted for Infomap, with node IDs
   \item \code{nodes} A tibble with node IDs, names and possibly other attributes.

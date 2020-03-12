@@ -3,17 +3,19 @@
 \docType{data}
 \name{otago_links}
 \alias{otago_links}
-\title{Otago food web}
+\title{Otago food web: links}
 \format{An object of class \code{spec_tbl_df} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 1924 rows and 16 columns.}
 \source{
-\href{https://figshare.com/collections/Food_web_including_metazoan_parasites_for_an_intertidal_ecosystem_in_New_Zealand/3304212}{Data on Figshare}
+\href{https://figshare.com/collections/Food_web_including_metazoan_parasites_for_an_intertidal_ecosystem_in_New_Zealand/3304212}{Original data set on Figshare.}
 }
 \usage{
 data(otago_links)
 }
 \description{
 Food web including metazoan parasites for an intertidal ecosystem in New Zealand.
-This data set contains metadata on nodes (see \code{otago_nodes}).
+}
+\details{
+The data set is included here "as is". It contains metadata on nodes (see \code{otago_nodes}).
 The links between nodes are directed and binary.
 }
 \examples{
@@ -22,7 +24,7 @@ data(otago_links)
 \references{
 Mouritsen KN, Poulin R, McLaughlin JP, Thieltges DW. Food web including metazoan parasites for an intertidal ecosystem in New Zealand: Ecological Archives E092-173. Ecology. 2011;92: 2006–2006.
 
-(\href{https://www.ncbi.nlm.nih.gov/pubmed/23979570}{PubMed})
+(\href{https://esajournals.onlinelibrary.wiley.com/doi/abs/10.1890/11-0371.1}{Link to paper})
 }
 \seealso{
 \code{otago_nodes}

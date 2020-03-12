@@ -1,7 +1,7 @@
 #' Normalized mutual information
 #'
 #' Calculate normalized mutual information based on a confusion matrix. Very
-#' useful to compare between two partition structures of a network.
+#' useful for comparing between two partition structures of a network.
 #'
 #' @param N A confusion matrix.
 #'
@@ -10,7 +10,7 @@
 #'
 #' @details If the partitions are exactly the same then all the nodes that
 #'   appear in a given module in the first network will also appear in the same
-#'   module in the second. In this case, the confusion matrix will have all the
+#'   module in the second network. In this case, the confusion matrix will have all the
 #'   values on the diagonal, and NMI=1.
 #'
 #' @references Danon L, Díaz-Guilera A, Duch J, Arenas A. Comparing community
@@ -21,7 +21,6 @@
 #' @references Pilosof S, Fortuna MA, Cosson J-FC, Galan M, Kittipong C, Ribas
 #'   A, et al. Host-parasite network structure is associated with
 #'   community-level immunogenetic diversity. Nat Commun. 2014;5: 5172.
-#'
 #'
 #' @export
 

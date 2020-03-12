@@ -1,15 +1,19 @@
-#' Convert between edge lists and matrices for monolayer networks
+#' Creates a monolayer network object.
 #'
-#' Automatically identifies if the input is a matrix or edge list and creates a \code{monolayer} object.
-#' A wrapper function for \code{list_to_matrix, matrix_to_list}
+#' Automatically identifies if the input is a matrix or an edge list and creates a \code{monolayer} object.
+#' Can also be used as a wrapper function for \code{list_to_matrix, matrix_to_list}
 #'
 #' @param x An input list or matrix that must have node names.
-#' @param directed is the network directed
-#' @param bipartite is network bipartite
-#' @param group_names for bipartite networks: name of the groups in the columns and rows (e.g., parasites and hosts)
+#' @param directed Is the network directed?
+#' @param bipartite Is the network bipartite?
+#' @param group_names For bipartite networks: name of the groups in the columns and rows, respectively (e.g., parasites and hosts).
 #' @param node_metadata Following the igraph method of \code{graph.data.frame}. Must have a column called node_name with names matching those in x.
-#' @return A \code{monolayer} object
-#' @seealso \code{list_to_matrix, matrix_to_list, monolayer}
+#'
+#' @return A \code{monolayer} object.
+#'
+#' @seealso \code{list_to_matrix, matrix_to_list, monolayer} functions and the \code{igraph} package.
+#'
+#' @details Converts between edge list and matrix formats as necessary.
 #'
 #' @export
 #' @import dplyr
@@ -18,7 +22,7 @@
 
 # x is  node_metadata must
 #
-create_network_object <- function(x, directed=NULL, bipartite=NULL, group_names=c('set_cols','set_rows'), node_metadata=NULL){
+create_monolayer_object <- function(x, directed=NULL, bipartite=NULL, group_names=c('set_cols','set_rows'), node_metadata=NULL){
   if ('matrix'%in%class(x) & bipartite){
     print('Input: a bipartite matrix')
     out <- matrix_to_list_bipartite(x, group_names = group_names)

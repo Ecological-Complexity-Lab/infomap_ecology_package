@@ -5,14 +5,13 @@
 \title{Run Infomap for multilayer networks}
 \usage{
 run_infomap_multilayer(
-  x,
+  M,
   infomap_executable = "Infomap",
-  relax = F,
   flow_model = NULL,
-  silent = F,
-  trials = 1,
-  two_level = T,
+  silent = T,
+  trials = 100,
   seed = NULL,
+  relax = F,
   multilayer_relax_rate = 0.1,
   multilayer_relax_limit = NULL,
   multilayer_relax_limit_up = 1,
@@ -22,72 +21,64 @@ run_infomap_multilayer(
 )
 }
 \arguments{
-\item{x}{A monolayer object. Ignored if an input file is provided.}
+\item{M}{An object of class \code{multilayer}.}
 
-\item{infomap_executable}{Name of Infomap standalone file (default is
-Infomap).}
+\item{infomap_executable}{Name of Infomap standalone file (default is Infomap).}
 
-\item{flow_model}{See details in
-\href{https://www.mapequation.org/infomap/#ParamsAlgorithm}.}
+\item{flow_model}{See details in \href{https://www.mapequation.org/infomap/#ParamsAlgorithm}{https://www.mapequation.org/infomap/#ParamsAlgorithm}.}
 
-\item{silent}{Run in silent mode (argumnt --silent in Infomap)}
+\item{silent}{Run in silent mode (argumnt --silent in Infomap).}
 
-\item{trials}{Number of trials to run (argumnt -N in Infomap)}
+\item{trials}{Number of trials to run (argumnt -N in Infomap).}
 
-\item{two_level}{Do not use hierarchical partitioning (argumnt -2 in Infomap)}
+\item{seed}{Seed value for random number generation (argumnt --seed in Infomap).}
 
-\item{seed}{Seed value for random number generation (argumnt --seed in
-Infomap)}
+\item{relax}{Should dynamics of movement between layers be fully encoded by interlayer edges, or should they be relaxed. See details.}
 
-\item{...}{additional Infomap arguments as detailed in}
+\item{temporal_network}{Is this a temporal network? See details.}
 
-\item{input_file}{Name of an external input file. Overrides x}
+\item{...}{additional Infomap arguments as detailed in \href{https://www.mapequation.org/infomap/#Parameters}{https://www.mapequation.org/infomap/#Parameters}}
 
-\item{relax_mode}{Should dynamics of movement between layers be fully encoded
-by interlayer edges, or should they be relaxed. See details.}
+\item{multilayer-relax-rate}{Probability to relax the constraint to move only in the current layer.}
 
-\item{multilayer-relax-rate}{Probability to relax the constraint to move only
-in the current layer.}
+\item{multilayer-relax-limit}{Number of neighboring layers in each direction to relax to. If negative, relax to any layer.}
 
-\item{multilayer-relax-limit}{Number of neighboring layers in each direction
-to relax to. If negative, relax to any layer.}
+\item{multilayer-relax-limit-up}{Number of neighboring layers with higher id to relax to. If negative, relax to any layer. Useful for temporal networks.}
 
-\item{multilayer-relax-limit-up}{Number of neighboring layers with higher id
-to relax to. If negative, relax to any layer. Useful for temporal networks.}
-
-\item{multilayer-relax-limit-down}{Number of neighboring layers with lower id
-to relax to. If negative, relax to any layer. Useful for temporal networks.
-@param temporal_network Is this a temporal network? See details.
-\href{https://www.mapequation.org/infomap/#Parameters}}
+\item{multilayer-relax-limit-down}{Number of neighboring layers with lower id to relax to. If negative, relax to any layer. Useful for temporal networks.}
 }
 \value{
 A list:
-\itemize{
-   \item \code{L} The value of the map equation
-   \item \code{modules} A tibble with nodes, theor module affiliations by levels, and node attributes.
-}
+\itemize{ \item \code{L} The value of the map equation.
+ \item
+  \code{modules} A tibble with nodes, their module affiliations,
+  and node attributes. }
 }
 \description{
 Run Infomap for multilayer networks using a \code{multilayer} class object.
-Returns the value of the map equation and a tibble with module affiliations that includes additional node metadata (if
-exists).
+Returns the value of the map equation and a tibble with module affiliations
+that includes additional node metadata (if exists).
 }
 \details{
-Currently only works with two-level solutions.
+Currently only works with two-level solutions (no modules within
+  modules).
 
-When relax_mode=F, Infomap uses an input format that gives full
+  When relax_mode=F, Infomap uses an input format that gives full
   control of the dynamics, explicitly using interlayer edges, and no other
-  movements are encoded. However, it is often useful to consider a dynamics
-  in which a random walker moves within a layer and with a given relax rate
-  jumps to another layer without recording this movement, such that the
-  constraints from moving in different layers can be gradually relaxed. This
-  is obtained with a different input format that explicitely divides the
-  links into two groups, links within layers (intra-layer links) and links
-  between layers (inter-layer links). It also requires specification of relax
-  rates and limits. When these or other arguments are not specified, Infomap
-  uses defaults as detailed in \href{https://www.mapequation.org/infomap/#Parameters}.
+  movements are encoded. This uses the extended edge list format. However, it
+  is often useful to consider a dynamics in which a random walker moves
+  within a layer and with a given relax rate jumps to another layer without
+  recording this movement, such that the constraints from moving in different
+  layers can be gradually relaxed. This is obtained with a different input
+  format that explicitly divides the links into intra-layer and inter-layer
+  links. Relaxing between layers can also be done when interlayer edges do
+  not exist, effectively immitating interlayer edges. Relaxing requires specification of relax rates and limits. When
+  these (or actually any other argument) are not specified, Infomap uses defaults as
+  detailed
+  \href{https://www.mapequation.org/infomap/#Parameters}{here}.
 
-  If the multilayer is a temporal network, modules need to be renamed to be placed in a temporal order. Also true for nont-temporal networks with ordinal organization of layers in which the order of module appearnce is important.
+  If the multilayer is a temporal network, modules can be renamed to be
+  placed in temporal order of appearance. This is done with \code{temporal_network=T}.
 }
 \seealso{
 \code{create_multilayer_object, multilayer}

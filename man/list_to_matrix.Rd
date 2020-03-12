@@ -13,27 +13,30 @@ list_to_matrix(
 )
 }
 \arguments{
-\item{x}{An edge list of the format from, to, weight}
+\item{x}{An edge list of the format from, to, weight.}
 
-\item{directed}{is the network directed}
+\item{directed}{Is the network directed?}
 
-\item{bipartite}{is network bipartite}
+\item{bipartite}{Is network bipartite?}
 
-\item{group_names}{for bipartite networks: name of the groups in the columns
-and rows (e.g., parasites and hosts)}
+\item{group_names}{For bipartite networks: name of the groups in the columns
+and rows, respectively (e.g., parasites and hosts).}
 
 \item{node_metadata}{Following the igraph method of \code{graph.data.frame}.
 Must have a column called node_name with names matching those in x.}
 }
 \value{
-A \code{monolayer} object
+A \code{monolayer} object.
 }
 \description{
 Convert an edge list to a matrix. Can handle unipartite and bipartite
-networks. It is also possible to add node attributes. For this, it uses
-igraph. The first column in the\code{node_metadata} data frame should have
+networks.
+}
+\details{
+It is also possible to add node attributes. For this, it uses
+igraph. The first column in the \code{node_metadata} data frame should have
 the names of the nodes in the edge list.
 }
 \seealso{
-\code{create_network_object, monolayer}
+Functions \code{create_monolayer_object, monolayer}, also,\code{graph.data.frame} from igraph.
 }

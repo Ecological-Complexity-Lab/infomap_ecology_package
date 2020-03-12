@@ -1,12 +1,15 @@
 #' Incidence matrix to edge list conversion
 #'
-#' Convert an incidence matrix to an edge list. Assigns column and row names if those do not exist.
+#' Convert an incidence matrix to an edge list.
+#'
+#' @details Assigns column and row names if those do not exist.
 #' Cannot handle node attributes/metadata. Always assumes an undirected network.
 #'
-#' @param x An incidence matrix
-#' @param group_names Name of the groups in the columns and rows (e.g., parasites and hosts)
-#' @return A \code{monolayer} object
-#' @seealso \code{create_network_object, monolayer}
+#' @param x An incidence matrix.
+#' @param group_names Name of the groups in the columns and rows, respectively (e.g., parasites and hosts).
+#'
+#' @return A \code{monolayer} object.
+#' @seealso \code{create_monolayer_object, monolayer}
 #'
 #' @export
 #' @import dplyr
