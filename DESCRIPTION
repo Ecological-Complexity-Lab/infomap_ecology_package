@@ -1,0 +1,17 @@
+Package: infomapecology
+Type: Package
+Title: Community detection using Infomap, for ecological networks
+Version: 0.1.0
+Author: Shai Pilosof
+Maintainer: Shai Pilosof <pilos@post.bgu.ac.il>
+Description: Collection of R functions to perform community detection analysis with Infomap.    Inspired by ecological networks but can work for other networks too!
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+LinkingTo: Rcpp
+Imports:
+  tidyverse,
+  igraph
+Suggests:
+  bipartite
+RoxygenNote: 7.0.2
