@@ -22,8 +22,13 @@ Make sure you have the latest version of R and packages `attempt, igraph, magrit
 install.packages("devtools") # If you don't have it already
 devtools::install_github('Ecological-Complexity-Lab/infomap_ecology_package', force=T)
 library(infomapecology)
+
+# Make sure the version is 0.1.1
+citation('infomapecology')
+
+# Check Infomap is running
 setwd('where your Infomap file and R script live')
-check_infomap() # Make sure file can be run correctly.
+check_infomap() # Make sure file can be run correctly. Should return TRUE
 
 # Load other relevant libraries
 library(igraph)
@@ -70,13 +75,10 @@ infomap_input <- create_infomap_linklist(network_object)
 infomap_object <- run_infomap_monolayer(infomap_input, infomap_executable='Infomap',
                                         flow_model = 'directed',
                                         silent=T,trials=100, two_level=F, seed=200952)
-infomap_object$modules %>%
-  select(node_id, node_name, module_level1, module_level2,module_level3, OrganismalGroup, NodeType) %>%
-  arrange(module_level1, module_level2,module_level3) %>%
-  write_delim('otago_modules.txt', delim = '|')
 ```
 
 ## Multilayer network with interlayer edges
+Use the temporal network from Pilosof 2017.
 ```R
 NEE2017 <- create_multilayer_object(extended = siberia1982_7_links, nodes = siberia1982_7_nodes, intra_output_extended = T, inter_output_extended = T)
 
@@ -109,7 +111,6 @@ NEE2017_modules$modules %>%
 ```
 
 ### Multilayer without interlayer edges and a relax rate
-
 ```R
 # Get data
 NEE2017 <- create_multilayer_object(extended = siberia1982_7_links, nodes = siberia1982_7_nodes, intra_output_extended = F, inter_output_extended = F)
