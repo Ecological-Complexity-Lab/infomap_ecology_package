@@ -7,9 +7,7 @@ suitable for other areas of research as well. The package also includes several 
 
 ## Install Infomap
 We use Infomap version 1 as a stand-alone file. Future versions (or a different
-package) will integrate Infomap directly intro R. Complete instructions on how
-to download, install and use Infomap can be found in
-[https://www.mapequation.org](https://www.mapequation.org).
+package) will integrate Infomap directly intro R. You can install Infomap via the `install_infomap` function in the package (see next section), or follow the instructions on how to download, install and use Infomap in [https://www.mapequation.org](https://www.mapequation.org).
 
 **Important nodes:**
 1. The best practice is to compile Infomap under the file name "Infomap" and place it in the
@@ -17,18 +15,29 @@ same working folder in which the R code is run.
 2. Though technically Infomap can run on Windows, I find that this is not always so easy to do, as you need some Linux environemnt installed within Windows. **I strongly recommend working within Linux or MacOS**.
 
 ## Install the R package
-Make sure you have the latest version of R and packages `attempt, igraph, magrittr, tidyverse` (tidyverse should include `readr` and `stringr`). then Run:
+The package wsa built under R 3.6.3 and requires `attempt, igraph, magrittr, tidyverse`.
 
 ```R
-install.packages("devtools") # If you don't have it already
+# Install/update the packages
+install.packages("attempt")
+install.packages("igraph")
+install.packages("magrittr")
+install.packages("tidyverse")
+install.packages("devtools")
+
+# Install infomapecology 
 devtools::install_github('Ecological-Complexity-Lab/infomap_ecology_package', force=T)
 library(infomapecology)
 
-# Make sure the version is 0.1.1.1
+# Check the version. Should be at least 0.1.1.1
 packageDescription('infomapecology')
 
+# Install infomap if you have not done so externally (see previous sectionin this readme)
+setwd('where your Infomap file and R script will live')
+install_infomap()
+
 # Check Infomap is running
-setwd('where your Infomap file and R script live')
+setwd('where your Infomap file and R script now live')
 check_infomap() # Make sure file can be run correctly. Should return TRUE
 
 # Load other relevant libraries
