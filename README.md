@@ -48,28 +48,33 @@ infomap_object <- run_infomap_monolayer(infomap_input, infomap_executable='Infom
 ### Food web with hierarchical structure
 
 ```R
+# Prepare data
 data(otago_nodes)
 data(otago_links)
-otago_nodes %<>%
+otago_nodes_2 <- otago_nodes %>%
   filter(StageID==1) %>%
   select(node_name=WorkingName, node_id_original=NodeID, WorkingName,StageID, everything())
-anyDuplicated(otago_nodes$node_name)
-otago_links %<>%
+anyDuplicated(otago_nodes_2$node_name)
+otago_links_2 <- otago_links %>%
   filter(ConsumerSpecies.StageID==1) %>%
   filter(ResourceSpecies.StageID==1) %>%
   select(from=ResourceNodeID, to=ConsumerNodeID) %>%
-  left_join(otago_nodes, by=c('from'='node_id_original')) %>%
+  left_join(otago_nodes_2, by=c('from'='node_id_original')) %>%
   select(from, node_name, to) %>%
-  left_join(otago_nodes, by=c('to'='node_id_original')) %>%
+  left_join(otago_nodes_2, by=c('to'='node_id_original')) %>%
   select(from=node_name.x, to=node_name.y) %>%
   mutate(weight=1)
 
 # Prepare network objects and run infomap
-network_object <- create_monolayer_object(otago_links, directed = T, bipartite = F, node_metadata = otago_nodes)
+network_object <- create_monolayer_object(otago_links_2, directed = T, bipartite = F, node_metadata = otago_nodes_2)
 infomap_input <- create_infomap_linklist(network_object)
 infomap_object <- run_infomap_monolayer(infomap_input, infomap_executable='Infomap',
                                         flow_model = 'directed',
                                         silent=T,trials=100, two_level=F, seed=200952)
+infomap_object$modules %>%
+  select(node_id, node_name, module_level1, module_level2,module_level3, OrganismalGroup, NodeType) %>%
+  arrange(module_level1, module_level2,module_level3) %>%
+  write_delim('otago_modules.txt', delim = '|')
 ```
 
 ## Multilayer network with interlayer edges
