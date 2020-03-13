@@ -13,6 +13,8 @@ to download, install and use Infomap can be found in
 practice is to compile Infomap under the file name "Infomap" and place it in the
 same working folder in which the R code is run.**
 
+Note: though technically Infomap can run on Windows, I find that this is not always so easy to do, as you need some Linux environemnt installed within Windows. **I strongly recommend working within Linux or MacOS**.
+
 ## Install the R package
 Make sure you have the latest version of R and packages `attempt, igraph, magrittr, tidyverse` (tidyverse should include `readr` and `stringr`). then Run:
 
@@ -20,6 +22,8 @@ Make sure you have the latest version of R and packages `attempt, igraph, magrit
 install.packages("devtools") # If you don't have it already
 devtools::install_github('Ecological-Complexity-Lab/infomap_ecology_package')
 library(infomapecology)
+setwd('where your Infomap file and R script live')
+check_infomap() # Make sure file can be run correctly.
 ```
 
 ## Examples
