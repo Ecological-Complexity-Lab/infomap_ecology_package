@@ -9,11 +9,12 @@ suitable for other areas of research as well. The package also includes several 
 We use Infomap version 1 as a stand-alone file. Future versions (or a different
 package) will integrate Infomap directly intro R. Complete instructions on how
 to download, install and use Infomap can be found in
-[https://www.mapequation.org](https://www.mapequation.org). **The best
-practice is to compile Infomap under the file name "Infomap" and place it in the
-same working folder in which the R code is run.**
+[https://www.mapequation.org](https://www.mapequation.org).
 
-Note: though technically Infomap can run on Windows, I find that this is not always so easy to do, as you need some Linux environemnt installed within Windows. **I strongly recommend working within Linux or MacOS**.
+**Important nodes:**
+1. The best practice is to compile Infomap under the file name "Infomap" and place it in the
+same working folder in which the R code is run.
+2. Though technically Infomap can run on Windows, I find that this is not always so easy to do, as you need some Linux environemnt installed within Windows. **I strongly recommend working within Linux or MacOS**.
 
 ## Install the R package
 Make sure you have the latest version of R and packages `attempt, igraph, magrittr, tidyverse` (tidyverse should include `readr` and `stringr`). then Run:
