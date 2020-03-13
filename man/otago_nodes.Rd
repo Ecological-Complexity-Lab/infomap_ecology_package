@@ -4,7 +4,9 @@
 \name{otago_nodes}
 \alias{otago_nodes}
 \title{Otago food web: nodes}
-\format{An object of class \code{spec_tbl_df} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 180 rows and 41 columns.}
+\format{
+An object of class \code{spec_tbl_df} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 180 rows and 41 columns.
+}
 \source{
 \href{https://figshare.com/collections/Food_web_including_metazoan_parasites_for_an_intertidal_ecosystem_in_New_Zealand/3304212}{Original data set on Figshare.}
 }
