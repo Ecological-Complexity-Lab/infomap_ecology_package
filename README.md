@@ -20,7 +20,7 @@ Make sure you have the latest version of R and packages `attempt, igraph, magrit
 
 ```R
 install.packages("devtools") # If you don't have it already
-devtools::install_github('Ecological-Complexity-Lab/infomap_ecology_package')
+devtools::install_github('Ecological-Complexity-Lab/infomap_ecology_package', force=T)
 library(infomapecology)
 setwd('where your Infomap file and R script live')
 check_infomap() # Make sure file can be run correctly.
