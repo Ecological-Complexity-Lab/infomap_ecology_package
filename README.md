@@ -2,7 +2,7 @@
 
 The package contains functions that prepare monolayer and multilayer networks
 for analysis with Infomap, run Infomap from within R and parse the results
-back to R. The package is inspired by analysis of ecological networks but is
+back to R. It is inspired by analysis of ecological networks but is
 suitable for other areas of research as well. The package also includes several data sets of ecological networks.
 
 ## Install Infomap
