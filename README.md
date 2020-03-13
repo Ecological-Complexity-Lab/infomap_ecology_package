@@ -24,7 +24,7 @@ install.packages("devtools") # If you don't have it already
 devtools::install_github('Ecological-Complexity-Lab/infomap_ecology_package', force=T)
 library(infomapecology)
 
-# Make sure the version is 0.1.1
+# Make sure the version is 0.1.1.1
 packageDescription('infomapecology')
 
 # Check Infomap is running
