@@ -15,7 +15,7 @@ same working folder in which the R code is run.
 2. Though technically Infomap can run on Windows, I find that this is not always so easy to do, as you need some Linux environemnt installed within Windows. **I strongly recommend working within Linux or MacOS**.
 
 ## Install the R package
-The package wsa built under R 3.6.3 and requires `attempt, igraph, magrittr, tidyverse`.
+The package was built under R 3.6.3 and requires `attempt, igraph, magrittr, tidyverse`.
 
 ```R
 # Install/update the packages
@@ -32,7 +32,7 @@ library(infomapecology)
 # Check the version. Should be at least 0.1.1.1
 packageDescription('infomapecology')
 
-# Install infomap if you have not done so externally (see previous sectionin this readme)
+# Install infomap if you have not done so externally (see previous section in this readme)
 setwd('where your Infomap file and R script will live')
 install_infomap()
 
