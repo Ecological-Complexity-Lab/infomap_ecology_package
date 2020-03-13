@@ -2,6 +2,7 @@ Package: infomapecology
 Type: Package
 Title: Community detection using Infomap, inspired by ecological networks
 Version: 0.1.1
+Date: 2020-03-13
 Author: Shai Pilosof
 Maintainer: Shai Pilosof <pilos@post.bgu.ac.il>
 Description: Collection of R functions to perform community detection analysis with Infomap.    Inspired by ecological networks but can work for other networks too!
