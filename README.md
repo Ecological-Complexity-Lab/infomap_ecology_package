@@ -24,7 +24,7 @@ devtools::install_github('Ecological-Complexity-Lab/infomap_ecology_package', fo
 library(infomapecology)
 
 # Make sure the version is 0.1.1
-citation('infomapecology')
+packageDescription('infomapecology')
 
 # Check Infomap is running
 setwd('where your Infomap file and R script live')
