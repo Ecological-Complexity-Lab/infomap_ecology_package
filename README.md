@@ -24,6 +24,12 @@ devtools::install_github('Ecological-Complexity-Lab/infomap_ecology_package', fo
 library(infomapecology)
 setwd('where your Infomap file and R script live')
 check_infomap() # Make sure file can be run correctly.
+
+# Load other relevant libraries
+library(igraph)
+library(bipartite)
+library(tidyverse)
+library(magrittr)
 ```
 
 ## Examples
