@@ -13,11 +13,11 @@ to download, install and use Infomap can be found in
 practice is to compile Infomap under the file name "Infomap" and place it in the
 same working folder in which the R code is run.**
 
-## Installing
-Make sure you have the latest version of R and packages `attempt, igraph, magrittr, tidyverse`. then Run:
+## Install the R package
+Make sure you have the latest version of R and packages `attempt, igraph, magrittr, tidyverse` (tidyverse should include `readr` and `stringr`). then Run:
 
 ```R
-install.packages("devtools")
+install.packages("devtools") # If you don't have it already
 devtools::install_github('Ecological-Complexity-Lab/infomap_ecology_package')
 library(infomapecology)
 ```
