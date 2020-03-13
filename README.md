@@ -46,7 +46,6 @@ infomap_object <- run_infomap_monolayer(infomap_input, infomap_executable='Infom
 ```
 
 ### Food web with hierarchical structure
-
 ```R
 # Prepare data
 data(otago_nodes)
@@ -90,13 +89,6 @@ modules_persistence <- NEE2017_modules$modules %>%
   summarise(b=min(layer_id), d=max(layer_id), persistence=d-b+1) %>%
   count(persistence) %>%
   mutate(percent=(n/max(NEE2017_modules$module$module))*100)
-  
-#Module persistance
-modules_persistence <- NEE2017_modules$modules %>%
-  group_by(module) %>%
-  summarise(b=min(layer_id), d=max(layer_id), persistence=d-b+1) %>%
-  count(persistence) %>%
-  mutate(percent=(n/max(NEE2017_modules$module$module))*100)
 
 # Plot
 NEE2017_modules$modules %>%
@@ -116,3 +108,15 @@ NEE2017_modules$modules %>%
   labs(x='Layer', y='Module ID', fill='Module size')
 ```
 
+### Multilayer without interlayer edges and a relax rate
+
+```R
+# Get data
+NEE2017 <- create_multilayer_object(extended = siberia1982_7_links, nodes = siberia1982_7_nodes, intra_output_extended = F, inter_output_extended = F)
+
+# Ignore interlayer edges
+NEE2017$inter <- NULL
+
+# Run Infomap
+modules_relax_rate <- run_infomap_multilayer(NEE2017, relax = T, silent = T, trials = 50, seed = 497294, multilayer_relax_rate = 0.15, multilayer_relax_limit_up = 1, multilayer_relax_limit_down = 0, temporal_network = T)
+```
