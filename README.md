@@ -42,6 +42,7 @@ setwd('where your Infomap file and R script now live')
 check_infomap() # Make sure file can be run correctly. Should return TRUE
 
 # Load other relevant libraries
+library(attempt)
 library(igraph)
 library(bipartite)
 library(tidyverse)
