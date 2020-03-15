@@ -7,12 +7,20 @@ suitable for other areas of research as well. The package also includes several 
 
 ## Install Infomap
 We use Infomap version 1 as a stand-alone file. Future versions (or a different
-package) will integrate Infomap directly intro R. You can install Infomap via the `install_infomap` function in the package (see next section), or follow the instructions on how to download, install and use Infomap in [https://www.mapequation.org](https://www.mapequation.org).
+package) will integrate Infomap directly intro R. On Linux/MacOs, you can install Infomap via the `install_infomap` function in the package (see next section), or follow the instructions on how to download, install and use Infomap in [https://www.mapequation.org](https://www.mapequation.org).
 
-**Important nodes:**
+For Windows, try this:
+1. Install  miniconda Python 3 from here: https://docs.conda.io/en/latest/miniconda.html
+2. Open Windows’ powershell
+3. type: pip install infomap
+This will create an infomapfile. In the anaconda terminal you can also type `where infomap`.
+
+An alternative is to install a local Linux enviroenment like Ubuntu from the Microsoft Store.
+
+**Important notes:**
 1. The best practice is to compile Infomap under the file name "Infomap" and place it in the
 same working folder in which the R code is run.
-2. Though technically Infomap can run on Windows, I find that this is not always so easy to do, as you need some Linux environemnt installed within Windows. **I strongly recommend working within Linux or MacOS**.
+2. Though technically Infomap can run on Windows as detailed above, I find that this is not always so easy to do. If you don't manage to install it, Linux/MacOS are the best options.
 
 ## Install the R package
 The package was built under R 3.6.3 and requires `attempt, igraph, bipartite, magrittr, tidyverse`.
