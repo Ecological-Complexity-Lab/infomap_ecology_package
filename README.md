@@ -10,7 +10,7 @@ We use Infomap version 1 as a stand-alone file. Future versions (or a different
 package) will integrate Infomap directly intro R. On Linux/MacOs, you can install Infomap via the `install_infomap` function in the package (see next section), or follow the instructions on how to download, install and use Infomap in [https://www.mapequation.org](https://www.mapequation.org).
 
 For Windows, try this:
-1. Install  miniconda Python 3 from here: https://docs.conda.io/en/latest/miniconda.html. You may also need Visual Studio (https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2017).
+1. Install  miniconda Python 3 from here: https://docs.conda.io/en/latest/miniconda.html. You may also need Visual Studio (https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2017). If so, choose Workload: Desktop Development with C++.
 2. Open Windows’ powershell.
 3. type: `pip install infomap`.
 
