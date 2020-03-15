@@ -11,11 +11,12 @@ package) will integrate Infomap directly intro R. On Linux/MacOs, you can instal
 
 For Windows, try this:
 1. Install  miniconda Python 3 from here: https://docs.conda.io/en/latest/miniconda.html
-2. Open Windows’ powershell
-3. type: pip install infomap
-This will create an infomapfile. In the anaconda terminal you can also type `where infomap`.
+2. Open Windows’ powershell.
+3. type: `pip install infomap`.
 
-An alternative is to install a local Linux enviroenment like Ubuntu from the Microsoft Store.
+This will create an infomapfile. In the anaconda terminal you can type `where infomap` to find the file. 
+
+An alternative is to install a local Linux environment like Ubuntu from the Microsoft Store.
 
 **Important notes:**
 1. The best practice is to compile Infomap under the file name "Infomap" and place it in the
@@ -98,7 +99,7 @@ infomap_object <- run_infomap_monolayer(infomap_input, infomap_executable='Infom
 ```
 
 ## Multilayer network with interlayer edges
-Use the temporal network from Pilosof 2017.
+Use the temporal network from Pilosof S, Porter MA, Pascual M, Kéfi S. The multilayer nature of ecological networks. Nature Ecology & Evolution. 2017;1: 0101.
 ```R
 NEE2017 <- create_multilayer_object(extended = siberia1982_7_links, nodes = siberia1982_7_nodes, intra_output_extended = T, inter_output_extended = T)
 
