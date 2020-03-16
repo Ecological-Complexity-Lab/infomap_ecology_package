@@ -91,6 +91,7 @@ otago_links_2 <- otago_links %>%
   mutate(weight=1)
 
 # Prepare network objects and run infomap
+# Some species will have only incoming or outgoing links, so the next line will result in a warning.
 network_object <- create_monolayer_object(otago_links_2, directed = T, bipartite = F, node_metadata = otago_nodes_2)
 infomap_input <- create_infomap_linklist(network_object)
 infomap_object <- run_infomap_monolayer(infomap_input, infomap_executable='Infomap',
