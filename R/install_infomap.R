@@ -17,7 +17,7 @@ install_infomap <- function(target_folder=NULL){
   setwd(paste(getwd(),'/infomap',sep=''))
   system('make')
   file.exists('Infomap')
-  file.copy(from = 'Infomap', to = paste(target_folder,'Infomap_f',sep=''), overwrite = T)
+  file.copy(from = 'Infomap', to = paste(target_folder,'/Infomap_f',sep=''), overwrite = T)
   setwd(target_folder)
   unlink ('infomap', recursive = T)
   file.rename('Infomap_f', 'Infomap')

@@ -7,20 +7,30 @@ suitable for other areas of research as well. The package also includes several 
 
 ## Install Infomap
 We use Infomap version 1 as a stand-alone file. Future versions (or a different
-package) will integrate Infomap directly intro R. You can install Infomap via the `install_infomap` function in the package (see next section), or follow the instructions on how to download, install and use Infomap in [https://www.mapequation.org](https://www.mapequation.org).
+package) will integrate Infomap directly intro R. On Linux/MacOs, you can install Infomap via the `install_infomap` function in the package (see next section), or follow the instructions on how to download, install and use Infomap in [https://www.mapequation.org](https://www.mapequation.org).
 
-**Important nodes:**
+For Windows, try this:
+1. Install  miniconda Python 3 from here: https://docs.conda.io/en/latest/miniconda.html. You may also need Visual Studio (https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2017). If so, choose Workload: Desktop Development with C++.
+2. Open Windows’ powershell.
+3. type: `pip install infomap`.
+
+This will create a file called `infomap`. In the anaconda terminal you can type `where infomap` to find the file. 
+
+An alternative is to install a local Linux environment like Ubuntu from the Microsoft Store.
+
+**Important notes:**
 1. The best practice is to compile Infomap under the file name "Infomap" and place it in the
 same working folder in which the R code is run.
-2. Though technically Infomap can run on Windows, I find that this is not always so easy to do, as you need some Linux environemnt installed within Windows. **I strongly recommend working within Linux or MacOS**.
+2. Though technically Infomap can run on Windows as detailed above, I find that this is not always so easy to do. If you don't manage to install it, Linux/MacOS are the best options.
 
 ## Install the R package
-The package was built under R 3.6.3 and requires `attempt, igraph, magrittr, tidyverse`.
+The package was built under R 3.6.3 and requires `attempt, igraph, bipartite, magrittr, tidyverse`.
 
 ```R
 # Install/update the packages
 install.packages("attempt")
 install.packages("igraph")
+install.packages("bipartite")
 install.packages("magrittr")
 install.packages("tidyverse")
 install.packages("devtools")
@@ -41,6 +51,7 @@ setwd('where your Infomap file and R script now live')
 check_infomap() # Make sure file can be run correctly. Should return TRUE
 
 # Load other relevant libraries
+library(attempt)
 library(igraph)
 library(bipartite)
 library(tidyverse)
@@ -80,6 +91,7 @@ otago_links_2 <- otago_links %>%
   mutate(weight=1)
 
 # Prepare network objects and run infomap
+# Some species will have only incoming or outgoing links, so the next line will result in a warning.
 network_object <- create_monolayer_object(otago_links_2, directed = T, bipartite = F, node_metadata = otago_nodes_2)
 infomap_input <- create_infomap_linklist(network_object)
 infomap_object <- run_infomap_monolayer(infomap_input, infomap_executable='Infomap',
@@ -88,7 +100,7 @@ infomap_object <- run_infomap_monolayer(infomap_input, infomap_executable='Infom
 ```
 
 ## Multilayer network with interlayer edges
-Use the temporal network from Pilosof 2017.
+Use the temporal network from Pilosof S, Porter MA, Pascual M, Kéfi S. The multilayer nature of ecological networks. Nature Ecology & Evolution. 2017;1: 0101.
 ```R
 NEE2017 <- create_multilayer_object(extended = siberia1982_7_links, nodes = siberia1982_7_nodes, intra_output_extended = T, inter_output_extended = T)
 
