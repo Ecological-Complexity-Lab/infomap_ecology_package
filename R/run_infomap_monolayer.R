@@ -38,8 +38,8 @@
 #'   automatically parses this output to levels. In this example, there are 3
 #'   module levels and the last is the leaf level. This will create columns:
 #'   \code{module_level1, module_level2, module_level3, module_level4}. The
-#'   column \code{levels} will show 3 because it ignires the leaf level. In case
-#'   a node has fewwer levels because its node is not partitioned, then the
+#'   column \code{levels} will show 3 because it ignores the leaf level. In case
+#'   a node has fewer levels because its node is not partitioned, then the
 #'   missing levels will show an NA value. Continuing this example, a second
 #'   node in the same network with a path 2:1:5 will be the 5th leaf in module 1
 #'   of module 2. The values for this node will be: \code{module_level1=2, module_level2=1, module_level3=5, module_level4=NA}.
