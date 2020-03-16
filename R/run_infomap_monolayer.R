@@ -80,6 +80,7 @@ run_infomap_monolayer <- function(x, infomap_executable='Infomap', flow_model=NU
   # Get the number of levels. Necessary for hierarchical modularity
   num_levels=max(str_count(modules$path, ':'))
   # Get the modules
+  suppressWarnings( # Need to suppress warnings because with hierarchical modules there are NA generated.
   modules %<>%
     select(node_id, path) %>%
     mutate(levels=str_count(path, pattern  = ':') ) %>%
@@ -89,7 +90,7 @@ run_infomap_monolayer <- function(x, infomap_executable='Infomap', flow_model=NU
     full_join(x$nodes, 'node_id') %>%
     select(node_id, node_name, levels, starts_with('module_level'), everything()) %>%
     arrange(node_id)
-
+  )
   print('Removing auxilary files...')
   file.remove('infomap.txt')
   file.remove('infomap.tree')
