@@ -21,7 +21,7 @@ create_infomap_linklist(
 \item{Output_file}{the name of the output file (default is 'infomap_link_list.txt')}
 }
 \value{
-An object of class \code{infomap_link_list}, which is a list:
+An object of class \code{infomap_link_list}, which is an R list with:
 \itemize{
   \item \code{edge_list_infomap} A link list (format: from, to, weight) formatted for Infomap, with node IDs
   \item \code{nodes} A tibble with node IDs, names and possibly other attributes.

@@ -7,7 +7,7 @@
 #' @param Write_to_file write the link list into a file?
 #' @param Output_file the name of the output file (default is 'infomap_link_list.txt')
 #'
-#' @return An object of class \code{infomap_link_list}, which is a list:
+#' @return An object of class \code{infomap_link_list}, which is an R list with:
 #' \itemize{
 #'   \item \code{edge_list_infomap} A link list (format: from, to, weight) formatted for Infomap, with node IDs
 #'   \item \code{nodes} A tibble with node IDs, names and possibly other attributes.
@@ -21,6 +21,7 @@ create_infomap_linklist <- function(x, make_directed=F, write_to_file=F, output_
   if(class(x)!='monolayer'){stop('x must be of class monolayer')}
   # prepare an edge list for infomap.
   edge_list <- x$edge_list
+  names(edge_list)[1:2] <- c('from','to')
   nodes <- x$nodes
   edge_list %<>%
     left_join(nodes, by=c('from' = 'node_name')) %>%

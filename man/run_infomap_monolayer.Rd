@@ -50,15 +50,6 @@ map equation and a tibble with modules that includes additional node metadata
 All of Infomap's arguments are detailed in
   \href{https://www.mapequation.org/infomap/#Parameters}{https://www.mapequation.org/infomap/#Parameters}.
 
-
-
-
-
-
-
-
-
-
   Note on hierarchical partitioning: In Infomaps tree output, the \code{path}
   column is a tree-like format, like that: 1:3:4:2. The last integer after
   the colon indicates the ID of the leaf in the module, and not the ID of the

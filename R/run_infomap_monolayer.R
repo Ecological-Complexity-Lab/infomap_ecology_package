@@ -21,15 +21,6 @@
 #' @details All of Infomap's arguments are detailed in
 #'   \href{https://www.mapequation.org/infomap/#Parameters}{https://www.mapequation.org/infomap/#Parameters}.
 #'
-#'
-#'
-#'
-#'
-#'
-#'
-#'
-#'
-#'
 #'   Note on hierarchical partitioning: In Infomaps tree output, the \code{path}
 #'   column is a tree-like format, like that: 1:3:4:2. The last integer after
 #'   the colon indicates the ID of the leaf in the module, and not the ID of the
@@ -58,7 +49,7 @@
 #'
 run_infomap_monolayer <- function(x, infomap_executable='Infomap', flow_model=NULL, silent=F, trials=100, two_level=T, seed=123, ...){
   if(check_infomap(infomap_executable)==F){stop('Error in Infomap standalone file.')}
-  if(class(x)!='infomap_link_list'){stop('x must be of class monolayer')}
+  if(class(x)!='infomap_link_list'){stop('x must be of class infomap_link_list')}
 
   # Infomap arguments
   arguments <- paste('--seed ',seed, ' -N ',trials,' -f ',flow_model,sep='')
