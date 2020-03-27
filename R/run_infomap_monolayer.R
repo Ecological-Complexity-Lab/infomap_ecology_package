@@ -1,11 +1,10 @@
 #' Run Infomap for monolayer networks
 #'
-#' Run Infomap for monolayer networks using an \code{infomap_link_list} class
-#' object created with \code{create_infomap_linklist}. Returns the value of the
-#' map equation and a tibble with modules that includes additional node metadata
+#' Run Infomap for monolayer networks. Returns the value of the
+#' map equation (L) and a tibble with modules that includes additional node metadata
 #' (if exists).
 #'
-#' @param x An object of class \code{infomap_link_list}.
+#' @param x An object of class \code{infomap_link_list} or \code{monolayer}.
 #' @param infomap_executable Name of Infomap standalone file.
 #' @param flow_model See details
 #'   \href{https://www.mapequation.org/infomap/#ParamsAlgorithm}{here}.
@@ -21,6 +20,8 @@
 #' @details All of Infomap's arguments are detailed in
 #'   \href{https://www.mapequation.org/infomap/#Parameters}{https://www.mapequation.org/infomap/#Parameters}.
 #'
+#'   If an object of class monolayer is provided, it will be internally converted to an object of class infomap_link_list.
+#'   
 #'   Note on hierarchical partitioning: In Infomaps tree output, the \code{path}
 #'   column is a tree-like format, like that: 1:3:4:2. The last integer after
 #'   the colon indicates the ID of the leaf in the module, and not the ID of the
@@ -35,7 +36,7 @@
 #'   node in the same network with a path 2:1:5 will be the 5th leaf in module 1
 #'   of module 2. The values for this node will be: \code{module_level1=2, module_level2=1, module_level3=5, module_level4=NA}.
 #'
-#' @return A list: \itemize{ \item \code{L} The value of the map equation \item
+#' @return A list: \itemize{\item \code{call} The call to Infomap with all the arguments \item \code{L} The value of the map equation \item
 #'   \code{modules} A tibble with node id, module affiliations and node attributes if they exist. }
 #'
 #' @seealso \code{create_monolayer_object, monolayer}
@@ -49,20 +50,26 @@
 #'
 run_infomap_monolayer <- function(x, infomap_executable='Infomap', flow_model=NULL, silent=F, trials=100, two_level=T, seed=123, ...){
   if(check_infomap(infomap_executable)==F){stop('Error in Infomap standalone file.')}
-  if(class(x)!='infomap_link_list'){stop('x must be of class infomap_link_list')}
-
+  if(class(x)!='infomap_link_list' && class(x)!='monolayer'){stop('x must be of class infomap_link_list or monolayer')}
+  
+  if(class(x)=='monolayer'){
+    print('A "monolayer" class provided, converting to class "infomap_link_list"')
+    x <- create_infomap_linklist(x)
+  }
+  
   # Infomap arguments
   arguments <- paste('--seed ',seed, ' -N ',trials,' -f ',flow_model,sep='')
   arguments <- ifelse(silent, paste(arguments, '--silent'), arguments)
   arguments <- ifelse(two_level, paste(arguments, '--two-level'), arguments)
   arguments <- paste(arguments,...)
+  call <- paste('./',infomap_executable, ' infomap.txt . -i link-list --tree ',arguments,sep='')
 
  # Write temporary file for Infomap
   write_delim(x$edge_list_infomap, 'infomap.txt', delim = ' ', col_names = F)
   # Run Infomap
   cat('running Infomap:');cat('\n')
-  cat(   paste('./',infomap_executable, ' infomap.txt . -i link-list --tree ',arguments,sep=''));cat('\n')
-  system(paste('./',infomap_executable, ' infomap.txt . -i link-list --tree ',arguments,sep=''))
+  cat(call);cat('\n')
+  system(call)
   # Get the map equation value, L
   L <- parse_number(read_lines('infomap.tree')[5])
   # Read module results from Infomap
@@ -87,5 +94,5 @@ run_infomap_monolayer <- function(x, infomap_executable='Infomap', flow_model=NU
   file.remove('infomap.tree')
 
   print(paste('Partitioned into ', max(modules$module_level1),' modules in ',num_levels,' levels.', sep=''))
-  return(list(L=L, modules=modules))
+  return(list(call=call, L=L, modules=modules))
 }

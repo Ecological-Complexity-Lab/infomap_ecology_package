@@ -16,7 +16,7 @@ run_infomap_monolayer(
 )
 }
 \arguments{
-\item{x}{An object of class \code{infomap_link_list}.}
+\item{x}{An object of class \code{infomap_link_list} or \code{monolayer}.}
 
 \item{infomap_executable}{Name of Infomap standalone file.}
 
@@ -37,19 +37,20 @@ Infomap).}
 \href{https://www.mapequation.org/infomap/#Parameters}{here}.}
 }
 \value{
-A list: \itemize{ \item \code{L} The value of the map equation \item
+A list: \itemize{\item \code{call} The call to Infomap with all the arguments \item \code{L} The value of the map equation \item
   \code{modules} A tibble with node id, module affiliations and node attributes if they exist. }
 }
 \description{
-Run Infomap for monolayer networks using an \code{infomap_link_list} class
-object created with \code{create_infomap_linklist}. Returns the value of the
-map equation and a tibble with modules that includes additional node metadata
+Run Infomap for monolayer networks. Returns the value of the
+map equation (L) and a tibble with modules that includes additional node metadata
 (if exists).
 }
 \details{
 All of Infomap's arguments are detailed in
   \href{https://www.mapequation.org/infomap/#Parameters}{https://www.mapequation.org/infomap/#Parameters}.
 
+  If an object of class monolayer is provided, it will be internally converted to an object of class infomap_link_list.
+  
   Note on hierarchical partitioning: In Infomaps tree output, the \code{path}
   column is a tree-like format, like that: 1:3:4:2. The last integer after
   the colon indicates the ID of the leaf in the module, and not the ID of the
