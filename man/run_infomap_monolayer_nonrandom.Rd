@@ -20,7 +20,7 @@ run_infomap_monolayer_nonrandom(
 )
 }
 \arguments{
-\item{x}{An object of class \code{infomap_link_list} or \code{monolayer}.}
+\item{x}{An object of class \code{monolayer}.}
 
 \item{infomap_executable}{Name of Infomap standalone file.}
 
@@ -48,28 +48,18 @@ performed?}
 \href{https://www.mapequation.org/infomap/#Parameters}{here}.}
 }
 \value{
-A list: \itemize{\item \code{call} The call to Infomap with all the
-  arguments \item \code{L} The value of the map equation \item \code{modules}
-  A tibble with node id, module affiliations and node attributes if they
-  exist. }
+An object of class \code{infomap}.
 }
 \description{
 Run Infomap for monolayer networks. Returns the value of the map equation (L)
 and a tibble with modules that includes additional node metadata (if exists).
 Can also compare L_obs to that obtained from shuffled versions of the
-network. This is a beta version, that should eventually replace
-\code{run_infomap_monolayer}.
+network.
 }
 \details{
 All of Infomap's arguments are detailed in
   \href{https://www.mapequation.org/infomap/#Parameters}{https://www.mapequation.org/infomap/#Parameters}.
 
-
-
-
-
-  If an object of class monolayer is provided, it will be internally
-  converted to an object of class infomap_link_list.
 
   Note on hierarchical partitioning: In Infomaps tree output, the \code{path}
   column is a tree-like format, like that: 1:3:4:2. The last integer after
@@ -94,16 +84,21 @@ All of Infomap's arguments are detailed in
   \code{vegan::commsim}. If special arguments such as burnin or thinin are
   needed for shuffling (e.g., for sequential algorithms), then first run
   \code{shuffle_infomap} separtely and provide the result as a list to
-  \code{shuff_method}. This is because the ... argument passes additional arguments to Infomap, and not to \code{shuffle_infomap}.
-
-  Shuffling can only be performed when x is an object of class
-  \code{monolayer}. Significance is estimate as a 1-tailed test:
+  \code{shuff_method}. This is because the ... argument passes additional
+  arguments to Infomap, and not to \code{shuffle_infomap}. Significance is
+  estimate as a 1-tailed test:
 
   P_value = sum(L_sim<L)/nsim
 
   This is the same common method to calculate significance for modularity,
   only that the goal is to minimize the map equation.
+
+  x is an object of class monolayer that is internally converted to an object of class \code{infomap_link_list}.
+}
+\note{
+This is a beta version, that should eventually replace
+  \code{run_infomap_monolayer}.
 }
 \seealso{
-\code{create_monolayer_object, monolayer, shuffle_infomap}
+\code{create_monolayer_object, monolayer, shuffle_infomap, infomap}
 }
