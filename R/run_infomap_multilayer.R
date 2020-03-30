@@ -38,13 +38,9 @@
 #'   If the multilayer is a temporal network, modules can be renamed to be
 #'   placed in temporal order of appearance. This is done with \code{temporal_network=T}.
 #'
-#' @return A list:
-#' \itemize{ \item \code{L} The value of the map equation.
-#'  \item
-#'   \code{modules} A tibble with nodes, their module affiliations,
-#'   and node attributes. }
+#' @return An object of class \code{infomap_multilayer}
 #'
-#' @seealso \code{create_multilayer_object, multilayer}
+#' @seealso \code{create_multilayer_object, multilayer, infomap_multilayer}
 #'
 #' @export
 #'
@@ -102,7 +98,9 @@ run_infomap_multilayer <- function(M,
     arguments <- ifelse(!is.null(multilayer_relax_limit_down), paste(arguments, '--multilayer-relax-limit-down',multilayer_relax_limit_down), arguments)
   }
   # Run Infomap
-  system(paste('./',infomap_executable,' infomap_multilayer.txt . ', arguments, sep=''))
+  call <- paste('./',infomap_executable,' infomap_multilayer.txt . ', arguments, sep='')
+  print(call)
+  system(call)
   # Get L
   L_output <- parse_number(read_lines('infomap_multilayer_states.tree')[5])
   #Read infomap's output file
@@ -140,6 +138,8 @@ run_infomap_multilayer <- function(M,
 
   # Output
   print(paste('Partitioned into ', max(modules$module),' modules.', sep=''))
-  return(list(L=L_output, modules=modules))
+  out <- list(call=call, L=L_output, modules=modules)
+  class(out) <- 'infomap_multilayer'
+  return(out)
 }
 

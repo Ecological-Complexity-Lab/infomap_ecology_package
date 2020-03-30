@@ -74,12 +74,12 @@
 #' @importFrom stringr str_count
 #' @importFrom tidyr separate
 #'   
-run_infomap_monolayer_nonrandom <- function(x, infomap_executable='Infomap', flow_model=NULL, silent=F, trials=100, two_level=T, seed=123, signif=F, shuff_method=NULL, nsim=1000, ...){
+run_infomap_monolayer_nonrandom <- function(x, infomap_executable='Infomap', flow_model=NULL, silent=F, trials=100, two_level=T, seed=123, signif=F, shuff_method=NULL, nsim=1000, verbose=T, ...){
   
   # Check stuff and prepare
   if(check_infomap(infomap_executable)==F){stop('Error in Infomap standalone file.')}
   if(class(x)!='monolayer'){stop('x must be of class monolayer')}
-  print('Creating a link list...')
+  if (verbose){ print('Creating a link list...') }
   obs <- create_infomap_linklist(x) # obs = Observed network
   nodes <- x$nodes
   
@@ -95,7 +95,7 @@ run_infomap_monolayer_nonrandom <- function(x, infomap_executable='Infomap', flo
   # Write temporary file for Infomap
   write_delim(obs$edge_list_infomap, 'infomap.txt', delim = ' ', col_names = F)
   # Run Infomap
-  cat('running: ');cat(call);cat('\n')
+  if (verbose){ cat('running: ');cat(call);cat('\n') }
   system(call)
   # Get the map equation value, L
   L <- parse_number(read_lines('infomap.tree')[5])
@@ -132,7 +132,7 @@ run_infomap_monolayer_nonrandom <- function(x, infomap_executable='Infomap', flo
     L_sim <- NULL
     for (i in 1:nsim){
       write_delim(shuffled_linklist[[i]], 'infomap.txt', delim = ' ', col_names = F) # Write temporary file for Infomap
-      print(paste('Running Infomap on shuffled network ',i,'/',nsim,sep=''))
+      if (verbose){ print(paste('Running Infomap on shuffled network ',i,'/',nsim,sep=''))}
       system(call) # Run Infomap
       L_sim <- c(L_sim, parse_number(read_lines('infomap.tree')[5])) # Get the map equation value, L
     }
@@ -142,7 +142,7 @@ run_infomap_monolayer_nonrandom <- function(x, infomap_executable='Infomap', flo
     if(out$pvalue==0){warning(paste('pvalue is not really 0, it is <',1/nsim,sep=''))}
   }
   
-  print('Removing auxilary files...')
+  if (verbose){ print('Removing auxilary files...') }
   file.remove('infomap.txt')
   file.remove('infomap.tree')
   

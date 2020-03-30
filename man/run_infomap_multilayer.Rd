@@ -48,11 +48,7 @@ run_infomap_multilayer(
 \item{multilayer-relax-limit-down}{Number of neighboring layers with lower id to relax to. If negative, relax to any layer. Useful for temporal networks.}
 }
 \value{
-A list:
-\itemize{ \item \code{L} The value of the map equation.
- \item
-  \code{modules} A tibble with nodes, their module affiliations,
-  and node attributes. }
+An object of class \code{infomap_multilayer}
 }
 \description{
 Run Infomap for multilayer networks using a \code{multilayer} class object.
@@ -81,5 +77,5 @@ Currently only works with two-level solutions (no modules within
   placed in temporal order of appearance. This is done with \code{temporal_network=T}.
 }
 \seealso{
-\code{create_multilayer_object, multilayer}
+\code{create_multilayer_object, multilayer, infomap_multilayer}
 }

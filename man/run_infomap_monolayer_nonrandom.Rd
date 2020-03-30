@@ -16,6 +16,7 @@ run_infomap_monolayer_nonrandom(
   signif = F,
   shuff_method = NULL,
   nsim = 1000,
+  verbose = T,
   ...
 )
 }

@@ -11,15 +11,17 @@
 #' @export
 #' @importFrom attempt attempt
 install_infomap <- function(target_folder=NULL){
+  unlink('Infomap')
   if (is.null(target_folder)){target_folder <- getwd()}
   setwd(target_folder)
   system('git clone https://github.com/mapequation/infomap.git')
   setwd(paste(getwd(),'/infomap',sep=''))
+  message ('Running make...')
   system('make')
-  file.exists('Infomap')
   file.copy(from = 'Infomap', to = paste(target_folder,'/Infomap_f',sep=''), overwrite = T)
   setwd(target_folder)
-  unlink ('infomap', recursive = T)
+  message('Finishing...')
+  system('rm -rf infomap')
   file.rename('Infomap_f', 'Infomap')
 
   # Check installation
