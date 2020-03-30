@@ -33,6 +33,7 @@ install.packages("igraph")
 install.packages("bipartite")
 install.packages("magrittr")
 install.packages("tidyverse")
+install.packages("vegan")
 install.packages("devtools")
 
 # Install infomapecology 
