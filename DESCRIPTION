@@ -11,12 +11,13 @@ Description: Collection of R functions to perform community detection analysis w
 License: GPL
 Encoding: UTF-8
 LazyData: true
-Imports:
+Depends:
   attempt,
   igraph,
   magrittr,
   metafolio,
-  tidyverse
+  tidyverse,
+  vegan
 Suggests:
   bipartite
 RoxygenNote: 7.1.0

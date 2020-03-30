@@ -139,6 +139,7 @@ run_infomap_monolayer_nonrandom <- function(x, infomap_executable='Infomap', flo
     
     out$L_sim <- L_sim
     out$pvalue <- sum(L_sim<L)/nsim 
+    if(out$pvalue==0){warning(paste('pvalue is not really 0, it is <',1/nsim,sep=''))}
   }
   
   print('Removing auxilary files...')

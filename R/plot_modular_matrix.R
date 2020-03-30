@@ -25,13 +25,12 @@
 #' @import dplyr
 #' @import magrittr
 #' @import ggplot2
-#' @importFrom metafolio gg_color_hue
 plot_modular_matrix <- function(x, fix_coordinates=T, axes_titles=c('Set 1', 'Set 2'), transpose=F, outside_module_col='gray'){
   if(class(x)!='infomap'){stop('x must be of class infomap')}
   
   # Add module affiliations to the edge list, module 1 is the affiliation of the node from Set1; module2 is the affiliation of the node from Set2
-  M_set1 <- M_set2 <- x$edge_list
-  names(M_set1) <- names(M_set2) <- names(x$edge_list) <- c('Set1','Set2','w')
+  M_set1 <- M_set2 <- x$edge_list[1:3]
+  names(M_set1) <- names(M_set2) <- names(x$edge_list)[1:3] <- c('Set1','Set2','w')
   suppressMessages(suppressWarnings(M_set1 %<>% left_join(x$modules, by=c('Set1'='node_name')) %>% rename(module1=module_level1)))
   suppressMessages(suppressWarnings(M_set2 %<>% left_join(x$modules, by=c('Set2'='node_name')) %>% rename(module2=module_level1)))
   # Join into a single tibble
@@ -50,7 +49,7 @@ plot_modular_matrix <- function(x, fix_coordinates=T, axes_titles=c('Set 1', 'Se
     mutate(value_mod=ifelse(edge_in_out=='in',module1,0)) %>% # Assign a module value of 0 if interaction falls outside the modules
     mutate(Set1=factor(Set1, levels=Set1_modules$Set1), Set2=factor(Set2, levels=Set2_modules$Set2))
   # Define module colors
-  module_colors <- tibble(module1=unique(M$module1), col=gg_color_hue(n=length(unique(M$module1))))
+  module_colors <- tibble(module1=unique(M$module1), col=metafolio::gg_color_hue(n=length(unique(M$module1))))
   # Join the module colors to the edge list
   # If there are no interactions outside the module then do not need the gray
   # color. Otherwise, it will plot the first module in gray.
