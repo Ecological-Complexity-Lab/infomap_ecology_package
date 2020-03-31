@@ -38,7 +38,6 @@ list_to_matrix <- function(x, directed=F, bipartite=T, group_names=c('set_cols',
   nodes <- V(g)$name
   if (bipartite){
     node_list <- tibble(node_id=1:length(nodes),
-                        node_type=c(rep('c',ncol(output_mat)),rep('r',nrow(output_mat))),
                         node_group=c(rep(group_names[1],ncol(output_mat)),rep(group_names[2],nrow(output_mat))),
                         node_name=nodes)
   } else {

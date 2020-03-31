@@ -24,7 +24,7 @@ linklists that can be analyzed by Infomap.
 }
 \details{
 This function is used internally by
-  \code{run_infomap_monolayer_nonrandom}, but can also be run independently
+  \code{run_infomap_monolayer}, but can also be run independently
   Currently only supports bipartite networks and shuffling methods from the
   vegan package as defined in \code{vegan::commsim}.
 }

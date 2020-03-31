@@ -1,6 +1,6 @@
 #' Plot a matrix with colored interactions by modules
 #'
-#' @param x An object of class \code{infomap}.
+#' @param x An object of class \code{infomap_monolayer}.
 #' @param fix_coordinates Should x and y coordinates be fixed by ggplot to
 #'   create square cells.
 #' @param transpose Option to transpose the matrix. Useful for matrices with
@@ -19,14 +19,14 @@
 #'   
 #' @return An object of class \code{ggplot}.
 #'
-#' @seealso \code{ggplot2, infomap}
+#' @seealso \code{ggplot2, infomap_monolayer}
 #'
 #' @export
 #' @import dplyr
 #' @import magrittr
 #' @import ggplot2
 plot_modular_matrix <- function(x, fix_coordinates=T, axes_titles=c('Set 1', 'Set 2'), transpose=F, outside_module_col='gray'){
-  if(class(x)!='infomap'){stop('x must be of class infomap')}
+  if(class(x)!='infomap_monolayer'){stop('x must be of class infomap_monolayer')}
   
   # Add module affiliations to the edge list, module 1 is the affiliation of the node from Set1; module2 is the affiliation of the node from Set2
   M_set1 <- M_set2 <- x$edge_list[1:3]

@@ -27,7 +27,6 @@ matrix_to_list_bipartite <- function(x, group_names=c('set_cols','set_rows')){
   if(any(degree(g)==0)){print('Some node have no interactions. They will appear in the node table but not in the edge list')}
   nodes <- c(sort(colnames(x)),sort(rownames(x)))
   node_list <- tibble(node_id=1:length(nodes),
-                      node_type=c(rep('c',ncol(x)),rep('r',nrow(x))),
                       node_group=c(rep(group_names[1],ncol(x)),rep(group_names[2],nrow(x))),
                       node_name=nodes)
   out <- list(mode='B', directed=F, nodes=node_list, mat=x, edge_list=l_bip, igraph_object=g)

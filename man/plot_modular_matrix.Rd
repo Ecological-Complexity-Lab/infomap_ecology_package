@@ -13,7 +13,7 @@ plot_modular_matrix(
 )
 }
 \arguments{
-\item{x}{An object of class \code{infomap}.}
+\item{x}{An object of class \code{infomap_monolayer}.}
 
 \item{fix_coordinates}{Should x and y coordinates be fixed by ggplot to
 create square cells.}
@@ -41,5 +41,5 @@ hcl(h=hues, l=tune1, c=tune2)[1:n]}
 }
 }
 \seealso{
-\code{ggplot2, infomap}
+\code{ggplot2, infomap_monolayer}
 }

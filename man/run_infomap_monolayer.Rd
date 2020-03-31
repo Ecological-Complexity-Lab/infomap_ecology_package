@@ -2,7 +2,8 @@
 % Please edit documentation in R/run_infomap_monolayer.R
 \name{run_infomap_monolayer}
 \alias{run_infomap_monolayer}
-\title{Run Infomap for monolayer networks}
+\title{Run Infomap for monolayer networks with an option to compare to randomized
+networks}
 \usage{
 run_infomap_monolayer(
   x,
@@ -12,11 +13,15 @@ run_infomap_monolayer(
   trials = 100,
   two_level = T,
   seed = 123,
+  signif = F,
+  shuff_method = NULL,
+  nsim = 1000,
+  verbose = T,
   ...
 )
 }
 \arguments{
-\item{x}{An object of class \code{infomap_link_list} or \code{monolayer}.}
+\item{x}{An object of class \code{monolayer}.}
 
 \item{infomap_executable}{Name of Infomap standalone file.}
 
@@ -33,24 +38,30 @@ Infomap). See details.}
 \item{seed}{Seed value for random number generation (argumnt --seed in
 Infomap).}
 
+\item{signif}{Should a comparison for non-random versions of the network be
+performed?}
+
+\item{shuff_method}{Method to shuffle the network. See details.}
+
+\item{nsim}{How many shuffled networks to create?}
+
 \item{...}{additional Infomap arguments as detailed
 \href{https://www.mapequation.org/infomap/#Parameters}{here}.}
 }
 \value{
-A list: \itemize{\item \code{call} The call to Infomap with all the arguments \item \code{L} The value of the map equation \item
-  \code{modules} A tibble with node id, module affiliations and node attributes if they exist. }
+An object of class \code{infomap_monolayer}.
 }
 \description{
-Run Infomap for monolayer networks. Returns the value of the
-map equation (L) and a tibble with modules that includes additional node metadata
-(if exists).
+Run Infomap for monolayer networks. Returns the value of the map equation (L)
+and a tibble with modules that includes additional node metadata (if exists).
+Can also compare L_obs to that obtained from shuffled versions of the
+network.
 }
 \details{
 All of Infomap's arguments are detailed in
   \href{https://www.mapequation.org/infomap/#Parameters}{https://www.mapequation.org/infomap/#Parameters}.
 
-  If an object of class monolayer is provided, it will be internally converted to an object of class infomap_link_list.
-  
+
   Note on hierarchical partitioning: In Infomaps tree output, the \code{path}
   column is a tree-like format, like that: 1:3:4:2. The last integer after
   the colon indicates the ID of the leaf in the module, and not the ID of the
@@ -63,8 +74,32 @@ All of Infomap's arguments are detailed in
   a node has fewer levels because its node is not partitioned, then the
   missing levels will show an NA value. Continuing this example, a second
   node in the same network with a path 2:1:5 will be the 5th leaf in module 1
-  of module 2. The values for this node will be: \code{module_level1=2, module_level2=1, module_level3=5, module_level4=NA}.
+  of module 2. The values for this node will be: \code{module_level1=2,
+  module_level2=1, module_level3=5, module_level4=NA}.
+
+  If significance is \code{TRUE} then the network will be shuffled according
+  to \code{shuff_method}. \code{shuff_method} can be either a list of already
+  shuffled networks, produced for example with \code{shuffle_infomap}, or a
+  shuffling method from \code{vegan::commsim}. Currently only supports
+  shuffling for bipartite networks from the vegan package as defined in
+  \code{vegan::commsim}. If special arguments such as burnin or thinin are
+  needed for shuffling (e.g., for sequential algorithms), then first run
+  \code{shuffle_infomap} separtely and provide the result as a list to
+  \code{shuff_method}. This is because the ... argument passes additional
+  arguments to Infomap, and not to \code{shuffle_infomap}. Significance is
+  estimate as a 1-tailed test:
+
+  P_value = sum(L_sim<L)/nsim
+
+  This is the same common method to calculate significance for modularity,
+  only that the goal is to minimize the map equation.
+
+  x is an object of class monolayer that is internally converted to an object of class \code{infomap_link_list}.
+}
+\note{
+This is a beta version, that should eventually replace
+  \code{run_infomap_monolayer}.
 }
 \seealso{
-\code{create_monolayer_object, monolayer}
+\code{create_monolayer_object, monolayer, shuffle_infomap, infomap_monolayer}
 }
