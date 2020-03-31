@@ -11,6 +11,10 @@
 #' @return A \code{monolayer} object.
 #' @seealso \code{create_monolayer_object, monolayer}
 #'
+#' @examples
+#' data(memmott1999)
+#' matrix_to_list_bipartite(memmott1999, group_names = c('Animals', 'Plants'))
+#' 
 #' @export
 #' @import dplyr
 #' @importFrom igraph graph.incidence degree

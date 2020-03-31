@@ -15,32 +15,79 @@ create_multilayer_object(
 )
 }
 \arguments{
-\item{extended}{An extended edge list input of the format \code{layer_from node_from layer_to node_to weight}, that contains all intralayer, and (optionally) interlayer edges. If supplied, then \code{intra} and \code{inter} are ignored. Should only contain node and layer IDs.}
+\item{extended}{An extended edge list input of the format \code{layer_from
+node_from layer_to node_to weight}, that contains all intralayer, and
+(optionally) interlayer edges. If supplied, then \code{intra} and
+\code{inter} are ignored. Should only contain node and layer IDs.}
 
-\item{intra}{An edge list of the format \code{layer node_from node_to weight}. Should only contain node and layer IDs.}
+\item{intra}{An edge list of the format \code{layer node_from node_to
+weight}. Should only contain node and layer IDs.}
 
-\item{inter}{An edge list of the format \code{layer_from node_from layer_to node_to weight}. Should only contain node and layer IDs. Defaults to NULL, assuming the network does not have interlayer edges.}
+\item{inter}{An edge list of the format \code{layer_from node_from layer_to
+node_to weight}. Should only contain node and layer IDs. Defaults to NULL,
+assuming the network does not have interlayer edges.}
 
-\item{nodes}{A data frame with node metadata. First column must be node_id with IDs corresponding to those in \code{extended}, \code{intra} or \code{inter}.}
+\item{nodes}{A data frame with node metadata. First column must be node_id
+with IDs corresponding to those in \code{extended}, \code{intra} or
+\code{inter}.}
 
 \item{intra_output_extended}{Defaults to \code{TRUE}, see details.}
 
 \item{inter_output_extended}{Defaults to \code{TRUE}, see details.}
 
-\item{layers}{A data frame with layer metadata. First column must be layer_id with IDs corresponding to those in \code{extended}, \code{intra} or \code{inter}.}
+\item{layers}{A data frame with layer metadata. First column must be layer_id
+with IDs corresponding to those in \code{extended}, \code{intra} or
+\code{inter}.}
 }
 \value{
 A \code{multilayer} object
 }
 \description{
-Takes an edge list input with node IDs and returns a multilayer object that includes the intralayer edges, interlayer edges (if there are), and metadata on nodes and layers.
+Takes an edge list input with node IDs and returns a multilayer object that
+includes the intralayer edges, interlayer edges (if there are), and metadata
+on nodes and layers.
 }
 \details{
-\code{extended, intra, inter} must only contain node IDs. Any details on nodes and layers that link to these IDs should be provided in \code{nodes} and \code{layers}.
+\code{extended, intra, inter} must only contain node IDs. Any
+  details on nodes and layers that link to these IDs should be provided in
+  \code{nodes} and \code{layers}.
 
- Intralayer edges can have either an extended format of \code{layer_from node_from layer_to node_to weight} or a non-extended format of \code{layer node_from node_to weight}.
+  Intralayer edges can have either an extended format of \code{layer_from
+  node_from layer_to node_to weight} or a non-extended Intra/Inter format of \code{layer
+  node_from node_to weight}.
 
- Interlayer edges too can have either an extended format of \code{layer_from node_from layer_to node_to weight} or a non-extended format of \code{layer_from node layer_to weight}. **However, a non-extended format is ONLY valid for coupling interlayer edges, which connect between different realizations of the same physical nodes in diffrent layers. When interlayer edges are between different physical nodes use the extended forman and input.**
+  Interlayer edges too can have either an extended format of \code{layer_from
+  node_from layer_to node_to weight} or a non-extended non-extended format of
+  \code{layer_from node layer_to weight}. **However, in Infomap, a non-extended format is
+  ONLY valid for coupling interlayer edges using a relax rate, which connects between different
+  realizations of the same physical nodes in diffrent layers. When interlayer
+  edges are between different physical nodes use the extended format.**
+}
+\examples{
+data("siberia1982_7_links") # Links are an extended edge list
+data("siberia1982_7_nodes") # nodes
+
+# Information on layers
+layers <- tibble(layer_id=1:6, year=1982:1987)
+
+# Create a multilayer object with an extended list.
+emln <- create_multilayer_object(extended = siberia1982_7_links,
+ nodes = siberia1982_7_nodes,
+ intra_output_extended = T,
+ inter_output_extended = T,
+ layers=layers)
+
+# Create a multilayer object with a non-extended Intra/Inter type link list.
+emln <- create_multilayer_object(extended = siberia1982_7_links,
+ nodes = siberia1982_7_nodes,
+ intra_output_extended = F,
+ inter_output_extended = F,
+ layers=layers)
+
+# If one wants to ignore interlayer edges
+emln$inter <- NULL
+
+
 }
 \seealso{
 \code{multilayer}

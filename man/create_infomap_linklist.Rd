@@ -30,3 +30,14 @@ An object of class \code{infomap_link_list}, which is an R list with:
 \description{
 Takes a monolayer object and returns a link list and a tibble with nodes.
 }
+\details{
+Used internally by \code{run_infomap_monolayer}, but also useful for writing the link list to a file.
+}
+\examples{
+network_object <- create_monolayer_object(memmott1999, bipartite = T, directed = F, group_names = c('A','P'))
+x <- create_infomap_linklist(network_object, make_directed = F, write_to_file = T, output_file = 'mylist.txt')
+
+}
+\seealso{
+\code{infomap_link_list}
+}

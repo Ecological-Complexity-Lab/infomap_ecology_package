@@ -11,6 +11,13 @@
 #'
 #' @seealso \code{create_monolayer_object, monolayer}
 #'
+#' @examples 
+#' # Generate a matrix with radnom weighted interactions
+#' x <- matrix(rbinom(100,1,0.6),10,10)
+#' x <- x*round(runif(100,1,5),0)
+#' # run
+#' matrix_to_list_unipartite(x, directed = T)
+#' 
 #' @export
 #' @import dplyr
 #' @importFrom igraph is.directed graph.adjacency degree

@@ -6,14 +6,24 @@
 #' @param Make_directed for undirected networks, create two sets of edges.
 #' @param Write_to_file write the link list into a file?
 #' @param Output_file the name of the output file (default is 'infomap_link_list.txt')
-#'
+#' 
+#' @details Used internally by \code{run_infomap_monolayer}, but also useful for writing the link list to a file.
+#' 
 #' @return An object of class \code{infomap_link_list}, which is an R list with:
 #' \itemize{
 #'   \item \code{edge_list_infomap} A link list (format: from, to, weight) formatted for Infomap, with node IDs
 #'   \item \code{nodes} A tibble with node IDs, names and possibly other attributes.
 #' }
+#' 
+#' @seealso 
+#' \code{infomap_link_list}
+#' 
+#' @examples 
+#' network_object <- create_monolayer_object(memmott1999, bipartite = T, directed = F, group_names = c('A','P'))
+#' x <- create_infomap_linklist(network_object, make_directed = F, write_to_file = T, output_file = 'mylist.txt')
 #'
 #' @export
+#' 
 #' @import dplyr
 #' @import magrittr
 

@@ -7,14 +7,23 @@
 install_infomap(target_folder = NULL)
 }
 \arguments{
-\item{target_folder}{Where to install infomap. Defaults to R's current working directory (\code{getwd()}).}
+\item{target_folder}{Where to install infomap. Defaults to R's current
+working directory (\code{getwd()}).}
 }
 \value{
-FALSE and an error if Infomap is not installed correctly. TRUE (and version number) if it is.
+FALSE and an error if Infomap is not installed correctly. TRUE (and
+  version number) if it is.
 }
 \description{
-Clones the GitHub repository and runs \code{make} via R's \code{system} command. This is merely a wrapper for commands that can be easily run in the terminal.
+Clones the GitHub repository and runs \code{make} via R's \code{system}
+command. This is merely a wrapper for commands that can be easily run in the
+terminal.
 }
 \details{
-For now, this package depends on Infomap's stand-alone version. Futre versions or another package will incorporate Infomap directly into R.
+For now, this package depends on Infomap's stand-alone version.
+  Futre versions or another package will incorporate Infomap directly into R. Therefore it is necessary to install infomap, in the same folder where the code is Run. If it is already installed, then it will be replaced by the newest version.
+}
+\examples{
+install_infomap()
+
 }

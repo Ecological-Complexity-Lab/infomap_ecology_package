@@ -18,6 +18,28 @@
 #' @return A \code{monolayer} object.
 #' @seealso Functions \code{create_monolayer_object, monolayer}, also,\code{graph.data.frame} from igraph.
 #'
+#' @examples 
+#' data(otago_nodes)
+#' data(otago_links)
+#' 
+#' # Clean and prepare data
+#' otago_nodes_2 <- otago_nodes %>%
+#' filter(StageID==1) %>%
+#'   select(node_name=WorkingName, node_id_original=NodeID, WorkingName,StageID, everything())
+#' anyDuplicated(otago_nodes_2$node_name)
+#' otago_links_2 <- otago_links %>%
+#' filter(LinkType=='Predation') %>%
+#'  filter(ConsumerSpecies.StageID==1) %>%
+#'  filter(ResourceSpecies.StageID==1) %>%
+#'  select(from=ResourceNodeID, to=ConsumerNodeID) %>%
+#'  left_join(otago_nodes_2, by=c('from'='node_id_original')) %>%
+#'  select(from, node_name, to) %>%
+#'  left_join(otago_nodes_2, by=c('to'='node_id_original')) %>%
+#'   select(from=node_name.x, to=node_name.y) %>%
+#'  mutate(weight=1)
+#'  
+#' list_to_matrix(otago_links_2, directed = T, bipartite = F, node_metadata = otago_nodes_2)
+#' 
 #' @export
 #' @import dplyr
 #' @importFrom igraph graph.data.frame V as_incidence_matrix as_adjacency_matrix

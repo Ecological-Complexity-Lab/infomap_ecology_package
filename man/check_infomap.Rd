@@ -15,3 +15,7 @@ Attempts to run Infomap via the \code{system} command to make sure it works prop
 \details{
 For now, this package depends on Infomap's stand-alone version. Futre versions or another package will incorporate Infomap directly into R.
 }
+\examples{
+check_infomap()
+
+}

@@ -19,20 +19,30 @@ create_monolayer_object(
 
 \item{bipartite}{Is the network bipartite?}
 
-\item{group_names}{For bipartite networks: name of the groups in the columns and rows, respectively (e.g., parasites and hosts).}
+\item{group_names}{For bipartite networks: name of the groups in the columns
+and rows, respectively (e.g., parasites and hosts).}
 
-\item{node_metadata}{Following the igraph method of \code{graph.data.frame}. Must have a column called node_name with names matching those in x.}
+\item{node_metadata}{Following the igraph method of \code{graph.data.frame}.
+Must have a column called node_name with names matching those in x.}
 }
 \value{
 A \code{monolayer} object.
 }
 \description{
-Automatically identifies if the input is a matrix or an edge list and creates a \code{monolayer} object.
-Can also be used as a wrapper function for \code{list_to_matrix, matrix_to_list}
+Automatically identifies if the input is a matrix or an edge list and creates
+a \code{monolayer} object.
 }
 \details{
-Converts between edge list and matrix formats as necessary.
+Converts between edge list and matrix formats and creates a
+  monolayer object. It a wrapper function for
+  \code{list_to_matrix, matrix_to_list_unipartite, matrix_to_list_bipartite}. Node metadata can only be included with an edge list input.
+}
+\examples{
+x <- create_monolayer_object(memmott1999, bipartite = T, directed = F, group_names = c('A','P'))
+
 }
 \seealso{
-\code{list_to_matrix, matrix_to_list, monolayer} functions and the \code{igraph} package.
+\code{list_to_matrix, matrix_to_list_unipartite,
+  , monolayer}. Also functions \code{graph.incidence,
+  graph.adjacency, graph.data.frame} in the \code{igraph} package.
 }

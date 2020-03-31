@@ -22,8 +22,21 @@
 #'   A, et al. Host-parasite network structure is associated with
 #'   community-level immunogenetic diversity. Nat Commun. 2014;5: 5172.
 #'
+#' @examples 
+#' # Generate a confusion martrix for a network with 50 modules. Partition A has 6 modules (rows), partition B has 5 (columns). Each cell in N indicates the number of nodes that were assigned together to a module in A and B. For example, 5 nodes were assigned to module 2 in partition A and to module 1 in partition B.
+#' N <- matrix(0,6,5)
+#' diag(N[-1,])<-c(5,2,6,5,5)
+#' diag(N) <- c(4,4,6,5,5)
+#' N[6,1] <- 2
+#' N[1,4] <- 1
+#' NMI(N)
+#' 
+#' An example of perfect information (exact same partitions):
+#' N <- matrix(0,5,5)
+#' diag(N) <- c(10,15,10,12,3)
+#' NMI(N) # Should be 1
+#' 
 #' @export
-
 NMI <- function (N) {
   S <- sum(N)
   CA = dim(N)[1]; CB = dim(N)[2]

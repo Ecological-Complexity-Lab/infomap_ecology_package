@@ -4,6 +4,9 @@
 #'
 #' @return FALSE and an error if Infomap is not installed correctly. TRUE (and version number) if it is.
 #'
+#' @examples 
+#' check_infomap()
+#' 
 #' @details For now, this package depends on Infomap's stand-alone version. Futre versions or another package will incorporate Infomap directly into R.
 #'
 #' @importFrom attempt attempt
