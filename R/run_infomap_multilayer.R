@@ -102,9 +102,9 @@ run_infomap_multilayer <- function(M,
   print(call)
   system(call)
   # Get L
-  L_output <- parse_number(read_lines('infomap_multilayer_states.tree')[5])
+  L_output <- parse_number(read_lines('infomap_multilayer_states.tree')[6])
   #Read infomap's output file
-  modules <- suppressMessages(read_delim('infomap_multilayer_states.tree', delim = ' ', skip = 7, col_names = c('path', 'flow', 'name', 'state_id', 'node_id', 'layer_id')))
+  modules <- suppressMessages(read_delim('infomap_multilayer_states.tree', delim = ' ', skip = 8, col_names = c('path', 'flow', 'name', 'state_id', 'node_id', 'layer_id')))
   # Parse modules
   modules %<>%
     filter(flow>0) %>% # Modules with 0 flow have a singleton and are spurious
@@ -138,7 +138,7 @@ run_infomap_multilayer <- function(M,
 
   # Output
   print(paste('Partitioned into ', max(modules$module),' modules.', sep=''))
-  out <- list(call=call, L=L_output, modules=modules)
+  out <- list(call=call, L=L_output, m=max(modules$module), modules=modules)
   class(out) <- 'infomap_multilayer'
   return(out)
 }

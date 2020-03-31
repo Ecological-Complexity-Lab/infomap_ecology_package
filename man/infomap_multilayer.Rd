@@ -7,6 +7,7 @@ A list with:
 \itemize{ 
     \item \code{call} The call to Infomap with all the arguments.
     \item \code{L} The value of the map equation.
+    \item \code{m} Number of modules.
     \item \code{modules} A tibble with nodes, their module affiliations, and node attributes. }
 }
 

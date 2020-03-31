@@ -2,8 +2,9 @@
 #'
 #'The package contains functions that prepare monolayer and multilayer networks
 #'for analysis with Infomap, run Infomap from within R and parse the results
-#'back to R. The package is inspired by analysis of ecological networks but is
-#'suitable for other areas of research as well.
+#'back to R. Also includes standardized objects to store and further analyze
+#'monolayer and multilayer networks. The package is inspired by analysis of
+#'ecological networks but is suitable for other areas of research as well.
 #'
 #'We use Infomap version 1 as a stand-alone file. Future versions (or a differen
 #'package) will integrate Infomap directly intro R. Complete instructions on how
@@ -14,11 +15,15 @@
 #'
 #'The package also includes several data sets of ecological networks.
 #'
-#' @docType package
-#' @name infomapecology
+#'Inspired by ecological networks but can work for other networks too!
+#'Ideas/requests for features are welcome (open an issue \href{here}{https://github.com/Ecological-Complexity-Lab/infomap_ecology_package/issues}).
 #'
-#' @author Shai Pilosof
+#'@docType package
+#'@name infomapecology
 #'
-#' @references A dynamical perspective to community detection in ecological networks.
+#'@author Shai Pilosof
 #'
+#'@references A dynamical perspective to community detection in ecological
+#'  networks.
+#'  
 NULL

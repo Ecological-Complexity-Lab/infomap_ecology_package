@@ -30,12 +30,12 @@ Use ggplot to plot two histograms for the values of the map equation
 }
 \examples{
 data(memmott1999) # From bipartite package
-network_object <- create_monolayer_object(memmott1999, bipartite = T, directed = F, group_names = c('A','P'))
+network_object <- create_monolayer_object(memmott1999, bipartite = T, directed = F, group_names = c('Animals','Plants'))
 infomap_object <- run_infomap_monolayer(network_object, 
-infomap_executable='Infomap',
-flow_model = 'undirected',
-silent=T, trials=20, two_level=T, seed=123, 
-signif = T, shuff_method = 'r00', nsim = 50)
+      infomap_executable='Infomap',
+      flow_model = 'undirected',
+      silent=T, trials=20, two_level=T, seed=123, 
+      signif = T, shuff_method = 'r00', nsim = 50)
 
 #get plots and plot them
 x <- plot_signif(infomap_object, plotit = T)
