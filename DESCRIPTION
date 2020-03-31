@@ -13,7 +13,9 @@ Encoding: UTF-8
 LazyData: true
 Depends:
   attempt,
+  cowplot,
   igraph,
+  ggalluvial,
   magrittr,
   metafolio,
   tidyverse,

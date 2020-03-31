@@ -12,7 +12,7 @@
 #'
 #' @import ggalluvial
 #' @import ggplot2
-multilayer_alluvial <- function(x){
+plot_multilayer_alluvial <- function(x){
   if(class(x)!='infomap_multilayer'){stop('x must be of class infomap_multilayer')}
   p <- ggplot(x$modules, 
               aes(x=layer_id, stratum=as.factor(module),  alluvium=node_id, label=as.factor(module), fill=as.factor(module)))+

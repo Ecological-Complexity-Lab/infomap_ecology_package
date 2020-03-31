@@ -119,10 +119,8 @@ run_infomap_monolayer <- function(x, infomap_executable='Infomap', flow_model=NU
   out <- list(call=call, L=L, m=m, modules=modules, edge_list=x$edge_list, L_sim=NULL, m_sim=NULL, pvalue=NULL)
   
   if (signif){
-    if(class(x)!='monolayer'){stop('x must be of class monolayer to test for non-random patterns.')}
-    
-    if (class(shuff_method)=='list'){
-      shuffled_linklist <- shuff_method # If list with shulled networks is provided.
+    if (class(shuff_method)=='list'){ # If list with shuflled networks is provided.
+      shuffled_linklist <- shuff_method 
       nsim <- length(shuffled_linklist)
     } else { 
       shuffled_linklist <- shuffle_infomap(x, shuff_method=shuff_method, nsim=nsim) # Otherwise, shuffle according to arguments.
