@@ -27,14 +27,13 @@ same working folder in which the R code is run.
 The package was built under R 3.6.3 and requires `attempt, igraph, bipartite, magrittr, tidyverse`.
 
 ```R
-# Install/update the packages
-install.packages("attempt")
-install.packages("igraph")
-install.packages("bipartite")
-install.packages("magrittr")
-install.packages("tidyverse")
-install.packages("vegan")
-install.packages("devtools")
+# Install  (if not installed) and load necessary packages
+package.list=c("attempt", "cowplot", "igraph", "ggalluvial","magrittr","metafolio","tidyverse","vegan", "devtools")
+loaded <-  package.list %in% .packages()
+package.list <-  package.list[!loaded]
+installed <-  package.list %in% .packages(TRUE)
+if (!all(installed)) install.packages(package.list[!installed], repos="http://cran.rstudio.com/")
+invisible(lapply(package.list, library, character.only = TRUE, verbose=F))
 
 # Install infomapecology 
 devtools::install_github('Ecological-Complexity-Lab/infomap_ecology_package', force=T)
@@ -50,13 +49,6 @@ install_infomap()
 # Check Infomap is running
 setwd('where your Infomap file and R script now live')
 check_infomap() # Make sure file can be run correctly. Should return TRUE
-
-# Load other relevant libraries
-library(attempt)
-library(igraph)
-library(bipartite)
-library(tidyverse)
-library(magrittr)
 ```
 
 ## Examples
