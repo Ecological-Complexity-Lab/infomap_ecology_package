@@ -30,16 +30,16 @@
 #'
 #'
 #'   Note on hierarchical partitioning: In Infomaps tree output, the \code{path}
-#'   column is a tree-like format, like that: 1:3:4:2. The last integer after
+#'   column is a tree-like format, like that: 1:3:4:2. The first integer is the top module. The last integer after
 #'   the colon indicates the ID of the leaf in the module, and not the ID of the
-#'   node. In this example, the node is the 2nd leaf in module 4 which is nested
-#'   in module 3 which is nested in module 1. \code{run_infomap_monolayer}
+#'   node. In this example, the node is the 2nd leaf in module 4, which is nested
+#'   in module 3, which is nested in top module 1. \code{run_infomap_monolayer}
 #'   automatically parses this output to levels. In this example, there are 3
 #'   module levels and the last is the leaf level. This will create columns:
 #'   \code{module_level1, module_level2, module_level3, module_level4}. The
 #'   column \code{levels} will show 3 because it ignores the leaf level. In case
 #'   a node has fewer levels because its node is not partitioned, then the
-#'   missing levels will show an NA value. Continuing this example, a second
+#'   missing levels will show an NA value. A second
 #'   node in the same network with a path 2:1:5 will be the 5th leaf in module 1
 #'   of module 2. The values for this node will be: \code{module_level1=2,
 #'   module_level2=1, module_level3=5, module_level4=NA}.
@@ -109,7 +109,7 @@ run_infomap_monolayer <- function(x, infomap_executable='Infomap', flow_model=NU
       select(node_id, path) %>%
       mutate(levels=str_count(path, pattern  = ':') ) %>%
       select(node_id, levels, path) %>%
-      separate(path, into=paste('module_level',1:(num_levels+1),sep=''), sep = ':') %>%
+      separate(path, into=paste('module_level',1:num_levels,sep=''), sep = ':') %>%
       mutate_all(as.integer) %>%
       full_join(obs$nodes, 'node_id') %>%
       select(node_id, node_name, levels, starts_with('module_level'), everything()) %>%
