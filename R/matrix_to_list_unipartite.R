@@ -32,7 +32,7 @@ matrix_to_list_unipartite <- function(x, directed){
   if(!identical(rownames(x),colnames(x))){message('Rows and columns do not have the same names or are not in the same order! Proceed with caution!')}
 
   g <- graph.adjacency(t(x), weighted = T, mode = ifelse(directed, 'directed','undirected')) # For some reason igraph considers the from to be ther rows. Need to transpose the matrix
-  summary(g)
+  # summary(g)
   if(any(degree(g)==0)){print('Some nodes have no interactions. They will appear in the node table but not in the edge list')}
   l_unip <- as_tibble(igraph::as_data_frame(g, 'edges'))
 

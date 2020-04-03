@@ -67,7 +67,7 @@ list_to_matrix <- function(x, directed=F, bipartite=T, group_names=c('set_cols',
                         node_name=nodes)
   }
 
-  print(dim(output_mat))
+  # print(dim(output_mat))
   if(any(rowSums(output_mat)==0)){message('Warning: One or more rows sum to 0. This may be ok if you expect some links with only outgoing links (e.g., basal species in a food web)')}
   if(any(colSums(output_mat)==0)){message('Warning: One or more columns sum to 0. This may be ok if you expect some links with only incoming links (e.g., top predators in a food web)')}
 

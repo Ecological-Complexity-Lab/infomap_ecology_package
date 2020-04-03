@@ -27,7 +27,7 @@ matrix_to_list_bipartite <- function(x, group_names=c('set_cols','set_rows')){
 
   g <- graph.incidence(t(x), weighted = T) # transposing ensures that "from" is at the columns and "to" is the rows
   l_bip <- as_tibble(igraph::as_data_frame(g, 'edges'))
-  summary(g)
+  # summary(g)
   if(any(degree(g)==0)){print('Some node have no interactions. They will appear in the node table but not in the edge list')}
   nodes <- c(sort(colnames(x)),sort(rownames(x)))
   node_list <- tibble(node_id=1:length(nodes),
