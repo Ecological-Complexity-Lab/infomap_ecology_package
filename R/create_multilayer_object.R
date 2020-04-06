@@ -31,7 +31,7 @@
 #'   node_from node_to weight}.
 #'
 #'   Interlayer edges too can have either an extended format of \code{layer_from
-#'   node_from layer_to node_to weight} or a non-extended non-extended format of
+#'   node_from layer_to node_to weight} or a non-extended format of
 #'   \code{layer_from node layer_to weight}. **However, in Infomap, a non-extended format is
 #'   ONLY valid for coupling interlayer edges using a relax rate, which connects between different
 #'   realizations of the same physical nodes in diffrent layers. When interlayer
