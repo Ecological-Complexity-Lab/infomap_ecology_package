@@ -58,8 +58,7 @@ check_infomap() # Make sure file can be run correctly. Should return TRUE
 library(bipartite)
 data(memmott1999)
 network_object <- create_monolayer_object(memmott1999, bipartite = T, directed = F, group_names = c('A','P'))
-infomap_input <- create_infomap_linklist(network_object)
-infomap_object <- run_infomap_monolayer(infomap_input, infomap_executable='Infomap',
+infomap_object <- run_infomap_monolayer(network_object, infomap_executable='Infomap',
                                         flow_model = 'undirected',
                                         silent=T, trials=20, two_level=T, seed=123)
 ```
