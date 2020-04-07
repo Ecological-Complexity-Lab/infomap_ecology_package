@@ -52,6 +52,7 @@ check_infomap() # Make sure file can be run correctly. Should return TRUE
 ```
 
 ## Examples
+Each function in the package has examples in ots description. Here are some basic ones:
 
 ### Bipartite network
 ```R
