@@ -61,11 +61,12 @@ network_object <- create_monolayer_object(memmott1999, bipartite = T, directed =
 infomap_object <- run_infomap_monolayer(network_object, infomap_executable='Infomap',
                                         flow_model = 'undirected',
                                         silent=T, trials=20, two_level=T, seed=123)
+# Plot the matrix (plotting function in beta)
+plot_modular_matrix(infomap_object)
 ```
 
 ### Food web with hierarchical structure
 ```R
-# Prepare data
 data(otago_nodes)
 data(otago_links)
 otago_nodes_2 <- otago_nodes %>%
@@ -73,6 +74,7 @@ otago_nodes_2 <- otago_nodes %>%
   select(node_name=WorkingName, node_id_original=NodeID, WorkingName,StageID, everything())
 anyDuplicated(otago_nodes_2$node_name)
 otago_links_2 <- otago_links %>%
+  filter(LinkType=='Predation') %>% # Only include predation links
   filter(ConsumerSpecies.StageID==1) %>%
   filter(ResourceSpecies.StageID==1) %>%
   select(from=ResourceNodeID, to=ConsumerNodeID) %>%
@@ -83,10 +85,9 @@ otago_links_2 <- otago_links %>%
   mutate(weight=1)
 
 # Prepare network objects and run infomap
-# Some species will have only incoming or outgoing links, so the next line will result in a warning.
-network_object <- create_monolayer_object(otago_links_2, directed = T, bipartite = F, node_metadata = otago_nodes_2)
-infomap_input <- create_infomap_linklist(network_object)
-infomap_object <- run_infomap_monolayer(infomap_input, infomap_executable='Infomap',
+# Some species will have only incoming or outgoing links, so the next line will result in a warning
+network_object <- create_monolayer_object(x=otago_links_2, directed = T, bipartite = F, node_metadata = otago_nodes_2)
+infomap_object <- run_infomap_monolayer(network_object, infomap_executable='Infomap',
                                         flow_model = 'directed',
                                         silent=T,trials=100, two_level=F, seed=200952)
 ```
@@ -94,9 +95,20 @@ infomap_object <- run_infomap_monolayer(infomap_input, infomap_executable='Infom
 ## Multilayer network with interlayer edges
 Use the temporal network from Pilosof S, Porter MA, Pascual M, Kéfi S. The multilayer nature of ecological networks. Nature Ecology & Evolution. 2017;1: 0101.
 ```R
+# Get data
+NEE2017 <- create_multilayer_object(extended = read_delim('NEE2017_multilayer_full_list.txt', delim = ' ', col_names = c('layer_from', 'node_from', 'layer_to', 'node_to', 'weight')),
+  nodes = read_csv("NEE2017_nodes.csv"))
+
+#Run infomap
+NEE2017_modules <- run_infomap_multilayer(M=NEE2017, relax = F, flow_model = 'directed', silent = T, trials = 100, seed = 497294, temporal_network = T)
+
+#Module persistance
+# Get data
+data("siberia1982_7_links")
+data("siberia1982_7_nodes")
 NEE2017 <- create_multilayer_object(extended = siberia1982_7_links, nodes = siberia1982_7_nodes, intra_output_extended = T, inter_output_extended = T)
 
-#Run infomap for a temporal network
+#Run infomap
 NEE2017_modules <- run_infomap_multilayer(M=NEE2017, relax = F, flow_model = 'directed', silent = T, trials = 100, seed = 497294, temporal_network = T)
 
 #Module persistance
@@ -106,25 +118,32 @@ modules_persistence <- NEE2017_modules$modules %>%
   count(persistence) %>%
   mutate(percent=(n/max(NEE2017_modules$module$module))*100)
 
-# Plot
-NEE2017_modules$modules %>%
-  group_by(module) %>%
-  summarise(b=min(layer_id), d=max(layer_id), persistence=d-b+1, size=n_distinct(node_id)) %>%
-  ggplot() +
-  geom_rect(aes(xmin=b, xmax=d+0.05, ymin=module, ymax=module+0.5, fill=size))+
+# 1. Modules' persistence
+plot_multilayer_modules(NEE2017_modules, type = 'rectangle', color_modules = T)+
   scale_x_continuous(breaks=seq(0,6,1))+
   scale_y_continuous(breaks=seq(0,40,5))+
+  scale_fill_viridis_c()+
   theme_bw()+
   theme(panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
         axis.title = element_text(size=20),
         axis.text = element_text(size = 20),
         legend.text =  element_text(size=15),
-        legend.title = element_text(size=20))+
-  labs(x='Layer', y='Module ID', fill='Module size')
+        legend.title = element_text(size=20))
+
+#2. Species flow through modules in time
+plot_multilayer_alluvial(NEE2017_modules, module_labels = F)+
+  scale_x_continuous(breaks=seq(0,6,1))+
+  scale_y_continuous(breaks=seq(0,70,5))+
+  labs(y='Number of species')+
+  theme_bw()+
+  theme(legend.position = "none",
+        panel.grid = element_blank(),
+        axis.text = element_text(color='black', size = 20),
+        axis.title = element_text(size=20))
 ```
 
-### Multilayer without interlayer edges and a relax rate
+### Multilayer with relax rates
 ```R
 # Get data
 NEE2017 <- create_multilayer_object(extended = siberia1982_7_links, nodes = siberia1982_7_nodes, intra_output_extended = F, inter_output_extended = F)
