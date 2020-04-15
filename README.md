@@ -5,6 +5,10 @@ for analysis with Infomap, run Infomap from within R and parse the results
 back to R. It is inspired by analysis of ecological networks but is
 suitable for other areas of research as well. The package also includes several data sets of ecological networks.
 
+## Citation
+The paper accompanying this repository is:
+[Farage, C., D. Edler, A. Eklöf, M. Rosvall, and S. Pilosof. 2020. A dynamical perspective to community detection in ecological networks. Biorxiv. DOI: 10.1101/2020.04.14.040519](https://www.biorxiv.org/content/10.1101/2020.04.14.040519v1)
+
 ## Install Infomap
 We use Infomap version 1 as a stand-alone file. Future versions (or a different
 package) will integrate Infomap directly intro R. On Linux/MacOs, you can install Infomap via the `install_infomap` function in the package (see next section), or follow the instructions on how to download, install and use Infomap in [https://www.mapequation.org](https://www.mapequation.org).
