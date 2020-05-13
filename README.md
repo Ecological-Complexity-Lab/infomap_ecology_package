@@ -37,7 +37,6 @@ loaded <-  package.list %in% .packages()
 package.list <-  package.list[!loaded]
 installed <-  package.list %in% .packages(TRUE)
 if (!all(installed)) install.packages(package.list[!installed], repos="http://cran.rstudio.com/")
-invisible(lapply(package.list, library, character.only = TRUE, verbose=F))
 
 # Install infomapecology 
 devtools::install_github('Ecological-Complexity-Lab/infomap_ecology_package', force=T)
