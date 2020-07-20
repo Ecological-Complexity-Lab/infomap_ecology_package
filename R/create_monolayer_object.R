@@ -5,7 +5,7 @@
 #'
 #' @param x input data in the format of a matrix, edge list or an igraph object.
 #' @param directed Is the network directed?
-#' @param bipartite Is the network bipartite?
+#' @param bipartite Is the network bipartite? Ignored when the input is an igraph object.
 #' @param group_names For bipartite networks: name of the groups in the columns
 #'   and rows, respectively (e.g., parasites and hosts).
 #' @param node_metadata Following the igraph method of \code{graph.data.frame}.
@@ -22,27 +22,44 @@
 #'   \code{list_to_matrix, matrix_to_list_unipartite, matrix_to_list_bipartite}. Node metadata can only be included with an edge list input.
 #'
 #' @examples
-#' x <- create_monolayer_object(memmott1999, bipartite = T, directed = F, group_names = c('A','P'))
+#' # A bipartite network from package bipartte
+#' x <- create_monolayer_object(memmott1999, bipartite = T, directed = F, group_names = c('Animals','Plants'))
 #' 
+#' # A bipartite network as an igraph object
+#' g <- igraph::sample_bipartite(10,16,p=0.3, type = 'gnp', directed = T, mode = 'in') # Generate a random bipartite network in igraph
+#' V(g)$name <- letters # name the nodes
+#' V(g)$gender <- sample(c('F','M'), size = 26, replace = T) # Add a node attribute
+#' E(g)$weight=runif(ecount(g)) # Add edge weights
+#' plot(g, layout=layout.bipartite)
+#' create_monolayer_object(g, group_names = c('Parasites','Hosts'))
+#'
+#'
+#'
+#'
 #' @export
 #' @import dplyr
 #' @importFrom igraph graph.incidence V
 #' @import magrittr
 create_monolayer_object <- function(x, directed=NULL, bipartite=NULL, group_names=c('set_cols','set_rows'), node_metadata=NULL){
-  if ('matrix'%in%class(x) & bipartite){
+  
+  # Input is a matrix
+  if ('matrix'%in%class(x)){
     print('Input: a bipartite matrix')
-    out <- matrix_to_list_bipartite(x, group_names = group_names)
+    if(bipartite){
+      out <- matrix_to_list_bipartite(x, group_names = group_names)
+    } else {
+      out <- matrix_to_list_unipartite(x, directed = directed)
+    }
   }
-  if ('matrix'%in%class(x) & !bipartite){
-    print('Input: an unipartite matrix')
-    out <- matrix_to_list_unipartite(x, directed = directed)
-  }
+  
+  # Input is an edge list
   if ('data.frame'%in%class(x)){
     if (bipartite){print('Input: a bipartite edge list')}
     if (!bipartite){print('Input: an unipartite edge list')}
     out <- list_to_matrix(x, directed, bipartite, group_names, node_metadata = node_metadata)
   }
   
+  # Input is an igrpah object
   if(class(x)=='igraph'){
     print('Input: an igraph object:')
     print(x)

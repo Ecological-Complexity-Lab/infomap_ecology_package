@@ -17,7 +17,7 @@ create_monolayer_object(
 
 \item{directed}{Is the network directed?}
 
-\item{bipartite}{Is the network bipartite?}
+\item{bipartite}{Is the network bipartite? Ignored when the input is an igraph object.}
 
 \item{group_names}{For bipartite networks: name of the groups in the columns
 and rows, respectively (e.g., parasites and hosts).}
@@ -38,7 +38,19 @@ Converts between edge list and matrix formats and creates a
   \code{list_to_matrix, matrix_to_list_unipartite, matrix_to_list_bipartite}. Node metadata can only be included with an edge list input.
 }
 \examples{
-x <- create_monolayer_object(memmott1999, bipartite = T, directed = F, group_names = c('A','P'))
+# A bipartite network from package bipartte
+x <- create_monolayer_object(memmott1999, bipartite = T, directed = F, group_names = c('Animals','Plants'))
+
+# A bipartite network as an igraph object
+g <- igraph::sample_bipartite(10,16,p=0.3, type = 'gnp', directed = T, mode = 'in') # Generate a random bipartite network in igraph
+V(g)$name <- letters # name the nodes
+V(g)$gender <- sample(c('F','M'), size = 26, replace = T) # Add a node attribute
+E(g)$weight=runif(ecount(g)) # Add edge weights
+plot(g, layout=layout.bipartite)
+create_monolayer_object(g, group_names = c('Parasites','Hosts'))
+
+
+
 
 }
 \seealso{
