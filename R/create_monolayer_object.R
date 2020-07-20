@@ -3,7 +3,7 @@
 #' Automatically identifies if the input is a matrix or an edge list and creates
 #' a \code{monolayer} object.
 #'
-#' @param x An input list or matrix that must have node names.
+#' @param x input data in the format of a matrix, edge list or an igraph object.
 #' @param directed Is the network directed?
 #' @param bipartite Is the network bipartite?
 #' @param group_names For bipartite networks: name of the groups in the columns
@@ -37,11 +37,41 @@ create_monolayer_object <- function(x, directed=NULL, bipartite=NULL, group_name
     print('Input: an unipartite matrix')
     out <- matrix_to_list_unipartite(x, directed = directed)
   }
-  if (!'matrix'%in%class(x)){
+  if ('data.frame'%in%class(x)){
     if (bipartite){print('Input: a bipartite edge list')}
     if (!bipartite){print('Input: an unipartite edge list')}
     out <- list_to_matrix(x, directed, bipartite, group_names, node_metadata = node_metadata)
   }
+  
+  if(class(x)=='igraph'){
+    print('Input: an igraph object:')
+    print(x)
+    g <- x
+    mode <- ifelse(is.bipartite(g),'B','U')
+    
+    node_list <- igraph::as_data_frame(g, what = 'vertices') %>%
+      mutate(node_id=1:vcount(g)) %>% 
+      rename(node_name=name) %>% 
+      select(node_id, node_name, everything())
+    
+    if(mode=='B'){
+      node_list$node_group <- NA
+      node_list$node_group[node_list$type==T] <- group_names[1]
+      node_list$node_group[node_list$type==F] <- group_names[2]
+      mat <- igraph::as_incidence_matrix(g,names = T, attr = 'weight', sparse = F)
+    } else {
+      mat <- igraph::as_adjacency_matrix(g, type = 'both', attr = 'weight', sparse = F)
+    }
+    
+    out <- list(mode=mode,
+                directed=is.directed(g),
+                nodes=node_list,
+                mat= mat, 
+                edge_list=as_tibble(igraph::as_data_frame(g, 'edges')), 
+                igraph_object=g)
+  }
+  
+  # Add additional node attributes
   if (!is.null(node_metadata)){
     out$nodes %<>% left_join(node_metadata)
   }

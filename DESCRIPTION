@@ -11,7 +11,7 @@ Description: Collection of R functions to perform community detection analysis w
 License: GPL
 Encoding: UTF-8
 LazyData: true
-Imports:
+Depends:
   attempt,
   cowplot,
   igraph,

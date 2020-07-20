@@ -13,7 +13,7 @@ create_monolayer_object(
 )
 }
 \arguments{
-\item{x}{An input list or matrix that must have node names.}
+\item{x}{input data in the format of a matrix, edge list or an igraph object.}
 
 \item{directed}{Is the network directed?}
 
