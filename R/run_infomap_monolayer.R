@@ -106,13 +106,14 @@ run_infomap_monolayer <- function(x, infomap_executable='Infomap', flow_model=NU
   # Get the modules
   suppressWarnings( # Need to suppress warnings because with hierarchical modules there are NA generated.
     modules %<>%
-      select(node_id, path) %>%
+      select(node_id, path, flow) %>%
       mutate(levels=str_count(path, pattern  = ':') ) %>%
-      select(node_id, levels, path) %>%
+      select(node_id, levels, path, flow) %>%
       separate(path, into=paste('module_level',1:num_levels,sep=''), sep = ':') %>%
-      mutate_all(as.integer) %>%
+      mutate_all(as.double) %>%
       full_join(obs$nodes, 'node_id') %>%
-      select(node_id, node_name, levels, starts_with('module_level'), everything()) %>%
+      select(node_id, node_name, flow, levels, starts_with('module_level'), everything()) %>%
+      # rename(leaf_id=paste('module_level',num_levels,sep='')) %>% 
       arrange(node_id)
   )
   # Prepare first output, before significance testing

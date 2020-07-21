@@ -60,7 +60,7 @@ create_monolayer_object <- function(x, directed=NULL, bipartite=NULL, group_name
   }
   
   # Input is an igrpah object
-  if(class(x)=='igraph'){
+  if('igraph'%in%class(x)){
     print('Input: an igraph object:')
     print(x)
     g <- x

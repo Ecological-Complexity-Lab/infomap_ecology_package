@@ -85,7 +85,7 @@ create_multilayer_object <- function(extended=NULL, intra=NULL, inter=NULL, node
 
     # Set the output formats
     if (intra_output_extended==F){intra %<>% select(layer=layer_from, node_from, node_to, weight)}
-    if (!is.null(inter) && inter_output_extended==F){ inter %<>% select(layer_from, node=node_from, layer_to, weight)}
+    if (!is.null(inter) && inter_output_extended==F){inter %<>% select(layer_from, node=node_from, layer_to, weight)}
 
   } else {
     # for extended output of intralayer edges
