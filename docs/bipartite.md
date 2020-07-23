@@ -2,7 +2,7 @@
 A weighted bipartite network describing a plant-flower visitor interaction web (25 plant species and 79 flower visitor species) in the vicinity of Bristol, U.K. Data can be obtained using `data(memmott1999)` using package `bipartite` in `R`. To distinguish between the two node sets we number the pollinator species from 1-79 and the plants from 80-104. 
 
 ### Input
-A [link list](https://www.mapequation.org/code.html#Link-list-format) with columns from, to and weight. Because this is a bipartite network the from column can only contain nodes 1-79 and the to column nodes 84-104.
+A [link list](https://www.mapequation.org/infomap/#InputLinkList) with columns from, to and weight. Because this is a bipartite network the from column can only contain nodes 1-79 and the to column nodes 84-104.
 
 ### R Code
 ```R
