@@ -1,6 +1,3 @@
 title: infomapecology
 description: A a package for running Infomap, inspired by ecological networks
 url: https://ecological-complexity-lab.github.io/infomap_ecology_package/
-include: 
-    _pages
-    _layouts
