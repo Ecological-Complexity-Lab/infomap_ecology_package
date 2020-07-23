@@ -44,8 +44,8 @@ create_monolayer_object <- function(x, directed=NULL, bipartite=NULL, group_name
   
   # Input is a matrix
   if ('matrix'%in%class(x)){
-    print('Input: a bipartite matrix')
     if(bipartite){
+      print('Input: a bipartite matrix')
       out <- matrix_to_list_bipartite(x, group_names = group_names)
     } else {
       out <- matrix_to_list_unipartite(x, directed = directed)
