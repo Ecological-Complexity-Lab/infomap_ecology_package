@@ -47,7 +47,9 @@ Under the hood, the function `run_infomap_monolayer` runs:
 
 
 ### Output
-A [tree file](https://www.mapequation.org/infomap/#OutputTree) is produced by Infomap, but is parsed by `run_infomap_monolayer` from infomapecology (in R: `?run_infomap_monolayer`). In addition, this data has node attributes, which are added to the final output. In this example: OrganismalGroup and NodeType. In this output excerpt, there are four nodes that belong to the 3rd submodule within top module 1. For these, `module_level3` is the leaf id. Modules 2 and 3 do not have sub-modules. Therefore, for these modules the the second level (`module_level2`) is the leaf id and `module_level3` shows an `NA` value.
+A [tree file](https://www.mapequation.org/infomap/#OutputTree) is produced by Infomap, but is parsed by `run_infomap_monolayer` from infomapecology. In Infomap's tree output, the `path` column has a tree-like format such as 1:3:4:2, which describes the path from the root of the tree to the leaf node. The first integer (1 in the 1:3:4:2 example) is the top module. The last integer after the colon (2 in the 1:3:4:2 example) indicates the ID of the leaf in the module, and not the ID of the node. In case a node has fewer levels because its module is not partitioned, the missing levels will show `NA`.
+
+In the output excerpt below for the analysis of the Otago food web, there are four nodes that belong to the 3rd submodule within top module 1. For these, `module_level3` is the leaf id. Top modules 2 and 3 do not have sub-modules. Therefore, for these modules the second level (`module_level2`) is the leaf id and `module_level3` shows an `NA` value. In addition, this data has node attributes, which are added to the final output. In this example: OrganismalGroup and NodeType. 
 
 |node_id|node_name|module_level1|module_level2|module_level3|OrganismalGroup|NodeType
 |---|---|---|---|---|---|---|
