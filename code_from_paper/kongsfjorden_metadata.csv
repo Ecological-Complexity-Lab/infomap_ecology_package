@@ -1,0 +1,263 @@
+NodeID,Species,FeedingType,Mobility,Environment
+1,Phaeocystis pouchetii,none,1,pelagic
+2,Chaetoceros socialis,none,1,pelagic
+3,Thalassiosira nordenskioeldii,none,1,pelagic
+4,Fragilariopsis,none,1,pelagic
+5,Protoperidinium,none,1,pelagic
+6,Gymnodinium,none,1,pelagic
+7,Dinobryon balticum,none,2,pelagic
+8,Thalassiosira antarctica,none,1,pelagic
+9,Cylindrotheca closterium,none,1,pelagic
+10,Chaetoceros,none,1,pelagic
+11,Coccolithus pleagicus,none,1,pelagic
+12,Globoquadriana pachyderma,none,1,pelagic
+13,Globigerinita bradyi,none,1,pelagic
+14,Globigerina quinqueloba,none,1,pelagic
+15,Nitzschia frigida,none,1,pelagic
+16,Pleurosigma stuxbergii,none,1,pelagic
+17,Navicula pelagica,none,1,pelagic
+18,Entomoneis,none,1,pelagic
+19,Cocconeis,none,1,pelagic
+20,Dinophysis acuta,none,1,pelagic
+21,Gyrodinium,predator,2,pelagic
+22,Calanus finnmarchicus,predator,4,pelagic
+23,Onacea borealis,predator,4,pelagic
+24,Bradyidius similis,predator,4,pelagic
+25,Microcalanus pusillus,predator,4,pelagic
+26,Copepoda nauplii,predator,4,pelagic
+27,Metridia longa,predator,4,pelagic
+28,Metridia lucens,predator,4,pelagic
+29,Calanus glacialis,predator,4,pelagic
+30,Calanus hyperboreus,predator,4,pelagic
+31,Pseudocalanus,predator,4,pelagic
+32,Oithona similis,predator,4,pelagic
+33,Fritillaria,predator,4,pelagic
+34,Clione limacina,predator,4,pelagic
+35,Limacina helicina,predator,4,pelagic
+36,Gaidius tenuispinus,predator,4,pelagic
+37,Xanthocalanus,predator,4,pelagic
+38,Thysanoessa raschii,predator,4,pelagic
+39,Thysanoessa longicaudata,predator,4,pelagic
+40,Thysanoessa inermis,grazer,4,epipelagic/ice associated
+41,Themisto libellula,predator,4,pelagic
+42,Themisto abyssorum,predator,4,pelagic
+43,Boremysis arctica,predator,4,pelagic
+44,Neoscolecithrix farrani,grazer,4,benthic
+45,Mertensia ovum,predator,4,pelagic
+46,Beroe cucumis,predator,4,pelagic
+47,Meganyctiphanes norvegica,predator,4,pelagic
+48,Boreomysis arctica,predator,4,benthic
+49,Fucus distichus,none,1,benthic
+50,Pylaiella littoralis,none,1,benthic
+51,Chordaria flagelliformis,none,1,benthic
+52,Acrosiphonia,none,1,benthic
+53,Alaria esculenta,none,1,benthic
+54,Laminaria saccharina,none,1,benthic
+55,Laminaria digitata,none,1,benthic
+56,Saccorhiza dermatodea,none,1,benthic
+57,Laminaria solidungula,none,1,benthic
+58,Phycodrys rubens,none,1,benthic
+59,Ptilta gunneri,none,1,benthic
+60,Fimbrifolium dichotomum,none,1,benthic
+61,Desmarestia aculeata,none,1,benthic
+62,Palmaria palmata,none,1,benthic
+63,Devaleraea ramentacea,none,1,benthic
+64,Turnerella pennyi,none,1,benthic
+65,Desmarestia viridis,none,1,benthic
+66,Balanus balanus,suspension feeder,1,benthic
+67,Semibalanus balanoides,suspension feeder,1,benthic
+68,Littorina saxatilis,predator,2,benthic
+69,Ischyroceros,grazer,3,benthic
+70,Gammarus setosus,grazer,3,benthic
+71,Gammarellus homari,predator,3,benthic
+72,Onisimus littoralis,grazer,3,benthic
+73,Anonyx nugax,predator,3,benthic
+74,Anonyx sarsi,predator,3,benthic
+75,Arrhis phyllonyx,predator,3,benthic
+76,Brachydiastylis resima,grazer,3,benthic
+77,Caprella septentrionalis,grazer,3,benthic
+78,Corophium crassicorne,grazer,3,benthic
+79,Diastylis goodsiri,grazer,3,benthic
+80,Diastylis lucifera,grazer,3,benthic
+81,Diastylis rathkii,grazer,3,benthic
+82,Eryhtrops erythropthalma,grazer,3,benthic
+83,Eualus gaimardi,predator,3,benthic
+84,Halirages fulvocinctus,grazer,3,benthic
+85,Hyas araneus,predator,3,benthic
+86,Ischyrocerus anguipes,grazer,3,benthic
+87,Janira,grazer,3,benthic
+88,Lamprops fuscatus,grazer,3,benthic
+89,Lebbeus polaris,predator/scavenger,3,benthic
+90,Melita dentata,grazer,3,benthic
+91,Melita formosa,grazer,3,benthic
+92,Melita palmata,grazer,3,benthic
+93,Monoculodes borealis,predator/scavenger,3,benthic
+94,Monoculodes longirostris,predator/scavenger,3,benthic
+95,Munna,grazer,3,benthic
+96,Munnopsis,grazer,3,benthic
+97,Mysis oculata,grazer,3,benthic
+98,Onisimus caricus,grazer,3,benthic
+99,Onisimus edwardsi,grazer,3,benthic
+100,Orchomenella minuta,grazer,3,benthic
+101,Pagurus pubescens,predator/scavenger,3,benthic
+102,Pandalus borealis,predator,3,benthic
+103,Parapleustes assimilis,predator/scavenger,3,benthic
+104,Parapleustes bicuspis,predator/scavenger,3,benthic
+105,Parapleustes monocuspis,predator/scavenger,3,benthic
+106,Paroediceros lynceus,predator/scavenger,3,benthic
+107,Pleustes panoplus,predator/scavenger,3,benthic
+108,Pleusymtes glabroides,grazer,3,benthic
+109,Pontoporeia femorata,grazer,3,benthic
+110,Rhachotropis inflata,grazer,3,benthic
+111,Spirontocaris spinus,predator/scavenger,3,benthic
+112,Spirontocaris turgida,predator/scavenger,3,benthic
+113,Stilomysis grandis,grazer,3,benthic
+114,Syrrhoe crenulata,predator/scavenger,3,benthic
+115,Tanaidacea,grazer,3,benthic
+116,Unciola leucopis,grazer,3,benthic
+117,Weyprechtia pinguis,grazer,3,benthic
+118,Haliclona,suspension feeder,1,benthic
+119,Aglaophamus malmgreni,predator,2,benthic
+120,Ampharete finmarchica,grazer,2,benthic
+121,Brada inhabilis,grazer,2,benthic
+122,Brada villosa,grazer,2,benthic
+123,Bylgides elegans,predator/scavenger,2,benthic
+124,Bylgides groenlandica,predator/scavenger,2,benthic
+125,Capitella capitata,grazer,2,benthic
+126,Chaetozone,grazer,2,benthic
+127,Chone,grazer,2,benthic
+128,Circeis,grazer,2,benthic
+129,Cossura longocirrata,grazer,2,benthic
+130,Diplocirrus hirsutus,grazer,2,benthic
+131,Eteone,grazer,2,benthic
+132,Euchone,grazer,2,benthic
+133,Gattyana cirrhosa,predator,2,benthic
+134,Glycera capitata,predator,2,benthic
+135,Harmothoe imbricata,predator,2,benthic
+136,Heteromastus filiformis,grazer,2,benthic
+137,Leitoscoloplos mammosus,grazer,2,benthic
+138,Levinsenia gracilis,grazer,2,benthic
+139,Lumbrineris,predator,2,benthic
+140,Lysippe labiata,grazer,2,benthic
+141,Nephtys ciliata,predator,2,benthic
+142,Nereimyra punctata,grazer,2,benthic
+143,Nereis zonata,predator,2,benthic
+144,Pholoe assimilis,grazer,2,benthic
+145,Phyllodoce,grazer,2,benthic
+146,Polydora,grazer,2,benthic
+147,Prionospio cirrifera,grazer,2,benthic
+148,Sabellides octocirrata,grazer,2,benthic
+149,Samytha sexcirrata,grazer,2,benthic
+150,Scoletoma fragilis,grazer,2,benthic
+151,Scoloplos armiger,grazer,2,benthic
+152,Spio,grazer,2,benthic
+153,Terebellides stroemi,grazer,2,benthic
+154,Thelepus cincinnatus,grazer,2,benthic
+155,Halicryptus spinulosus,suspension feeder,2,benthic
+156,Priapulus caudatus,suspension feeder,2,benthic
+157,Sipunculida,grazer,2,benthic
+158,Pycnogonida,predator,3,benthic
+159,Chaetoderma,grazer,2,benthic
+160,Tonicella marmorea,grazer,2,benthic
+161,Tonicella rubra,grazer,2,benthic
+162,Boreocingula castanea,predator,2,benthic
+163,Boreotrophon truncatus,predator,2,benthic
+164,Buccinum scalariforme,predator,2,benthic
+165,Buccinum terranovae,predator,2,benthic
+166,Buccinum undatum,predator,2,benthic
+167,Cylichna cf. alba,predator,2,benthic
+168,Cylichna cf. oculata,predator,2,benthic
+169,Elachisina globuloides,predator,2,benthic
+170,Erginus rubellus,predator,2,benthic
+171,Euspira pallida,predator,2,benthic
+172,Frigidoalvania cruenta,predator,2,benthic
+173,Lepeta caeca,predator,2,benthic
+174,Margarites groenlandicus,predator,2,benthic
+175,Margarites helicinus,predator,2,benthic
+176,Menestho albula,predator,2,benthic
+177,Menestho truncatula,predator,2,benthic
+178,Oenopota impressa,predator,2,benthic
+179,Philine,predator,2,benthic
+180,Puncturella noachina,predator,2,benthic
+181,Retusa obtusata,predator,2,benthic
+182,Solariella varicosa,predator,2,benthic
+183,Trophon clathratus,grazer,2,benthic
+184,Arctinula groenlandica,suspension feeder,1,benthic
+185,Astarte borealis,suspension feeder,1,benthic
+186,Astarte montagui,suspension feeder,1,benthic
+187,Axinopsida orbiculata,suspension feeder,1,benthic
+188,Boreacola maltzani,suspension feeder,1,benthic
+189,Ciliatocardium ciliatum,suspension feeder,1,benthic
+190,Diplodonta torelli,suspension feeder,1,benthic
+191,Ennucula tenuis,suspension feeder,1,benthic
+192,Hiatella arctica,suspension feeder,1,benthic
+193,Liocyma fluctuosa,suspension feeder,1,benthic
+194,Lyonsia arenosa,suspension feeder,1,benthic
+195,Macoma calcarea,suspension feeder,1,benthic
+196,Macoma moesta,suspension feeder,1,benthic
+197,Musculus corrugatus,suspension feeder,1,benthic
+198,Musculus discors,suspension feeder,1,benthic
+199,Mya truncata,suspension feeder,1,benthic
+200,Nuculana minuta,suspension feeder,1,benthic
+201,Nuculana pernula,suspension feeder,1,benthic
+202,Pandora glacialis,suspension feeder,1,benthic
+203,Serripes groenlandicus,suspension feeder,1,benthic
+204,Thracia myopsis,suspension feeder,1,benthic
+205,Thyasira dunbari,suspension feeder,1,benthic
+206,Thyasira gouldi,suspension feeder,1,benthic
+207,Yoldia hyperborea,suspension feeder,1,benthic
+208,Yoldiella frigida,suspension feeder,1,benthic
+209,Yoldiella lenticula,suspension feeder,1,benthic
+210,Yoldiella solidula,suspension feeder,1,benthic
+211,Ophiocten sericeum,suspension feeder,2,benthic
+212,Ophiopholis aculeata,predator,2,benthic
+213,Ophiura robusta,predator,2,benthic
+214,Strongylocentrotus pallidus,grazer,2,benthic
+215,Strongylocentrotus droebachiensis,grazer,2,benthic
+216,Crossaster papposus,predator,2,benthic
+217,Henricia,predator,2,benthic
+218,Styela rustica,suspension feeder,1,benthic
+219,Halocynthia pyriformis,suspension feeder,1,benthic
+220,Urticina eques,suspension feeder,1,benthic
+221,Hormathia nodosa,suspension feeder,1,benthic
+222,Sabinea septemcarinata,predator,3,benthopelagic
+223,Sclerocrangon boreas,predator/scavenger,3,benthopelagic
+224,Boreogadus saida,predator,4,benthopelagic
+225,Gadus morhua,predator,4,benthic
+226,Reinhardtius hipoglossoides,predator,4,benthopelagic
+227,Hipoglossoides platessoides,predator,4,benthic
+228,Lycodes,predator,4,benthic
+229,Sebastes mentella,predator,4,benthopelagic
+230,Liparis liparis,predator,4,benthic
+231,Anisarchus medius,predator,4,benthic
+232,Lumpenus lampretaeformis,predator,4,benthic
+233,Leptagonus decagonus,predator,4,benthic
+234,Leptoclinus maculatus,predator,4,benthic
+235,Liparis fabricii,predator,4,benthic
+236,Artediellus europeus,predator,4,benthic
+237,Careproctus reinhardti,predator,4,benthic
+238,Sebastes marinus,predator,4,benthic
+239,Mallotus villosus,predator,4,benthic
+240,Eumicotremus derjugini,predator,4,benthic
+241,Raja clavata,predator,4,benthic
+242,Myoxocephalus scorpius,predator,4,benthic
+243,Anarhichas lupus,predator,4,benthic
+244,Gymnocanthus tricuspis,predator,4,benthic
+245,Pusa hispida,predator,4,land-based/pelagic
+246,Erignathus barbatus,predator,4,land-based/pelagic
+247,Phoca vitulina,predator,4,land-based/pelagic
+248,Odobenus rosmarus,predator,4,benthopelagic
+249,Dephinapterus leucas,predator,4,benthopelagic
+250,Balaenoptera acutorostrata,predator,4,benthopelagic
+251,Calidris maritima,predator,4,land-based/pelagic
+252,Somateria mollissima,predator,4,land-based/pelagic
+253,Alle alle,predator,4,land-based/pelagic
+254,Cepphus grylle,predator,4,land-based/pelagic
+255,Fulmarus glacialis,predator,4,land-based/pelagic
+256,Rissa tridactyla,predator,4,land-based/pelagic
+257,Larus hyperboreus,predator,4,land-based/pelagic
+258,Sterna paradisaea,predator,4,land-based/pelagic
+259,Ursus maritimus,predator,4,land-based/pelagic
+260,POM,none,1,none
+261,Phytodetritus,none,1,none
+262,Sediment,none,1,none
