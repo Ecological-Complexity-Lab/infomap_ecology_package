@@ -1,12 +1,12 @@
 # Infomap arguments
-Most of the Infomap arguments we use are common for all the examples and their detailed description can be found [here](https://www.mapequation.org/code.html#Options). We explain in each example the most relevant specific arguments. Here is a typical running command:
+Most of the Infomap arguments we use are common for all the examples and their detailed description can be found [here](https://www.mapequation.org/infomap/#Parameters). We explain in each example the most relevant specific arguments. Here is a typical running command:
 
 `./Infomap infomap.txt . --tree -i link-list  --seed 123 -N 20 -f undirected -2`.
 
 * `infomap.txt` is the name of the input file
 *  `.` indicates that the output will be written to the same folder as the input file.
 * `--tree` sets the output format.
-* `-i  link-list` indicates that the input is a [link list](https://www.mapequation.org/code.html#Link-list-format).
+* `-i  link-list` indicates that the input is a [link list](https://www.mapequation.org/infomap/#InputLinkList).
 * `--seed 123` provides a seed to the random number generator such that each run will result in the same output, which is useful for replication.
 * `-N 20` tells infomap to run 20 trials and select the result of the best one.
 * `-f undirected` indicates flow on an undirected network.
