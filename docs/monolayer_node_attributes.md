@@ -1,3 +1,5 @@
+# Monolayer directed network with node attributes
+
 ### Data set
 A binary directed food web from [Mouritsen KN, Poulin R, McLaughlin JP, Thieltges DW. Food web including metazoan parasites for an intertidal ecosystem in New Zealand: Ecological Archives E092-173. Ecology. 2011;92: 2006–2006.](https://esajournals-onlinelibrary-wiley-com.ezproxy.bgu.ac.il/doi/abs/10.1890/11-0371.1)
 
@@ -8,8 +10,8 @@ data(otago_links)
 ```
 
 ### Input
-1. A [link-list](https://www.mapequation.org/code.html#Link-list-format).
-2. A second file that indicates the id of the attribute for each node id:
+1. A [link-list](https://www.mapequation.org/infomap/#InputLinkList).
+2. A second file that indicates the ID of the attribute for each node ID:
 
 ```
 node_id attribute_id
@@ -20,7 +22,7 @@ node_id attribute_id
 5 3
 ```
 
-In this example, the attribute ids are (example with first four):
+In this example, the attribute IDs are (example with first four):
 
 |OrganismalGroup | attribute_id|
 |---|---|
@@ -32,9 +34,8 @@ In this example, the attribute ids are (example with first four):
 For now, Infomap can only handle categorical attributes, and only a single attribute type.
 
 ### R Code
-The code here depends on the code run in [[the previous example|2. Monolayer directed network with hierarchical structure]], which should be run first (see code file `infomap_ecology_main.R`).
+The code here depends on the code run in [the previous example|2. Monolayer directed network with hierarchical structure], which should be run first (see code file `infomap_ecology_main.R`).
 ```R
-
 # Create an attribute -- attribute ID map
 node_attribute_map <- otago_nodes_2 %>% distinct(OrganismalGroup) %>%
   mutate(attribute_id=1:n())
@@ -115,4 +116,4 @@ Explanation of key arguments:
 * `--meta-data-rate 0.7` indicates the value of eta (here 0.7)
 
 ### Output
-A [tree file](https://www.mapequation.org/infomap/#OutputTree) is produced by Infomap, but is parsed by `run_infomap_monolayer` from infomapecology (in R: `?run_infomap_monolayer`). An analysis with metadata does not have a special output. So in this example the output format is the same as in [[2. Monolayer directed network with hierarchical structure|2. Monolayer directed network with hierarchical structure]]
+A [tree file](https://www.mapequation.org/infomap/#OutputTree) is produced by Infomap, but is parsed by `run_infomap_monolayer` from infomapecology (in R: `?run_infomap_monolayer`). An analysis with metadata does not have a special output. So in this example the output format is the same as in [2. Monolayer directed network with hierarchical structure|
