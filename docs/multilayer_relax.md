@@ -1,9 +1,10 @@
+# Temporal multilayer network with global relax rates
+
 ### Data set
 A temporal multilayer network. Each layer is a host-parasite bipartite network. Intralayer edges between a parasite species and a host species are the number of parasite individuals divided by the number of host individuals. Interlayer coupling edges connect each physical node to itself in the next layer (e.g., host A in layer 1 to host A in layer 2), and are calculated as the number of individuals in layer l+1 divided by the number of individuals in layer l. They therefore represent population dynamics. Interlayer edges only go one way (_l-->l+1_) because time flow one way. We represented the undirected edges within each layer as directed edges that go both ways (with the same weight) to be able to have a directed flow. This does not affect the calculation of L. This data set was taken from _Pilosof S, Porter MA, Pascual M, Kéfi S. The multilayer nature of ecological networks. Nature Ecology & Evolution. 2017;1: 0101_.
 
 Data sets in infomapecology:
 ```R
-# Get data
 data("siberia1982_7_links")
 data("siberia1982_7_nodes")
 ```
@@ -55,9 +56,9 @@ Explanation of key arguments:
 * `multilayer-relax-limit-up 1 --multilayer-relax-limit-down 0` limits relaxation to a single layer upwards (l to l+1), but never downwards, because time flows one-way.
 
 ### Output
-For multilayer network the output file has a `_states` suffix, with the following format. This output is as in [[5. Temporal multilayer network with interlayer edges|5. Temporal multilayer network with interlayer edges]]. 
+For multilayer network the output file has a `_states` suffix, with the following format. This output is as in [Temporal multilayer network with interlayer edges](multilayer_interlayer.md). 
 
-```python
+```R
 # path flow name stateId physicalId layerId
 1:1 0.000516265 "0" 0 1 1
 1:2 0.000211504 "8" 8 44 1
