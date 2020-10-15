@@ -1,4 +1,6 @@
-# 1. Built in randomisation capabilities for bipartite networks
+# Hypothesis testing
+
+## 1. Built in randomisation capabilities for bipartite networks
 
 The function `run_infomap_monolayer` can use shuffling algorithms built into `vegan`. To use this, we need to set `signif=T` and provide a shuffling method to `shuff_method`. The shuffling methods are the ones detailed in `?vegan::commsim`.
 
@@ -51,7 +53,7 @@ plot_grid(
 ```
  
 
-# 2. Dedicated randomisation algorithm for the Tur et al. 2016 data set.
+## 2. Dedicated randomisation algorithm for the Tur et al. 2016 data set.
 You can also create your own shuffling algorithm and a list of shuffled link lists. As in this example.
 
 ```R
@@ -102,19 +104,5 @@ tur_signif <- run_infomap_monolayer(tur_network, infomap_executable='Infomap',
 
 print(tur_signif$pvalue)
 
-plots <- plot_signif(tur_signif, plotit = F)
-pdf('/Users/shai/Dropbox (BGU)/Apps/Overleaf/A dynamical perspective on community detection in ecological networks/figures/null_model_example.pdf',12,8)
-plot_grid(
-  plots$L_plot+
-    theme_bw()+
-    theme(legend.position='none', 
-          axis.text = element_text(size=20), 
-          axis.title = element_text(size=20)),
-  plots$m_plot+
-    theme_bw()+
-    theme(legend.position='none', 
-          axis.text = element_text(size=20), 
-          axis.title = element_text(size=20))
-)
-dev.off()
+plots <- plot_signif(tur_signif, plotit = T)
 ```
