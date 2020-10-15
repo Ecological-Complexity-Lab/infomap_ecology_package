@@ -5,6 +5,7 @@ A temporal multilayer network. Each layer is a host-parasite bipartite network. 
 
 Data sets in infomapecology:
 ```R
+# Get data
 data("siberia1982_7_links")
 data("siberia1982_7_nodes")
 ```
@@ -28,7 +29,7 @@ A [multilayer link-list format](https://www.mapequation.org/infomap/#InputMultil
 The description of functions `create_multilayer_object` and `run_infomap_multilayer` in the `infomapecology` package contains everything you need to know. The `for` loop performs a sensitivity analysis to examine how structure changes with increasing relax rates.
 
 ```R
-# Get data
+# Create a multilayer object
 NEE2017 <- create_multilayer_object(extended = siberia1982_7_links, nodes = siberia1982_7_nodes, intra_output_extended = F, inter_output_extended = F)
 
 # Ignore interlayer edges
