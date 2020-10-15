@@ -1,5 +1,5 @@
 ### Data set
-A temporal multilayer network. Each layer is a host-parasite bipartite network. Intralayer edges between a parasite species and a host species are the number of parasite individuals divided by the number of host individuals. Interlayer coupling edges connect each physical node to itself in the next layer (e.g., host A in layer 1 to host A in layer 2), and are calculated as the number of individuals in layer l+1 divided by the number of individuals in layer l. They therefore represent population dynamics. Interlayer edges only go one way (_l-->l+1_) because time flow one way. We represented the undirected edges within each layer as directed edges that go both ways (with the same weight) to be able to have a directed flow. This does not affect the calculation of L. This data set was taken from _Pilosof S, Porter MA, Pascual M, Kéfi S. The multilayer nature of ecological networks. Nature Ecology & Evolution. 2017;1: 0101_.
+A temporal multilayer network. Each layer is a host-parasite bipartite network. Intralayer edges between a parasite species and a host species are the number of parasite individuals divided by the number of host individuals. Interlayer coupling edges connect each physical node to itself in the next layer (e.g., host A in layer 1 to host A in layer 2), and are calculated as the number of individuals in layer l+1 divided by the number of individuals in layer l. They therefore represent population dynamics. Interlayer edges only go one way (_l-->l+1_) because time flow one way. We represented the undirected edges within each layer as directed edges that go both ways (with the same weight) to be able to have a directed flow. This does not affect the calculation of L. This data set was taken from [_Pilosof S, Porter MA, Pascual M, Kéfi S. The multilayer nature of ecological networks. Nature Ecology & Evolution. 2017;1: 0101_](https://www.nature.com/articles/s41559-017-0101?proof=true19).
 
 Data sets in infomapecology:
 ```R
@@ -31,9 +31,7 @@ A [general multilayer link-list](https://www.mapequation.org/infomap/#InputMulti
 The description of functions `create_multilayer_object` and `run_infomap_multilayer` in the `infomapecology` package contains everything you need to know. Plotting is done using two dedicated functions: `plot_multilayer_modules` and `plot_multilayer_alluvial`.
 
 ```R
-# Get data
-data("siberia1982_7_links")
-data("siberia1982_7_nodes")
+# Create a multilayer object
 NEE2017 <- create_multilayer_object(extended = siberia1982_7_links, nodes = siberia1982_7_nodes, intra_output_extended = T, inter_output_extended = T)
 
 #Run infomap
