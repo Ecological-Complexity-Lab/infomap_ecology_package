@@ -116,4 +116,4 @@ Explanation of key arguments:
 * `--meta-data-rate 0.7` indicates the value of eta (here 0.7)
 
 ### Output
-A [tree file](https://www.mapequation.org/infomap/#OutputTree) is produced by Infomap, but is parsed by `run_infomap_monolayer` from infomapecology (in R: `?run_infomap_monolayer`). An analysis with metadata does not have a special output. So in this example the output format is the same as in [2. Monolayer directed network with hierarchical structure|
+A [tree file](https://www.mapequation.org/infomap/#OutputTree) is produced by Infomap, but is parsed by `run_infomap_monolayer` from infomapecology (in R: `?run_infomap_monolayer`). An analysis with metadata does not have a special output. So in this example the output format is the same as in [Monolayer directed network with hierarchical structure](docs/hypothesis_test.md)
