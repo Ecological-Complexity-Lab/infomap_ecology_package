@@ -34,7 +34,7 @@ In this example, the attribute IDs are (example with first four):
 For now, Infomap can only handle categorical attributes, and only a single attribute type.
 
 ### R Code
-The code here depends on the code run in the previous example [Monolayer directed network with hierarchical structure](hypothesis_test.md), which should be run first (see code file `infomap_ecology_main.R`).
+The code here depends on the code run in the previous example [Monolayer directed network with hierarchical structure](monolayer_heirarchical.md), which should be run first (see code file `infomap_ecology_main.R`).
 ```R
 # Create an attribute -- attribute ID map
 node_attribute_map <- otago_nodes_2 %>% distinct(OrganismalGroup) %>%
@@ -116,4 +116,4 @@ Explanation of key arguments:
 * `--meta-data-rate 0.7` indicates the value of eta (here 0.7)
 
 ### Output
-A [tree file](https://www.mapequation.org/infomap/#OutputTree) is produced by Infomap, but is parsed by `run_infomap_monolayer` from infomapecology (in R: `?run_infomap_monolayer`). An analysis with metadata does not have a special output. So in this example the output format is the same as in [Monolayer directed network with hierarchical structure](docs/hypothesis_test.md)
+A [tree file](https://www.mapequation.org/infomap/#OutputTree) is produced by Infomap, but is parsed by `run_infomap_monolayer` from infomapecology (in R: `?run_infomap_monolayer`). An analysis with metadata does not have a special output. So in this example the output format is the same as in [Monolayer directed network with hierarchical structure](docs/monolayer_heirarchical.md)
