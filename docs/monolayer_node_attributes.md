@@ -34,7 +34,7 @@ In this example, the attribute IDs are (example with first four):
 For now, Infomap can only handle categorical attributes, and only a single attribute type.
 
 ### R Code
-The code here depends on the code run in [the previous example|2. Monolayer directed network with hierarchical structure], which should be run first (see code file `infomap_ecology_main.R`).
+The code here depends on the code run in the previous example [Monolayer directed network with hierarchical structure](docs/hypothesis_test.md), which should be run first (see code file `infomap_ecology_main.R`).
 ```R
 # Create an attribute -- attribute ID map
 node_attribute_map <- otago_nodes_2 %>% distinct(OrganismalGroup) %>%
