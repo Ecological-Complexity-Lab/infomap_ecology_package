@@ -1,0 +1,1545 @@
+from,to,weight
+Calanus finnmarchicus,Phaeocystis pouchetii,1
+Calanus finnmarchicus,Chaetoceros socialis,1
+Calanus finnmarchicus,Thalassiosira nordenskioeldii,1
+Calanus finnmarchicus,Fragilariopsis,1
+Calanus finnmarchicus,Protoperidinium,1
+Calanus finnmarchicus,Gymnodinium,1
+Calanus finnmarchicus,Dinobryon balticum,1
+Calanus finnmarchicus,Thalassiosira antarctica,1
+Calanus finnmarchicus,Cylindrotheca closterium,1
+Calanus finnmarchicus,Chaetoceros,1
+Calanus finnmarchicus,Coccolithus pleagicus,1
+Calanus finnmarchicus,Globoquadriana pachyderma,1
+Calanus finnmarchicus,Globigerinita bradyi,1
+Calanus finnmarchicus,Globigerina quinqueloba,1
+Calanus finnmarchicus,Nitzschia frigida,1
+Calanus finnmarchicus,Pleurosigma stuxbergii,1
+Calanus finnmarchicus,Navicula pelagica,1
+Calanus finnmarchicus,Entomoneis,1
+Calanus finnmarchicus,Cocconeis,1
+Calanus finnmarchicus,Dinophysis acuta,1
+Calanus finnmarchicus,Onacea borealis,1
+Calanus finnmarchicus,Bradyidius similis,1
+Calanus finnmarchicus,Microcalanus pusillus,1
+Calanus finnmarchicus,Copepoda nauplii,1
+Calanus finnmarchicus,Metridia longa,1
+Calanus finnmarchicus,Metridia lucens,1
+Calanus finnmarchicus,Calanus glacialis,1
+Calanus finnmarchicus,Calanus hyperboreus,1
+Calanus finnmarchicus,Pseudocalanus,1
+Calanus finnmarchicus,Oithona similis,1
+Calanus finnmarchicus,Fritillaria,1
+Calanus finnmarchicus,Clione limacina,1
+Calanus finnmarchicus,Limacina helicina,1
+Calanus finnmarchicus,Gaidius tenuispinus,1
+Calanus finnmarchicus,Xanthocalanus,1
+Calanus finnmarchicus,POM,1
+Calanus finnmarchicus,Phytodetritus,1
+Onacea borealis,Phaeocystis pouchetii,1
+Onacea borealis,Chaetoceros socialis,1
+Onacea borealis,Thalassiosira nordenskioeldii,1
+Onacea borealis,Fragilariopsis,1
+Onacea borealis,Protoperidinium,1
+Onacea borealis,Gymnodinium,1
+Onacea borealis,Dinobryon balticum,1
+Onacea borealis,Thalassiosira antarctica,1
+Onacea borealis,Cylindrotheca closterium,1
+Onacea borealis,Chaetoceros,1
+Onacea borealis,Coccolithus pleagicus,1
+Onacea borealis,Globoquadriana pachyderma,1
+Onacea borealis,Globigerinita bradyi,1
+Onacea borealis,Globigerina quinqueloba,1
+Onacea borealis,Nitzschia frigida,1
+Onacea borealis,Pleurosigma stuxbergii,1
+Onacea borealis,Navicula pelagica,1
+Onacea borealis,Entomoneis,1
+Onacea borealis,Cocconeis,1
+Onacea borealis,Dinophysis acuta,1
+Onacea borealis,POM,1
+Onacea borealis,Phytodetritus,1
+Bradyidius similis,Phaeocystis pouchetii,1
+Bradyidius similis,Chaetoceros socialis,1
+Bradyidius similis,Thalassiosira nordenskioeldii,1
+Bradyidius similis,Fragilariopsis,1
+Bradyidius similis,Protoperidinium,1
+Bradyidius similis,Gymnodinium,1
+Bradyidius similis,Dinobryon balticum,1
+Bradyidius similis,Thalassiosira antarctica,1
+Bradyidius similis,Cylindrotheca closterium,1
+Bradyidius similis,Chaetoceros,1
+Bradyidius similis,Coccolithus pleagicus,1
+Bradyidius similis,Globoquadriana pachyderma,1
+Bradyidius similis,Globigerinita bradyi,1
+Bradyidius similis,Globigerina quinqueloba,1
+Bradyidius similis,Nitzschia frigida,1
+Bradyidius similis,Pleurosigma stuxbergii,1
+Bradyidius similis,Navicula pelagica,1
+Bradyidius similis,Entomoneis,1
+Bradyidius similis,Cocconeis,1
+Bradyidius similis,Dinophysis acuta,1
+Bradyidius similis,Phytodetritus,1
+Microcalanus pusillus,Phaeocystis pouchetii,1
+Microcalanus pusillus,Protoperidinium,1
+Microcalanus pusillus,Gymnodinium,1
+Microcalanus pusillus,Navicula pelagica,1
+Microcalanus pusillus,Entomoneis,1
+Microcalanus pusillus,Cocconeis,1
+Microcalanus pusillus,POM,1
+Microcalanus pusillus,Phytodetritus,1
+Copepoda nauplii,POM,1
+Metridia longa,Onacea borealis,1
+Metridia longa,Bradyidius similis,1
+Metridia longa,Clione limacina,1
+Metridia longa,POM,1
+Metridia longa,Phytodetritus,1
+Metridia lucens,Calanus finnmarchicus,1
+Metridia lucens,POM,1
+Metridia lucens,Phytodetritus,1
+Calanus glacialis,POM,1
+Calanus glacialis,Phytodetritus,1
+Calanus hyperboreus,Calanus glacialis,1
+Calanus hyperboreus,POM,1
+Calanus hyperboreus,Phytodetritus,1
+Pseudocalanus,Phytodetritus,1
+Oithona similis,Phytodetritus,1
+Fritillaria,POM,1
+Fritillaria,Phytodetritus,1
+Clione limacina,POM,1
+Limacina helicina,Clione limacina,1
+Limacina helicina,Limacina helicina,1
+Limacina helicina,POM,1
+Gaidius tenuispinus,Phytodetritus,1
+Xanthocalanus,Phytodetritus,1
+Thysanoessa raschii,Calanus finnmarchicus,1
+Thysanoessa raschii,Onacea borealis,1
+Thysanoessa raschii,Bradyidius similis,1
+Thysanoessa raschii,Microcalanus pusillus,1
+Thysanoessa raschii,Copepoda nauplii,1
+Thysanoessa raschii,Metridia longa,1
+Thysanoessa raschii,Metridia lucens,1
+Thysanoessa raschii,Calanus glacialis,1
+Thysanoessa raschii,Calanus hyperboreus,1
+Thysanoessa raschii,Pseudocalanus,1
+Thysanoessa raschii,Oithona similis,1
+Thysanoessa raschii,POM,1
+Thysanoessa raschii,Phytodetritus,1
+Thysanoessa longicaudata,Calanus finnmarchicus,1
+Thysanoessa longicaudata,Metridia longa,1
+Thysanoessa longicaudata,Metridia lucens,1
+Thysanoessa longicaudata,POM,1
+Thysanoessa longicaudata,Phytodetritus,1
+Thysanoessa inermis,Phytodetritus,1
+Themisto libellula,Phytodetritus,1
+Themisto abyssorum,Phytodetritus,1
+Boremysis arctica,Phytodetritus,1
+Neoscolecithrix farrani,Phytodetritus,1
+Neoscolecithrix farrani,Sediment,1
+Mertensia ovum,Calanus finnmarchicus,1
+Mertensia ovum,Onacea borealis,1
+Mertensia ovum,Bradyidius similis,1
+Mertensia ovum,Microcalanus pusillus,1
+Mertensia ovum,Copepoda nauplii,1
+Mertensia ovum,Metridia longa,1
+Mertensia ovum,Metridia lucens,1
+Mertensia ovum,Calanus glacialis,1
+Mertensia ovum,Calanus hyperboreus,1
+Mertensia ovum,Pseudocalanus,1
+Mertensia ovum,Oithona similis,1
+Mertensia ovum,Clione limacina,1
+Mertensia ovum,Limacina helicina,1
+Mertensia ovum,Mertensia ovum,1
+Mertensia ovum,Beroe cucumis,1
+Beroe cucumis,Calanus finnmarchicus,1
+Beroe cucumis,Onacea borealis,1
+Beroe cucumis,Bradyidius similis,1
+Beroe cucumis,Microcalanus pusillus,1
+Beroe cucumis,Copepoda nauplii,1
+Beroe cucumis,Metridia longa,1
+Meganyctiphanes norvegica,Metridia lucens,1
+Boreomysis arctica,POM,1
+Boreomysis arctica,Phytodetritus,1
+Boreomysis arctica,Sediment,1
+Balanus balanus,POM,1
+Balanus balanus,Phytodetritus,1
+Balanus balanus,Sediment,1
+Semibalanus balanoides,POM,1
+Semibalanus balanoides,Phytodetritus,1
+Semibalanus balanoides,Sediment,1
+Littorina saxatilis,Fucus distichus,1
+Littorina saxatilis,Pylaiella littoralis,1
+Littorina saxatilis,Chordaria flagelliformis,1
+Littorina saxatilis,Acrosiphonia,1
+Littorina saxatilis,Alaria esculenta,1
+Littorina saxatilis,Laminaria saccharina,1
+Littorina saxatilis,Laminaria digitata,1
+Littorina saxatilis,Saccorhiza dermatodea,1
+Littorina saxatilis,Laminaria solidungula,1
+Littorina saxatilis,Phycodrys rubens,1
+Littorina saxatilis,Ptilta gunneri,1
+Littorina saxatilis,Fimbrifolium dichotomum,1
+Littorina saxatilis,Desmarestia aculeata,1
+Littorina saxatilis,Palmaria palmata,1
+Littorina saxatilis,Devaleraea ramentacea,1
+Littorina saxatilis,Turnerella pennyi,1
+Littorina saxatilis,Desmarestia viridis,1
+Littorina saxatilis,Phytodetritus,1
+Littorina saxatilis,Sediment,1
+Ischyroceros,Phytodetritus,1
+Ischyroceros,Sediment,1
+Gammarus setosus,Phytodetritus,1
+Gammarus setosus,Sediment,1
+Gammarellus homari,Phytodetritus,1
+Onisimus littoralis,Phytodetritus,1
+Onisimus littoralis,Sediment,1
+Anonyx nugax,Phytodetritus,1
+Anonyx sarsi,Phytodetritus,1
+Arrhis phyllonyx,Phytodetritus,1
+Brachydiastylis resima,Phytodetritus,1
+Brachydiastylis resima,Sediment,1
+Caprella septentrionalis,Phytodetritus,1
+Caprella septentrionalis,Sediment,1
+Corophium crassicorne,Phytodetritus,1
+Corophium crassicorne,Sediment,1
+Diastylis goodsiri,Phytodetritus,1
+Diastylis goodsiri,Sediment,1
+Diastylis lucifera,Phytodetritus,1
+Diastylis lucifera,Sediment,1
+Diastylis rathkii,Phytodetritus,1
+Diastylis rathkii,Sediment,1
+Eryhtrops erythropthalma,Phytodetritus,1
+Eryhtrops erythropthalma,Sediment,1
+Eualus gaimardi,Balanus balanus,1
+Eualus gaimardi,Semibalanus balanoides,1
+Eualus gaimardi,Littorina saxatilis,1
+Eualus gaimardi,Sediment,1
+Halirages fulvocinctus,Phytodetritus,1
+Halirages fulvocinctus,Sediment,1
+Hyas araneus,Fucus distichus,1
+Hyas araneus,Pylaiella littoralis,1
+Hyas araneus,Chordaria flagelliformis,1
+Hyas araneus,Acrosiphonia,1
+Hyas araneus,Alaria esculenta,1
+Hyas araneus,Laminaria saccharina,1
+Hyas araneus,Laminaria digitata,1
+Hyas araneus,Saccorhiza dermatodea,1
+Hyas araneus,Laminaria solidungula,1
+Hyas araneus,Phycodrys rubens,1
+Hyas araneus,Ptilta gunneri,1
+Hyas araneus,Fimbrifolium dichotomum,1
+Hyas araneus,Desmarestia aculeata,1
+Hyas araneus,Palmaria palmata,1
+Hyas araneus,Devaleraea ramentacea,1
+Hyas araneus,Turnerella pennyi,1
+Hyas araneus,Desmarestia viridis,1
+Hyas araneus,Balanus balanus,1
+Hyas araneus,Semibalanus balanoides,1
+Hyas araneus,Glycera capitata,1
+Hyas araneus,Harmothoe imbricata,1
+Hyas araneus,Heteromastus filiformis,1
+Hyas araneus,Leitoscoloplos mammosus,1
+Hyas araneus,Levinsenia gracilis,1
+Hyas araneus,Lumbrineris,1
+Hyas araneus,Lysippe labiata,1
+Hyas araneus,Nephtys ciliata,1
+Hyas araneus,Nereimyra punctata,1
+Hyas araneus,Nereis zonata,1
+Hyas araneus,Yoldia hyperborea,1
+Hyas araneus,Yoldiella frigida,1
+Hyas araneus,Yoldiella lenticula,1
+Hyas araneus,Yoldiella solidula,1
+Hyas araneus,Ophiocten sericeum,1
+Hyas araneus,Ophiopholis aculeata,1
+Hyas araneus,Ophiura robusta,1
+Hyas araneus,Strongylocentrotus pallidus,1
+Hyas araneus,Strongylocentrotus droebachiensis,1
+Hyas araneus,Crossaster papposus,1
+Hyas araneus,Henricia,1
+Hyas araneus,Sediment,1
+Ischyrocerus anguipes,Phytodetritus,1
+Ischyrocerus anguipes,Sediment,1
+Janira,Phytodetritus,1
+Janira,Sediment,1
+Lamprops fuscatus,Phytodetritus,1
+Lamprops fuscatus,Sediment,1
+Lebbeus polaris,Calanus finnmarchicus,1
+Lebbeus polaris,Copepoda nauplii,1
+Lebbeus polaris,Pseudocalanus,1
+Lebbeus polaris,Oithona similis,1
+Lebbeus polaris,Fritillaria,1
+Lebbeus polaris,Limacina helicina,1
+Lebbeus polaris,Phytodetritus,1
+Melita dentata,Phytodetritus,1
+Melita dentata,Sediment,1
+Melita formosa,Phytodetritus,1
+Melita formosa,Sediment,1
+Melita palmata,Phytodetritus,1
+Melita palmata,Sediment,1
+Monoculodes borealis,Phytodetritus,1
+Monoculodes longirostris,Calanus finnmarchicus,1
+Monoculodes longirostris,Onacea borealis,1
+Monoculodes longirostris,Bradyidius similis,1
+Monoculodes longirostris,Microcalanus pusillus,1
+Monoculodes longirostris,Copepoda nauplii,1
+Monoculodes longirostris,Metridia longa,1
+Monoculodes longirostris,Metridia lucens,1
+Monoculodes longirostris,Calanus glacialis,1
+Monoculodes longirostris,Calanus hyperboreus,1
+Monoculodes longirostris,Pseudocalanus,1
+Monoculodes longirostris,Oithona similis,1
+Monoculodes longirostris,Phytodetritus,1
+Munna,Phytodetritus,1
+Munna,Sediment,1
+Munnopsis,Phytodetritus,1
+Munnopsis,Sediment,1
+Mysis oculata,Phytodetritus,1
+Mysis oculata,Sediment,1
+Onisimus caricus,Phytodetritus,1
+Onisimus caricus,Sediment,1
+Onisimus edwardsi,Phytodetritus,1
+Onisimus edwardsi,Sediment,1
+Orchomenella minuta,Phytodetritus,1
+Orchomenella minuta,Sediment,1
+Pagurus pubescens,Heteromastus filiformis,1
+Pagurus pubescens,Leitoscoloplos mammosus,1
+Pagurus pubescens,Levinsenia gracilis,1
+Pagurus pubescens,Lumbrineris,1
+Pagurus pubescens,Lysippe labiata,1
+Pagurus pubescens,Nephtys ciliata,1
+Pagurus pubescens,Nereimyra punctata,1
+Pagurus pubescens,Nereis zonata,1
+Pagurus pubescens,Pholoe assimilis,1
+Pagurus pubescens,Phyllodoce,1
+Pagurus pubescens,Polydora,1
+Pagurus pubescens,Cylichna cf. oculata,1
+Pagurus pubescens,Elachisina globuloides,1
+Pagurus pubescens,Erginus rubellus,1
+Pagurus pubescens,Euspira pallida,1
+Pagurus pubescens,Frigidoalvania cruenta,1
+Pagurus pubescens,Ophiocten sericeum,1
+Pagurus pubescens,Ophiopholis aculeata,1
+Pagurus pubescens,Ophiura robusta,1
+Pagurus pubescens,Strongylocentrotus pallidus,1
+Pagurus pubescens,Strongylocentrotus droebachiensis,1
+Pagurus pubescens,Crossaster papposus,1
+Pagurus pubescens,Henricia,1
+Pagurus pubescens,Urticina eques,1
+Pagurus pubescens,Hormathia nodosa,1
+Pagurus pubescens,Phytodetritus,1
+Pagurus pubescens,Sediment,1
+Pandalus borealis,Phytodetritus,1
+Parapleustes assimilis,Neoscolecithrix farrani,1
+Parapleustes assimilis,Laminaria saccharina,1
+Parapleustes assimilis,Laminaria digitata,1
+Parapleustes assimilis,Diastylis goodsiri,1
+Parapleustes assimilis,Diastylis lucifera,1
+Parapleustes assimilis,Diastylis rathkii,1
+Parapleustes assimilis,Phytodetritus,1
+Parapleustes assimilis,Sediment,1
+Parapleustes bicuspis,Neoscolecithrix farrani,1
+Parapleustes bicuspis,Laminaria saccharina,1
+Parapleustes bicuspis,Laminaria digitata,1
+Parapleustes bicuspis,Diastylis goodsiri,1
+Parapleustes bicuspis,Diastylis lucifera,1
+Parapleustes bicuspis,Diastylis rathkii,1
+Parapleustes bicuspis,Ischyrocerus anguipes,1
+Parapleustes bicuspis,Janira,1
+Parapleustes bicuspis,Lamprops fuscatus,1
+Parapleustes bicuspis,Phytodetritus,1
+Parapleustes bicuspis,Sediment,1
+Parapleustes monocuspis,Neoscolecithrix farrani,1
+Parapleustes monocuspis,Boreomysis arctica,1
+Parapleustes monocuspis,Laminaria saccharina,1
+Parapleustes monocuspis,Laminaria digitata,1
+Parapleustes monocuspis,Phytodetritus,1
+Parapleustes monocuspis,Sediment,1
+Paroediceros lynceus,Neoscolecithrix farrani,1
+Paroediceros lynceus,Laminaria saccharina,1
+Paroediceros lynceus,Laminaria digitata,1
+Paroediceros lynceus,Littorina saxatilis,1
+Paroediceros lynceus,Diastylis goodsiri,1
+Paroediceros lynceus,Diastylis lucifera,1
+Paroediceros lynceus,Diastylis rathkii,1
+Paroediceros lynceus,Ischyrocerus anguipes,1
+Paroediceros lynceus,Janira,1
+Paroediceros lynceus,Lamprops fuscatus,1
+Paroediceros lynceus,Melita dentata,1
+Paroediceros lynceus,Melita formosa,1
+Paroediceros lynceus,Melita palmata,1
+Paroediceros lynceus,Munna,1
+Paroediceros lynceus,Phytodetritus,1
+Paroediceros lynceus,Sediment,1
+Pleustes panoplus,Neoscolecithrix farrani,1
+Pleustes panoplus,Laminaria saccharina,1
+Pleustes panoplus,Laminaria digitata,1
+Pleustes panoplus,Littorina saxatilis,1
+Pleustes panoplus,Ischyroceros,1
+Pleustes panoplus,Gammarus setosus,1
+Pleustes panoplus,Diastylis goodsiri,1
+Pleustes panoplus,Diastylis lucifera,1
+Pleustes panoplus,Diastylis rathkii,1
+Pleustes panoplus,Phytodetritus,1
+Pleustes panoplus,Sediment,1
+Pleusymtes glabroides,Phytodetritus,1
+Pleusymtes glabroides,Sediment,1
+Pontoporeia femorata,Phytodetritus,1
+Pontoporeia femorata,Sediment,1
+Rhachotropis inflata,Phytodetritus,1
+Rhachotropis inflata,Sediment,1
+Spirontocaris spinus,Phytodetritus,1
+Spirontocaris turgida,Sediment,1
+Stilomysis grandis,Phytodetritus,1
+Syrrhoe crenulata,Sediment,1
+Tanaidacea,Phytodetritus,1
+Tanaidacea,Sediment,1
+Unciola leucopis,Phytodetritus,1
+Unciola leucopis,Sediment,1
+Weyprechtia pinguis,Phytodetritus,1
+Weyprechtia pinguis,Sediment,1
+Haliclona,POM,1
+Haliclona,Phytodetritus,1
+Aglaophamus malmgreni,Aglaophamus malmgreni,1
+Aglaophamus malmgreni,Ampharete finmarchica,1
+Aglaophamus malmgreni,Heteromastus filiformis,1
+Aglaophamus malmgreni,Leitoscoloplos mammosus,1
+Aglaophamus malmgreni,Levinsenia gracilis,1
+Aglaophamus malmgreni,Lumbrineris,1
+Aglaophamus malmgreni,Lysippe labiata,1
+Aglaophamus malmgreni,Nephtys ciliata,1
+Aglaophamus malmgreni,Nereimyra punctata,1
+Aglaophamus malmgreni,Nereis zonata,1
+Aglaophamus malmgreni,Pholoe assimilis,1
+Aglaophamus malmgreni,Phyllodoce,1
+Aglaophamus malmgreni,Priapulus caudatus,1
+Aglaophamus malmgreni,Sipunculida,1
+Aglaophamus malmgreni,Philine,1
+Aglaophamus malmgreni,Phytodetritus,1
+Aglaophamus malmgreni,Sediment,1
+Ampharete finmarchica,Phytodetritus,1
+Ampharete finmarchica,Sediment,1
+Brada inhabilis,Phytodetritus,1
+Brada inhabilis,Sediment,1
+Brada villosa,Phytodetritus,1
+Brada villosa,Sediment,1
+Bylgides elegans,Phytodetritus,1
+Bylgides elegans,Sediment,1
+Bylgides groenlandica,Phytodetritus,1
+Bylgides groenlandica,Sediment,1
+Capitella capitata,Phytodetritus,1
+Capitella capitata,Sediment,1
+Chaetozone,Phytodetritus,1
+Chaetozone,Sediment,1
+Chone,Phytodetritus,1
+Chone,Sediment,1
+Circeis,Phytodetritus,1
+Circeis,Sediment,1
+Cossura longocirrata,Phytodetritus,1
+Cossura longocirrata,Sediment,1
+Diplocirrus hirsutus,Phytodetritus,1
+Diplocirrus hirsutus,Sediment,1
+Eteone,Phytodetritus,1
+Eteone,Sediment,1
+Euchone,Phytodetritus,1
+Euchone,Sediment,1
+Gattyana cirrhosa,Janira,1
+Gattyana cirrhosa,Tanaidacea,1
+Gattyana cirrhosa,Haliclona,1
+Gattyana cirrhosa,Phyllodoce,1
+Gattyana cirrhosa,Priapulus caudatus,1
+Gattyana cirrhosa,Sipunculida,1
+Gattyana cirrhosa,Philine,1
+Gattyana cirrhosa,Styela rustica,1
+Gattyana cirrhosa,Halocynthia pyriformis,1
+Gattyana cirrhosa,Urticina eques,1
+Gattyana cirrhosa,Hormathia nodosa,1
+Gattyana cirrhosa,Phytodetritus,1
+Gattyana cirrhosa,Sediment,1
+Glycera capitata,Janira,1
+Glycera capitata,Tanaidacea,1
+Glycera capitata,Haliclona,1
+Glycera capitata,Eteone,1
+Glycera capitata,Phyllodoce,1
+Glycera capitata,Priapulus caudatus,1
+Glycera capitata,Sipunculida,1
+Glycera capitata,Philine,1
+Glycera capitata,Phytodetritus,1
+Glycera capitata,Sediment,1
+Harmothoe imbricata,Tanaidacea,1
+Harmothoe imbricata,Haliclona,1
+Harmothoe imbricata,Harmothoe imbricata,1
+Harmothoe imbricata,Phyllodoce,1
+Harmothoe imbricata,Priapulus caudatus,1
+Harmothoe imbricata,Sipunculida,1
+Harmothoe imbricata,Philine,1
+Harmothoe imbricata,Phytodetritus,1
+Harmothoe imbricata,Sediment,1
+Heteromastus filiformis,Phytodetritus,1
+Heteromastus filiformis,Sediment,1
+Leitoscoloplos mammosus,Phytodetritus,1
+Leitoscoloplos mammosus,Sediment,1
+Levinsenia gracilis,Phytodetritus,1
+Levinsenia gracilis,Sediment,1
+Lumbrineris,Phytodetritus,1
+Lysippe labiata,Phytodetritus,1
+Lysippe labiata,Sediment,1
+Nephtys ciliata,Phytodetritus,1
+Nereimyra punctata,Phytodetritus,1
+Nereimyra punctata,Sediment,1
+Nereis zonata,Tanaidacea,1
+Nereis zonata,Haliclona,1
+Nereis zonata,Harmothoe imbricata,1
+Nereis zonata,Nereis zonata,1
+Nereis zonata,Phyllodoce,1
+Nereis zonata,Priapulus caudatus,1
+Nereis zonata,Sipunculida,1
+Nereis zonata,Philine,1
+Nereis zonata,Phytodetritus,1
+Nereis zonata,Sediment,1
+Pholoe assimilis,Phytodetritus,1
+Pholoe assimilis,Sediment,1
+Phyllodoce,Phytodetritus,1
+Phyllodoce,Sediment,1
+Polydora,Phytodetritus,1
+Polydora,Sediment,1
+Prionospio cirrifera,Phytodetritus,1
+Prionospio cirrifera,Sediment,1
+Sabellides octocirrata,Phytodetritus,1
+Sabellides octocirrata,Sediment,1
+Samytha sexcirrata,Phytodetritus,1
+Samytha sexcirrata,Sediment,1
+Scoletoma fragilis,Phytodetritus,1
+Scoletoma fragilis,Sediment,1
+Scoloplos armiger,Phytodetritus,1
+Scoloplos armiger,Sediment,1
+Spio,Phytodetritus,1
+Spio,Sediment,1
+Terebellides stroemi,Phytodetritus,1
+Terebellides stroemi,Sediment,1
+Thelepus cincinnatus,Phytodetritus,1
+Thelepus cincinnatus,Sediment,1
+Halicryptus spinulosus,POM,1
+Halicryptus spinulosus,Phytodetritus,1
+Halicryptus spinulosus,Sediment,1
+Priapulus caudatus,POM,1
+Priapulus caudatus,Phytodetritus,1
+Priapulus caudatus,Sediment,1
+Sipunculida,Phytodetritus,1
+Sipunculida,Sediment,1
+Pycnogonida,Glycera capitata,1
+Pycnogonida,Harmothoe imbricata,1
+Pycnogonida,Heteromastus filiformis,1
+Pycnogonida,Leitoscoloplos mammosus,1
+Pycnogonida,Levinsenia gracilis,1
+Pycnogonida,Lumbrineris,1
+Pycnogonida,Lysippe labiata,1
+Pycnogonida,Nephtys ciliata,1
+Pycnogonida,Nereimyra punctata,1
+Pycnogonida,Nereis zonata,1
+Pycnogonida,Boreocingula castanea,1
+Pycnogonida,Boreotrophon truncatus,1
+Pycnogonida,Buccinum scalariforme,1
+Pycnogonida,Buccinum terranovae,1
+Pycnogonida,Buccinum undatum,1
+Pycnogonida,Cylichna cf. alba,1
+Pycnogonida,Cylichna cf. oculata,1
+Pycnogonida,Elachisina globuloides,1
+Pycnogonida,Erginus rubellus,1
+Pycnogonida,Euspira pallida,1
+Pycnogonida,Frigidoalvania cruenta,1
+Pycnogonida,Lepeta caeca,1
+Pycnogonida,Margarites groenlandicus,1
+Pycnogonida,Margarites helicinus,1
+Pycnogonida,Menestho albula,1
+Pycnogonida,Menestho truncatula,1
+Pycnogonida,Oenopota impressa,1
+Pycnogonida,Philine,1
+Pycnogonida,Puncturella noachina,1
+Pycnogonida,Retusa obtusata,1
+Pycnogonida,Solariella varicosa,1
+Chaetoderma,Phytodetritus,1
+Chaetoderma,Sediment,1
+Tonicella marmorea,Fucus distichus,1
+Tonicella marmorea,Pylaiella littoralis,1
+Tonicella marmorea,Chordaria flagelliformis,1
+Tonicella marmorea,Acrosiphonia,1
+Tonicella marmorea,Alaria esculenta,1
+Tonicella marmorea,Laminaria saccharina,1
+Tonicella marmorea,Laminaria digitata,1
+Tonicella marmorea,Saccorhiza dermatodea,1
+Tonicella marmorea,Laminaria solidungula,1
+Tonicella marmorea,Phycodrys rubens,1
+Tonicella marmorea,Ptilta gunneri,1
+Tonicella marmorea,Fimbrifolium dichotomum,1
+Tonicella marmorea,Desmarestia aculeata,1
+Tonicella marmorea,Palmaria palmata,1
+Tonicella marmorea,Devaleraea ramentacea,1
+Tonicella marmorea,Turnerella pennyi,1
+Tonicella marmorea,Desmarestia viridis,1
+Tonicella marmorea,Phytodetritus,1
+Tonicella marmorea,Sediment,1
+Tonicella rubra,Fucus distichus,1
+Tonicella rubra,Pylaiella littoralis,1
+Tonicella rubra,Chordaria flagelliformis,1
+Tonicella rubra,Acrosiphonia,1
+Tonicella rubra,Alaria esculenta,1
+Tonicella rubra,Laminaria saccharina,1
+Tonicella rubra,Laminaria digitata,1
+Tonicella rubra,Saccorhiza dermatodea,1
+Tonicella rubra,Laminaria solidungula,1
+Tonicella rubra,Phycodrys rubens,1
+Tonicella rubra,Ptilta gunneri,1
+Tonicella rubra,Fimbrifolium dichotomum,1
+Tonicella rubra,Desmarestia aculeata,1
+Tonicella rubra,Palmaria palmata,1
+Tonicella rubra,Devaleraea ramentacea,1
+Tonicella rubra,Turnerella pennyi,1
+Tonicella rubra,Desmarestia viridis,1
+Tonicella rubra,Sediment,1
+Boreocingula castanea,Phytodetritus,1
+Boreocingula castanea,Sediment,1
+Boreotrophon truncatus,Fucus distichus,1
+Boreotrophon truncatus,Laminaria saccharina,1
+Boreotrophon truncatus,Laminaria digitata,1
+Boreotrophon truncatus,Saccorhiza dermatodea,1
+Buccinum scalariforme,Fucus distichus,1
+Buccinum scalariforme,Pylaiella littoralis,1
+Buccinum scalariforme,Chordaria flagelliformis,1
+Buccinum scalariforme,Acrosiphonia,1
+Buccinum scalariforme,Alaria esculenta,1
+Buccinum scalariforme,Laminaria saccharina,1
+Buccinum scalariforme,Laminaria digitata,1
+Buccinum scalariforme,Saccorhiza dermatodea,1
+Buccinum scalariforme,Laminaria solidungula,1
+Buccinum scalariforme,Phycodrys rubens,1
+Buccinum scalariforme,Ptilta gunneri,1
+Buccinum scalariforme,Fimbrifolium dichotomum,1
+Buccinum scalariforme,Desmarestia aculeata,1
+Buccinum scalariforme,Palmaria palmata,1
+Buccinum scalariforme,Devaleraea ramentacea,1
+Buccinum scalariforme,Turnerella pennyi,1
+Buccinum scalariforme,Desmarestia viridis,1
+Buccinum scalariforme,Urticina eques,1
+Buccinum scalariforme,Hormathia nodosa,1
+Buccinum scalariforme,Phytodetritus,1
+Buccinum terranovae,Fucus distichus,1
+Buccinum terranovae,Pylaiella littoralis,1
+Buccinum terranovae,Chordaria flagelliformis,1
+Buccinum terranovae,Acrosiphonia,1
+Buccinum terranovae,Alaria esculenta,1
+Buccinum terranovae,Laminaria saccharina,1
+Buccinum terranovae,Laminaria digitata,1
+Buccinum terranovae,Saccorhiza dermatodea,1
+Buccinum terranovae,Laminaria solidungula,1
+Buccinum terranovae,Phycodrys rubens,1
+Buccinum terranovae,Ptilta gunneri,1
+Buccinum terranovae,Fimbrifolium dichotomum,1
+Buccinum terranovae,Desmarestia aculeata,1
+Buccinum terranovae,Palmaria palmata,1
+Buccinum terranovae,Devaleraea ramentacea,1
+Buccinum terranovae,Turnerella pennyi,1
+Buccinum terranovae,Desmarestia viridis,1
+Buccinum terranovae,Urticina eques,1
+Buccinum terranovae,Hormathia nodosa,1
+Buccinum terranovae,Phytodetritus,1
+Buccinum undatum,Fucus distichus,1
+Buccinum undatum,Pylaiella littoralis,1
+Buccinum undatum,Chordaria flagelliformis,1
+Buccinum undatum,Acrosiphonia,1
+Buccinum undatum,Alaria esculenta,1
+Buccinum undatum,Laminaria saccharina,1
+Buccinum undatum,Laminaria digitata,1
+Buccinum undatum,Saccorhiza dermatodea,1
+Buccinum undatum,Laminaria solidungula,1
+Buccinum undatum,Phycodrys rubens,1
+Buccinum undatum,Ptilta gunneri,1
+Buccinum undatum,Fimbrifolium dichotomum,1
+Buccinum undatum,Desmarestia aculeata,1
+Buccinum undatum,Palmaria palmata,1
+Buccinum undatum,Devaleraea ramentacea,1
+Buccinum undatum,Turnerella pennyi,1
+Buccinum undatum,Desmarestia viridis,1
+Buccinum undatum,Phytodetritus,1
+Cylichna cf. alba,Phytodetritus,1
+Cylichna cf. oculata,Phytodetritus,1
+Elachisina globuloides,Phytodetritus,1
+Erginus rubellus,Fucus distichus,1
+Erginus rubellus,Pylaiella littoralis,1
+Erginus rubellus,Chordaria flagelliformis,1
+Erginus rubellus,Acrosiphonia,1
+Erginus rubellus,Alaria esculenta,1
+Erginus rubellus,Laminaria saccharina,1
+Erginus rubellus,Laminaria digitata,1
+Erginus rubellus,Saccorhiza dermatodea,1
+Erginus rubellus,Laminaria solidungula,1
+Erginus rubellus,Phycodrys rubens,1
+Erginus rubellus,Ptilta gunneri,1
+Erginus rubellus,Fimbrifolium dichotomum,1
+Erginus rubellus,Desmarestia aculeata,1
+Erginus rubellus,Palmaria palmata,1
+Erginus rubellus,Devaleraea ramentacea,1
+Erginus rubellus,Turnerella pennyi,1
+Erginus rubellus,Desmarestia viridis,1
+Erginus rubellus,Phytodetritus,1
+Euspira pallida,Phytodetritus,1
+Frigidoalvania cruenta,Phytodetritus,1
+Frigidoalvania cruenta,Sediment,1
+Lepeta caeca,Phytodetritus,1
+Margarites groenlandicus,Laminaria saccharina,1
+Margarites groenlandicus,Phytodetritus,1
+Margarites groenlandicus,Sediment,1
+Margarites helicinus,Laminaria saccharina,1
+Margarites helicinus,Phytodetritus,1
+Margarites helicinus,Sediment,1
+Menestho albula,Laminaria saccharina,1
+Menestho albula,Phytodetritus,1
+Menestho albula,Sediment,1
+Menestho truncatula,Laminaria saccharina,1
+Menestho truncatula,Phytodetritus,1
+Menestho truncatula,Sediment,1
+Oenopota impressa,Laminaria saccharina,1
+Oenopota impressa,Phytodetritus,1
+Oenopota impressa,Sediment,1
+Philine,Fucus distichus,1
+Philine,Pylaiella littoralis,1
+Philine,Chordaria flagelliformis,1
+Philine,Acrosiphonia,1
+Philine,Alaria esculenta,1
+Philine,Laminaria saccharina,1
+Philine,Laminaria digitata,1
+Philine,Saccorhiza dermatodea,1
+Philine,Laminaria solidungula,1
+Philine,Phycodrys rubens,1
+Philine,Ptilta gunneri,1
+Philine,Fimbrifolium dichotomum,1
+Philine,Desmarestia aculeata,1
+Philine,Palmaria palmata,1
+Philine,Devaleraea ramentacea,1
+Philine,Turnerella pennyi,1
+Philine,Desmarestia viridis,1
+Philine,Phytodetritus,1
+Philine,Sediment,1
+Puncturella noachina,Laminaria solidungula,1
+Puncturella noachina,Halicryptus spinulosus,1
+Puncturella noachina,Priapulus caudatus,1
+Puncturella noachina,Sipunculida,1
+Puncturella noachina,Macoma calcarea,1
+Puncturella noachina,Macoma moesta,1
+Puncturella noachina,Urticina eques,1
+Puncturella noachina,Hormathia nodosa,1
+Puncturella noachina,Phytodetritus,1
+Puncturella noachina,Sediment,1
+Retusa obtusata,Laminaria solidungula,1
+Retusa obtusata,Halicryptus spinulosus,1
+Retusa obtusata,Priapulus caudatus,1
+Retusa obtusata,Sipunculida,1
+Retusa obtusata,Urticina eques,1
+Retusa obtusata,Hormathia nodosa,1
+Retusa obtusata,Phytodetritus,1
+Retusa obtusata,Sediment,1
+Solariella varicosa,Laminaria solidungula,1
+Solariella varicosa,Phytodetritus,1
+Solariella varicosa,Sediment,1
+Trophon clathratus,Fucus distichus,1
+Trophon clathratus,Pylaiella littoralis,1
+Trophon clathratus,Chordaria flagelliformis,1
+Trophon clathratus,Acrosiphonia,1
+Trophon clathratus,Alaria esculenta,1
+Trophon clathratus,Laminaria saccharina,1
+Trophon clathratus,Laminaria digitata,1
+Trophon clathratus,Saccorhiza dermatodea,1
+Trophon clathratus,Laminaria solidungula,1
+Trophon clathratus,Phycodrys rubens,1
+Trophon clathratus,Ptilta gunneri,1
+Trophon clathratus,Fimbrifolium dichotomum,1
+Trophon clathratus,Desmarestia aculeata,1
+Trophon clathratus,Palmaria palmata,1
+Trophon clathratus,Devaleraea ramentacea,1
+Trophon clathratus,Turnerella pennyi,1
+Trophon clathratus,Desmarestia viridis,1
+Trophon clathratus,Sediment,1
+Arctinula groenlandica,POM,1
+Arctinula groenlandica,Phytodetritus,1
+Astarte borealis,POM,1
+Astarte borealis,Phytodetritus,1
+Astarte montagui,POM,1
+Astarte montagui,Phytodetritus,1
+Axinopsida orbiculata,POM,1
+Axinopsida orbiculata,Phytodetritus,1
+Boreacola maltzani,POM,1
+Boreacola maltzani,Phytodetritus,1
+Ciliatocardium ciliatum,POM,1
+Ciliatocardium ciliatum,Phytodetritus,1
+Diplodonta torelli,POM,1
+Diplodonta torelli,Phytodetritus,1
+Ennucula tenuis,POM,1
+Ennucula tenuis,Phytodetritus,1
+Hiatella arctica,POM,1
+Hiatella arctica,Phytodetritus,1
+Liocyma fluctuosa,POM,1
+Liocyma fluctuosa,Phytodetritus,1
+Lyonsia arenosa,POM,1
+Lyonsia arenosa,Phytodetritus,1
+Macoma calcarea,POM,1
+Macoma calcarea,Phytodetritus,1
+Macoma moesta,POM,1
+Macoma moesta,Phytodetritus,1
+Musculus corrugatus,POM,1
+Musculus corrugatus,Phytodetritus,1
+Musculus discors,POM,1
+Musculus discors,Phytodetritus,1
+Mya truncata,POM,1
+Mya truncata,Phytodetritus,1
+Nuculana minuta,POM,1
+Nuculana minuta,Phytodetritus,1
+Nuculana pernula,POM,1
+Nuculana pernula,Phytodetritus,1
+Pandora glacialis,POM,1
+Pandora glacialis,Phytodetritus,1
+Serripes groenlandicus,POM,1
+Serripes groenlandicus,Phytodetritus,1
+Thracia myopsis,POM,1
+Thracia myopsis,Phytodetritus,1
+Thyasira dunbari,POM,1
+Thyasira dunbari,Phytodetritus,1
+Thyasira gouldi,POM,1
+Thyasira gouldi,Phytodetritus,1
+Yoldia hyperborea,POM,1
+Yoldia hyperborea,Phytodetritus,1
+Yoldiella frigida,POM,1
+Yoldiella frigida,Phytodetritus,1
+Yoldiella lenticula,POM,1
+Yoldiella lenticula,Phytodetritus,1
+Yoldiella solidula,POM,1
+Yoldiella solidula,Phytodetritus,1
+Ophiocten sericeum,Laminaria saccharina,1
+Ophiocten sericeum,Laminaria digitata,1
+Ophiocten sericeum,Haliclona,1
+Ophiocten sericeum,Harmothoe imbricata,1
+Ophiocten sericeum,Heteromastus filiformis,1
+Ophiocten sericeum,Ophiocten sericeum,1
+Ophiocten sericeum,Ophiopholis aculeata,1
+Ophiocten sericeum,Ophiura robusta,1
+Ophiocten sericeum,Styela rustica,1
+Ophiocten sericeum,Halocynthia pyriformis,1
+Ophiocten sericeum,Urticina eques,1
+Ophiocten sericeum,Hormathia nodosa,1
+Ophiocten sericeum,POM,1
+Ophiocten sericeum,Phytodetritus,1
+Ophiocten sericeum,Sediment,1
+Ophiopholis aculeata,POM,1
+Ophiopholis aculeata,Phytodetritus,1
+Ophiopholis aculeata,Sediment,1
+Ophiura robusta,Haliclona,1
+Ophiura robusta,Urticina eques,1
+Ophiura robusta,Hormathia nodosa,1
+Ophiura robusta,POM,1
+Ophiura robusta,Phytodetritus,1
+Ophiura robusta,Sediment,1
+Strongylocentrotus pallidus,Fucus distichus,1
+Strongylocentrotus pallidus,Pylaiella littoralis,1
+Strongylocentrotus pallidus,Chordaria flagelliformis,1
+Strongylocentrotus pallidus,Acrosiphonia,1
+Strongylocentrotus pallidus,Alaria esculenta,1
+Strongylocentrotus pallidus,Laminaria saccharina,1
+Strongylocentrotus pallidus,Laminaria digitata,1
+Strongylocentrotus pallidus,Saccorhiza dermatodea,1
+Strongylocentrotus pallidus,Laminaria solidungula,1
+Strongylocentrotus pallidus,Phycodrys rubens,1
+Strongylocentrotus pallidus,Ptilta gunneri,1
+Strongylocentrotus pallidus,Fimbrifolium dichotomum,1
+Strongylocentrotus pallidus,Desmarestia aculeata,1
+Strongylocentrotus pallidus,Palmaria palmata,1
+Strongylocentrotus pallidus,Devaleraea ramentacea,1
+Strongylocentrotus pallidus,Turnerella pennyi,1
+Strongylocentrotus pallidus,Desmarestia viridis,1
+Strongylocentrotus pallidus,Haliclona,1
+Strongylocentrotus pallidus,Styela rustica,1
+Strongylocentrotus pallidus,Halocynthia pyriformis,1
+Strongylocentrotus pallidus,Urticina eques,1
+Strongylocentrotus pallidus,Hormathia nodosa,1
+Strongylocentrotus pallidus,POM,1
+Strongylocentrotus pallidus,Phytodetritus,1
+Strongylocentrotus pallidus,Sediment,1
+Strongylocentrotus droebachiensis,Fucus distichus,1
+Strongylocentrotus droebachiensis,Pylaiella littoralis,1
+Strongylocentrotus droebachiensis,Chordaria flagelliformis,1
+Strongylocentrotus droebachiensis,Acrosiphonia,1
+Strongylocentrotus droebachiensis,Alaria esculenta,1
+Strongylocentrotus droebachiensis,Laminaria saccharina,1
+Strongylocentrotus droebachiensis,Laminaria digitata,1
+Strongylocentrotus droebachiensis,Saccorhiza dermatodea,1
+Strongylocentrotus droebachiensis,Laminaria solidungula,1
+Strongylocentrotus droebachiensis,Phycodrys rubens,1
+Strongylocentrotus droebachiensis,Ptilta gunneri,1
+Strongylocentrotus droebachiensis,Fimbrifolium dichotomum,1
+Strongylocentrotus droebachiensis,Desmarestia aculeata,1
+Strongylocentrotus droebachiensis,Palmaria palmata,1
+Strongylocentrotus droebachiensis,Devaleraea ramentacea,1
+Strongylocentrotus droebachiensis,Turnerella pennyi,1
+Strongylocentrotus droebachiensis,Desmarestia viridis,1
+Strongylocentrotus droebachiensis,Haliclona,1
+Strongylocentrotus droebachiensis,Halocynthia pyriformis,1
+Strongylocentrotus droebachiensis,Urticina eques,1
+Strongylocentrotus droebachiensis,Hormathia nodosa,1
+Strongylocentrotus droebachiensis,POM,1
+Strongylocentrotus droebachiensis,Phytodetritus,1
+Strongylocentrotus droebachiensis,Sediment,1
+Crossaster papposus,Fucus distichus,1
+Crossaster papposus,Laminaria saccharina,1
+Crossaster papposus,Laminaria digitata,1
+Crossaster papposus,Aglaophamus malmgreni,1
+Crossaster papposus,Ampharete finmarchica,1
+Crossaster papposus,Brada inhabilis,1
+Crossaster papposus,Brada villosa,1
+Crossaster papposus,Bylgides elegans,1
+Crossaster papposus,Bylgides groenlandica,1
+Crossaster papposus,Capitella capitata,1
+Crossaster papposus,Chaetozone,1
+Crossaster papposus,Chone,1
+Crossaster papposus,Circeis,1
+Crossaster papposus,Cossura longocirrata,1
+Crossaster papposus,Diplocirrus hirsutus,1
+Crossaster papposus,Eteone,1
+Crossaster papposus,Euchone,1
+Crossaster papposus,Gattyana cirrhosa,1
+Crossaster papposus,Glycera capitata,1
+Crossaster papposus,Harmothoe imbricata,1
+Crossaster papposus,Heteromastus filiformis,1
+Crossaster papposus,Leitoscoloplos mammosus,1
+Crossaster papposus,Levinsenia gracilis,1
+Crossaster papposus,Lumbrineris,1
+Crossaster papposus,Lysippe labiata,1
+Crossaster papposus,Nephtys ciliata,1
+Crossaster papposus,Nereimyra punctata,1
+Crossaster papposus,Nereis zonata,1
+Crossaster papposus,Pholoe assimilis,1
+Crossaster papposus,Phyllodoce,1
+Crossaster papposus,Polydora,1
+Crossaster papposus,Prionospio cirrifera,1
+Crossaster papposus,Sabellides octocirrata,1
+Crossaster papposus,Samytha sexcirrata,1
+Crossaster papposus,Scoletoma fragilis,1
+Crossaster papposus,Scoloplos armiger,1
+Crossaster papposus,Spio,1
+Crossaster papposus,Terebellides stroemi,1
+Crossaster papposus,Thelepus cincinnatus,1
+Crossaster papposus,Halicryptus spinulosus,1
+Crossaster papposus,Priapulus caudatus,1
+Crossaster papposus,Sipunculida,1
+Crossaster papposus,Pycnogonida,1
+Crossaster papposus,Chaetoderma,1
+Crossaster papposus,Tonicella marmorea,1
+Crossaster papposus,Tonicella rubra,1
+Crossaster papposus,Axinopsida orbiculata,1
+Crossaster papposus,Boreacola maltzani,1
+Crossaster papposus,Ciliatocardium ciliatum,1
+Crossaster papposus,Diplodonta torelli,1
+Crossaster papposus,Ophiocten sericeum,1
+Crossaster papposus,Ophiopholis aculeata,1
+Crossaster papposus,Ophiura robusta,1
+Crossaster papposus,Strongylocentrotus pallidus,1
+Crossaster papposus,Strongylocentrotus droebachiensis,1
+Crossaster papposus,Crossaster papposus,1
+Crossaster papposus,Henricia,1
+Crossaster papposus,Phytodetritus,1
+Crossaster papposus,Sediment,1
+Henricia,Fucus distichus,1
+Henricia,Pylaiella littoralis,1
+Henricia,Chordaria flagelliformis,1
+Henricia,Acrosiphonia,1
+Henricia,Alaria esculenta,1
+Henricia,Laminaria saccharina,1
+Henricia,Laminaria digitata,1
+Henricia,Saccorhiza dermatodea,1
+Henricia,Laminaria solidungula,1
+Henricia,Phycodrys rubens,1
+Henricia,Ptilta gunneri,1
+Henricia,Fimbrifolium dichotomum,1
+Henricia,Desmarestia aculeata,1
+Henricia,Palmaria palmata,1
+Henricia,Devaleraea ramentacea,1
+Henricia,Turnerella pennyi,1
+Henricia,Desmarestia viridis,1
+Henricia,Phytodetritus,1
+Henricia,Sediment,1
+Styela rustica,POM,1
+Styela rustica,Phytodetritus,1
+Styela rustica,Sediment,1
+Halocynthia pyriformis,POM,1
+Halocynthia pyriformis,Phytodetritus,1
+Halocynthia pyriformis,Sediment,1
+Urticina eques,POM,1
+Urticina eques,Phytodetritus,1
+Urticina eques,Sediment,1
+Hormathia nodosa,POM,1
+Hormathia nodosa,Phytodetritus,1
+Hormathia nodosa,Sediment,1
+Sabinea septemcarinata,Calanus finnmarchicus,1
+Sabinea septemcarinata,Calanus glacialis,1
+Sabinea septemcarinata,Calanus hyperboreus,1
+Sabinea septemcarinata,POM,1
+Sclerocrangon boreas,Phaeocystis pouchetii,1
+Sclerocrangon boreas,Chaetoceros socialis,1
+Sclerocrangon boreas,Thalassiosira nordenskioeldii,1
+Sclerocrangon boreas,Fragilariopsis,1
+Sclerocrangon boreas,Protoperidinium,1
+Sclerocrangon boreas,Gymnodinium,1
+Sclerocrangon boreas,Dinobryon balticum,1
+Sclerocrangon boreas,Thalassiosira antarctica,1
+Sclerocrangon boreas,Cylindrotheca closterium,1
+Sclerocrangon boreas,Chaetoceros,1
+Sclerocrangon boreas,Coccolithus pleagicus,1
+Sclerocrangon boreas,Globoquadriana pachyderma,1
+Sclerocrangon boreas,Globigerinita bradyi,1
+Sclerocrangon boreas,Globigerina quinqueloba,1
+Sclerocrangon boreas,Nitzschia frigida,1
+Sclerocrangon boreas,Pleurosigma stuxbergii,1
+Sclerocrangon boreas,Navicula pelagica,1
+Sclerocrangon boreas,Entomoneis,1
+Sclerocrangon boreas,Cocconeis,1
+Sclerocrangon boreas,Dinophysis acuta,1
+Sclerocrangon boreas,POM,1
+Boreogadus saida,Calanus finnmarchicus,1
+Boreogadus saida,Onacea borealis,1
+Boreogadus saida,Bradyidius similis,1
+Boreogadus saida,Microcalanus pusillus,1
+Boreogadus saida,Copepoda nauplii,1
+Boreogadus saida,Metridia longa,1
+Boreogadus saida,Metridia lucens,1
+Boreogadus saida,Calanus glacialis,1
+Boreogadus saida,Calanus hyperboreus,1
+Boreogadus saida,Pseudocalanus,1
+Boreogadus saida,Oithona similis,1
+Boreogadus saida,Clione limacina,1
+Boreogadus saida,Limacina helicina,1
+Boreogadus saida,Gaidius tenuispinus,1
+Boreogadus saida,Xanthocalanus,1
+Boreogadus saida,Thysanoessa raschii,1
+Boreogadus saida,Thysanoessa longicaudata,1
+Boreogadus saida,Thysanoessa inermis,1
+Boreogadus saida,Meganyctiphanes norvegica,1
+Boreogadus saida,Boreogadus saida,1
+Boreogadus saida,Reinhardtius hipoglossoides,1
+Boreogadus saida,Sebastes mentella,1
+Gadus morhua,Thysanoessa raschii,1
+Gadus morhua,Thysanoessa longicaudata,1
+Gadus morhua,Thysanoessa inermis,1
+Gadus morhua,Themisto libellula,1
+Gadus morhua,Themisto abyssorum,1
+Gadus morhua,Boremysis arctica,1
+Gadus morhua,Neoscolecithrix farrani,1
+Gadus morhua,Mertensia ovum,1
+Gadus morhua,Beroe cucumis,1
+Gadus morhua,Meganyctiphanes norvegica,1
+Gadus morhua,Boreomysis arctica,1
+Gadus morhua,Ischyroceros,1
+Gadus morhua,Gammarus setosus,1
+Gadus morhua,Gammarellus homari,1
+Gadus morhua,Onisimus littoralis,1
+Gadus morhua,Anonyx nugax,1
+Gadus morhua,Anonyx sarsi,1
+Gadus morhua,Arrhis phyllonyx,1
+Gadus morhua,Brachydiastylis resima,1
+Gadus morhua,Caprella septentrionalis,1
+Gadus morhua,Corophium crassicorne,1
+Gadus morhua,Diastylis goodsiri,1
+Gadus morhua,Diastylis lucifera,1
+Gadus morhua,Diastylis rathkii,1
+Gadus morhua,Eryhtrops erythropthalma,1
+Gadus morhua,Eualus gaimardi,1
+Gadus morhua,Halirages fulvocinctus,1
+Gadus morhua,Hyas araneus,1
+Gadus morhua,Ischyrocerus anguipes,1
+Gadus morhua,Janira,1
+Gadus morhua,Lamprops fuscatus,1
+Gadus morhua,Lebbeus polaris,1
+Gadus morhua,Melita dentata,1
+Gadus morhua,Melita formosa,1
+Gadus morhua,Melita palmata,1
+Gadus morhua,Monoculodes borealis,1
+Gadus morhua,Monoculodes longirostris,1
+Gadus morhua,Munna,1
+Gadus morhua,Munnopsis,1
+Gadus morhua,Mysis oculata,1
+Gadus morhua,Onisimus caricus,1
+Gadus morhua,Onisimus edwardsi,1
+Gadus morhua,Orchomenella minuta,1
+Gadus morhua,Pagurus pubescens,1
+Gadus morhua,Pandalus borealis,1
+Gadus morhua,Parapleustes assimilis,1
+Gadus morhua,Parapleustes bicuspis,1
+Gadus morhua,Parapleustes monocuspis,1
+Gadus morhua,Paroediceros lynceus,1
+Gadus morhua,Pleustes panoplus,1
+Gadus morhua,Pleusymtes glabroides,1
+Gadus morhua,Pontoporeia femorata,1
+Gadus morhua,Rhachotropis inflata,1
+Gadus morhua,Spirontocaris spinus,1
+Gadus morhua,Spirontocaris turgida,1
+Gadus morhua,Stilomysis grandis,1
+Gadus morhua,Syrrhoe crenulata,1
+Gadus morhua,Tanaidacea,1
+Gadus morhua,Unciola leucopis,1
+Gadus morhua,Weyprechtia pinguis,1
+Gadus morhua,Boreogadus saida,1
+Gadus morhua,Gadus morhua,1
+Gadus morhua,Reinhardtius hipoglossoides,1
+Gadus morhua,Hipoglossoides platessoides,1
+Gadus morhua,Lycodes,1
+Gadus morhua,Sebastes mentella,1
+Gadus morhua,Liparis liparis,1
+Gadus morhua,Anisarchus medius,1
+Gadus morhua,Lumpenus lampretaeformis,1
+Gadus morhua,Leptagonus decagonus,1
+Gadus morhua,Leptoclinus maculatus,1
+Gadus morhua,Liparis fabricii,1
+Gadus morhua,Artediellus europeus,1
+Gadus morhua,Careproctus reinhardti,1
+Gadus morhua,Sebastes marinus,1
+Gadus morhua,Mallotus villosus,1
+Gadus morhua,Eumicotremus derjugini,1
+Gadus morhua,Raja clavata,1
+Gadus morhua,Myoxocephalus scorpius,1
+Gadus morhua,Anarhichas lupus,1
+Gadus morhua,Gymnocanthus tricuspis,1
+Reinhardtius hipoglossoides,Thysanoessa raschii,1
+Reinhardtius hipoglossoides,Thysanoessa longicaudata,1
+Reinhardtius hipoglossoides,Thysanoessa inermis,1
+Reinhardtius hipoglossoides,Meganyctiphanes norvegica,1
+Reinhardtius hipoglossoides,Lebbeus polaris,1
+Reinhardtius hipoglossoides,Pandalus borealis,1
+Reinhardtius hipoglossoides,Sabinea septemcarinata,1
+Reinhardtius hipoglossoides,Sclerocrangon boreas,1
+Reinhardtius hipoglossoides,Boreogadus saida,1
+Reinhardtius hipoglossoides,Sebastes mentella,1
+Hipoglossoides platessoides,Aglaophamus malmgreni,1
+Hipoglossoides platessoides,Ampharete finmarchica,1
+Hipoglossoides platessoides,Brada inhabilis,1
+Hipoglossoides platessoides,Brada villosa,1
+Hipoglossoides platessoides,Bylgides elegans,1
+Hipoglossoides platessoides,Bylgides groenlandica,1
+Hipoglossoides platessoides,Capitella capitata,1
+Hipoglossoides platessoides,Chaetozone,1
+Hipoglossoides platessoides,Chone,1
+Hipoglossoides platessoides,Circeis,1
+Hipoglossoides platessoides,Cossura longocirrata,1
+Hipoglossoides platessoides,Diplocirrus hirsutus,1
+Hipoglossoides platessoides,Eteone,1
+Hipoglossoides platessoides,Euchone,1
+Hipoglossoides platessoides,Gattyana cirrhosa,1
+Hipoglossoides platessoides,Glycera capitata,1
+Hipoglossoides platessoides,Harmothoe imbricata,1
+Hipoglossoides platessoides,Heteromastus filiformis,1
+Hipoglossoides platessoides,Leitoscoloplos mammosus,1
+Hipoglossoides platessoides,Levinsenia gracilis,1
+Hipoglossoides platessoides,Lumbrineris,1
+Hipoglossoides platessoides,Lysippe labiata,1
+Hipoglossoides platessoides,Nephtys ciliata,1
+Hipoglossoides platessoides,Nereimyra punctata,1
+Hipoglossoides platessoides,Nereis zonata,1
+Hipoglossoides platessoides,Pholoe assimilis,1
+Hipoglossoides platessoides,Phyllodoce,1
+Hipoglossoides platessoides,Polydora,1
+Hipoglossoides platessoides,Prionospio cirrifera,1
+Hipoglossoides platessoides,Sabellides octocirrata,1
+Hipoglossoides platessoides,Samytha sexcirrata,1
+Hipoglossoides platessoides,Scoletoma fragilis,1
+Hipoglossoides platessoides,Scoloplos armiger,1
+Hipoglossoides platessoides,Spio,1
+Hipoglossoides platessoides,Terebellides stroemi,1
+Lycodes,Halirages fulvocinctus,1
+Lycodes,Ischyrocerus anguipes,1
+Lycodes,Janira,1
+Lycodes,Lamprops fuscatus,1
+Lycodes,Parapleustes bicuspis,1
+Lycodes,Parapleustes monocuspis,1
+Lycodes,Paroediceros lynceus,1
+Lycodes,Pleustes panoplus,1
+Lycodes,Pleusymtes glabroides,1
+Lycodes,Pontoporeia femorata,1
+Lycodes,Rhachotropis inflata,1
+Lycodes,Spirontocaris spinus,1
+Lycodes,Spirontocaris turgida,1
+Lycodes,Stilomysis grandis,1
+Lycodes,Syrrhoe crenulata,1
+Lycodes,Tanaidacea,1
+Lycodes,Unciola leucopis,1
+Lycodes,Weyprechtia pinguis,1
+Lycodes,Thelepus cincinnatus,1
+Sebastes mentella,Thysanoessa raschii,1
+Sebastes mentella,Thysanoessa longicaudata,1
+Sebastes mentella,Thysanoessa inermis,1
+Sebastes mentella,Meganyctiphanes norvegica,1
+Sebastes mentella,Lebbeus polaris,1
+Sebastes mentella,Pandalus borealis,1
+Sebastes mentella,Sabinea septemcarinata,1
+Sebastes mentella,Sclerocrangon boreas,1
+Sebastes mentella,Boreogadus saida,1
+Sebastes mentella,Reinhardtius hipoglossoides,1
+Liparis liparis,Lebbeus polaris,1
+Liparis liparis,Pandalus borealis,1
+Liparis liparis,Aglaophamus malmgreni,1
+Liparis liparis,Ampharete finmarchica,1
+Liparis liparis,Brada inhabilis,1
+Liparis liparis,Brada villosa,1
+Liparis liparis,Bylgides elegans,1
+Liparis liparis,Bylgides groenlandica,1
+Liparis liparis,Capitella capitata,1
+Liparis liparis,Chaetozone,1
+Liparis liparis,Chone,1
+Liparis liparis,Circeis,1
+Liparis liparis,Cossura longocirrata,1
+Liparis liparis,Diplocirrus hirsutus,1
+Liparis liparis,Eteone,1
+Liparis liparis,Euchone,1
+Liparis liparis,Gattyana cirrhosa,1
+Liparis liparis,Glycera capitata,1
+Liparis liparis,Harmothoe imbricata,1
+Liparis liparis,Heteromastus filiformis,1
+Liparis liparis,Leitoscoloplos mammosus,1
+Liparis liparis,Levinsenia gracilis,1
+Liparis liparis,Lumbrineris,1
+Liparis liparis,Lysippe labiata,1
+Liparis liparis,Nephtys ciliata,1
+Liparis liparis,Nereimyra punctata,1
+Liparis liparis,Nereis zonata,1
+Liparis liparis,Pholoe assimilis,1
+Liparis liparis,Phyllodoce,1
+Liparis liparis,Polydora,1
+Liparis liparis,Prionospio cirrifera,1
+Liparis liparis,Sabellides octocirrata,1
+Liparis liparis,Samytha sexcirrata,1
+Liparis liparis,Scoletoma fragilis,1
+Liparis liparis,Scoloplos armiger,1
+Liparis liparis,Spio,1
+Liparis liparis,Terebellides stroemi,1
+Liparis liparis,Thelepus cincinnatus,1
+Liparis liparis,Sabinea septemcarinata,1
+Liparis liparis,Sclerocrangon boreas,1
+Anisarchus medius,Hyas araneus,1
+Anisarchus medius,Buccinum scalariforme,1
+Anisarchus medius,Buccinum terranovae,1
+Anisarchus medius,Buccinum undatum,1
+Anisarchus medius,Ophiocten sericeum,1
+Anisarchus medius,Ophiopholis aculeata,1
+Anisarchus medius,Ophiura robusta,1
+Anisarchus medius,Strongylocentrotus pallidus,1
+Anisarchus medius,Strongylocentrotus droebachiensis,1
+Anisarchus medius,Crossaster papposus,1
+Anisarchus medius,Henricia,1
+Anisarchus medius,Liparis liparis,1
+Anisarchus medius,Anisarchus medius,1
+Anisarchus medius,Lumpenus lampretaeformis,1
+Anisarchus medius,Leptagonus decagonus,1
+Anisarchus medius,Leptoclinus maculatus,1
+Anisarchus medius,Liparis fabricii,1
+Anisarchus medius,Artediellus europeus,1
+Anisarchus medius,Careproctus reinhardti,1
+Anisarchus medius,Sebastes marinus,1
+Anisarchus medius,Mallotus villosus,1
+Anisarchus medius,Eumicotremus derjugini,1
+Lumpenus lampretaeformis,Astarte borealis,1
+Lumpenus lampretaeformis,Astarte montagui,1
+Lumpenus lampretaeformis,Axinopsida orbiculata,1
+Lumpenus lampretaeformis,Boreacola maltzani,1
+Lumpenus lampretaeformis,Ciliatocardium ciliatum,1
+Lumpenus lampretaeformis,Diplodonta torelli,1
+Lumpenus lampretaeformis,Ennucula tenuis,1
+Lumpenus lampretaeformis,Hiatella arctica,1
+Lumpenus lampretaeformis,Liocyma fluctuosa,1
+Lumpenus lampretaeformis,Lyonsia arenosa,1
+Lumpenus lampretaeformis,Macoma calcarea,1
+Lumpenus lampretaeformis,Macoma moesta,1
+Lumpenus lampretaeformis,Musculus corrugatus,1
+Lumpenus lampretaeformis,Musculus discors,1
+Lumpenus lampretaeformis,Nuculana minuta,1
+Lumpenus lampretaeformis,Nuculana pernula,1
+Lumpenus lampretaeformis,Pandora glacialis,1
+Lumpenus lampretaeformis,Serripes groenlandicus,1
+Lumpenus lampretaeformis,Thracia myopsis,1
+Lumpenus lampretaeformis,Thyasira dunbari,1
+Lumpenus lampretaeformis,Thyasira gouldi,1
+Lumpenus lampretaeformis,Yoldia hyperborea,1
+Lumpenus lampretaeformis,Yoldiella frigida,1
+Lumpenus lampretaeformis,Yoldiella lenticula,1
+Lumpenus lampretaeformis,Yoldiella solidula,1
+Lumpenus lampretaeformis,Ophiocten sericeum,1
+Lumpenus lampretaeformis,Ophiopholis aculeata,1
+Lumpenus lampretaeformis,Ophiura robusta,1
+Leptagonus decagonus,Glycera capitata,1
+Leptagonus decagonus,Harmothoe imbricata,1
+Leptagonus decagonus,Heteromastus filiformis,1
+Leptagonus decagonus,Leitoscoloplos mammosus,1
+Leptagonus decagonus,Levinsenia gracilis,1
+Leptagonus decagonus,Lumbrineris,1
+Leptagonus decagonus,Lysippe labiata,1
+Leptagonus decagonus,Nephtys ciliata,1
+Leptagonus decagonus,Nereimyra punctata,1
+Leptagonus decagonus,Nereis zonata,1
+Leptagonus decagonus,Pholoe assimilis,1
+Leptagonus decagonus,Phyllodoce,1
+Leptagonus decagonus,Polydora,1
+Leptoclinus maculatus,Lebbeus polaris,1
+Leptoclinus maculatus,Pandalus borealis,1
+Leptoclinus maculatus,Nephtys ciliata,1
+Leptoclinus maculatus,Nereimyra punctata,1
+Leptoclinus maculatus,Nereis zonata,1
+Leptoclinus maculatus,Sabinea septemcarinata,1
+Liparis fabricii,Lebbeus polaris,1
+Liparis fabricii,Pandalus borealis,1
+Liparis fabricii,Sabinea septemcarinata,1
+Artediellus europeus,Thysanoessa raschii,1
+Artediellus europeus,Thysanoessa longicaudata,1
+Artediellus europeus,Thysanoessa inermis,1
+Artediellus europeus,Meganyctiphanes norvegica,1
+Careproctus reinhardti,Thysanoessa raschii,1
+Careproctus reinhardti,Thysanoessa longicaudata,1
+Sebastes marinus,Thysanoessa raschii,1
+Sebastes marinus,Thysanoessa longicaudata,1
+Sebastes marinus,Thysanoessa inermis,1
+Sebastes marinus,Themisto libellula,1
+Sebastes marinus,Themisto abyssorum,1
+Sebastes marinus,Boremysis arctica,1
+Sebastes marinus,Neoscolecithrix farrani,1
+Sebastes marinus,Mertensia ovum,1
+Sebastes marinus,Beroe cucumis,1
+Sebastes marinus,Meganyctiphanes norvegica,1
+Sebastes marinus,Boreomysis arctica,1
+Mallotus villosus,Thysanoessa raschii,1
+Mallotus villosus,Thysanoessa longicaudata,1
+Mallotus villosus,Thysanoessa inermis,1
+Mallotus villosus,Themisto libellula,1
+Mallotus villosus,Themisto abyssorum,1
+Mallotus villosus,Boremysis arctica,1
+Mallotus villosus,Neoscolecithrix farrani,1
+Mallotus villosus,Mertensia ovum,1
+Mallotus villosus,Beroe cucumis,1
+Mallotus villosus,Meganyctiphanes norvegica,1
+Mallotus villosus,Lebbeus polaris,1
+Eumicotremus derjugini,Pandalus borealis,1
+Eumicotremus derjugini,Sabinea septemcarinata,1
+Raja clavata,Fucus distichus,1
+Raja clavata,Pylaiella littoralis,1
+Raja clavata,Chordaria flagelliformis,1
+Raja clavata,Acrosiphonia,1
+Raja clavata,Alaria esculenta,1
+Raja clavata,Laminaria saccharina,1
+Raja clavata,Laminaria digitata,1
+Raja clavata,Saccorhiza dermatodea,1
+Raja clavata,Laminaria solidungula,1
+Raja clavata,Phycodrys rubens,1
+Raja clavata,Ptilta gunneri,1
+Raja clavata,Fimbrifolium dichotomum,1
+Raja clavata,Desmarestia aculeata,1
+Raja clavata,Palmaria palmata,1
+Raja clavata,Devaleraea ramentacea,1
+Raja clavata,Turnerella pennyi,1
+Raja clavata,Desmarestia viridis,1
+Raja clavata,Lebbeus polaris,1
+Raja clavata,Pandalus borealis,1
+Raja clavata,Glycera capitata,1
+Raja clavata,Harmothoe imbricata,1
+Raja clavata,Heteromastus filiformis,1
+Raja clavata,Leitoscoloplos mammosus,1
+Raja clavata,Levinsenia gracilis,1
+Raja clavata,Lumbrineris,1
+Raja clavata,Lysippe labiata,1
+Raja clavata,Nephtys ciliata,1
+Raja clavata,Nereimyra punctata,1
+Raja clavata,Nereis zonata,1
+Raja clavata,Pholoe assimilis,1
+Raja clavata,Phyllodoce,1
+Raja clavata,Polydora,1
+Raja clavata,Ophiocten sericeum,1
+Raja clavata,Ophiopholis aculeata,1
+Raja clavata,Ophiura robusta,1
+Myoxocephalus scorpius,Thysanoessa raschii,1
+Myoxocephalus scorpius,Thysanoessa longicaudata,1
+Myoxocephalus scorpius,Thysanoessa inermis,1
+Myoxocephalus scorpius,Meganyctiphanes norvegica,1
+Myoxocephalus scorpius,Boreomysis arctica,1
+Myoxocephalus scorpius,Hyas araneus,1
+Myoxocephalus scorpius,Lebbeus polaris,1
+Myoxocephalus scorpius,Pagurus pubescens,1
+Myoxocephalus scorpius,Pandalus borealis,1
+Myoxocephalus scorpius,Glycera capitata,1
+Myoxocephalus scorpius,Macoma calcarea,1
+Myoxocephalus scorpius,Macoma moesta,1
+Myoxocephalus scorpius,Ophiocten sericeum,1
+Myoxocephalus scorpius,Ophiopholis aculeata,1
+Myoxocephalus scorpius,Ophiura robusta,1
+Myoxocephalus scorpius,Lycodes,1
+Myoxocephalus scorpius,Sebastes mentella,1
+Myoxocephalus scorpius,Liparis liparis,1
+Myoxocephalus scorpius,Anisarchus medius,1
+Myoxocephalus scorpius,Lumpenus lampretaeformis,1
+Myoxocephalus scorpius,Leptagonus decagonus,1
+Myoxocephalus scorpius,Leptoclinus maculatus,1
+Myoxocephalus scorpius,Liparis fabricii,1
+Anarhichas lupus,Hyas araneus,1
+Anarhichas lupus,Pagurus pubescens,1
+Anarhichas lupus,Pandalus borealis,1
+Anarhichas lupus,Nephtys ciliata,1
+Anarhichas lupus,Nereimyra punctata,1
+Anarhichas lupus,Nereis zonata,1
+Anarhichas lupus,Boreogadus saida,1
+Anarhichas lupus,Gadus morhua,1
+Anarhichas lupus,Reinhardtius hipoglossoides,1
+Anarhichas lupus,Hipoglossoides platessoides,1
+Anarhichas lupus,Lycodes,1
+Anarhichas lupus,Sebastes mentella,1
+Anarhichas lupus,Liparis liparis,1
+Anarhichas lupus,Anisarchus medius,1
+Anarhichas lupus,Lumpenus lampretaeformis,1
+Anarhichas lupus,Leptagonus decagonus,1
+Gymnocanthus tricuspis,Parapleustes bicuspis,1
+Gymnocanthus tricuspis,Parapleustes monocuspis,1
+Gymnocanthus tricuspis,Paroediceros lynceus,1
+Gymnocanthus tricuspis,Pleustes panoplus,1
+Gymnocanthus tricuspis,Pleusymtes glabroides,1
+Gymnocanthus tricuspis,Pontoporeia femorata,1
+Gymnocanthus tricuspis,Rhachotropis inflata,1
+Gymnocanthus tricuspis,Spirontocaris spinus,1
+Gymnocanthus tricuspis,Spirontocaris turgida,1
+Gymnocanthus tricuspis,Stilomysis grandis,1
+Gymnocanthus tricuspis,Syrrhoe crenulata,1
+Gymnocanthus tricuspis,Nereimyra punctata,1
+Gymnocanthus tricuspis,Nereis zonata,1
+Pusa hispida,Thysanoessa raschii,1
+Pusa hispida,Thysanoessa longicaudata,1
+Pusa hispida,Thysanoessa inermis,1
+Pusa hispida,Meganyctiphanes norvegica,1
+Pusa hispida,Lebbeus polaris,1
+Pusa hispida,Pandalus borealis,1
+Pusa hispida,Mya truncata,1
+Pusa hispida,Sabinea septemcarinata,1
+Pusa hispida,Sclerocrangon boreas,1
+Pusa hispida,Boreogadus saida,1
+Pusa hispida,Reinhardtius hipoglossoides,1
+Pusa hispida,Sebastes mentella,1
+Erignathus barbatus,Mya truncata,1
+Erignathus barbatus,Nuculana minuta,1
+Erignathus barbatus,Boreogadus saida,1
+Erignathus barbatus,Reinhardtius hipoglossoides,1
+Erignathus barbatus,Sebastes mentella,1
+Phoca vitulina,Thysanoessa raschii,1
+Phoca vitulina,Thysanoessa longicaudata,1
+Phoca vitulina,Thysanoessa inermis,1
+Phoca vitulina,Meganyctiphanes norvegica,1
+Phoca vitulina,Mya truncata,1
+Phoca vitulina,Boreogadus saida,1
+Phoca vitulina,Reinhardtius hipoglossoides,1
+Phoca vitulina,Sebastes mentella,1
+Odobenus rosmarus,Macoma calcarea,1
+Odobenus rosmarus,Macoma moesta,1
+Odobenus rosmarus,Musculus corrugatus,1
+Odobenus rosmarus,Musculus discors,1
+Odobenus rosmarus,Mya truncata,1
+Odobenus rosmarus,Nuculana minuta,1
+Odobenus rosmarus,Nuculana pernula,1
+Odobenus rosmarus,Pandora glacialis,1
+Dephinapterus leucas,Boreogadus saida,1
+Dephinapterus leucas,Reinhardtius hipoglossoides,1
+Dephinapterus leucas,Sebastes mentella,1
+Balaenoptera acutorostrata,Thysanoessa raschii,1
+Balaenoptera acutorostrata,Thysanoessa longicaudata,1
+Balaenoptera acutorostrata,Thysanoessa inermis,1
+Balaenoptera acutorostrata,Meganyctiphanes norvegica,1
+Balaenoptera acutorostrata,Boreogadus saida,1
+Balaenoptera acutorostrata,Reinhardtius hipoglossoides,1
+Balaenoptera acutorostrata,Sebastes mentella,1
+Calidris maritima,Boreogadus saida,1
+Calidris maritima,Reinhardtius hipoglossoides,1
+Calidris maritima,Sebastes mentella,1
+Somateria mollissima,Fucus distichus,1
+Somateria mollissima,Pylaiella littoralis,1
+Somateria mollissima,Chordaria flagelliformis,1
+Somateria mollissima,Acrosiphonia,1
+Somateria mollissima,Alaria esculenta,1
+Somateria mollissima,Laminaria saccharina,1
+Somateria mollissima,Laminaria digitata,1
+Somateria mollissima,Saccorhiza dermatodea,1
+Somateria mollissima,Laminaria solidungula,1
+Somateria mollissima,Phycodrys rubens,1
+Somateria mollissima,Ptilta gunneri,1
+Somateria mollissima,Fimbrifolium dichotomum,1
+Somateria mollissima,Desmarestia aculeata,1
+Somateria mollissima,Palmaria palmata,1
+Somateria mollissima,Devaleraea ramentacea,1
+Somateria mollissima,Turnerella pennyi,1
+Somateria mollissima,Desmarestia viridis,1
+Somateria mollissima,Phytodetritus,1
+Somateria mollissima,Sediment,1
+Alle alle,Thysanoessa raschii,1
+Alle alle,Thysanoessa longicaudata,1
+Alle alle,Thysanoessa inermis,1
+Alle alle,Meganyctiphanes norvegica,1
+Alle alle,Boreogadus saida,1
+Cepphus grylle,Boreogadus saida,1
+Fulmarus glacialis,Lebbeus polaris,1
+Fulmarus glacialis,Pandalus borealis,1
+Fulmarus glacialis,Sabinea septemcarinata,1
+Fulmarus glacialis,Sclerocrangon boreas,1
+Fulmarus glacialis,Boreogadus saida,1
+Fulmarus glacialis,Gadus morhua,1
+Fulmarus glacialis,Reinhardtius hipoglossoides,1
+Fulmarus glacialis,Hipoglossoides platessoides,1
+Fulmarus glacialis,Lycodes,1
+Fulmarus glacialis,Sebastes mentella,1
+Fulmarus glacialis,Liparis liparis,1
+Fulmarus glacialis,Anisarchus medius,1
+Fulmarus glacialis,Lumpenus lampretaeformis,1
+Fulmarus glacialis,Leptagonus decagonus,1
+Fulmarus glacialis,Leptoclinus maculatus,1
+Fulmarus glacialis,Liparis fabricii,1
+Fulmarus glacialis,Artediellus europeus,1
+Fulmarus glacialis,Careproctus reinhardti,1
+Fulmarus glacialis,Sebastes marinus,1
+Fulmarus glacialis,Mallotus villosus,1
+Fulmarus glacialis,Eumicotremus derjugini,1
+Fulmarus glacialis,Raja clavata,1
+Fulmarus glacialis,Myoxocephalus scorpius,1
+Fulmarus glacialis,Anarhichas lupus,1
+Fulmarus glacialis,Gymnocanthus tricuspis,1
+Rissa tridactyla,Thysanoessa raschii,1
+Rissa tridactyla,Thysanoessa longicaudata,1
+Rissa tridactyla,Thysanoessa inermis,1
+Rissa tridactyla,Meganyctiphanes norvegica,1
+Rissa tridactyla,Boreogadus saida,1
+Larus hyperboreus,Lebbeus polaris,1
+Larus hyperboreus,Pandalus borealis,1
+Larus hyperboreus,Sabinea septemcarinata,1
+Larus hyperboreus,Sclerocrangon boreas,1
+Larus hyperboreus,Boreogadus saida,1
+Larus hyperboreus,Gadus morhua,1
+Larus hyperboreus,Reinhardtius hipoglossoides,1
+Larus hyperboreus,Hipoglossoides platessoides,1
+Larus hyperboreus,Lycodes,1
+Larus hyperboreus,Sebastes mentella,1
+Larus hyperboreus,Liparis liparis,1
+Larus hyperboreus,Anisarchus medius,1
+Larus hyperboreus,Lumpenus lampretaeformis,1
+Larus hyperboreus,Leptagonus decagonus,1
+Larus hyperboreus,Leptoclinus maculatus,1
+Larus hyperboreus,Liparis fabricii,1
+Larus hyperboreus,Artediellus europeus,1
+Larus hyperboreus,Careproctus reinhardti,1
+Larus hyperboreus,Sebastes marinus,1
+Larus hyperboreus,Mallotus villosus,1
+Larus hyperboreus,Eumicotremus derjugini,1
+Larus hyperboreus,Raja clavata,1
+Larus hyperboreus,Myoxocephalus scorpius,1
+Larus hyperboreus,Anarhichas lupus,1
+Larus hyperboreus,Gymnocanthus tricuspis,1
+Sterna paradisaea,Lebbeus polaris,1
+Sterna paradisaea,Pandalus borealis,1
+Sterna paradisaea,Sabinea septemcarinata,1
+Sterna paradisaea,Sclerocrangon boreas,1
+Sterna paradisaea,Boreogadus saida,1
+Sterna paradisaea,Reinhardtius hipoglossoides,1
+Sterna paradisaea,Sebastes mentella,1
+Ursus maritimus,Pusa hispida,1
+Ursus maritimus,Erignathus barbatus,1
+Ursus maritimus,Phoca vitulina,1
+Ursus maritimus,Odobenus rosmarus,1
+Ursus maritimus,Balaenoptera acutorostrata,1
