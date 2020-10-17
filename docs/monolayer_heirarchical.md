@@ -1,7 +1,7 @@
 # Monolayer directed network with hierarchical structure
 
 ### Data set
-A binary directed marine food web from [Jacob, Ute, Aaron Thierry, Ulrich Brose, Wolf E. Arntz, Sofia Berg, Thomas Brey, Ingo Fetzer, et al. 2011. “The Role of Body Size in Complex Food Webs: A Cold Case.” In Advances in Ecological Research, edited by Andrea Belgrano, 45:181–223. Academic Press.](https://www.sciencedirect.com/science/article/pii/B9780123864758000058). Kongsfjorden is a glacial fjord on the northwest corner of the Svalbard archipelago. It is a30 km open fjord with no marked sill at the entrance, and with a maximum depth exceeding 300 m. Thenetwork consists of 262 species with 1,544 feeding interactions.
+A binary directed marine food web from [Jacob, Ute, Aaron Thierry, Ulrich Brose, Wolf E. Arntz, Sofia Berg, Thomas Brey, Ingo Fetzer, et al. 2011. “The Role of Body Size in Complex Food Webs: A Cold Case.” In Advances in Ecological Research, edited by Andrea Belgrano, 45:181–223. Academic Press.](https://www.sciencedirect.com/science/article/pii/B9780123864758000058) Kongsfjorden is a glacial fjord on the northwest corner of the Svalbard archipelago. It is a30 km open fjord with no marked sill at the entrance, and with a maximum depth exceeding 300 m. Thenetwork consists of 262 species with 1,544 feeding interactions.
 Data is available [here](https://github.com/Ecological-Complexity-Lab/infomap_ecology_package/tree/master/code_from_paper)
 
 ### Input
