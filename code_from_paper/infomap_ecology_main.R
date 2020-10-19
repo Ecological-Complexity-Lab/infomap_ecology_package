@@ -101,6 +101,71 @@ visNetwork::visIgraphLayout(
 
 
 # Directed food web with hierarchical clustering --------------------------
+# change file names
+interactions <- read.csv("kongsfjorden_linklist.csv")
+nodes <- read.csv("kongsfjorden_metadata.csv")
+
+nodes <- nodes %>%
+  select(node_name=Species, node_id_original=NodeID, everything())
+
+interactions<- interactions %>%
+  select(from=consumer, to=resource) %>%
+  mutate_if(is.factor, as.character) %>%
+  mutate(weight=1)
+
+# Prepare network objects
+network_object <- create_monolayer_object(x=interactions, directed = T, bipartite = F, node_metadata = nodes)
+
+# Run infomap without hieararchy
+infomap_object <- run_infomap_monolayer(network_object, infomap_executable='Infomap',
+                                        flow_model = 'directed',
+                                        silent=T,trials=100, two_level=F, seed=123)
+
+
+# Arrange for plotting
+mods <-  infomap_object$modules
+mods <- arrange(mods, module_level1, module_level2) %>% #, module_level3, module_level4) 
+  select(node_name, module_level1,module_level2, Environment, Mobility, FeedingType) %>%
+  distinct() %>%
+  filter(module_level1 %in% c(1,2,3,4)) %>% 
+  mutate(Mobility = as.character(Mobility))
+mods$FeedingType[mods$FeedingType == "none"] <- "primary"
+
+# Plot module level 1 
+mods_lvl1_size <- mods %>% 
+  group_by(module_level1,Mobility, FeedingType) %>% 
+  summarise(n=n())
+mods_lvl1 <- mods %>% 
+  left_join(mods_lvl1_size) %>% 
+  mutate(FeedingType = as.factor(FeedingType)) %>% 
+  mutate(FeedingType = fct_relevel(FeedingType, "none", "grazer","suspension feeder", "predator/scavenger", "predator"))
+mods_lvl1 %>% 
+  ggplot()+
+  geom_point(aes(x=Mobility, y= FeedingType, size = n))+
+  facet_wrap(vars(module_level1))+
+  theme_bw()+
+  labs(x='Mobility', y='Feeding Type', size = "Number of species")
+
+
+# Plot submodule 1 of module level 1
+mods_lvl2_size <- mods %>% 
+  group_by(module_level2,Mobility, FeedingType) %>% 
+  summarise(n=n())
+mods_lvl2 <- mods %>% 
+  left_join(mods_lvl2_size) %>% 
+  filter(module_level1==1) %>% 
+  mutate(FeedingType = as.factor(FeedingType)) %>% 
+  mutate(FeedingType = fct_relevel(FeedingType, "none", "grazer","suspension feeder", "predator/scavenger", "predator"))
+mods_lvl2 %>% 
+  ggplot()+
+  geom_point(aes(x=Mobility, y= FeedingType, size = n))+
+  facet_wrap(vars(module_level2))+
+  theme_bw()+
+  labs(x='Mobility', y='Feeding Type', size = "Number of species")
+
+
+
+# Directed food web with node attributes -----------------------------------------
 # Prepare data
 data(otago_nodes)
 data(otago_links)
@@ -122,40 +187,38 @@ otago_links_2 <- otago_links %>%
 # Prepare network objects
 # Some species will have only incoming or outgoing links, so the next line will result in a warning
 network_object <- create_monolayer_object(x=otago_links_2, directed = T, bipartite = F, node_metadata = otago_nodes_2)
+# 
+# # Run infomap without hieararchy
+# infomap_object <- run_infomap_monolayer(network_object, infomap_executable='Infomap',
+#                                         flow_model = 'directed',
+#                                         silent=T,trials=100, two_level=T, seed=123)
+# 
+# infomap_object$modules %>%
+#   select(node_id, node_name, module=module_level1, OrganismalGroup, NodeType) %>% 
+#   group_by(module, OrganismalGroup) %>% summarise(n=n_distinct(node_id)) %>% drop_na() %>% 
+#   ggplot(aes(x=module, y=OrganismalGroup, size=n))+geom_point()+
+#   scale_x_continuous(breaks = 1:infomap_object$m)+
+#   theme_bw()+theme(panel.grid.minor = element_blank())
+# 
+# 
+# # Run infomap with hieararchy
+# infomap_object <- run_infomap_monolayer(network_object, infomap_executable='Infomap',
+#                                         flow_model = 'directed',
+#                                         silent=T,trials=100, two_level=F, seed=123)
+# infomap_object$modules %>%
+#   select(node_id, node_name, module=module_level1, OrganismalGroup, NodeType) %>% 
+#   group_by(module, OrganismalGroup) %>% summarise(n=n_distinct(node_id)) %>% drop_na() %>% 
+#   ggplot(aes(x=module, y=OrganismalGroup, size=n))+geom_point()+
+#   scale_x_continuous(breaks = 1:infomap_object$m)+
+#   theme_bw()+theme(panel.grid.minor = element_blank())
+# 
+# 
+# # An example to write an output
+# infomap_object$modules %>%
+#   select(node_id, node_name, module_level1, module_level2,module_level3, OrganismalGroup, NodeType) %>%
+#   arrange(module_level1, module_level2,module_level3) %>%
+#   write_delim('otago_modules.txt', delim = '|')
 
-# Run infomap without hieararchy
-infomap_object <- run_infomap_monolayer(network_object, infomap_executable='Infomap',
-                                        flow_model = 'directed',
-                                        silent=T,trials=100, two_level=T, seed=123)
-
-infomap_object$modules %>%
-  select(node_id, node_name, module=module_level1, OrganismalGroup, NodeType) %>% 
-  group_by(module, OrganismalGroup) %>% summarise(n=n_distinct(node_id)) %>% drop_na() %>% 
-  ggplot(aes(x=module, y=OrganismalGroup, size=n))+geom_point()+
-  scale_x_continuous(breaks = 1:infomap_object$m)+
-  theme_bw()+theme(panel.grid.minor = element_blank())
-
-
-# Run infomap with hieararchy
-infomap_object <- run_infomap_monolayer(network_object, infomap_executable='Infomap',
-                                        flow_model = 'directed',
-                                        silent=T,trials=100, two_level=F, seed=123)
-infomap_object$modules %>%
-  select(node_id, node_name, module=module_level1, OrganismalGroup, NodeType) %>% 
-  group_by(module, OrganismalGroup) %>% summarise(n=n_distinct(node_id)) %>% drop_na() %>% 
-  ggplot(aes(x=module, y=OrganismalGroup, size=n))+geom_point()+
-  scale_x_continuous(breaks = 1:infomap_object$m)+
-  theme_bw()+theme(panel.grid.minor = element_blank())
-
-
-# An example to write an output
-infomap_object$modules %>%
-  select(node_id, node_name, module_level1, module_level2,module_level3, OrganismalGroup, NodeType) %>%
-  arrange(module_level1, module_level2,module_level3) %>%
-  write_delim('otago_modules.txt', delim = '|')
-
-
-# Directed food web with metadata -----------------------------------------
 
 # Create an attribute -- attribute ID map
 node_attribute_map <- otago_nodes_2 %>% distinct(OrganismalGroup) %>%
