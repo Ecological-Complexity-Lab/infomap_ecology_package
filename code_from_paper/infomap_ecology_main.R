@@ -187,38 +187,6 @@ otago_links_2 <- otago_links %>%
 # Prepare network objects
 # Some species will have only incoming or outgoing links, so the next line will result in a warning
 network_object <- create_monolayer_object(x=otago_links_2, directed = T, bipartite = F, node_metadata = otago_nodes_2)
-# 
-# # Run infomap without hieararchy
-# infomap_object <- run_infomap_monolayer(network_object, infomap_executable='Infomap',
-#                                         flow_model = 'directed',
-#                                         silent=T,trials=100, two_level=T, seed=123)
-# 
-# infomap_object$modules %>%
-#   select(node_id, node_name, module=module_level1, OrganismalGroup, NodeType) %>% 
-#   group_by(module, OrganismalGroup) %>% summarise(n=n_distinct(node_id)) %>% drop_na() %>% 
-#   ggplot(aes(x=module, y=OrganismalGroup, size=n))+geom_point()+
-#   scale_x_continuous(breaks = 1:infomap_object$m)+
-#   theme_bw()+theme(panel.grid.minor = element_blank())
-# 
-# 
-# # Run infomap with hieararchy
-# infomap_object <- run_infomap_monolayer(network_object, infomap_executable='Infomap',
-#                                         flow_model = 'directed',
-#                                         silent=T,trials=100, two_level=F, seed=123)
-# infomap_object$modules %>%
-#   select(node_id, node_name, module=module_level1, OrganismalGroup, NodeType) %>% 
-#   group_by(module, OrganismalGroup) %>% summarise(n=n_distinct(node_id)) %>% drop_na() %>% 
-#   ggplot(aes(x=module, y=OrganismalGroup, size=n))+geom_point()+
-#   scale_x_continuous(breaks = 1:infomap_object$m)+
-#   theme_bw()+theme(panel.grid.minor = element_blank())
-# 
-# 
-# # An example to write an output
-# infomap_object$modules %>%
-#   select(node_id, node_name, module_level1, module_level2,module_level3, OrganismalGroup, NodeType) %>%
-#   arrange(module_level1, module_level2,module_level3) %>%
-#   write_delim('otago_modules.txt', delim = '|')
-
 
 # Create an attribute -- attribute ID map
 node_attribute_map <- otago_nodes_2 %>% distinct(OrganismalGroup) %>%
