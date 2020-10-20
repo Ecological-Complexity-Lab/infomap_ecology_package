@@ -138,7 +138,7 @@ mods_lvl1_size <- mods %>%
 mods_lvl1 <- mods %>% 
   left_join(mods_lvl1_size) %>% 
   mutate(FeedingType = as.factor(FeedingType)) %>% 
-  mutate(FeedingType = fct_relevel(FeedingType, "none", "grazer","suspension feeder", "predator/scavenger", "predator"))
+  mutate(FeedingType = fct_relevel(FeedingType, "primary", "grazer","suspension feeder", "predator/scavenger", "predator"))
 mods_lvl1 %>% 
   ggplot()+
   geom_point(aes(x=Mobility, y= FeedingType, size = n))+
@@ -155,7 +155,7 @@ mods_lvl2 <- mods %>%
   left_join(mods_lvl2_size) %>% 
   filter(module_level1==1) %>% 
   mutate(FeedingType = as.factor(FeedingType)) %>% 
-  mutate(FeedingType = fct_relevel(FeedingType, "none", "grazer","suspension feeder", "predator/scavenger", "predator"))
+  mutate(FeedingType = fct_relevel(FeedingType, "primary", "grazer","suspension feeder", "predator/scavenger", "predator"))
 mods_lvl2 %>% 
   ggplot()+
   geom_point(aes(x=Mobility, y= FeedingType, size = n))+
