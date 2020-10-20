@@ -1,5 +1,7 @@
+# Flow models
+
 ### Data set
-Weighted directed networks of pollen transfer from Tur C, Sáez A, Traveset A, Aizen MA. Evaluating the effects of pollinator-mediated interactions using pollen transfer networks: evidence of widespread facilitation in south Andean plant communities. Ecol Lett. 2016;19: 576–586.
+Weighted directed networks of pollen transfer from [Tur C, Sáez A, Traveset A, Aizen MA. Evaluating the effects of pollinator-mediated interactions using pollen transfer networks: evidence of widespread facilitation in south Andean plant communities. Ecol Lett. 2016;19: 576–586](https://onlinelibrary.wiley.com/doi/abs/10.1111/ele.12594).
 
 In infomapecology:
 ```R
@@ -7,12 +9,10 @@ data(Tur2016)
 ```
 
 ### Input
-A [link-list](https://www.mapequation.org/code.html#Link-list-format).
+A [link-list](https://www.mapequation.org/infomap/#InputLinkList).
 
 ### R Code
 ```R
-data(tur2016)
-
 tur2016_altitude <- tur2016 %>% filter(altitude==2000) %>% select(from=donor,to=receptor,weight=no.grains)
 network_object <- create_monolayer_object(tur2016_altitude, directed = T, bipartite = F)
 res_dir <- run_infomap_monolayer(network_object, infomap_executable='Infomap',
