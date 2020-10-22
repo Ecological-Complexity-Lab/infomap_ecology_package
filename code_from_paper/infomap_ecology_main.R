@@ -303,7 +303,9 @@ tur2016_altitude2000 <- tur2016 %>%
   group_by(donor, receptor) %>% 
   summarise(n=mean(total)) %>% 
   rename(from = donor, to = receptor, weight = n) %>% 
-  ungroup() %>%   slice(c(-10,-13,-28)) # Remove singletons
+  ungroup() %>%
+  slice(c(-10,-13,-28)) %>%  # Remove singletons
+  filter(from!=to) # Remove self loops
 
 network_object <- create_monolayer_object(tur2016_altitude2000, directed = T, bipartite = F)
 res_dir <- run_infomap_monolayer(network_object, infomap_executable='Infomap',
