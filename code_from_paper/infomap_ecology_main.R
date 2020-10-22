@@ -22,12 +22,16 @@ plot_modular_matrix(infomap_object)
 
 # Directed pollination network --------------------------------------------
 
-data(tur2016)
+# Import data
+tur2016 <- read.csv("Data_Tur_et_al_2016_EcolLet.txt", sep = ";")
 
 tur2016_altitude2000 <- tur2016 %>% 
   filter(altitude==2000) %>% 
-  select(from=donor,to=receptor,weight=no.grains) %>%
-  slice(c(-10,-13,-28)) # Remove singletons
+  select("donor", "receptor", "total") %>% 
+  group_by(donor, receptor) %>% 
+  summarise(n=mean(total)) %>% 
+  rename(from = donor, to = receptor, weight = n) %>% 
+  ungroup() %>%   slice(c(-10,-13,-28)) # Remove singletons
 
 network_object <- create_monolayer_object(tur2016_altitude2000, directed = T, bipartite = F)
 loops <- run_infomap_monolayer(network_object, infomap_executable='Infomap',
@@ -69,7 +73,7 @@ NMI(N)
 
 M <- max(loops$m,no_loops$m)
 color_map <- tibble(module=1:M, color=
-                    c("#11bf4b","orange","#CDC7E5","#c409e6","#c7c5c1","#11a7d1","#eae151","#ffb997","#eba800","#7b886f",'red','navy')
+                    c("#11bf4b","orange","#CDC7E5","#c409e6","#c7c5c1","#11a7d1","#eae151","#ffb997","#eba800","#7b886f",'red','navy','pink')
 )
 
 nodes_visNetwork <- 
@@ -89,7 +93,7 @@ edges_visNetwork <- loops$edge_list %>%
   left_join(network_object$nodes, by=c('to'='node_name')) %>%
   rename(rem_f=from, rem_t=to, from=node_id.x, to=node_id.y) %>% 
   select(from, to, width, -rem_f, -rem_t) %>% 
-  mutate(arrows='from', smooth=T, color='black') %>% 
+  mutate(arrows='to', smooth=T, color='black') %>% 
   filter(from %in% nodes_visNetwork$id) %>% 
   filter(to %in% nodes_visNetwork$id)
 
