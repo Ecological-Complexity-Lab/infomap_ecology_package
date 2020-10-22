@@ -587,6 +587,16 @@ plot_grid(
 )
 
 # Hypothesis testing ------------------------------------------------------
+tur2016 <- read.csv("Data_Tur_et_al_2016_EcolLet.txt", sep = ";")
+tur2016_altitude2000 <- tur2016 %>% 
+  filter(altitude==2000) %>% 
+  select("donor", "receptor", "total") %>% 
+  group_by(donor, receptor) %>% 
+  summarise(n=mean(total)) %>% 
+  rename(from = donor, to = receptor, weight = n) %>% 
+  ungroup() %>%
+  slice(c(-10,-13,-28)) %>%  # Remove singletons
+  filter(from!=to) # Remove self loops
 tur_network <- create_monolayer_object(tur2016_altitude2000, directed = T, bipartite = F)
 
 # A dedicated function to shuffle the networks, considering the flow.
@@ -634,6 +644,7 @@ tur_signif <- run_infomap_monolayer(tur_network, infomap_executable='Infomap',
 
 print(tur_signif$pvalue)
 sum(tur_signif$m_sim < res_rawdir$m)/nsim
+sum(tur_signif$m_sim > res_rawdir$m)/nsim
 
 
 plots <- plot_signif(tur_signif, plotit = F)
