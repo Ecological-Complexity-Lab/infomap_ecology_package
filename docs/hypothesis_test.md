@@ -57,8 +57,19 @@ plot_grid(
 You can also create your own shuffling algorithm and a list of shuffled link lists. As in this example.
 
 ```R
-tur2016_altitude <- tur2016 %>% filter(altitude==1800) %>% select(from=donor,to=receptor,weight=no.grains)
-tur_network <- create_monolayer_object(tur2016_altitude, directed = T, bipartite = F)
+# Import data
+tur2016 <- read.csv("Data_Tur_et_al_2016_EcolLet.txt", sep = ";")
+tur2016_altitude2000 <- tur2016 %>% 
+  filter(altitude==2000) %>% 
+  select("donor", "receptor", "total") %>% 
+  group_by(donor, receptor) %>% 
+  summarise(n=mean(total)) %>% 
+  rename(from = donor, to = receptor, weight = n) %>% 
+  ungroup() %>%
+  slice(c(-10,-13,-28)) %>%  # Remove singletons
+  filter(from!=to) # Remove self loops
+  
+tur_network <- create_monolayer_object(tur2016_altitude2000, directed = T, bipartite = F)
 
 # A dedicated function to shuffle the networks, considering the flow.
 shuffle_tur_networks <- function(x){ # x is a network object
@@ -86,7 +97,7 @@ shuffle_tur_networks <- function(x){ # x is a network object
 }
 
 # Create a list with shuffled link lists
-nsim <- 500
+nsim <- 1000
 shuffled <- NULL
 for (i in 1:nsim){
   print(i)
@@ -97,12 +108,15 @@ for (i in 1:nsim){
 
 # Use the shuffled link lists. 
 tur_signif <- run_infomap_monolayer(tur_network, infomap_executable='Infomap',
-                      flow_model = 'directed',
+                      flow_model = 'rawdir',
                       silent=T,
-                      trials=100, two_level=T, seed=200952, ...='-k --markov-time 50',
+                      trials=100, two_level=T, seed=200952,
                       signif = T, shuff_method = shuffled)
 
-print(tur_signif$pvalue)
 
-plots <- plot_signif(tur_signif, plotit = T)
+print(tur_signif$pvalue)
+sum(tur_signif$m_sim < res_rawdir$m)/nsim
+
+
+plots <- plot_signif(tur_signif, plotit = F)
 ```
