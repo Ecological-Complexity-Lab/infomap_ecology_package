@@ -52,7 +52,10 @@ inner_join(modules_loops %>% select(node_id, node_name, flow_loops=flow),
   # mutate()
   ggplot(aes(x=flow_loops, y=flow_no_loops, label=node_name))+
   geom_point(size=8, color='#48A9A6')+
-  geom_text(size=5)+
+  scale_x_continuous(breaks = seq(0,0.25,0.05), limits = c(0,0.25))+
+  scale_y_continuous(breaks = seq(0,0.25,0.05), limits = c(0,0.25))+
+  geom_abline(linetype='dashed')+
+  # geom_text(size=5)+
   labs(x='Relative flow (with self-links)', y='Relative flow (without self-links)')+
   theme_bw()+
   theme(panel.grid = element_blank(),
@@ -73,7 +76,12 @@ NMI(N)
 
 M <- max(loops$m,no_loops$m)
 color_map <- tibble(module=1:M, color=
-                    c("#11bf4b","orange","#CDC7E5","#c409e6","#c7c5c1","#11a7d1","#eae151","#ffb997","#eba800","#7b886f",'red','navy','pink')
+c("#ff8f80","#ffc374",
+  "#a3d977","#99d2f2",
+  "#b391b5","#f5b5c8",
+  "#ffeca9","#99d5ca",
+  "#c92d39","#b2b2b2",
+  '#d1bcd2','#0c7cba','orange')
 )
 
 nodes_visNetwork <- 
@@ -83,7 +91,7 @@ nodes_visNetwork <-
   left_join(color_map, by=c('module_no_loops' = 'module')) %>% 
   select(id=node_id, label=node_name, 
          color.border=color.x, 
-         color.highlight=color.y,
+         color.highlight=color.x,
          color.background = color.y) %>% 
   mutate(shape='circle', borderWidth=8)
 edges_visNetwork <- loops$edge_list %>% 
@@ -96,6 +104,8 @@ edges_visNetwork <- loops$edge_list %>%
   mutate(arrows='to', smooth=T, color='black') %>% 
   filter(from %in% nodes_visNetwork$id) %>% 
   filter(to %in% nodes_visNetwork$id)
+
+nodes_visNetwork$label <- ''
 
 # The function parts allows to drag and order manually 
 visNetwork::visIgraphLayout(
@@ -286,12 +296,14 @@ cowplot::plot_grid(
 dev.off()
 
 # Compare flow models --------------------------------------------
-data(tur2016)
-
+tur2016 <- read.csv("Data_Tur_et_al_2016_EcolLet.txt", sep = ";")
 tur2016_altitude2000 <- tur2016 %>% 
   filter(altitude==2000) %>% 
-  select(from=donor,to=receptor,weight=no.grains) %>% 
-  filter(from!=to)
+  select("donor", "receptor", "total") %>% 
+  group_by(donor, receptor) %>% 
+  summarise(n=mean(total)) %>% 
+  rename(from = donor, to = receptor, weight = n) %>% 
+  ungroup() %>%   slice(c(-10,-13,-28)) # Remove singletons
 
 network_object <- create_monolayer_object(tur2016_altitude2000, directed = T, bipartite = F)
 res_dir <- run_infomap_monolayer(network_object, infomap_executable='Infomap',
@@ -332,9 +344,13 @@ dev.off()
 
 
 M <- max(res_dir$m,res_rawdir$m)
-color_map_dir <- tibble(module=1:M, color=c('#1f4dcc','#00aedb','#f37735','#ffc425','#9f76c9'))
-color_map_rawdir <- tibble(module=1:M, color=c("#ACB3C3","#f45b69","#db93b0","#f7bfb4","#23967f"))
-
+color_map_dir <- tibble(module=1:M, color=c("#ff8f80","#ffc374",
+                                            "#a3d977","#99d2f2",
+                                            "#b391b5","#f5b5c8",
+                                            "#ffeca9"))
+color_map_rawdir <- tibble(module=1:M, color=c("#99d5ca",
+                                               "#c92d39","#b2b2b2",
+                                               '#d1bcd2','#0c7cba','orange',"#23967f"))
 nodes_visNetwork <- 
   left_join(res_dir_modules %>% select(node_id, node_name, module_directed=module_level1),
             res_rawdir_modules %>% select(node_id, node_name, module_rawdir=module_level1)) %>% 
@@ -353,9 +369,11 @@ edges_visNetwork <- res_dir$edge_list %>%
   left_join(network_object$nodes, by=c('to'='node_name')) %>%
   rename(rem_f=from, rem_t=to, from=node_id.x, to=node_id.y) %>% 
   select(from, to, width, -rem_f, -rem_t) %>% 
-  mutate(arrows='from', smooth=T, color='black') %>% 
+  mutate(arrows='to', smooth=T, color='black') %>% 
   filter(from %in% nodes_visNetwork$id) %>% 
   filter(to %in% nodes_visNetwork$id)
+
+nodes_visNetwork$label <- ''
 
 # The function parts allows to drag and order manually 
 visNetwork::visIgraphLayout(
