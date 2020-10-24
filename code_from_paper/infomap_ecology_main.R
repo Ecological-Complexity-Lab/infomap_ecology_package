@@ -78,11 +78,38 @@ M <- max(loops$m,no_loops$m)
 color_map <- tibble(module=1:M, color=
 c("#ff8f80","#ffc374",
   "#a3d977","#99d2f2",
-  "#b391b5","#f5b5c8",
+  "#ffeca9","#f5b5c8",
   "#ffeca9","#99d5ca",
   "#c92d39","#b2b2b2",
   '#d1bcd2','#0c7cba','orange')
 )
+# igraph oblject of the network
+g_loops <- graph.data.frame(loops$edge_list, directed = T, 
+                            vertices = modules_loops %>% 
+                              select(node_name, node_id, module_id=module_level1) %>% 
+                              left_join(color_map, by=c('module_id' = 'module')))
+l <-layout_nicely(g_loops)
+
+svg('/Users/shai/Dropbox (BGU)/Apps/Overleaf/A dynamical perspective on community detection in ecological networks/figures/Tur_loops_network.svg',8,8)
+plot(g_loops, vertex.color=V(g_loops)$color,
+     vertex.label=NA, edge.width=log(E(g_loops)$weight+1), edge.color='black', 
+     layout=l)
+dev.off()
+# Use the same layout to plot the same network with no loops
+g_no_loops <- graph.data.frame(loops$edge_list %>% filter(from!=to), directed = T, 
+                            vertices = modules_no_loops %>% 
+                              select(node_name, node_id, module_id=module_level1) %>% 
+                              left_join(color_map, by=c('module_id' = 'module')))
+svg('/Users/shai/Dropbox (BGU)/Apps/Overleaf/A dynamical perspective on community detection in ecological networks/figures/Tur_no_loops_network.svg',8,8)
+plot(g_no_loops, vertex.color=V(g_no_loops)$color,
+     vertex.label=NA, edge.width=log(E(g_no_loops)$weight+1), edge.color='black', 
+     layout=l)
+dev.off()
+
+
+
+
+
 
 nodes_visNetwork <- 
   left_join(modules_loops %>% select(node_id, node_name, module_loops=module_level1),
