@@ -487,30 +487,44 @@ for (r in seq(0.001,1, by = 0.0999)){
   print(r)
   modules_relax_rate <- run_infomap_multilayer(NEE2017, relax = T, silent = T, trials = 50, seed = 497294, multilayer_relax_rate = r, multilayer_relax_limit_up = 1, multilayer_relax_limit_down = 0, temporal_network = T)
   modules_relax_rate$modules$relax_rate <- r
+  modules_relax_rate$modules$L <- modules_relax_rate$L
   relaxrate_modules <- rbind(relaxrate_modules, modules_relax_rate$modules)
 }
 
 #plots
-#1. Number of modules
-fig3 <- relaxrate_modules %>%
-  group_by(relax_rate, module) %>%
-  summarise()%>%
-  mutate(n_modules=length(relax_rate)) %>%
-  group_by(relax_rate, n_modules) %>%
-  summarise() %>%
-  ggplot() +
-  geom_line(aes(x = relax_rate, y=n_modules)) +
-  geom_point(aes(x = relax_rate, y=n_modules))+
-  scale_y_continuous(breaks=1:18, labels = 1:18, limits = c(1,18))+
+# Number of modules
+panel_a <- relaxrate_modules %>%
+  group_by(relax_rate) %>%
+  summarise(n_modules=n_distinct(module)) %>%
+  ggplot(aes(x = relax_rate, y=n_modules)) +
+  geom_line() +
+  geom_point()+
+  scale_y_continuous(breaks=seq(1,18,3), limits = c(1,18))+
   scale_x_continuous(breaks=seq(0,1,0.2))+
   theme_bw()+
   theme(panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
-        axis.title = element_text(size=15),
-        axis.text = element_text(size = 15))+
+        axis.title = element_text(size=8),
+        axis.text = element_text(size = 8))+
   labs(x='Relax rate', y='Number of modules')
 
-#2. Module presistence
+# L
+panel_b <- relaxrate_modules %>%
+  group_by(relax_rate) %>%
+  ggplot(aes(x = relax_rate, y=L)) +
+  geom_line() +
+  geom_point()+
+  # scale_y_continuous(breaks=1:18, labels = 1:18, limits = c(1,18))+
+  scale_x_continuous(breaks=seq(0,1,0.2))+
+  scale_y_continuous(breaks = seq(4.5,4.9,0.1), limits=c(4.5,4.9))+
+  theme_bw()+
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        axis.title = element_text(size=8),
+        axis.text = element_text(size = 8))+
+  labs(x='Relax rate', y='L(M)')
+
+# Module presistence
 presistence <- relaxrate_modules %>%
   group_by(relax_rate, module, layer_id) %>%
   summarise(n_species=n()) %>%
@@ -522,7 +536,7 @@ avarage_presistance <- presistence %>%
   mutate(avarage=mean(n_layers)) %>%
   group_by(relax_rate, avarage) %>%
   summarise()
-fig4 <- ggplot()+
+panel_c <- ggplot()+
   geom_boxplot(data =  presistence, aes(x=relax_rate, y=n_layers, group=relax_rate),width = 1.1)+
   geom_line(data =  avarage_presistance, aes(x=relax_rate, y=avarage, color="red"))+
   geom_point(data =  avarage_presistance, aes(x=relax_rate, y=avarage, color="red"))+
@@ -531,13 +545,13 @@ fig4 <- ggplot()+
   theme_bw()+
   theme(panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
-        axis.title = element_text(size=15),
-        axis.text = element_text(size = 15),
+        axis.title = element_text(size=8),
+        axis.text = element_text(size = 8),
         legend.position = 'none')+
   labs(x='Relax rate', y='Module persistence (# of layers)')
 
-#3. Species flexibility
-fig5 <- relaxrate_modules %>%
+# Species flexibility
+panel_d <- relaxrate_modules %>%
   group_by(relax_rate, species) %>%
   distinct(module) %>%
   summarise(n_modules=n()) %>%
@@ -545,26 +559,26 @@ fig5 <- relaxrate_modules %>%
   summarise(num_species=n())%>%
   mutate(precent=(num_species/78)*100) %>%
   ggplot()+
-  geom_col(aes(x=relax_rate, y=precent, fill=n_modules))+
+  geom_col(aes(x=relax_rate, y=precent, fill=as.factor(n_modules)))+
   scale_x_continuous(breaks=seq(0,1,0.2))+
   scale_y_continuous(labels = function(x) paste0(x, "%"))+
-  scale_fill_viridis_c()+
+  scale_fill_viridis_d()+
   theme_bw()+
   theme(panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
-        axis.title = element_text(size=15),
-        axis.text = element_text(size = 15),
-        legend.text =  element_text(size=10),
-        legend.title = element_text(size=15))+
+        axis.title = element_text(size=8),
+        axis.text = element_text(size = 8),
+        # legend.text =  element_text(size=6),
+        legend.title = element_text(size=8))+
   labs(x='Relax rate', y='Percent of all species', fill="Number\n of modules")
 
 
-relaxrate_grid <- cowplot::plot_grid(fig3, fig4, fig5, ncol = 3,
-                                     rel_widths = c(2,2,3),
-                                     labels = c('(a)','(b)','(c)'),
-                                     label_size = 20,
-                                     scale=0.95)
-pdf('/Users/shai/Dropbox (BGU)/Apps/Overleaf/A dynamical perspective on community detection in ecological networks/figures/relaxrate_grid_new.pdf',14,7)
+relaxrate_grid <- cowplot::plot_grid(panel_a, panel_b, panel_c, panel_d, ncol = 2,
+                                     rel_widths = c(1,1,0.3,0.7),
+                                     labels = c('(a)','(b)','(c)','(d)'),
+                                     label_size = 8,
+                                     scale=0.9)
+pdf('/Users/shai/Dropbox (BGU)/Apps/Overleaf/A dynamical perspective on community detection in ecological networks/MEE_Final/Fig_5_new.pdf',7.09, 3.5)
 relaxrate_grid
 dev.off()
 
