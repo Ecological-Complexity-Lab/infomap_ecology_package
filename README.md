@@ -7,7 +7,7 @@ suitable for other areas of research as well. The package also includes several 
 
 ## Citation
 The paper accompanying this repository is:
-[Farage, C., D. Edler, A. Eklöf, M. Rosvall, and S. Pilosof. 2020. Identifying flow modules in ecological networks using Infomap. Methods in Ecology and Evolution
+Farage, C., D. Edler, A. Eklöf, M. Rosvall, and S. Pilosof. 2021. Identifying flow modules in ecological networks using Infomap. Methods in Ecology and Evolution
 
 ## Full documentation
 Complete instructions for installation and many examples are in the [Wiki of this repository](https://github.com/Ecological-Complexity-Lab/infomap_ecology_package/wiki).
