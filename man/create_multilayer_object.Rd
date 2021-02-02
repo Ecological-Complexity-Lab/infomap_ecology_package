@@ -18,13 +18,13 @@ create_multilayer_object(
 \item{extended}{An extended edge list input of the format \code{layer_from
 node_from layer_to node_to weight}, that contains all intralayer, and
 (optionally) interlayer edges. If supplied, then \code{intra} and
-\code{inter} are ignored. Should only contain node and layer IDs.}
+\code{inter} are ignored. Nodes and layers should be specified by IDs, not names.}
 
 \item{intra}{An edge list of the format \code{layer node_from node_to
-weight}. Should only contain node and layer IDs.}
+weight}. Nodes and layers should be specified by IDs, not names.}
 
 \item{inter}{An edge list of the format \code{layer_from node_from layer_to
-node_to weight}. Should only contain node and layer IDs. Defaults to NULL,
+node_to weight}. Nodes and layers should be specified by IDs, not names. Defaults to NULL,
 assuming the network does not have interlayer edges.}
 
 \item{nodes}{A data frame with node metadata. First column must be node_id

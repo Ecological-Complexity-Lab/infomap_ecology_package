@@ -7,11 +7,11 @@
 #' @param extended An extended edge list input of the format \code{layer_from
 #'   node_from layer_to node_to weight}, that contains all intralayer, and
 #'   (optionally) interlayer edges. If supplied, then \code{intra} and
-#'   \code{inter} are ignored. Should only contain node and layer IDs.
+#'   \code{inter} are ignored. Nodes and layers should be specified by IDs, not names.
 #' @param intra An edge list of the format \code{layer node_from node_to
-#'   weight}. Should only contain node and layer IDs.
+#'   weight}. Nodes and layers should be specified by IDs, not names.
 #' @param inter An edge list of the format \code{layer_from node_from layer_to
-#'   node_to weight}. Should only contain node and layer IDs. Defaults to NULL,
+#'   node_to weight}. Nodes and layers should be specified by IDs, not names. Defaults to NULL,
 #'   assuming the network does not have interlayer edges.
 #' @param nodes A data frame with node metadata. First column must be node_id
 #'   with IDs corresponding to those in \code{extended}, \code{intra} or
@@ -76,8 +76,9 @@ create_multilayer_object <- function(extended=NULL, intra=NULL, inter=NULL, node
   }
   if(names(nodes)[1]!='node_id') {stop('First column in nodes must be named layer_id')}
   
-  
   if (!is.null(extended)){
+    if(names(extended)[5]!='weight') {stop('5th column should be "weight"')}
+    
     intra <- extended %>% filter(layer_from==layer_to)
     inter <- extended %>% filter(layer_from!=layer_to)
     # If there are no interlayer edges
@@ -88,6 +89,9 @@ create_multilayer_object <- function(extended=NULL, intra=NULL, inter=NULL, node
     if (!is.null(inter) && inter_output_extended==F){inter %<>% select(layer_from, node=node_from, layer_to, weight)}
 
   } else {
+    if (!is.null(intra)){if(names(intra)[4]!='weight') {stop('4th column in Intralayer edge list should be weight')}}
+    if (!is.null(inter)){if(names(intra)[4]!='weight') {stop('4th column in Interlayer edge list should be weight')}}
+    
     # for extended output of intralayer edges
     if (intra_output_extended) {intra %<>% select(layer_from=layer, node_from, layer_to=layer, node_to, weight)}
     if (!is.null(inter) && inter_output_extended==F){inter %<>% select(layer_from, node=node_from, layer_to, weight)}
