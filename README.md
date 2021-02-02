@@ -7,7 +7,7 @@ suitable for other areas of research as well. The package also includes several 
 
 ## Citation
 The paper accompanying this repository is:
-[Farage, C., D. Edler, A. Eklöf, M. Rosvall, and S. Pilosof. 2020. A dynamical perspective to community detection in ecological networks. Biorxiv. DOI: 10.1101/2020.04.14.040519](https://www.biorxiv.org/content/10.1101/2020.04.14.040519v1)
+[Farage, C., D. Edler, A. Eklöf, M. Rosvall, and S. Pilosof. 2020. Identifying flow modules in ecological networks using Infomap. Biorxiv. DOI: 10.1101/2020.04.14.040519](https://www.biorxiv.org/content/10.1101/2020.04.14.040519v2)
 
 ## Full documentation
 Complete instructions for installation and many examples are in the [Wiki of this repository](https://github.com/Ecological-Complexity-Lab/infomap_ecology_package/wiki).
