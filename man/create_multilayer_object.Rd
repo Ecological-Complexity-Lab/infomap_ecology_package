@@ -31,9 +31,9 @@ assuming the network does not have interlayer edges.}
 with IDs corresponding to those in \code{extended}, \code{intra} or
 \code{inter}.}
 
-\item{intra_output_extended}{Defaults to \code{TRUE}, see details.}
+\item{intra_output_extended}{Defaults to \code{TRUE}. Should the intralayer edges be written in the extended edge list format.}
 
-\item{inter_output_extended}{Defaults to \code{TRUE}, see details.}
+\item{inter_output_extended}{Defaults to \code{TRUE}. Should the intralayer edges be written in the extended edge list format.}
 
 \item{layers}{A data frame with layer metadata. First column must be layer_id
 with IDs corresponding to those in \code{extended}, \code{intra} or

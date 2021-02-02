@@ -14,8 +14,8 @@ run_infomap_multilayer(
   relax = F,
   multilayer_relax_rate = 0.1,
   multilayer_relax_limit = NULL,
-  multilayer_relax_limit_up = 1,
-  multilayer_relax_limit_down = 0,
+  multilayer_relax_limit_up = NULL,
+  multilayer_relax_limit_down = NULL,
   temporal_network = F,
   ...
 )
@@ -23,29 +23,38 @@ run_infomap_multilayer(
 \arguments{
 \item{M}{An object of class \code{multilayer}.}
 
-\item{infomap_executable}{Name of Infomap standalone file (default is Infomap).}
+\item{infomap_executable}{Name of Infomap standalone file (default is
+Infomap).}
 
-\item{flow_model}{See details in \href{https://www.mapequation.org/infomap/#ParamsAlgorithm}{https://www.mapequation.org/infomap/#ParamsAlgorithm}.}
+\item{flow_model}{See details in
+\href{https://www.mapequation.org/infomap/#ParamsAlgorithm}{https://www.mapequation.org/infomap/#ParamsAlgorithm}.}
 
 \item{silent}{Run in silent mode (argumnt --silent in Infomap).}
 
 \item{trials}{Number of trials to run (argumnt -N in Infomap).}
 
-\item{seed}{Seed value for random number generation (argumnt --seed in Infomap).}
+\item{seed}{Seed value for random number generation (argumnt --seed in
+Infomap).}
 
-\item{relax}{Should dynamics of movement between layers be fully encoded by interlayer edges, or should they be relaxed. See details.}
+\item{relax}{Should dynamics of movement between layers be fully encoded by
+interlayer edges, or should they be relaxed. See details.}
 
 \item{temporal_network}{Is this a temporal network? See details.}
 
-\item{...}{additional Infomap arguments as detailed in \href{https://www.mapequation.org/infomap/#Parameters}{https://www.mapequation.org/infomap/#Parameters}}
+\item{...}{additional Infomap arguments as detailed in
+\href{https://www.mapequation.org/infomap/#Parameters}{https://www.mapequation.org/infomap/#Parameters}}
 
-\item{multilayer-relax-rate}{Probability to relax the constraint to move only in the current layer.}
+\item{multilayer-relax-rate}{Probability to relax the constraint to move only
+in the current layer.}
 
-\item{multilayer-relax-limit}{Number of neighboring layers in each direction to relax to. If negative, relax to any layer.}
+\item{multilayer-relax-limit}{Number of neighboring layers in each direction
+to relax to. If negative, relax to any layer.}
 
-\item{multilayer-relax-limit-up}{Number of neighboring layers with higher id to relax to. If negative, relax to any layer. Useful for temporal networks.}
+\item{multilayer-relax-limit-up}{Number of neighboring layers with higher id
+to relax to. If negative, relax to any layer. Useful for temporal networks.}
 
-\item{multilayer-relax-limit-down}{Number of neighboring layers with lower id to relax to. If negative, relax to any layer. Useful for temporal networks.}
+\item{multilayer-relax-limit-down}{Number of neighboring layers with lower id
+to relax to. If negative, relax to any layer. Useful for temporal networks.}
 }
 \value{
 An object of class \code{infomap_multilayer}
@@ -59,22 +68,29 @@ that includes additional node metadata (if exists).
 Currently only works with two-level solutions (no modules within
   modules).
 
-  When relax_mode=F, Infomap uses an input format that gives full
-  control of the dynamics, explicitly using interlayer edges, and no other
-  movements are encoded. This uses the extended edge list format. However, it
-  is often useful to consider a dynamics in which a random walker moves
-  within a layer and with a given relax rate jumps to another layer without
-  recording this movement, such that the constraints from moving in different
-  layers can be gradually relaxed. This is obtained with a different input
-  format that explicitly divides the links into intra-layer and inter-layer
-  links. Relaxing between layers can also be done when interlayer edges do
-  not exist, effectively immitating interlayer edges. Relaxing requires specification of relax rates and limits. When
-  these (or actually any other argument) are not specified, Infomap uses defaults as
-  detailed
+  When relax=F, Infomap uses an input format that gives full control of the
+  dynamics, explicitly using interlayer edges, and no other movements are
+  encoded. This uses the extended edge list format and you have to specify
+  all intra-layer and inter-layer links explicitly.
+
+  However, it is often useful to consider a dynamics in which a random walker
+  moves within a layer and with a given relax rate jumps to another layer
+  without recording this movement, such that the constraints from moving in
+  different layers can be gradually relaxed. This is obtained with a
+  different input format that explicitly divides the links into intra-layer
+  and inter-layer links. To use relaxation, you only specify intralayer edges
+  (use `intra_output_extended=F` in `create_multilayer_object`) and the links
+  between layers are generated automatically by inter-layer relaxation
+  (parameter `multilayer-relax-rate`). Relaxing between layers can also be
+  constraied by interlayer links. For this, include interlayer links and set
+  `inter_output_extended=F` in `create_multilayer_object`. Relaxing requires
+  specification of relax rates and limits. When these are not specified,
+  Infomap uses defaults as detailed
   \href{https://www.mapequation.org/infomap/#Parameters}{here}.
 
   If the multilayer is a temporal network, modules can be renamed to be
-  placed in temporal order of appearance. This is done with \code{temporal_network=T}.
+  placed in temporal order of appearance. This is done with
+  \code{temporal_network=T}.
 }
 \examples{
 #' data("siberia1982_7_links") # Links are an extended edge list
@@ -87,15 +103,15 @@ emln <- create_multilayer_object(extended = siberia1982_7_links,
  intra_output_extended = T,
  inter_output_extended = T,
  layers=layers)
- 
+
  # Run modularity for a temporal network with provided interlayer edges (no relax rate)
  emln_modularity <- run_infomap_multilayer(M=emln, relax = F, flow_model = 'directed', silent = T, trials = 100, seed = 497294, temporal_network = T)
- 
+
  # Assume that interlayer edges are not provided and run modularity with relax rate. Limit relaxation to the next layer only.
  emln$inter <- NULL
  emln_modularity_r <- run_infomap_multilayer(emln, relax = T, silent = T, trials = 50, seed = 497294, multilayer_relax_rate = 0.15, multilayer_relax_limit_up = 1, multilayer_relax_limit_down = 0, temporal_network = T)
 
- 
+
 }
 \seealso{
 \code{create_multilayer_object, multilayer, infomap_multilayer}

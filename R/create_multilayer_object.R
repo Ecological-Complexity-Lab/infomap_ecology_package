@@ -19,8 +19,8 @@
 #' @param layers A data frame with layer metadata. First column must be layer_id
 #'   with IDs corresponding to those in \code{extended}, \code{intra} or
 #'   \code{inter}.
-#' @param intra_output_extended Defaults to \code{TRUE}, see details.
-#' @param inter_output_extended Defaults to \code{TRUE}, see details.
+#' @param intra_output_extended Defaults to \code{TRUE}. Should the intralayer edges be written in the extended edge list format.
+#' @param inter_output_extended Defaults to \code{TRUE}. Should the intralayer edges be written in the extended edge list format.
 #'
 #' @details \code{extended, intra, inter} must only contain node IDs. Any
 #'   details on nodes and layers that link to these IDs should be provided in
