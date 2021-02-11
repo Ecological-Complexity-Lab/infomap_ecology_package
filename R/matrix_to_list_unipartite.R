@@ -16,7 +16,7 @@
 #' x <- matrix(rbinom(100,1,0.6),10,10)
 #' x <- x*round(runif(100,1,5),0)
 #' # run
-#' matrix_to_list_unipartite(x, directed = T)
+#' matrix_to_list_unipartite(x, directed = TRUE)
 #' 
 #' @export
 ## @import dplyr

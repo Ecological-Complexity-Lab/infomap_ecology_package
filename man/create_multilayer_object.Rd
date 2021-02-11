@@ -73,15 +73,15 @@ layers <- tibble(layer_id=1:6, year=1982:1987)
 # Create a multilayer object with an extended list.
 emln <- create_multilayer_object(extended = siberia1982_7_links,
  nodes = siberia1982_7_nodes,
- intra_output_extended = T,
- inter_output_extended = T,
+ intra_output_extended = TRUE,
+ inter_output_extended = TRUE,
  layers=layers)
 
 # Create a multilayer object with a non-extended Intra/Inter type link list.
 emln <- create_multilayer_object(extended = siberia1982_7_links,
  nodes = siberia1982_7_nodes,
- intra_output_extended = F,
- inter_output_extended = F,
+ intra_output_extended = FALSE,
+ inter_output_extended = FALSE,
  layers=layers)
 
 # If one wants to ignore interlayer edges

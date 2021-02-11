@@ -23,12 +23,15 @@
 #'
 #' @examples
 #' # A bipartite network from package bipartte
-#' x <- create_monolayer_object(bipartite::memmott1999, bipartite = T, directed = F, group_names = c('Animals','Plants'))
+#' x <- create_monolayer_object(bipartite::memmott1999, bipartite = TRUE, 
+#' directed = FALSE, group_names = c('Animals','Plants'))
 #' 
 #' # A bipartite network as an igraph object
-#' g <- igraph::sample_bipartite(10,16,p=0.3, type = 'gnp', directed = T, mode = 'in') # Generate a random bipartite network in igraph
+#' 
+#' # Generate a random bipartite network in igraph
+#' g <- igraph::sample_bipartite(10,16,p=0.3, type = 'gnp', directed = TRUE, mode = 'in') 
 #' V(g)$name <- letters # name the nodes
-#' V(g)$gender <- sample(c('F','M'), size = 26, replace = T) # Add a node attribute
+#' V(g)$gender <- sample(c('F','M'), size = 26, replace = TRUE) # Add a node attribute
 #' E(g)$weight=runif(ecount(g)) # Add edge weights
 #' plot(g, layout=layout.bipartite)
 #' create_monolayer_object(g, group_names = c('Parasites','Hosts'))

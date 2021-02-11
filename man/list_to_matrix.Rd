@@ -57,7 +57,8 @@ filter(LinkType=='Predation') \%>\%
   select(from=node_name.x, to=node_name.y) \%>\%
  mutate(weight=1)
  
-list_to_matrix(otago_links_2, directed = T, bipartite = F, node_metadata = otago_nodes_2)
+list_to_matrix(otago_links_2, directed = TRUE,
+ bipartite = FALSE, node_metadata = otago_nodes_2)
 
 }
 \seealso{

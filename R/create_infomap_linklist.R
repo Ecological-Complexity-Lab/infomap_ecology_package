@@ -19,8 +19,11 @@
 #' \code{infomap_link_list}
 #' 
 #' @examples 
-#' network_object <- create_monolayer_object(bipartite::memmott1999, bipartite = TRUE, directed = F, group_names = c('A','P'))
-#' x <- create_infomap_linklist(network_object, make_directed = F, write_to_file = TRUE, output_file = 'mylist.txt')
+#' network_object <- create_monolayer_object(bipartite::memmott1999,
+#'  bipartite = TRUE, directed = FALSE, group_names = c('A','P'))
+#'  
+#' x <- create_infomap_linklist(network_object, make_directed = FALSE, 
+#' write_to_file = TRUE, output_file = 'mylist.txt')
 #'
 #' @export
 #' 

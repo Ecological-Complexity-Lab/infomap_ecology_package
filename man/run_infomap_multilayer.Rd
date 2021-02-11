@@ -100,19 +100,26 @@ layers <- tibble(layer_id=1:6, year=1982:1987) # Information on layers
 # Create a multilayer object with an extended list.
 emln <- create_multilayer_object(extended = siberia1982_7_links,
  nodes = siberia1982_7_nodes,
- intra_output_extended = T,
- inter_output_extended = T,
+ intra_output_extended = TRUE,
+ inter_output_extended = TRUE,
  layers=layers)
 
- # Run modularity for a temporal network with provided interlayer edges (no relax rate)
- emln_modularity <- run_infomap_multilayer(M=emln, relax = F,
- flow_model = 'directed', silent = T,
+ # Run modularity for a temporal network with provided interlayer 
+ # edges (no relax rate)
+ emln_modularity <- run_infomap_multilayer(M=emln, relax = FALSE,
+ flow_model = 'directed', silent = TRUE,
  trials = 100, seed = 497294,
- temporal_network = T)
+ temporal_network = TRUE)
 
- # Assume that interlayer edges are not provided and run modularity with relax rate. Limit relaxation to the next layer only.
+ # Assume that interlayer edges are not provided and run modularity with relax rate.
+ # Limit relaxation to the next layer only.
  emln$inter <- NULL
- emln_modularity_r <- run_infomap_multilayer(emln, relax = T, silent = T, trials = 50, seed = 497294, multilayer_relax_rate = 0.15, multilayer_relax_limit_up = 1, multilayer_relax_limit_down = 0, temporal_network = T)
+ emln_modularity_r <- run_infomap_multilayer(emln, relax = T, silent = TRUE, 
+ trials = 50, seed = 497294,
+ multilayer_relax_rate = 0.15,
+ multilayer_relax_limit_up = 1,
+ multilayer_relax_limit_down = 0, 
+ temporal_network = T)
 
 
   

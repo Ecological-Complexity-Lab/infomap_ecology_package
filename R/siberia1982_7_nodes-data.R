@@ -40,5 +40,6 @@
 #' @examples
 #' data(siberia1982_7_links)
 #' data(siberia1982_7_nodes)
-#' create_multilayer_object(extended = siberia1982_7_links, nodes = siberia1982_7_nodes, intra_output_extended = T, inter_output_extended = T)
+#' create_multilayer_object(extended = siberia1982_7_links, nodes = siberia1982_7_nodes,
+#'  intra_output_extended = TRUE, inter_output_extended = TRUE)
 "siberia1982_7_nodes"

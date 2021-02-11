@@ -22,14 +22,18 @@ Use ggplot and ggalluvial to plot an alluvial plot that shows the flow of nodes 
   a ggplot object it can be further manipulated with standard ggplot2.
 }
 \examples{
-emln <- create_multilayer_object(extended = siberia1982_7_links, nodes = siberia1982_7_nodes, intra_output_extended = T, inter_output_extended = T)
-emln_modules <- run_infomap_multilayer(M=emln, relax = F, flow_model = 'directed', silent = T, trials = 100, seed = 497294, temporal_network = T)
+emln <- create_multilayer_object(extended = siberia1982_7_links,
+ nodes = siberia1982_7_nodes, intra_output_extended = TRUE, inter_output_extended = TRUE)
+ 
+emln_modules <- run_infomap_multilayer(M=emln, relax = FALSE, 
+flow_model = 'directed', silent = TRUE, trials = 100, seed = 497294,
+ temporal_network = TRUE)
 
 # Plot alluvial diagram
-plot_multilayer_alluvial(emln_modules, module_labels = F)
+plot_multilayer_alluvial(emln_modules, module_labels = FALSE)
 
 # Can also modify the plot
-plot_multilayer_alluvial(emln_modules, module_labels = F)+
+plot_multilayer_alluvial(emln_modules, module_labels = FALSE)+
    geom_stratum(linetype='dashed', color='gray')+
    scale_x_continuous(breaks=seq(0,6,1))+
    scale_y_continuous(breaks=seq(0,70,5))+

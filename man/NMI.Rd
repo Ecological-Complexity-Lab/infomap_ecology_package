@@ -20,11 +20,15 @@ useful for comparing between two partition structures of a network.
 \details{
 If the partitions are exactly the same then all the nodes that
   appear in a given module in the first network will also appear in the same
-  module in the second network. In this case, the confusion matrix will have all the
-  values on the diagonal, and NMI=1.
+  module in the second network. In this case, the confusion matrix will have
+  all the values on the diagonal, and NMI=1.
 }
 \examples{
-# Generate a confusion martrix for a network with 50 modules. Partition A has 6 modules (rows), partition B has 5 (columns). Each cell in N indicates the number of nodes that were assigned together to a module in A and B. For example, 5 nodes were assigned to module 2 in partition A and to module 1 in partition B.
+# Generate a confusion martrix for a network with 50 modules. 
+# Partition A has 6 modules (rows), partition B has 5 (columns).
+# Each cell in N indicates the number of nodes that were assigned
+# together to a module in A and B. For example, 5 nodes were assigned 
+# to module 2 in partition A and to module 1 in partition B.
 N <- matrix(0,6,5)
 diag(N[-1,])<-c(5,2,6,5,5)
 diag(N) <- c(4,4,6,5,5)

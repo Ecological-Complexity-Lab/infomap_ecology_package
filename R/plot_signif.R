@@ -18,15 +18,16 @@
 #'
 #'
 #' @examples
-#' network_object <- create_monolayer_object(bipartite::memmott1999, bipartite = T, directed = F, group_names = c('Animals','Plants'))
+#' network_object <- create_monolayer_object(bipartite::memmott1999, 
+#' bipartite = TRUE, directed = FALSE, group_names = c('Animals','Plants'))
 #' infomap_object <- run_infomap_monolayer(network_object, 
 #'       infomap_executable='Infomap',
 #'       flow_model = 'undirected',
-#'       silent=T, trials=20, two_level=T, seed=123, 
-#'       signif = T, shuff_method = 'r00', nsim = 50)
+#'       silent=TRUE, trials=20, two_level=TRUE, seed=123, 
+#'       signif = TRUE, shuff_method = 'r00', nsim = 50)
 #' 
 #' #get plots and plot them
-#' x <- plot_signif(infomap_object, plotit = T)
+#' x <- plot_signif(infomap_object, plotit = TRUE)
 #' 
 #' # Can modify the plots with ggplot2
 #' x$L_plot+

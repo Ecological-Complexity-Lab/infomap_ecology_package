@@ -31,22 +31,26 @@ Type \code{circle} plots a circle per module-layer combination, with the radius 
   ggplot2.
 }
 \examples{
-emln <- create_multilayer_object(extended = siberia1982_7_links, nodes = siberia1982_7_nodes, intra_output_extended = T, inter_output_extended = T)
-emln_modules <- run_infomap_multilayer(M=emln, relax = F, flow_model = 'directed', silent = T, trials = 100, seed = 497294, temporal_network = T)
+emln <- create_multilayer_object(extended = siberia1982_7_links,
+ nodes = siberia1982_7_nodes, intra_output_extended = TRUE, inter_output_extended = TRUE)
+ 
+emln_modules <- run_infomap_multilayer(M=emln, relax = FALSE, 
+flow_model = 'directed', silent = TRUE, trials = 100, seed = 497294, 
+temporal_network = TRUE)
 
-plot_multilayer_modules(emln_modules, type = 'rectangle', color_modules = T)+
+plot_multilayer_modules(emln_modules, type = 'rectangle', color_modules = TRUE)+
  scale_fill_viridis_c()
-plot_multilayer_modules(emln_modules, type = 'rectangle', color_modules = F)+
+plot_multilayer_modules(emln_modules, type = 'rectangle', color_modules = FALSE)+
  geom_rect(fill='orange')
 
 # Circle-type plot
-plot_multilayer_modules(emln_modules, type = 'circle', color_modules = T)
+plot_multilayer_modules(emln_modules, type = 'circle', color_modules = TRUE)
 
-plot_multilayer_modules(emln_modules, type = 'circle', color_modules = F)+
+plot_multilayer_modules(emln_modules, type = 'circle', color_modules = FALSE)+
 geom_point(aes(size=size), color='navy')
 
 # More examples to modify the plots
-plot_multilayer_modules(emln_modules, type = 'rectangle', color_modules = T)+
+plot_multilayer_modules(emln_modules, type = 'rectangle', color_modules = TRUE)+
  scale_fill_viridis_c()+
  scale_x_continuous(breaks=seq(0,6,1))+
  scale_y_continuous(breaks=seq(0,40,5))+

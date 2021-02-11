@@ -18,8 +18,11 @@
 #' @seealso Functions \code{commsim, nullmodel} in package \code{vegan}.
 #'
 #' @examples 
-#' network_object <- create_monolayer_object(bipartite::memmott1999, bipartite = T, directed = F, group_names = c('A','P'))
-#' shuffled <- shuffle_infomap(network_object, shuff_method='curveball', nsim=50, burnin=2000)
+#' network_object <- create_monolayer_object(bipartite::memmott1999, 
+#' bipartite = TRUE, directed = FALSE, group_names = c('A','P'))
+#' 
+#' shuffled <- shuffle_infomap(network_object, shuff_method='curveball', 
+#' nsim=50, burnin=2000)
 #'
 #' @export
 #' 
