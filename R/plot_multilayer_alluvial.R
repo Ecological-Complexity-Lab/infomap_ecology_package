@@ -1,6 +1,7 @@
 #' Alluvial plot for multilayer network
 #'
 #' @param x An object of class \code{infomap_multilayer}.
+#' @param module_labels Should module labels be presented
 #'
 #' @details Use ggplot and ggalluvial to plot an alluvial plot that shows the flow of nodes between modules. Very useful for temporal networks. Because the output is
 #'   a ggplot object it can be further manipulated with standard ggplot2.
@@ -30,8 +31,8 @@
 #'      
 #' @export
 #'
-#' @import ggalluvial
-#' @import ggplot2
+## @import ggalluvial
+## @import ggplot2
 plot_multilayer_alluvial <- function(x, module_labels=F){
   if(class(x)!='infomap_multilayer'){stop('x must be of class infomap_multilayer')}
   p <- ggplot(x$modules, 
@@ -39,8 +40,8 @@ plot_multilayer_alluvial <- function(x, module_labels=F){
                   alluvium=node_id, 
                   label=as.factor(module), 
                   fill=as.factor(module)))+
-        geom_flow(stat = "alluvium", lode.guidance = "frontback", color =  "darkgray")+
-        geom_stratum() +
+        ggalluvial::geom_flow(stat = "alluvium", lode.guidance = "frontback", color =  "darkgray")+
+        ggalluvial::geom_stratum() +
         labs(x='Layer', y='Number of nodes')+
         theme_bw()
   if (module_labels){

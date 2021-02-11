@@ -8,6 +8,8 @@ plot_multilayer_alluvial(x, module_labels = F)
 }
 \arguments{
 \item{x}{An object of class \code{infomap_multilayer}.}
+
+\item{module_labels}{Should module labels be presented}
 }
 \value{
 An object of class \code{ggplot}.

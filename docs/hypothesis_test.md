@@ -58,7 +58,7 @@ You can also create your own shuffling algorithm and a list of shuffled link lis
 
 ```R
 # Import data
-tur2016 <- read.csv("Data_Tur_et_al_2016_EcolLet.txt", sep = ";")
+data(tur2016)
 tur2016_altitude2000 <- tur2016 %>% 
   filter(altitude==2000) %>% 
   select("donor", "receptor", "total") %>% 
@@ -115,8 +115,6 @@ tur_signif <- run_infomap_monolayer(tur_network, infomap_executable='Infomap',
 
 
 print(tur_signif$pvalue)
-sum(tur_signif$m_sim < res_rawdir$m)/nsim
-
 
 plots <- plot_signif(tur_signif, plotit = F)
 ```

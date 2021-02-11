@@ -1,9 +1,9 @@
 Package: infomapecology
 Type: Package
 Title: Community detection using Infomap, inspired by ecological networks
-Version: 0.1.2.5
+Version: 1.0
 URL: https://github.com/Ecological-Complexity-Lab/infomap_ecology_package
-Date: 2021-02-10
+Date: 2021-02-11
 Author: Shai Pilosof <pilos@post.bgu.ac.il>
 Maintainer: Shai Pilosof <pilos@post.bgu.ac.il>
 BugReports: https://github.com/Ecological-Complexity-Lab/infomap_ecology_package/issues
@@ -15,11 +15,16 @@ Depends:
   R (>= 4.0.0),
   attempt,
   cowplot,
-  igraph,
   ggalluvial,
   magrittr,
-  metafolio,
-  tidyverse,
+  dplyr,
+  readr,
+  ggplot2,
+  stringr,
+  tibble,
+  tidyr,
+  rlang,
+  igraph,
   vegan
 Suggests:
   bipartite

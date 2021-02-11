@@ -17,7 +17,7 @@
 #' install_infomap()
 #' 
 #' @export
-#' @importFrom attempt attempt
+## @importFrom attempt attempt
 install_infomap <- function(target_folder=NULL){
   unlink('Infomap')
   if (is.null(target_folder)){target_folder <- getwd()}

@@ -45,6 +45,8 @@ performed?}
 
 \item{nsim}{How many shuffled networks to create?}
 
+\item{verbose}{Show progress notes}
+
 \item{...}{additional Infomap arguments as detailed
 \href{https://www.mapequation.org/infomap/#Parameters}{here}.}
 }

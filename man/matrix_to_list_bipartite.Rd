@@ -22,8 +22,7 @@ Assigns column and row names if those do not exist.
 Cannot handle node attributes/metadata. Always assumes an undirected network.
 }
 \examples{
-data(memmott1999)
-matrix_to_list_bipartite(memmott1999, group_names = c('Animals', 'Plants'))
+matrix_to_list_bipartite(bipartite::memmott1999, group_names = c('Animals', 'Plants'))
 
 }
 \seealso{

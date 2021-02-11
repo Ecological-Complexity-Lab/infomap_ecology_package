@@ -23,7 +23,7 @@ plot_modular_matrix(infomap_object)
 # Directed pollination network --------------------------------------------
 
 # Import data
-tur2016 <- read.csv("Data_Tur_et_al_2016_EcolLet.txt", sep = ";")
+data("tur2016")
 
 tur2016_altitude2000 <- tur2016 %>% 
   filter(altitude==2000) %>% 
@@ -46,7 +46,7 @@ no_loops <- run_infomap_monolayer(network_object, infomap_executable='Infomap',
 modules_loops <- loops$modules 
 modules_no_loops <- no_loops$modules
 
-svg('/Users/shai/Dropbox (BGU)/Apps/Overleaf/A dynamical perspective on community detection in ecological networks/figures/Tur_loops_comparison.svg',8,8)
+# svg('/Users/shai/Dropbox (BGU)/Apps/Overleaf/A dynamical perspective on community detection in ecological networks/figures/Tur_loops_comparison.svg',8,8)
 inner_join(modules_loops %>% select(node_id, node_name, flow_loops=flow), 
            modules_no_loops %>% select(node_id, node_name, flow_no_loops=flow)) %>%
   # mutate()
@@ -63,7 +63,7 @@ inner_join(modules_loops %>% select(node_id, node_name, flow_loops=flow),
         axis.line = element_line(color = 'black'),
         axis.text = element_text(size=24,color = 'black'),
         text=element_text(size=24,color = 'black'))
-dev.off()
+# dev.off()
 
 # Compare the results using normalised mutual information
 N <- modules_loops %>% # Create confusion matrix
@@ -90,21 +90,21 @@ g_loops <- graph.data.frame(loops$edge_list, directed = T,
                               left_join(color_map, by=c('module_id' = 'module')))
 l <-layout_nicely(g_loops)
 
-svg('/Users/shai/Dropbox (BGU)/Apps/Overleaf/A dynamical perspective on community detection in ecological networks/figures/Tur_loops_network.svg',8,8)
+# svg('/Users/shai/Dropbox (BGU)/Apps/Overleaf/A dynamical perspective on community detection in ecological networks/figures/Tur_loops_network.svg',8,8)
 plot(g_loops, vertex.color=V(g_loops)$color,
      vertex.label=NA, edge.width=log(E(g_loops)$weight+1), edge.color='black', 
      layout=l)
-dev.off()
+#dev.off()
 # Use the same layout to plot the same network with no loops
 g_no_loops <- graph.data.frame(loops$edge_list %>% filter(from!=to), directed = T, 
                             vertices = modules_no_loops %>% 
                               select(node_name, node_id, module_id=module_level1) %>% 
                               left_join(color_map, by=c('module_id' = 'module')))
-svg('/Users/shai/Dropbox (BGU)/Apps/Overleaf/A dynamical perspective on community detection in ecological networks/figures/Tur_no_loops_network.svg',8,8)
+# svg('/Users/shai/Dropbox (BGU)/Apps/Overleaf/A dynamical perspective on community detection in ecological networks/figures/Tur_no_loops_network.svg',8,8)
 plot(g_no_loops, vertex.color=V(g_no_loops)$color,
      vertex.label=NA, edge.width=log(E(g_no_loops)$weight+1), edge.color='black', 
      layout=l)
-dev.off()
+#dev.off()
 
 
 
@@ -142,18 +142,17 @@ visNetwork::visIgraphLayout(
 
 
 # Directed food web with hierarchical clustering --------------------------
-# change file names
-interactions <- read.csv("kongsfjorden_linklist.csv")
-nodes <- read.csv("kongsfjorden_metadata.csv")
+data("kongsfjorden_links")
+data("kongsfjorden_nodes")
 
-nodes <- nodes %>%
+nodes <- kongsfjorden_nodes %>%
   select(node_name=Species, node_id_original=NodeID, everything())
+anyDuplicated(nodes$node_name)
 
-interactions<- interactions %>%
+interactions<- kongsfjorden_links %>%
   select(from=consumer, to=resource) %>%
   mutate_if(is.factor, as.character) %>%
   mutate(weight=1)
-
 # Prepare network objects
 network_object <- create_monolayer_object(x=interactions, directed = T, bipartite = F, node_metadata = nodes)
 
@@ -275,7 +274,7 @@ eta13 <- infomap_object_metadata_13$modules %>%
   mutate(eta=1.3) %>%
   arrange(desc(n), module_level1)
 
-pdf('/Users/shai/Dropbox (BGU)/Apps/Overleaf/A dynamical perspective on community detection in ecological networks/figures/comparison_eta_metadata1.pdf',12,8)
+# pdf('/Users/shai/Dropbox (BGU)/Apps/Overleaf/A dynamical perspective on community detection in ecological networks/figures/comparison_eta_metadata1.pdf',12,8)
 bind_rows(eta0, eta07, eta13) %>% 
   mutate(eta=factor(eta, levels=c('0','0.7','1.3'))) %>% 
   rename(num_OG=n, module_id=module_level1) %>% 
@@ -297,12 +296,12 @@ bind_rows(eta0, eta07, eta13) %>%
         legend.key.size = unit(2, 'line'),
         axis.text = element_text(size=24),
         text=element_text(size=24))
-dev.off()
+#dev.off()
 
 num_mods <- infomap_object$m
 num_mods_metadata_07 <- infomap_object_metadata_07$m
 
-pdf('/Users/shai/Dropbox (BGU)/Apps/Overleaf/A dynamical perspective on community detection in ecological networks/figures/SI_comparison_eta_metadata.pdf',14,8)
+# pdf('/Users/shai/Dropbox (BGU)/Apps/Overleaf/A dynamical perspective on community detection in ecological networks/figures/SI_comparison_eta_metadata.pdf',14,8)
 cowplot::plot_grid(
   infomap_object$modules %>% group_by(module_level1, OrganismalGroup) %>% arrange(module_level1, OrganismalGroup) %>%
   count() %>%
@@ -320,10 +319,10 @@ cowplot::plot_grid(
     scale_x_continuous(breaks = seq(1,num_mods_metadata_07,3))+
     theme(legend.position = 'none'),
   align = 'vh', labels=c('(a)','(b)'))
-dev.off()
+#dev.off()
 
 # Compare flow models --------------------------------------------
-tur2016 <- read.csv("Data_Tur_et_al_2016_EcolLet.txt", sep = ";")
+data('tur2016')
 tur2016_altitude2000 <- tur2016 %>% 
   filter(altitude==2000) %>% 
   select("donor", "receptor", "total") %>% 
@@ -356,7 +355,7 @@ N <- res_dir_modules %>% # Create confusion matrix
 # These two different modes of flow can result in different partitions.
 NMI(N)
 
-pdf('/Users/shai/Dropbox (BGU)/Apps/Overleaf/A dynamical perspective on community detection in ecological networks/figures/MI_comparison_flow_modules.pdf',12,10)
+# pdf('/Users/shai/Dropbox (BGU)/Apps/Overleaf/A dynamical perspective on community detection in ecological networks/figures/MI_comparison_flow_modules.pdf',12,10)
 res_dir_modules %>%
   select(-module_level2) %>%
   inner_join(res_rawdir_modules %>% select(node_id,module_level1), by='node_id') %>%
@@ -369,7 +368,7 @@ res_dir_modules %>%
     scale_y_continuous(breaks=1:max(res_rawdir_modules$module_level1, na.rm = T))+
     labs(x='Module ID directed model', y='Module ID rawdir model')+
     theme_bw()+theme(text=element_text(size=30), panel.grid.minor = element_blank())
-dev.off()
+#dev.off()
 
 
 M <- max(res_dir$m,res_rawdir$m)
@@ -469,9 +468,9 @@ interlayer_grid <- cowplot::plot_grid(fig1, fig2,
                                       ncol = 2,
                                       rel_widths = c(0.4,0.6), labels =c('(a)','(b)'), 
                                       label_size = 20, scale = 0.95)
-pdf('/Users/shai/Dropbox (BGU)/Apps/Overleaf/A dynamical perspective on community detection in ecological networks/figures/interlayer_grid.pdf',14,8)
+# pdf('/Users/shai/Dropbox (BGU)/Apps/Overleaf/A dynamical perspective on community detection in ecological networks/figures/interlayer_grid.pdf',14,8)
 interlayer_grid
-dev.off()
+#dev.off()
 
  # Temporal multilayer network: Global relax rates ---------
 
@@ -508,22 +507,6 @@ panel_a <- relaxrate_modules %>%
         axis.text = element_text(size = 8))+
   labs(x='Relax rate', y='Number of modules')
 
-# L
-panel_b <- relaxrate_modules %>%
-  group_by(relax_rate) %>%
-  ggplot(aes(x = relax_rate, y=L)) +
-  geom_line() +
-  geom_point()+
-  # scale_y_continuous(breaks=1:18, labels = 1:18, limits = c(1,18))+
-  scale_x_continuous(breaks=seq(0,1,0.2))+
-  scale_y_continuous(breaks = seq(4.5,4.9,0.1), limits=c(4.5,4.9))+
-  theme_bw()+
-  theme(panel.grid.major = element_blank(),
-        panel.grid.minor = element_blank(),
-        axis.title = element_text(size=8),
-        axis.text = element_text(size = 8))+
-  labs(x='Relax rate', y='L(M)')
-
 # Module presistence
 presistence <- relaxrate_modules %>%
   group_by(relax_rate, module, layer_id) %>%
@@ -536,7 +519,8 @@ avarage_presistance <- presistence %>%
   mutate(avarage=mean(n_layers)) %>%
   group_by(relax_rate, avarage) %>%
   summarise()
-panel_c <- ggplot()+
+
+panel_b <- ggplot()+
   geom_boxplot(data =  presistence, aes(x=relax_rate, y=n_layers, group=relax_rate),width = 1.1)+
   geom_line(data =  avarage_presistance, aes(x=relax_rate, y=avarage, color="red"))+
   geom_point(data =  avarage_presistance, aes(x=relax_rate, y=avarage, color="red"))+
@@ -551,7 +535,7 @@ panel_c <- ggplot()+
   labs(x='Relax rate', y='Module persistence (# of layers)')
 
 # Species flexibility
-panel_d <- relaxrate_modules %>%
+panel_c <- relaxrate_modules %>%
   group_by(relax_rate, species) %>%
   distinct(module) %>%
   summarise(n_modules=n()) %>%
@@ -573,14 +557,14 @@ panel_d <- relaxrate_modules %>%
   labs(x='Relax rate', y='Percent of all species', fill="Number\n of modules")
 
 
-relaxrate_grid <- cowplot::plot_grid(panel_a, panel_b, panel_c, panel_d, ncol = 2,
-                                     rel_widths = c(1,1,0.3,0.7),
-                                     labels = c('(a)','(b)','(c)','(d)'),
+relaxrate_grid <- cowplot::plot_grid(panel_a, panel_b, panel_c, ncol = 3,
+                                     rel_widths = c(0.2,0.2,0.6),
+                                     labels = c('(a)','(b)','(c)'),
                                      label_size = 8,
                                      scale=0.9)
-pdf('/Users/shai/Dropbox (BGU)/Apps/Overleaf/A dynamical perspective on community detection in ecological networks/MEE_Final/Fig_5_new.pdf',7.09, 3.5)
+# pdf('/Users/shai/Dropbox (BGU)/Apps/Overleaf/A dynamical perspective on community detection in ecological networks/MEE_Final/Fig_5_new.pdf',7.09, 3.5)
 relaxrate_grid
-dev.off()
+#dev.off()
 
 
 # Hypothesis testing with infomapecology ----------------------------------
@@ -628,7 +612,7 @@ plot_grid(
 )
 
 # Hypothesis testing ------------------------------------------------------
-tur2016 <- read.csv("Data_Tur_et_al_2016_EcolLet.txt", sep = ";")
+data('tur2016')
 tur2016_altitude2000 <- tur2016 %>% 
   filter(altitude==2000) %>% 
   select("donor", "receptor", "total") %>% 
@@ -689,7 +673,7 @@ sum(tur_signif$m_sim > res_rawdir$m)/nsim
 
 
 plots <- plot_signif(tur_signif, plotit = F)
-pdf('/Users/shai/Dropbox (BGU)/Apps/Overleaf/A dynamical perspective on community detection in ecological networks/figures/null_model_example.pdf',12,8)
+# pdf('/Users/shai/Dropbox (BGU)/Apps/Overleaf/A dynamical perspective on community detection in ecological networks/figures/null_model_example.pdf',12,8)
 plot_grid(
   plots$L_plot+
     theme_bw()+
@@ -702,6 +686,6 @@ plot_grid(
           axis.text = element_text(size=20), 
           axis.title = element_text(size=20))
 )
-dev.off()
+#dev.off()
 
 

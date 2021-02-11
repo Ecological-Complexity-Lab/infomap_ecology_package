@@ -29,8 +29,7 @@ This function is used internally by
   vegan package as defined in \code{vegan::commsim}.
 }
 \examples{
-data("memmott1999")
-network_object <- create_monolayer_object(memmott1999, bipartite = T, directed = F, group_names = c('A','P'))
+network_object <- create_monolayer_object(bipartite::memmott1999, bipartite = T, directed = F, group_names = c('A','P'))
 shuffled <- shuffle_infomap(network_object, shuff_method='curveball', nsim=50, burnin=2000)
 
 }

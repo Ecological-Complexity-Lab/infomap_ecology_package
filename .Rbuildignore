@@ -1,2 +1,5 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
+docs/
+code_from_paper/
+^Infomap

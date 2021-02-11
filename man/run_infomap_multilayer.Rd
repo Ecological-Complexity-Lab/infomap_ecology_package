@@ -39,22 +39,22 @@ Infomap).}
 \item{relax}{Should dynamics of movement between layers be fully encoded by
 interlayer edges, or should they be relaxed. See details.}
 
+\item{multilayer_relax_rate}{Probability to relax the constraint to move only
+in the current layer.}
+
+\item{multilayer_relax_limit}{Number of neighboring layers in each direction
+to relax to. If negative, relax to any layer.}
+
+\item{multilayer_relax_limit_up}{Number of neighboring layers with higher id
+to relax to. If negative, relax to any layer. Useful for temporal networks.}
+
+\item{multilayer_relax_limit_down}{Number of neighboring layers with lower id
+to relax to. If negative, relax to any layer. Useful for temporal networks.}
+
 \item{temporal_network}{Is this a temporal network? See details.}
 
 \item{...}{additional Infomap arguments as detailed in
 \href{https://www.mapequation.org/infomap/#Parameters}{https://www.mapequation.org/infomap/#Parameters}}
-
-\item{multilayer-relax-rate}{Probability to relax the constraint to move only
-in the current layer.}
-
-\item{multilayer-relax-limit}{Number of neighboring layers in each direction
-to relax to. If negative, relax to any layer.}
-
-\item{multilayer-relax-limit-up}{Number of neighboring layers with higher id
-to relax to. If negative, relax to any layer. Useful for temporal networks.}
-
-\item{multilayer-relax-limit-down}{Number of neighboring layers with lower id
-to relax to. If negative, relax to any layer. Useful for temporal networks.}
 }
 \value{
 An object of class \code{infomap_multilayer}
@@ -105,13 +105,17 @@ emln <- create_multilayer_object(extended = siberia1982_7_links,
  layers=layers)
 
  # Run modularity for a temporal network with provided interlayer edges (no relax rate)
- emln_modularity <- run_infomap_multilayer(M=emln, relax = F, flow_model = 'directed', silent = T, trials = 100, seed = 497294, temporal_network = T)
+ emln_modularity <- run_infomap_multilayer(M=emln, relax = F,
+ flow_model = 'directed', silent = T,
+ trials = 100, seed = 497294,
+ temporal_network = T)
 
  # Assume that interlayer edges are not provided and run modularity with relax rate. Limit relaxation to the next layer only.
  emln$inter <- NULL
  emln_modularity_r <- run_infomap_multilayer(emln, relax = T, silent = T, trials = 50, seed = 497294, multilayer_relax_rate = 0.15, multilayer_relax_limit_up = 1, multilayer_relax_limit_down = 0, temporal_network = T)
 
 
+  
 }
 \seealso{
 \code{create_multilayer_object, multilayer, infomap_multilayer}

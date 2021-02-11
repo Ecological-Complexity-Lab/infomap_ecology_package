@@ -7,13 +7,14 @@
 #' @examples 
 #' check_infomap()
 #' 
+#' @param x The name of the Infomap executable file.
 #' @details For now, this package depends on Infomap's stand-alone version. Futre versions or another package will incorporate Infomap directly into R.
 #'
-#' @importFrom attempt attempt
+## @importFrom attempt attempt
 #' @export
 
 check_infomap <- function(x='Infomap'){
-    out <- attempt(system(paste('./',x,' -V',sep='')), msg = 'Infomap not installed correctly. See www.mapequation.org for instructions on how to install.')
+    out <- attempt::attempt(system(paste('./',x,' -V',sep='')), msg = 'Infomap not installed correctly. See www.mapequation.org for instructions on how to install.')
     if (out==0) {
       return(T)
     } else {

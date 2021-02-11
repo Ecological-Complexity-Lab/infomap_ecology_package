@@ -14,11 +14,11 @@ create_infomap_linklist(
 \arguments{
 \item{x}{A monolayer object created with \code{create_monolayer_object}.}
 
-\item{Make_directed}{for undirected networks, create two sets of edges.}
+\item{make_directed}{for undirected networks, create two sets of edges.}
 
-\item{Write_to_file}{write the link list into a file?}
+\item{write_to_file}{write the link list into a file?}
 
-\item{Output_file}{the name of the output file (default is 'infomap_link_list.txt')}
+\item{output_file}{the name of the output file (default is 'infomap_link_list.txt')}
 }
 \value{
 An object of class \code{infomap_link_list}, which is an R list with:
@@ -34,8 +34,8 @@ Takes a monolayer object and returns a link list and a tibble with nodes.
 Used internally by \code{run_infomap_monolayer}, but also useful for writing the link list to a file.
 }
 \examples{
-network_object <- create_monolayer_object(memmott1999, bipartite = T, directed = F, group_names = c('A','P'))
-x <- create_infomap_linklist(network_object, make_directed = F, write_to_file = T, output_file = 'mylist.txt')
+network_object <- create_monolayer_object(bipartite::memmott1999, bipartite = TRUE, directed = F, group_names = c('A','P'))
+x <- create_infomap_linklist(network_object, make_directed = F, write_to_file = TRUE, output_file = 'mylist.txt')
 
 }
 \seealso{

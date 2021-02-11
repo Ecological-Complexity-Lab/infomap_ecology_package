@@ -10,15 +10,14 @@ library(reshape2)
 library(RColorBrewer)
 library(scales)
 
-# change file names
-interactions <- read.csv("kongsfjorden_linklist.csv")
-nodes <- read.csv("kongsfjorden_metadata.csv")
+data("kongsfjorden_links")
+data("kongsfjorden_nodes")
 
-nodes <- nodes %>%
+nodes <- kongsfjorden_nodes %>%
   select(node_name=Species, node_id_original=NodeID, everything())
 anyDuplicated(nodes$node_name)
 
-interactions<- interactions %>%
+interactions<- kongsfjorden_links %>%
   select(from=consumer, to=resource) %>%
   mutate_if(is.factor, as.character) %>%
   mutate(weight=1)

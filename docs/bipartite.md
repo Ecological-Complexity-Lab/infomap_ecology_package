@@ -14,8 +14,9 @@ data(memmott1999)
 
 network_object <- create_monolayer_object(memmott1999, bipartite = T, directed = F, group_names = c('A','P'))
 infomap_object <- run_infomap_monolayer(network_object, infomap_executable='Infomap',
-                                        flow_model = 'undirected',
-                                        silent=T, trials=20, two_level=T, seed=123)
+flow_model = 'undirected',
+silent=T, trials=20, two_level=T, seed=123)
+
 # Plot the matrix (plotting function in beta)
 plot_modular_matrix(infomap_object)
 ```

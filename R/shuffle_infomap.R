@@ -18,16 +18,15 @@
 #' @seealso Functions \code{commsim, nullmodel} in package \code{vegan}.
 #'
 #' @examples 
-#' data("memmott1999")
-#' network_object <- create_monolayer_object(memmott1999, bipartite = T, directed = F, group_names = c('A','P'))
+#' network_object <- create_monolayer_object(bipartite::memmott1999, bipartite = T, directed = F, group_names = c('A','P'))
 #' shuffled <- shuffle_infomap(network_object, shuff_method='curveball', nsim=50, burnin=2000)
 #'
 #' @export
 #' 
-#' @importFrom magrittr '%<>%' '%>%'
-#' @importFrom dplyr left_join select
-#' @importFrom vegan nullmodel commsim
-#' @importFrom igraph graph.incidence
+## @importFrom magrittr '%<>%' '%>%'
+## @importFrom dplyr left_join select
+## @importFrom vegan nullmodel commsim
+## @importFrom igraph graph.incidence
 
 
 shuffle_infomap <- function(x, shuff_method='r00', nsim=1000, ...){

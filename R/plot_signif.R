@@ -18,8 +18,7 @@
 #'
 #'
 #' @examples
-#' data(memmott1999) # From bipartite package
-#' network_object <- create_monolayer_object(memmott1999, bipartite = T, directed = F, group_names = c('Animals','Plants'))
+#' network_object <- create_monolayer_object(bipartite::memmott1999, bipartite = T, directed = F, group_names = c('Animals','Plants'))
 #' infomap_object <- run_infomap_monolayer(network_object, 
 #'       infomap_executable='Infomap',
 #'       flow_model = 'undirected',
@@ -39,9 +38,9 @@
 #' 
 #'@export
 #'
-#'@import dplyr
-#'@import magrittr
-#'@import ggplot2
+##@import dplyr
+##@import magrittr
+##@import ggplot2
 plot_signif <- function(x, colors=c('plum','tomato4'), plotit=T){
   if(class(x)!='infomap_monolayer'){stop('x must be of class infomap_monolayer')}
   p1 <- tibble(L_sim=x$L_sim) %>%

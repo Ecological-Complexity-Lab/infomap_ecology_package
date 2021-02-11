@@ -31,7 +31,7 @@
 #' N[1,4] <- 1
 #' NMI(N)
 #' 
-#' An example of perfect information (exact same partitions):
+#' # An example of perfect information (exact same partitions):
 #' N <- matrix(0,5,5)
 #' diag(N) <- c(10,15,10,12,3)
 #' NMI(N) # Should be 1

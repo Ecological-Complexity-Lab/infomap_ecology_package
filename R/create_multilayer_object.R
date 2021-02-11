@@ -67,8 +67,8 @@
 #' @seealso \code{multilayer}
 #'
 #' @export
-#' @import dplyr
-#' @import magrittr
+## @import dplyr
+## @import magrittr
 
 create_multilayer_object <- function(extended=NULL, intra=NULL, inter=NULL, nodes=NULL, intra_output_extended=T, inter_output_extended=T, layers=NULL){
   if(!is.null(layers)){

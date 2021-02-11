@@ -10,13 +10,12 @@ A [link-list](https://www.mapequation.org/infomap/#InputLinkList).
 ### R Code
 ```R
 # Import data
-interactions <- read.csv("kongsfjorden_linklist.csv")
-nodes <- read.csv("kongsfjorden_metadata.csv")
-
-nodes <- nodes %>%
+data("kongsfjorden_links")
+data("kongsfjorden_nodes")
+nodes <- kongsfjorden_nodes %>%
   select(node_name=Species, node_id_original=NodeID, everything())
 
-interactions<- interactions %>%
+interactions<- kongsfjorden_links %>%
   select(from=consumer, to=resource) %>%
   mutate_if(is.factor, as.character) %>%
   mutate(weight=1)
@@ -28,7 +27,7 @@ network_object <- create_monolayer_object(x=interactions, directed = T, bipartit
 # Some species will have only incoming or outgoing links, so the next line will result in a warning
 infomap_object <- run_infomap_monolayer(network_object, infomap_executable='Infomap',
                                         flow_model = 'directed',
-                                        silent=T,trials=100, two_level=F, seed=123
+                                        silent=T,trials=100, two_level=F, seed=123)
 ```
 
 ### Infomap

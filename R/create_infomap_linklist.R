@@ -3,9 +3,9 @@
 #' Takes a monolayer object and returns a link list and a tibble with nodes.
 #'
 #' @param x A monolayer object created with \code{create_monolayer_object}.
-#' @param Make_directed for undirected networks, create two sets of edges.
-#' @param Write_to_file write the link list into a file?
-#' @param Output_file the name of the output file (default is 'infomap_link_list.txt')
+#' @param make_directed for undirected networks, create two sets of edges.
+#' @param write_to_file write the link list into a file?
+#' @param output_file the name of the output file (default is 'infomap_link_list.txt')
 #' 
 #' @details Used internally by \code{run_infomap_monolayer}, but also useful for writing the link list to a file.
 #' 
@@ -19,13 +19,13 @@
 #' \code{infomap_link_list}
 #' 
 #' @examples 
-#' network_object <- create_monolayer_object(memmott1999, bipartite = T, directed = F, group_names = c('A','P'))
-#' x <- create_infomap_linklist(network_object, make_directed = F, write_to_file = T, output_file = 'mylist.txt')
+#' network_object <- create_monolayer_object(bipartite::memmott1999, bipartite = TRUE, directed = F, group_names = c('A','P'))
+#' x <- create_infomap_linklist(network_object, make_directed = F, write_to_file = TRUE, output_file = 'mylist.txt')
 #'
 #' @export
 #' 
-#' @import dplyr
-#' @import magrittr
+## @import dplyr
+## @import magrittr
 
 create_infomap_linklist <- function(x, make_directed=F, write_to_file=F, output_file='infomap_link_list.txt'){
   if(class(x)!='monolayer'){stop('x must be of class monolayer')}

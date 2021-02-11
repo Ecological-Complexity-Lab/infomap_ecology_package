@@ -39,7 +39,7 @@ Converts between edge list and matrix formats and creates a
 }
 \examples{
 # A bipartite network from package bipartte
-x <- create_monolayer_object(memmott1999, bipartite = T, directed = F, group_names = c('Animals','Plants'))
+x <- create_monolayer_object(bipartite::memmott1999, bipartite = T, directed = F, group_names = c('Animals','Plants'))
 
 # A bipartite network as an igraph object
 g <- igraph::sample_bipartite(10,16,p=0.3, type = 'gnp', directed = T, mode = 'in') # Generate a random bipartite network in igraph

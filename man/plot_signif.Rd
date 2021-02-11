@@ -29,8 +29,7 @@ Use ggplot to plot two histograms for the values of the map equation
  returned objects are ggplot objects, they can be modified.
 }
 \examples{
-data(memmott1999) # From bipartite package
-network_object <- create_monolayer_object(memmott1999, bipartite = T, directed = F, group_names = c('Animals','Plants'))
+network_object <- create_monolayer_object(bipartite::memmott1999, bipartite = T, directed = F, group_names = c('Animals','Plants'))
 infomap_object <- run_infomap_monolayer(network_object, 
       infomap_executable='Infomap',
       flow_model = 'undirected',

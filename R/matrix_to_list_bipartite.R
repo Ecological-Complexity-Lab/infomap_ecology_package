@@ -12,23 +12,22 @@
 #' @seealso \code{create_monolayer_object, monolayer}
 #'
 #' @examples
-#' data(memmott1999)
-#' matrix_to_list_bipartite(memmott1999, group_names = c('Animals', 'Plants'))
+#' matrix_to_list_bipartite(bipartite::memmott1999, group_names = c('Animals', 'Plants'))
 #' 
 #' @export
-#' @import dplyr
-#' @importFrom igraph graph.incidence degree
-#' @import magrittr
+## @import dplyr
+## @importFrom igraph graph.incidence degree
+## @import magrittr
 
 matrix_to_list_bipartite <- function(x, group_names=c('set_cols','set_rows')){
   # Assign column and row names
   if (is.null(rownames(x))) {rownames(x) <- paste('R',1:nrow(x),sep='')}
   if (is.null(colnames(x))) {colnames(x) <- paste('C',1:ncol(x),sep='')}
 
-  g <- graph.incidence(t(x), weighted = T) # transposing ensures that "from" is at the columns and "to" is the rows
+  g <- igraph::graph.incidence(t(x), weighted = T) # transposing ensures that "from" is at the columns and "to" is the rows
   l_bip <- as_tibble(igraph::as_data_frame(g, 'edges'))
   # summary(g)
-  if(any(degree(g)==0)){print('Some node have no interactions. They will appear in the node table but not in the edge list')}
+  if(any(igraph::degree(g)==0)){print('Some node have no interactions. They will appear in the node table but not in the edge list')}
   nodes <- c(sort(colnames(x)),sort(rownames(x)))
   node_list <- tibble(node_id=1:length(nodes),
                       node_group=c(rep(group_names[1],ncol(x)),rep(group_names[2],nrow(x))),

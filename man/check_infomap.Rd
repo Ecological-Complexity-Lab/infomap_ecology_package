@@ -6,6 +6,9 @@
 \usage{
 check_infomap(x = "Infomap")
 }
+\arguments{
+\item{x}{The name of the Infomap executable file.}
+}
 \value{
 FALSE and an error if Infomap is not installed correctly. TRUE (and version number) if it is.
 }

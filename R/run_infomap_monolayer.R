@@ -25,6 +25,8 @@
 #'   performed?
 #' @param shuff_method Method to shuffle the network. See details.
 #' @param nsim How many shuffled networks to create?
+#' @param verbose Show progress notes
+#' 
 #' @details All of Infomap's arguments are detailed in
 #'   \href{https://www.mapequation.org/infomap/#Parameters}{https://www.mapequation.org/infomap/#Parameters}.
 #'
@@ -68,11 +70,11 @@
 #' @seealso \code{create_monolayer_object, monolayer, shuffle_infomap, infomap_monolayer}
 #'
 #' @export
-#' @import dplyr
-#' @import magrittr
-#' @importFrom readr write_delim read_lines read_delim parse_number
-#' @importFrom stringr str_count
-#' @importFrom tidyr separate
+## @import dplyr
+## @import magrittr
+## @importFrom readr write_delim read_lines read_delim parse_number
+## @importFrom stringr str_count
+## @importFrom tidyr separate
 #'   
 run_infomap_monolayer <- function(x, infomap_executable='Infomap', flow_model=NULL, silent=F, trials=100, two_level=T, seed=123, signif=F, shuff_method=NULL, nsim=1000, verbose=T, ...){
   

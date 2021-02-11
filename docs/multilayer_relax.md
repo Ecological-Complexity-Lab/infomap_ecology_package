@@ -66,7 +66,7 @@ For multilayer network the output file has a `_states` suffix, with the followin
 1:3 0.000225137 "19" 19 75 1
 1:4 0.000124064 "20" 20 76 1
 ```
-This output is parsed by `run_infomap_multilayer` to obtain a table in which each state node (combination of a physical node in a layer) is assigned to a module. This can be obtained by:
+This output is parsed by `run_infomap_multilayer` to obtain a table in which each state node (combination of a physical node in a layer) is assigned to a module. This can be obtained by (after running the code above):
 ```R
-NEE2017_modules$modules
+relaxrate_modules$modules
 ```

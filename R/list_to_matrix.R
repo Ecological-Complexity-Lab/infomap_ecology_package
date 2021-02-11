@@ -41,9 +41,9 @@
 #' list_to_matrix(otago_links_2, directed = T, bipartite = F, node_metadata = otago_nodes_2)
 #' 
 #' @export
-#' @import dplyr
-#' @importFrom igraph graph.data.frame V as_incidence_matrix as_adjacency_matrix
-#' @import magrittr
+## @import dplyr
+## @importFrom igraph graph.data.frame V as_incidence_matrix as_adjacency_matrix
+## @import magrittr
 
 list_to_matrix <- function(x, directed=F, bipartite=T, group_names=c('set_cols','set_rows'), node_metadata=NULL){
   names(x)[3] <- 'weight'

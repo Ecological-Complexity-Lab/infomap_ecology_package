@@ -19,9 +19,9 @@
 #' matrix_to_list_unipartite(x, directed = T)
 #' 
 #' @export
-#' @import dplyr
-#' @importFrom igraph is.directed graph.adjacency degree
-#' @import magrittr
+## @import dplyr
+## @importFrom igraph is.directed graph.adjacency degree
+## @import magrittr
 
 matrix_to_list_unipartite <- function(x, directed){
   # Assign column and row names if missing
@@ -33,12 +33,12 @@ matrix_to_list_unipartite <- function(x, directed){
 
   g <- graph.adjacency(t(x), weighted = T, mode = ifelse(directed, 'directed','undirected')) # For some reason igraph considers the from to be ther rows. Need to transpose the matrix
   # summary(g)
-  if(any(degree(g)==0)){print('Some nodes have no interactions. They will appear in the node table but not in the edge list')}
+  if(any(igraph::degree(g)==0)){print('Some nodes have no interactions. They will appear in the node table but not in the edge list')}
   l_unip <- as_tibble(igraph::as_data_frame(g, 'edges'))
 
   nodes <- rownames(x)
   node_list <- tibble(node_id=1:length(nodes),node_name=nodes)
-  out <- list(mode='U', directed=is.directed(g), nodes=node_list, mat=x, edge_list=l_unip, igraph_object=g)
+  out <- list(mode='U', directed=igraph::is.directed(g), nodes=node_list, mat=x, edge_list=l_unip, igraph_object=g)
   class(out) <- "monolayer"
   return(out)
 }

@@ -9,7 +9,7 @@ A [link-list](https://www.mapequation.org/infomap/#InputLinkList).
 ### R Code
 ```R
 # Import data
-tur2016 <- read.csv("Data_Tur_et_al_2016_EcolLet.txt", sep = ";")
+data(tur2016)
 tur2016_altitude2000 <- tur2016 %>% 
   filter(altitude==2000) %>% 
   select("donor", "receptor", "total") %>% 
@@ -20,13 +20,14 @@ tur2016_altitude2000 <- tur2016 %>%
   slice(c(-10,-13,-28)) %>%  # Remove singletons
   filter(from!=to) # Remove self loops
   
-network_object <- create_monolayer_object(tur2016_altitude2000, directed = T, bipartite = F)
+network_object <- create_monolayer_object(tur2016_altitude2000, 
+directed = T, bipartite = F)
 res_dir <- run_infomap_monolayer(network_object, infomap_executable='Infomap',
                                  flow_model = 'directed',
                                  silent=T,trials=100, two_level=T, seed=200952)
 res_rawdir <- run_infomap_monolayer(network_object, infomap_executable='Infomap',
-                                    flow_model = 'rawdir',
-                                    silent=T,trials=100, two_level=T, seed=200952)
+flow_model = 'rawdir',
+silent=T,trials=100, two_level=T, seed=200952)
 
 res_dir_modules <- res_dir$modules %>% drop_na()
 res_rawdir_modules <- res_rawdir$modules %>% drop_na()

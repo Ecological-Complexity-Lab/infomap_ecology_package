@@ -23,7 +23,7 @@
 #'
 #' @examples
 #' # A bipartite network from package bipartte
-#' x <- create_monolayer_object(memmott1999, bipartite = T, directed = F, group_names = c('Animals','Plants'))
+#' x <- create_monolayer_object(bipartite::memmott1999, bipartite = T, directed = F, group_names = c('Animals','Plants'))
 #' 
 #' # A bipartite network as an igraph object
 #' g <- igraph::sample_bipartite(10,16,p=0.3, type = 'gnp', directed = T, mode = 'in') # Generate a random bipartite network in igraph
@@ -37,9 +37,9 @@
 #'
 #'
 #' @export
-#' @import dplyr
-#' @importFrom igraph graph.incidence V
-#' @import magrittr
+## @import dplyr
+## @importFrom igraph graph.incidence V
+## @import magrittr
 create_monolayer_object <- function(x, directed=NULL, bipartite=NULL, group_names=c('set_cols','set_rows'), node_metadata=NULL){
   
   # Input is a matrix

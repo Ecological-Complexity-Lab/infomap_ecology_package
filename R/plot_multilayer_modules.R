@@ -54,8 +54,8 @@
 #'
 #' @export
 #'
-#' @import ggalluvial
-#' @import ggplot2
+## @import ggalluvial
+## @import ggplot2
 plot_multilayer_modules <- function(x, type=c('circle', 'rectangle'), color_modules=T){
   if (type=='rectangle'){
     p <- x$modules %>% 
