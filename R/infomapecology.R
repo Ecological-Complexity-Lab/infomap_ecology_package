@@ -15,7 +15,6 @@
 #'
 #'The package also includes several data sets of ecological networks.
 #'
-#'Inspired by ecological networks but can work for other networks too!
 #'Ideas/requests for features are welcome (open an issue \href{here}{https://github.com/Ecological-Complexity-Lab/infomap_ecology_package/issues}).
 #'
 #'@docType package
@@ -23,7 +22,6 @@
 #'
 #'@author Shai Pilosof
 #'
-#'@references A dynamical perspective to community detection in ecological
-#'  networks.
+#'@references Farage C, Edler D, Eklöf A, Rosvall M, Pilosof S. Identifying flow modules in ecological networks using Infomap. Methods in Ecology and Evolution 2021.
 #'  
 NULL
