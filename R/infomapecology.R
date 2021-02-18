@@ -22,6 +22,6 @@
 #'
 #'@author Shai Pilosof
 #'
-#'@references Farage C, Edler D, Eklöf A, Rosvall M, Pilosof S. Identifying flow modules in ecological networks using Infomap. Methods in Ecology and Evolution 2021.
+#'@references Farage C, Edler D, Eklöf A, Rosvall M, Pilosof S. Identifying flow modules in ecological networks using Infomap. Methods in Ecology and Evolution 2021. doi:10.1111/2041‐210X.13569
 #'  
 NULL

@@ -22,6 +22,7 @@ Use ggplot and ggalluvial to plot an alluvial plot that shows the flow of nodes 
   a ggplot object it can be further manipulated with standard ggplot2.
 }
 \examples{
+\dontrun{
 emln <- create_multilayer_object(extended = siberia1982_7_links,
  nodes = siberia1982_7_nodes, intra_output_extended = TRUE, inter_output_extended = TRUE)
  
@@ -43,7 +44,8 @@ plot_multilayer_alluvial(emln_modules, module_labels = FALSE)+
          panel.grid = element_blank(),
          axis.text = element_text(color='black', size = 20),
          axis.title = element_text(size=20))
-     
+}
+
 }
 \seealso{
 \code{ggplot2, ggalluvial, infomap_monolayer}

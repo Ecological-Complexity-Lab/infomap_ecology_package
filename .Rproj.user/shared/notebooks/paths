@@ -1,5 +1,4 @@
 /Users/Shai/Dropbox (BGU)/Plasmid modeling project/ODE.R="33AD7908"
-/Users/shai/.Rbuildignore="BEA0CA15"
 /Users/shai/GitHub/ecomplab/infomap_ecology_package/.Rbuildignore="340DB6E6"
 /Users/shai/GitHub/ecomplab/infomap_ecology_package/DESCRIPTION="542B7057"
 /Users/shai/GitHub/ecomplab/infomap_ecology_package/NAMESPACE="F763A014"
@@ -35,6 +34,7 @@
 /Users/shai/GitHub/ecomplab/infomap_ecology_package/man/create_infomap_linklist.Rd="E09AD56F"
 /Users/shai/GitHub/ecomplab/infomap_ecology_package/man/create_monolayer_object.Rd="F053C13A"
 /Users/shai/GitHub/ecomplab/infomap_ecology_package/man/create_multilayer_object.Rd="A433FA10"
+/Users/shai/GitHub/ecomplab/infomap_ecology_package/man/list_to_matrix.Rd="36E3C930"
 /Users/shai/GitHub/ecomplab/infomap_ecology_package/man/plot_modular_matrix.Rd="93FA29E5"
 /Users/shai/GitHub/ecomplab/infomap_ecology_package/man/plot_multilayer_alluvial.Rd="C8B2D121"
 /Users/shai/GitHub/ecomplab/infomap_ecology_package/man/plot_multilayer_modules.Rd="C0BEFD17"

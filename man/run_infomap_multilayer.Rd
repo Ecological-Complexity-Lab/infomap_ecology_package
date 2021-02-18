@@ -93,7 +93,8 @@ Currently only works with two-level solutions (no modules within
   \code{temporal_network=T}.
 }
 \examples{
-#' data("siberia1982_7_links") # Links are an extended edge list
+\dontrun{
+data("siberia1982_7_links") # Links are an extended edge list
 data("siberia1982_7_nodes") # nodes
 layers <- tibble(layer_id=1:6, year=1982:1987) # Information on layers
 
@@ -120,7 +121,7 @@ emln <- create_multilayer_object(extended = siberia1982_7_links,
  multilayer_relax_limit_up = 1,
  multilayer_relax_limit_down = 0, 
  temporal_network = T)
-
+}
 
   
 }

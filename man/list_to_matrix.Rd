@@ -38,6 +38,7 @@ igraph. The first column in the \code{node_metadata} data frame should have
 the names of the nodes in the edge list.
 }
 \examples{
+\dontrun{
 data(otago_nodes)
 data(otago_links)
 
@@ -59,6 +60,7 @@ filter(LinkType=='Predation') \%>\%
  
 list_to_matrix(otago_links_2, directed = TRUE,
  bipartite = FALSE, node_metadata = otago_nodes_2)
+}
 
 }
 \seealso{

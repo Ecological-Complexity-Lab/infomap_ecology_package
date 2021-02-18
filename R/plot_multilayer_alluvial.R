@@ -11,6 +11,7 @@
 #' @seealso \code{ggplot2, ggalluvial, infomap_monolayer}
 #'
 #' @examples 
+#' \dontrun{
 #' emln <- create_multilayer_object(extended = siberia1982_7_links,
 #'  nodes = siberia1982_7_nodes, intra_output_extended = TRUE, inter_output_extended = TRUE)
 #'  
@@ -32,7 +33,8 @@
 #'          panel.grid = element_blank(),
 #'          axis.text = element_text(color='black', size = 20),
 #'          axis.title = element_text(size=20))
-#'      
+#' }
+#' 
 #' @export
 #'
 ## @import ggalluvial

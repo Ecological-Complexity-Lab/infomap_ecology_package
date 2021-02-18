@@ -19,6 +19,7 @@
 #' @seealso Functions \code{create_monolayer_object, monolayer}, also,\code{graph.data.frame} from igraph.
 #'
 #' @examples 
+#' \dontrun{
 #' data(otago_nodes)
 #' data(otago_links)
 #' 
@@ -40,6 +41,7 @@
 #'  
 #' list_to_matrix(otago_links_2, directed = TRUE,
 #'  bipartite = FALSE, node_metadata = otago_nodes_2)
+#' }
 #' 
 #' @export
 ## @import dplyr

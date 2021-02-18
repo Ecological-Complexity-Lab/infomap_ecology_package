@@ -24,6 +24,7 @@
 #'   in Plasmodium falciparum. PLoS biology 17:e3000336.
 #'
 #' @examples
+#' \dontrun{
 #' emln <- create_multilayer_object(extended = siberia1982_7_links,
 #'  nodes = siberia1982_7_nodes, intra_output_extended = TRUE, inter_output_extended = TRUE)
 #'  
@@ -55,7 +56,8 @@
 #'        axis.text = element_text(size = 20),
 #'        legend.text =  element_text(size=15),
 #'        legend.title = element_text(size=20))
-#'
+#' }
+#' 
 #' @export
 #'
 ## @import ggalluvial

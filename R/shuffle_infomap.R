@@ -26,10 +26,12 @@
 #'
 #' @export
 #' 
-## @importFrom magrittr '%<>%' '%>%'
-## @importFrom dplyr left_join select
-## @importFrom vegan nullmodel commsim
-## @importFrom igraph graph.incidence
+#' 
+#' @importFrom magrittr '%<>%' '%>%'
+#' @importFrom dplyr left_join select
+#' @importFrom vegan nullmodel commsim
+#' @importFrom igraph graph.incidence
+#' @importFrom stats simulate
 
 
 shuffle_infomap <- function(x, shuff_method='r00', nsim=1000, ...){

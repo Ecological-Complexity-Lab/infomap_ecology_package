@@ -14,10 +14,11 @@
 #'   Futre versions or another package will incorporate Infomap directly into R. Therefore it is necessary to install infomap, in the same folder where the code is Run. If it is already installed, then it will be replaced by the newest version.
 #'   
 #' @examples
+#' \dontrun{
 #' install_infomap()
+#' }
 #' 
 #' @export
-## @importFrom attempt attempt
 install_infomap <- function(target_folder=NULL){
   unlink('Infomap')
   if (is.null(target_folder)){target_folder <- getwd()}

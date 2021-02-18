@@ -31,6 +31,7 @@ Type \code{circle} plots a circle per module-layer combination, with the radius 
   ggplot2.
 }
 \examples{
+\dontrun{
 emln <- create_multilayer_object(extended = siberia1982_7_links,
  nodes = siberia1982_7_nodes, intra_output_extended = TRUE, inter_output_extended = TRUE)
  
@@ -61,6 +62,7 @@ plot_multilayer_modules(emln_modules, type = 'rectangle', color_modules = TRUE)+
        axis.text = element_text(size = 20),
        legend.text =  element_text(size=15),
        legend.title = element_text(size=20))
+}
 
 }
 \references{

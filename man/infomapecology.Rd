@@ -24,7 +24,7 @@ The package also includes several data sets of ecological networks.
 Ideas/requests for features are welcome (open an issue \href{here}{https://github.com/Ecological-Complexity-Lab/infomap_ecology_package/issues}).
 }
 \references{
-Farage C, Edler D, Eklöf A, Rosvall M, Pilosof S. Identifying flow modules in ecological networks using Infomap. Methods in Ecology and Evolution 2021.
+Farage C, Edler D, Eklöf A, Rosvall M, Pilosof S. Identifying flow modules in ecological networks using Infomap. Methods in Ecology and Evolution 2021. doi:10.1111/2041‐210X.13569
 }
 \author{
 Shai Pilosof
