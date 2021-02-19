@@ -23,7 +23,7 @@
 #'  bipartite = TRUE, directed = FALSE, group_names = c('A','P'))
 #'  
 #' x <- create_infomap_linklist(network_object, make_directed = FALSE, 
-#' write_to_file = TRUE, output_file = 'mylist.txt')
+#' write_to_file = FALSE)
 #'
 #' @export
 #' 
