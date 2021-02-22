@@ -74,7 +74,7 @@ create_multilayer_object <- function(extended=NULL, intra=NULL, inter=NULL, node
   if(!is.null(layers)){
     if(names(layers)[1]!='layer_id') {stop('First column in layers must be named layer_id')}
   }
-  if(names(nodes)[1]!='node_id') {stop('First column in nodes must be named layer_id')}
+  if(names(nodes)[1]!='node_id') {stop('First column in nodes must be named node_id')}
   
   if (!is.null(extended)){
     if(names(extended)[5]!='weight') {stop('5th column should be "weight"')}
