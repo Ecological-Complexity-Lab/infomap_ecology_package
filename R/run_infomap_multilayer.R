@@ -24,6 +24,8 @@
 #' @param multilayer_relax_limit_down Number of neighboring layers with lower id
 #'   to relax to. If negative, relax to any layer. Useful for temporal networks.
 #' @param temporal_network Is this a temporal network? See details.
+#' @param run_standalone Should the function run Infomap's stand-alone file? Defaults to true. See details.
+#' @param remove_auxilary_files Should auxilary files be removed when finished running?
 #' @param ... additional Infomap arguments as detailed in
 #'   \href{https://www.mapequation.org/infomap/#Parameters}{https://www.mapequation.org/infomap/#Parameters}
 #'
@@ -53,6 +55,11 @@
 #'   If the multilayer is a temporal network, modules can be renamed to be
 #'   placed in temporal order of appearance. This is done with
 #'   \code{temporal_network=T}.
+#'   
+#'   \code{run_standalone}: Infomap is run as a stand-alone file. On some machines, especially Windows, it is impossible to install 
+#'   that file or it gives an error. In that case you can use the auxilary file produced by the function, called
+#'   \code{infomap_multilayer.txt} to run Infomap online, download the results and parse them back. 
+#'   The function will wait to parse the results.
 #'
 #' @return An object of class \code{infomap_multilayer}
 #'
@@ -109,6 +116,8 @@ run_infomap_multilayer <- function(M,
                                    multilayer_relax_limit_up=NULL,
                                    multilayer_relax_limit_down=NULL,
                                    temporal_network=F,
+                                   run_standalone=T,
+                                   remove_auxilary_files=T,
                                    ...){
   if(check_infomap(infomap_executable)==F){stop('Error in Infomap stand-alone file.')}
   if(class(M)!='multilayer'){stop('M must be of class multilayer')}
@@ -145,10 +154,21 @@ run_infomap_multilayer <- function(M,
     arguments <- ifelse(!is.null(multilayer_relax_limit_up), paste(arguments, '--multilayer-relax-limit-up',multilayer_relax_limit_up), arguments)
     arguments <- ifelse(!is.null(multilayer_relax_limit_down), paste(arguments, '--multilayer-relax-limit-down',multilayer_relax_limit_down), arguments)
   }
+  
   # Run Infomap
   call <- paste('./',infomap_executable,' infomap_multilayer.txt . ', arguments, sep='')
-  print(call)
-  system(call)
+  
+  # If running within R
+  if (run_standalone==T){
+    print(call)
+    system(call)
+  } else {
+    print('Please run Infomap online at https://www.mapequation.org/infomap/ using the following arguments (copy-paste):')
+    print(arguments)
+    invisible(readline(prompt="After running, download statenodes results and press [ENTER] when done"))
+    if (!file.exists('network_states.tree')){stop('Result file network_states.tree was not found. Did you download results?')}
+    file.rename(from = 'network_states.tree', to = 'infomap_multilayer_states.tree')
+  }
   # Get L
   L_output <- parse_number(read_lines('infomap_multilayer_states.tree')[6])
   #Read infomap's output file
@@ -178,12 +198,13 @@ run_infomap_multilayer <- function(M,
       select(-module) %>%
       rename(module=module_renamed)
   }
-
-  print('Removing auxilary files...')
-  file.remove('infomap_multilayer_states.tree')
-  file.remove('infomap_multilayer.txt')
-  file.remove('infomap_multilayer.tree')
-
+  
+  if (remove_auxilary_files){
+    print('Removing auxilary files...')
+    file.remove('infomap_multilayer_states.tree')
+    file.remove('infomap_multilayer.txt')
+    file.remove('infomap_multilayer.tree')
+  }
   # Output
   print(paste('Partitioned into ', max(modules$module),' modules.', sep=''))
   out <- list(call=call, L=L_output, m=max(modules$module), modules=modules)

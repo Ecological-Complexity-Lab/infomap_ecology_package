@@ -17,6 +17,8 @@ run_infomap_multilayer(
   multilayer_relax_limit_up = NULL,
   multilayer_relax_limit_down = NULL,
   temporal_network = F,
+  run_standalone = T,
+  remove_auxilary_files = T,
   ...
 )
 }
@@ -52,6 +54,10 @@ to relax to. If negative, relax to any layer. Useful for temporal networks.}
 to relax to. If negative, relax to any layer. Useful for temporal networks.}
 
 \item{temporal_network}{Is this a temporal network? See details.}
+
+\item{run_standalone}{Should the function run Infomap's stand-alone file? Defaults to true. See details.}
+
+\item{remove_auxilary_files}{Should auxilary files be removed when finished running?}
 
 \item{...}{additional Infomap arguments as detailed in
 \href{https://www.mapequation.org/infomap/#Parameters}{https://www.mapequation.org/infomap/#Parameters}}
@@ -91,6 +97,11 @@ Currently only works with two-level solutions (no modules within
   If the multilayer is a temporal network, modules can be renamed to be
   placed in temporal order of appearance. This is done with
   \code{temporal_network=T}.
+  
+  \code{run_standalone}: Infomap is run as a stand-alone file. On some machines, especially Windows, it is impossible to install 
+  that file or it gives an error. In that case you can use the auxilary file produced by the function, called
+  \code{infomap_multilayer.txt} to run Infomap online, download the results and parse them back. 
+  The function will wait to parse the results.
 }
 \examples{
 \dontrun{
