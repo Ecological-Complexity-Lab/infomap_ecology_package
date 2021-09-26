@@ -95,5 +95,12 @@ create_monolayer_object <- function(x, directed=NULL, bipartite=NULL, group_name
   if (!is.null(node_metadata)){
     out$nodes %<>% left_join(node_metadata)
   }
+  # Create an edge list with IDs instead of node names
+  out$edge_list_ids <- 
+    out$edge_list %>% 
+    left_join(out$nodes, by=c('from' = 'node_name')) %>%  
+    left_join(out$nodes, by=c('to' = 'node_name')) %>%  
+    dplyr::select(-from, -to) %>% 
+    dplyr::select(from=node_id.x, to=node_id.y, weight)
   return(out)
 }
