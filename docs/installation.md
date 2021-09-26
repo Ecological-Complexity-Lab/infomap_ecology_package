@@ -1,8 +1,11 @@
 ## Install Infomap
-We use Infomap version 1 as a stand-alone file. Future versions (or a different
-package) will integrate Infomap directly intro R. On Linux/MacOs, you can install Infomap via the `install_infomap` function in the package (see next section), or follow the instructions on how to download, install and use Infomap in [https://www.mapequation.org](https://www.mapequation.org).
+We use Infomap version 1.x as a stand-alone file. Future versions (or a different
+package) will integrate Infomap directly intro R.
 
-For Windows, try this:
+## MacOS / Linux
+On Linux/MacOs, you can install Infomap via the `install_infomap` function in the package (see below), or follow the instructions on how to download, install and use Infomap in [https://www.mapequation.org](https://www.mapequation.org). If on a macOS you get the error `fatal error: 'omp.h' file not found` Try using HomeBrew to install libomp: `brew install llvm libomp`.
+
+## Windows
 1. Install  miniconda Python 3 from here: https://docs.conda.io/en/latest/miniconda.html. You may also need Visual Studio (https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2017). If so, choose Workload: Desktop Development with C++.
 2. Open the miniconda prompt or Windows' powershell.
 3. type: `pip install infomap`.
@@ -17,7 +20,7 @@ same working folder in which the R code is run.
 2. Though technically Infomap can run on Windows as detailed above, I find that this is not always so easy to do. If you don't manage to install it, Linux/MacOS are the best options.
 
 ## Install the R package
-The package was built under R 3.6.3 and requires `attempt, igraph, bipartite, magrittr, tidyverse`.
+The package was built under R 4.1 and depends on other packages.
 
 ```R
 # Install  (if not installed) and load necessary packages
@@ -31,7 +34,7 @@ if (!all(installed)) install.packages(package.list[!installed], repos="http://cr
 devtools::install_github('Ecological-Complexity-Lab/infomap_ecology_package', force=T)
 library(infomapecology)
 
-# Check the version. Should be at least 0.1.1.1
+# Check the version. Should be at least 1.01
 packageDescription('infomapecology')
 
 # Install infomap if you have not done so externally (see previous section in this readme)

@@ -1,7 +1,7 @@
 # Temporal multilayer network with global relax rates
 
 ### Data set
-A temporal multilayer network. Each layer is a host-parasite bipartite network. Intralayer edges between a parasite species and a host species are the number of parasite individuals divided by the number of host individuals. Interlayer coupling edges connect each physical node to itself in the next layer (e.g., host A in layer 1 to host A in layer 2), and are calculated as the number of individuals in layer l+1 divided by the number of individuals in layer l. They therefore represent population dynamics. Interlayer edges only go one way (_l-->l+1_) because time flow one way. We represented the undirected edges within each layer as directed edges that go both ways (with the same weight) to be able to have a directed flow. This does not affect the calculation of L. This data set was taken from [_Pilosof S, Porter MA, Pascual M, Kéfi S. The multilayer nature of ecological networks. Nature Ecology & Evolution. 2017;1: 0101_](https://www.nature.com/articles/s41559-017-0101?proof=true19).
+A temporal multilayer network. Each layer is a host-parasite bipartite network. Intralayer edges between a parasite species and a host species are the number of parasite individuals divided by the number of host individuals. Interlayer edges are ignored. This data set was taken from [_Pilosof S, Porter MA, Pascual M, Kéfi S. The multilayer nature of ecological networks. Nature Ecology & Evolution. 2017;1: 0101_](https://www.nature.com/articles/s41559-017-0101?proof=true19).
 
 Data sets in infomapecology:
 ```R
@@ -30,7 +30,7 @@ The description of functions `create_multilayer_object` and `run_infomap_multila
 
 ```R
 # Create a multilayer object
-NEE2017 <- create_multilayer_object(extended = siberia1982_7_links, nodes = siberia1982_7_nodes, intra_output_extended = F, inter_output_extended = F)
+NEE2017 <- create_multilayer_object(extended = siberia1982_7_links, nodes = siberia1982_7_nodes, intra_output_extended = F)
 
 # Ignore interlayer edges
 NEE2017$inter <- NULL
@@ -52,7 +52,7 @@ Under the hood, the function `run_infomap_multilayer` runs:
 ```
 
 Explanation of key arguments:
-* `-i multilayer` indicates a multilayer input format, which is automatically recognised as a multilayer link list (and not as a general link list).
+* `-i multilayer` indicates a multilayer input format, which is automatically recognized as a multilayer link list (and not as a general link list).
 * `--multilayer-relax-rate 0.15` defines the relax rate (here 0.15).
 * `multilayer-relax-limit-up 1 --multilayer-relax-limit-down 0` limits relaxation to a single layer upwards (l to l+1), but never downwards, because time flows one-way.
 

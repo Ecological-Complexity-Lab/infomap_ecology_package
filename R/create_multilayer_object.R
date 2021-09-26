@@ -49,17 +49,15 @@
 #' emln <- create_multilayer_object(extended = siberia1982_7_links,
 #'  nodes = siberia1982_7_nodes,
 #'  intra_output_extended = TRUE,
-#'  inter_output_extended = TRUE,
 #'  layers=layers)
 #'
 #' # Create a multilayer object with a non-extended Intra/Inter type link list.
 #' emln <- create_multilayer_object(extended = siberia1982_7_links,
 #'  nodes = siberia1982_7_nodes,
 #'  intra_output_extended = FALSE,
-#'  inter_output_extended = FALSE,
 #'  layers=layers)
 #'
-#' # If one wants to ignore interlayer edges
+#' # To ignore interlayer edges:
 #' emln$inter <- NULL
 #'
 #'

@@ -34,12 +34,12 @@ The description of functions `create_multilayer_object` and `run_infomap_multila
 
 ```R
 # Create a multilayer object
-NEE2017 <- create_multilayer_object(extended = siberia1982_7_links, nodes = siberia1982_7_nodes, intra_output_extended = T, inter_output_extended = T)
+NEE2017 <- create_multilayer_object(extended = siberia1982_7_links, nodes = siberia1982_7_nodes, intra_output_extended = T)
 
 #Run infomap
 NEE2017_modules <- run_infomap_multilayer(M=NEE2017, relax = F, flow_model = 'directed', silent = T, trials = 100, seed = 497294, temporal_network = T)
 
-#Module persistance
+#Module persistence
 modules_persistence <- NEE2017_modules$modules %>%
   group_by(module) %>%
   summarise(b=min(layer_id), d=max(layer_id), persistence=d-b+1) %>%
@@ -78,7 +78,7 @@ Under the hood, the function `run_infomap_multilayer` runs:
 ```
 
 Explanation of key arguments:
-* `-i multilayer` indicates a multilayer input format, which is automatically recognised as a [general multilayer link-list](https://www.mapequation.org/infomap/#InputMultilayer).
+* `-i multilayer` indicates a multilayer input format, which is automatically recognized as a [general multilayer link-list](https://www.mapequation.org/infomap/#InputMultilayer).
 * `-f directed` indicates flow on a directed network. The visitation rates of nodes is obtained with a PageRank algorithm based on the direction and weight of edges. This includes interlayer edges.
 
 ### Output
