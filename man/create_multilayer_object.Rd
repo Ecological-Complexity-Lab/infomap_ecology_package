@@ -10,8 +10,9 @@ create_multilayer_object(
   inter = NULL,
   nodes = NULL,
   intra_output_extended = T,
-  inter_output_extended = T,
-  layers = NULL
+  layers = NULL,
+  write_to_file = F,
+  filename_prefix = NULL
 )
 }
 \arguments{
@@ -23,9 +24,9 @@ node_from layer_to node_to weight}, that contains all intralayer, and
 \item{intra}{An edge list of the format \code{layer node_from node_to
 weight}. Nodes and layers should be specified by IDs, not names.}
 
-\item{inter}{An edge list of the format \code{layer_from node_from layer_to
-node_to weight}. Nodes and layers should be specified by IDs, not names. Defaults to NULL,
-assuming the network does not have interlayer edges.}
+\item{inter}{An extended edge list of the format \code{layer_from node_from
+layer_to node_to weight}. Nodes and layers should be specified by IDs, not names. Defaults to NULL,
+ assuming the network does not have interlayer edges.}
 
 \item{nodes}{A data frame with node metadata. First column must be node_id
 with IDs corresponding to those in \code{extended}, \code{intra} or
@@ -33,11 +34,13 @@ with IDs corresponding to those in \code{extended}, \code{intra} or
 
 \item{intra_output_extended}{Defaults to \code{TRUE}. Should the intralayer edges be written in the extended edge list format.}
 
-\item{inter_output_extended}{Defaults to \code{TRUE}. Should the intralayer edges be written in the extended edge list format.}
-
 \item{layers}{A data frame with layer metadata. First column must be layer_id
 with IDs corresponding to those in \code{extended}, \code{intra} or
 \code{inter}.}
+
+\item{write_to_file}{Write the edgel list to a text file? Convenient to copy-paste into the online version of infomap.}
+
+\item{filename_prefix}{The name of the file. Extension will always be txt and the file is space-delimited.}
 }
 \value{
 A \code{multilayer} object
@@ -49,19 +52,18 @@ on nodes and layers.
 }
 \details{
 \code{extended, intra, inter} must only contain node IDs. Any
-  details on nodes and layers that link to these IDs should be provided in
+  node and layer attributes that link to these IDs should be provided in
   \code{nodes} and \code{layers}.
 
   Intralayer edges can have either an extended format of \code{layer_from
-  node_from layer_to node_to weight} or a non-extended Intra/Inter format of \code{layer
+  node_from layer_to node_to weight} or a non-extended format of \code{layer
   node_from node_to weight}.
 
-  Interlayer edges too can have either an extended format of \code{layer_from
-  node_from layer_to node_to weight} or a non-extended format of
-  \code{layer_from node layer_to weight}. **However, in Infomap, a non-extended format is
-  ONLY valid for coupling interlayer edges using a relax rate, which connects between different
-  realizations of the same physical nodes in diffrent layers. When interlayer
-  edges are between different physical nodes use the extended format.**
+  Interlayer edges must have an extended format of \code{layer_from
+  node_from layer_to node_to weight}. This is because a non-extended format (\code{layer_from
+  node_from layer_to weight}) is ONLY valid for interlayer edges that connect between different
+  realizations of the same physical nodes in different layers (coupling interlayer links). To avoid
+  confusion we do not allow this format.
 }
 \examples{
 data("siberia1982_7_links") # Links are an extended edge list
@@ -74,17 +76,15 @@ layers <- tibble(layer_id=1:6, year=1982:1987)
 emln <- create_multilayer_object(extended = siberia1982_7_links,
  nodes = siberia1982_7_nodes,
  intra_output_extended = TRUE,
- inter_output_extended = TRUE,
  layers=layers)
 
 # Create a multilayer object with a non-extended Intra/Inter type link list.
 emln <- create_multilayer_object(extended = siberia1982_7_links,
  nodes = siberia1982_7_nodes,
  intra_output_extended = FALSE,
- inter_output_extended = FALSE,
  layers=layers)
 
-# If one wants to ignore interlayer edges
+# To ignore interlayer edges:
 emln$inter <- NULL
 
 
