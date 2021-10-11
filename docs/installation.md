@@ -22,7 +22,7 @@ We use Infomap version 1.x as a stand-alone file. Future versions (or a differen
 
 All instructions to install Infomap are in [https://www.mapequation.org/infomap/#Install](https://www.mapequation.org/infomap/#Install). But here is a summary to help you get this done step-by-step. In any case of contradiction, the instructions on Infomap's website hold.
 
-## MacOS / Linux
+### MacOS / Linux
 You need to have a few pakages installed using homebrew.
 * Install homebrew as specified in [https://brew.sh](https://brew.sh). This will take a while.
 * install node: `brew install node` or upgrade if you have it: `brew upgrade node`.
@@ -30,7 +30,7 @@ You need to have a few pakages installed using homebrew.
 
 Then install Infomap via the `install_infomap` function in the package, or follow the instructions on how to download, install and use Infomap in [https://www.mapequation.org](https://www.mapequation.org).
 
-```
+```R
 # Install infomap if you have not done so externally (see previous section in this readme)
 setwd('where your Infomap file and R script will live')
 install_infomap()
@@ -40,7 +40,7 @@ setwd('where your Infomap file and R script now live')
 check_infomap() # Make sure file can be run correctly. Should return TRUE
 ```
 
-## Windows
+### Windows
 * Install prerequisits for windows as described here: [https://www.mapequation.org/infomap/#Windows](https://www.mapequation.org/infomap/#Windows), including WSL and the others.
 * You need a Pythin environemnt, Anaconda is great
 * Install Infomap via `pip`: [https://www.mapequation.org/infomap/#UsingPip](https://www.mapequation.org/infomap/#UsingPip). After installing via python as instructued, in the anaconda terminal you can type `where infomap` to find the file. 
