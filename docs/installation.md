@@ -41,9 +41,11 @@ check_infomap() # Make sure file can be run correctly. Should return TRUE
 ```
 
 ### Windows
-* Install prerequisits for windows as described here: [https://www.mapequation.org/infomap/#Windows](https://www.mapequation.org/infomap/#Windows), including WSL and the others.
-* You need a Pythin environemnt, Anaconda is great
-* Install Infomap via `pip`: [https://www.mapequation.org/infomap/#UsingPip](https://www.mapequation.org/infomap/#UsingPip). After installing via python as instructued, in the anaconda terminal you can type `where infomap` to find the file. 
+* You need a Python environemnt, Anaconda or Miniconda is great
+* Go to the Anaconda prompt
+* install using pip: `pip install infomap`.
+* Install Infomap via `pip`: [https://www.mapequation.org/infomap/#UsingPip](https://www.mapequation.org/infomap/#UsingPip). 
+* After installing, in the anaconda terminal you can type `where infomap` to find the file. Copy it to your worling folder.
 
 **Important notes:**
 1. The best practice is to compile Infomap under the file name "Infomap" and place it in the
