@@ -23,10 +23,11 @@ We use Infomap version 1.x as a stand-alone file. Future versions (or a differen
 All instructions to install Infomap are in [https://www.mapequation.org/infomap/#Install](https://www.mapequation.org/infomap/#Install). But here is a summary to help you get this done step-by-step and after trouleshooting various attempts on different computers. In any case of contradiction, the instructions on Infomap's website hold.
 
 ### MacOS (Linux should be similar)
-You need to have a few packages installed using homebrew.
+In the terminal run:
+* `xcode-select install`
 * Install homebrew as specified in [https://brew.sh](https://brew.sh). This will take a while.
 * install node: `brew install node` or upgrade if you have it: `brew upgrade node`.
-* install packages: `brew install llvm libomp`.
+* install packages: `brew install libomp`.
 
 Then install Infomap via the `install_infomap` function in the package, or follow the instructions in [https://www.mapequation.org](https://www.mapequation.org).
 
