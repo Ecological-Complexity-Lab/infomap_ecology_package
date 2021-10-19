@@ -24,10 +24,10 @@ All instructions to install Infomap are in [https://www.mapequation.org/infomap/
 
 ### MacOS (Linux should be similar)
 In the terminal run:
-* `xcode-select install`
-* Install homebrew as specified in [https://brew.sh](https://brew.sh). This will take a while.
-* install node: `brew install node` or upgrade if you have it: `brew upgrade node`.
-* install packages: `brew install libomp`.
+* `xcode-select --install`
+* For OpenMP support
+  * Install homebrew as specified in [https://brew.sh](https://brew.sh). This will take a while.
+  * install packages: `brew install libomp`.
 
 Then install Infomap via the `install_infomap` function in the package, or follow the instructions in [https://www.mapequation.org](https://www.mapequation.org).
 
