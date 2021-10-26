@@ -75,9 +75,7 @@
 #'
 #' # Create a multilayer object with an extended list.
 #' emln <- create_multilayer_object(extended = siberia1982_7_links,
-#'  nodes = siberia1982_7_nodes,
-#'  intra_output_extended = TRUE,
-#'  inter_output_extended = TRUE,
+#'  nodes = siberia1982_7_nodes
 #'  layers=layers)
 #'
 #'  # Run modularity for a temporal network with provided interlayer 
@@ -174,15 +172,15 @@ run_infomap_multilayer <- function(M,
   #Read infomap's output file
   modules <- suppressMessages(read_delim('infomap_multilayer_states.tree', delim = ' ', skip = 8, col_names = c('path', 'flow', 'name', 'state_id', 'node_id', 'layer_id')))
   # Parse modules
-  modules %<>%
-    filter(flow>0) %>% # Modules with 0 flow have a singleton and are spurious
-    select(path, node_id, layer_id) %>%
-    separate(path, into=c('module','leaf_id'), sep = ':') %>%
-    mutate_all(as.integer) %>%
-    full_join(M$nodes, 'node_id') %>%
-    select(node_id, starts_with('module'), everything(), -leaf_id) %>%
+  modules %<>% 
+    filter(flow > 0) %>%
+    select(path, node_id, layer_id, flow) %>%
+    separate(path, into = c("module", "leaf_id"), sep = ":") %>% 
+    mutate_at(.vars = 1:4, as.integer) %>% 
+    full_join(M$nodes, "node_id") %>% 
+    select(node_id, starts_with("module"),  everything(), -leaf_id) %>% 
     arrange(node_id, layer_id)
-
+  
   # For temporal networks, need to rename modules to be in a temporal order
   # because Infomap gives names by flow and not by order of appearence.
   if (temporal_network){

@@ -111,9 +111,7 @@ layers <- tibble(layer_id=1:6, year=1982:1987) # Information on layers
 
 # Create a multilayer object with an extended list.
 emln <- create_multilayer_object(extended = siberia1982_7_links,
- nodes = siberia1982_7_nodes,
- intra_output_extended = TRUE,
- inter_output_extended = TRUE,
+ nodes = siberia1982_7_nodes
  layers=layers)
 
  # Run modularity for a temporal network with provided interlayer 
