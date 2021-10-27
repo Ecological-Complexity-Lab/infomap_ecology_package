@@ -7,21 +7,30 @@
 install_infomap(target_folder = NULL, source = "binary")
 }
 \arguments{
-\item{target_folder}{Where to install infomap. Defaults to R's current
+\item{target_folder}{Where to install Infomap. Defaults to R's current
 working directory (\code{getwd()}).}
+
+\item{source}{The source to download Infomap from. Relevant only for Unix based operating systems.
+"git" to download the latest version from development, 
+"binary" (default) to download the latest release version.}
 }
 \value{
 FALSE and an error if Infomap is not installed correctly. TRUE (and
   version number) if it is.
 }
 \description{
-Clones the GitHub repository and runs \code{make} via R's \code{system}
-command. This is merely a wrapper for commands that can be easily run in the
-terminal.
+Downloads the latest binary release version from MapEquation according to the 
+machine's operating system (Windows/MacOS/Linux). Unix based OS users have 
+the option to download the latest version in development from the git. 
+In that case it clones the GitHub repository and runs \code{make} via R's
+\code{system} command. This is merely a wrapper for commands that can be 
+easily run in the terminal.
 }
 \details{
 For now, this package depends on Infomap's stand-alone version.
-  Futre versions or another package will incorporate Infomap directly into R. Therefore it is necessary to install infomap, in the same folder where the code is Run. If it is already installed, then it will be replaced by the newest version.
+  Future versions or another package will incorporate Infomap directly into R. 
+  Therefore it is necessary to install infomap, in the same folder where the code is Run. 
+  If it is already installed, then it will be replaced by the newest version.
 }
 \examples{
 \dontrun{

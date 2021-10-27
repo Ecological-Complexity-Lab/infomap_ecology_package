@@ -1,17 +1,26 @@
 #' A wrapper to install Infomap's standalone file.
 #'
-#' Clones the GitHub repository and runs \code{make} via R's \code{system}
-#' command. This is merely a wrapper for commands that can be easily run in the
-#' terminal.
-#'
-#' @param target_folder Where to install infomap. Defaults to R's current
+#' Downloads the latest binary release version from MapEquation according to the 
+#' machine's operating system (Windows/MacOS/Linux). Unix based OS users have 
+#' the option to download the latest version in development from the git. 
+#' In that case it clones the GitHub repository and runs \code{make} via R's
+#' \code{system} command. This is merely a wrapper for commands that can be 
+#' easily run in the terminal.
+#
+#' @param target_folder Where to install Infomap. Defaults to R's current
 #'   working directory (\code{getwd()}).
-#'   
+#'
+#' @param source The source to download Infomap from. Relevant only for Unix based operating systems.
+#'  "git" to download the latest version from development, 
+#'  "binary" (default) to download the latest release version. 
+#'  
 #' @return FALSE and an error if Infomap is not installed correctly. TRUE (and
 #'   version number) if it is.
 #'
 #' @details For now, this package depends on Infomap's stand-alone version.
-#'   Futre versions or another package will incorporate Infomap directly into R. Therefore it is necessary to install infomap, in the same folder where the code is Run. If it is already installed, then it will be replaced by the newest version.
+#'   Future versions or another package will incorporate Infomap directly into R. 
+#'   Therefore it is necessary to install infomap, in the same folder where the code is Run. 
+#'   If it is already installed, then it will be replaced by the newest version.
 #'   
 #' @examples
 #' \dontrun{
@@ -22,7 +31,6 @@
 ## @import attempt
 ## @import stringr
 install_infomap <- function(target_folder=NULL, source="binary"){
-
   # -------Auxilary functions----
   get_os <- function(){
     sysinf <- Sys.info()
@@ -40,8 +48,6 @@ install_infomap <- function(target_folder=NULL, source="binary"){
     tolower(os)
   }
   install_from_github <- function(target_folder){
-    unlink('Infomap')
-    if (is.null(target_folder)){target_folder <- getwd()}
     setwd(target_folder)
     system('git clone https://github.com/mapequation/infomap.git')
     setwd(paste(getwd(),'/infomap',sep=''))
@@ -53,7 +59,8 @@ install_infomap <- function(target_folder=NULL, source="binary"){
     system('rm -rf infomap')
     file.rename('Infomap_f', 'Infomap')
     # Check installation
-    out <- attempt(system('./Infomap -V'), msg = 'Infomap not installed correctly. See www.mapequation.org for instructions on how to install.')
+    out <- attempt(system('./Infomap -V'), 
+                   msg = 'Infomap not installed correctly. See www.mapequation.org for instructions on how to install.')
     if (out==0) {
       return(T)
     } else {
@@ -61,10 +68,19 @@ install_infomap <- function(target_folder=NULL, source="binary"){
     }
   }
   
-  # 'source' can be one of the following = c('git','binary')
+  # ------ function body ------
+  # validate path and set it as wd
+  oldwd <- getwd()
+  if (is.null(target_folder)) {target_folder <- getwd()
+  }else if (dir.exists(target_folder)) {setwd(target_folder)
+  }else{
+    warning("Invalid directory name.")
+    return(F)
+  }
+  
   unlink("Infomap.zip")
   unlink("Infomap")
-  source_url <- "https://github.com/mapequation/infomap/releases/download/v1.7.1/" 
+  source_url <- "https://github.com/mapequation/infomap/releases/download/v1.7.1/"
   os <- get_os()
   
   #get file name by OS
@@ -77,13 +93,16 @@ install_infomap <- function(target_folder=NULL, source="binary"){
       } else if (os=="linux") {
         file_name <- "infomap-ubuntu.zip" # need to check that it works
       }
-    } else {
-      return(infomapecology::install_infomap())
+    } else if (source=='git') {
+      return(install_from_github(target_folder))
+    } else{
+      print("Invalid Infomap source. See description for more details.")
+      return(F)
     }
   }
   
   url <- paste(source_url, file_name, sep = "")
-  destfile <- paste(getwd(), "/Infomap.zip", sep = "")
+  destfile <- paste(target_folder, "/Infomap.zip", sep = "")
   download.file(url, destfile)
   
   # unzip downloaded file
@@ -92,13 +111,17 @@ install_infomap <- function(target_folder=NULL, source="binary"){
   } else { # this is a unix based os
     # unzip the infomap file 
     # (using the unzip function doesnt prepuce the right permissions to run the exec)
-    attempt(system("unzip -o Infomap.zip"), 
+    attempt(system(paste("unzip -o ", destfile, sep="")), 
             msg = "unzip using commandline failed")
   }
-  
+  unlink("Infomap.zip")
+
   # attempt to run infomap, if it doesnt work, download no omp version
-  is_working <- infomapecology::check_infomap()
+  is_working <- check_infomap()
+
   if (is_working) {
+    # return to the previous directory
+    setwd(oldwd)
     return(TRUE)
   } else {
     print("OpenMP Infomap check was unsuccessfull. Downloading no OpenMP Infomap.")
@@ -106,18 +129,19 @@ install_infomap <- function(target_folder=NULL, source="binary"){
     file_name_new <- paste(name_parts[1], "-noomp.", name_parts[2], sep = "")
     url_new <- paste(source_url, file_name_new, sep = "")
     download.file(url, destfile)
-    attempt(system(paste("unzip -o Infomap.zip", sep = "")),
+    attempt(system(paste("unzip -o ", destfile, sep="")),
             msg = "unzip using commandline failed")
-    is_working <- infomapecology::check_infomap()
+    is_working <- check_infomap()
+    # return to the previous directory
+    setwd(oldwd)
     if (is_working) {
-      print("Warning: No omp infomap version was installed. 
+      warning("Warning: No OpenMP Infomap version was installed. 
           This restricts parallel processing. For more information see https://www.mapequation.org/infomap/#Install.")
       return(TRUE)
     } else {
-      print("Infomap not installed correctly. 
+      warning("Infomap not installed correctly. 
           See https://www.mapequation.org/infomap/#Install. for instructions on how to install.")
       return(FALSE)
     }
   }
-  
 }
