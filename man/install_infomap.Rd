@@ -4,7 +4,7 @@
 \alias{install_infomap}
 \title{A wrapper to install Infomap's standalone file.}
 \usage{
-install_infomap(target_folder = NULL)
+install_infomap(target_folder = NULL, source = "binary")
 }
 \arguments{
 \item{target_folder}{Where to install infomap. Defaults to R's current
