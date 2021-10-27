@@ -32,6 +32,7 @@ For now, this package depends on Infomap's stand-alone version.
   Future versions or another package will incorporate Infomap directly into R. 
   Therefore it is necessary to install infomap, in the same folder where the code is Run. 
   If it is already installed, then it will be replaced by the newest version.
+  For full instructions see \href{https://ecological-complexity-lab.github.io/infomap_ecology_package/installation}{here}
 }
 \examples{
 \dontrun{
