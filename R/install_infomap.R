@@ -8,7 +8,8 @@
 #' easily run in the terminal.
 #
 #' @param target_folder Where to install Infomap. Defaults to R's current
-#'   working directory (\code{getwd()}).
+#'   working directory (\code{getwd()}). 
+#'   Note: avoid using special characters or spaces in the folder's path.
 #'
 #' @param source The source to download Infomap from. Relevant only for Unix based operating systems.
 #'  "git" to download the latest version from development, 
@@ -94,9 +95,12 @@ install_infomap <- function(target_folder=NULL, source="binary"){
         file_name <- "infomap-ubuntu.zip" # need to check that it works
       }
     } else if (source=='git') {
-      return(install_from_github(target_folder))
+      res <- install_from_github(target_folder)
+      setwd(oldwd)
+      return(res)
     } else{
       print("Invalid Infomap source. See description for more details.")
+      setwd(oldwd)
       return(F)
     }
   }

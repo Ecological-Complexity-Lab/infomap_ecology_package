@@ -8,7 +8,8 @@ install_infomap(target_folder = NULL, source = "binary")
 }
 \arguments{
 \item{target_folder}{Where to install Infomap. Defaults to R's current
-working directory (\code{getwd()}).}
+working directory (\code{getwd()}). 
+Note: avoid using special characters or spaces in the folder's path.}
 
 \item{source}{The source to download Infomap from. Relevant only for Unix based operating systems.
 "git" to download the latest version from development, 
