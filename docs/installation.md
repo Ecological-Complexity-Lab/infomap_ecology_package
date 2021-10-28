@@ -21,14 +21,14 @@ packageDescription('infomapecology')
 We use Infomap version 1.x as a stand-alone file. Future versions (or a different package) will integrate Infomap directly intro R.
 
 ### MacOS (Linux should be similar)
-In the terminal run:
+#### 1. In the terminal run:
 * `xcode-select --install`
 * For OpenMP support
   * Install homebrew as specified in [https://brew.sh](https://brew.sh). This will take a while.
   * install packages: `brew install libomp`.
 
-Then install Infomap via the `install_infomap` function in the package as below. Avoid folder names with spaces or non-english lettes.
-
+#### 2. Then either:
+1. install Infomap via the `install_infomap` function in the package as below. Avoid folder names with spaces or non-english lettes.
 ```R
 setwd('where your Infomap file and R script will live')
 install_infomap()
@@ -37,11 +37,12 @@ install_infomap()
 setwd('where your Infomap file and R script now live')
 check_infomap() # Make sure file can be run correctly. Should return TRUE
 ```
+2. or download a binary from [here](https://github.com/mapequation/infomap/releases/latest) and put the file in the working folder.
+
 
 ### Windows
 
 Install Infomap via the `install_infomap` function in the package as below. Avoid folder names with spaces or non-english lettes.
-
 ```R
 setwd('where your Infomap file and R script will live')
 install_infomap()
@@ -50,6 +51,7 @@ install_infomap()
 setwd('where your Infomap file and R script now live')
 check_infomap() # Make sure file can be run correctly. Should return TRUE
 ```
+or download a binary from [here](https://github.com/mapequation/infomap/releases/latest) and put the file in the working folder.
 
 
 **Important notes:**
