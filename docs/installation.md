@@ -28,7 +28,7 @@ We use Infomap version 1.x as a stand-alone file. Future versions (or a differen
   * install packages: `brew install libomp`.
 
 #### 2. Then either:
-1. install Infomap via the `install_infomap` function in the package as below. Avoid folder names with spaces or non-english lettes.
+Install Infomap via the `install_infomap` function in the package as below. Avoid folder names with spaces or non-english lettes.
 
 ```R
 setwd('where your Infomap file and R script will live')
@@ -39,7 +39,7 @@ setwd('where your Infomap file and R script now live')
 check_infomap() # Make sure file can be run correctly. Should return TRUE
 ```
 
-2. or download a binary from [here](https://github.com/mapequation/infomap/releases/latest) and put the file in the working folder.
+or download a binary from [here](https://github.com/mapequation/infomap/releases/latest) and put the file in the working folder.
 
 
 ### Windows
