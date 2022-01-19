@@ -32,15 +32,16 @@ layer_to node_to weight}. Nodes and layers should be specified by IDs, not names
 with IDs corresponding to those in \code{extended}, \code{intra} or
 \code{inter}.}
 
-\item{intra_output_extended}{Defaults to \code{TRUE}. Should the intralayer edges be written in the extended edge list format.}
+\item{intra_output_extended}{Defaults to \code{TRUE}. Should the intralayer edges be written in the extended edge list format. 
+Set as \code{FALSE} for running with relax_rate instead of with interlayer edges.}
 
 \item{layers}{A data frame with layer metadata. First column must be layer_id
 with IDs corresponding to those in \code{extended}, \code{intra} or
 \code{inter}.}
 
-\item{write_to_file}{Write the edgel list to a text file? Convenient to copy-paste into the online version of infomap.}
+\item{write_to_file}{Write the edge list to a text file? Convenient to copy-paste into the online version of infomap.}
 
-\item{filename_prefix}{The name of the file. Extension will always be txt and the file is space-delimited.}
+\item{filename_prefix}{The name of the file. Extension will always be .txt and the file is space-delimited.}
 }
 \value{
 A \code{multilayer} object

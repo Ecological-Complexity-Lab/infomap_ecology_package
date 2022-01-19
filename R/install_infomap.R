@@ -61,13 +61,7 @@ install_infomap <- function(target_folder=NULL, source="binary"){
     system('rm -rf infomap')
     file.rename('Infomap_f', 'Infomap')
     # Check installation
-    out <- attempt(system('./Infomap -V'), 
-                   msg = 'Infomap not installed correctly. See www.mapequation.org for instructions on how to install.')
-    if (out==0) {
-      return(T)
-    } else {
-      return(F)
-    }
+    return(check_infomap('Infomap'))
   }
   
   # ------ function body ------
@@ -82,7 +76,7 @@ install_infomap <- function(target_folder=NULL, source="binary"){
   
   unlink("Infomap.zip")
   unlink("Infomap")
-  source_url <- "https://github.com/mapequation/infomap/releases/download/v1.7.1/"
+  source_url <- "https://github.com/mapequation/infomap/releases/download/v2.0.0/"
   os <- get_os()
   
   #get file name by OS
