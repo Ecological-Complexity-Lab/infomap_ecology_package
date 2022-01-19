@@ -105,13 +105,14 @@ Currently only works with two-level solutions (no modules within
 }
 \examples{
 \dontrun{
-data("siberia1982_7_links") # Links are an extended edge list
-data("siberia1982_7_nodes") # nodes
-layers <- tibble(layer_id=1:6, year=1982:1987) # Information on layers
+ data("siberia1982_7_links") # Links are an extended edge list
+ data("siberia1982_7_nodes") # nodes
+ layers <- tibble(layer_id=1:6, year=1982:1987) # Information on layers
 
-# Create a multilayer object with an extended list.
-emln <- create_multilayer_object(extended = siberia1982_7_links,
- nodes = siberia1982_7_nodes
+ # Using interlayer edges:
+ # Create a multilayer object with an extended list.
+ emln <- create_multilayer_object(extended = siberia1982_7_links,
+ nodes = siberia1982_7_nodes,
  layers=layers)
 
  # Run modularity for a temporal network with provided interlayer 
@@ -121,8 +122,15 @@ emln <- create_multilayer_object(extended = siberia1982_7_links,
  trials = 100, seed = 497294,
  temporal_network = TRUE)
 
+ # for relax rates:
+ # Create a multilayer object with an extended list.
+ emln <- create_multilayer_object(extended = siberia1982_7_links,
+ nodes = siberia1982_7_nodes,
+ layers=layers, 
+ intra_output_extended = F)
+  
  # Assume that interlayer edges are not provided and run modularity with relax rate.
- # Limit relaxation to the next layer only.
+ # Limit relaxation to the next layer only (as this is a temporal network).
  emln$inter <- NULL
  emln_modularity_r <- run_infomap_multilayer(emln, relax = T, silent = TRUE, 
  trials = 50, seed = 497294,

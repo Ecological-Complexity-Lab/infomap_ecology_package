@@ -19,9 +19,10 @@
 #' @param layers A data frame with layer metadata. First column must be layer_id
 #'   with IDs corresponding to those in \code{extended}, \code{intra} or
 #'   \code{inter}.
-#' @param intra_output_extended Defaults to \code{TRUE}. Should the intralayer edges be written in the extended edge list format.
-#' @param write_to_file Write the edgel list to a text file? Convenient to copy-paste into the online version of infomap.
-#' @param filename_prefix The name of the file. Extension will always be txt and the file is space-delimited.
+#' @param intra_output_extended Defaults to \code{TRUE}. Should the intralayer edges be written in the extended edge list format. 
+#'   Set as \code{FALSE} for running with relax_rate instead of with interlayer edges.
+#' @param write_to_file Write the edge list to a text file? Convenient to copy-paste into the online version of infomap.
+#' @param filename_prefix The name of the file. Extension will always be .txt and the file is space-delimited.
 #' 
 #'
 #' @details \code{extended, intra, inter} must only contain node IDs. Any

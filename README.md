@@ -12,3 +12,23 @@ Farage, C., D. Edler, A. Eklöf, M. Rosvall, and S. Pilosof. 2021. Identifying f
 ## Full documentation
 Complete instructions for installation and many examples are in [https://ecological-complexity-lab.github.io/infomap_ecology_package/](https://ecological-complexity-lab.github.io/infomap_ecology_package/).
 
+<br>
+
+******************
+
+### News
+
+__2022-01-19 :__
+
+Updating the package to be compatible with the latest version of Infomap (2.0.0). 
+  
+<ul>
+  <li>Defaults to installing the latest Infomap version.</li>
+  <li>Defaults to including self-link as apposed to previous versions that defaulted to excluding them. <br>
+  Excluding self-links now requires adding "\--no-self-links" to the optional arguments.</li>
+</ul>
+
+
+__2021-10-27 :__
+
+Update Install_infomap function to default as downlading the pre-compiled binary versions of Infomap, as can be found  [here](https://github.com/mapequation/infomap/releases/tag/v2.0.0).

@@ -92,7 +92,7 @@ run_infomap_monolayer <- function(x, infomap_executable='Infomap', flow_model=NU
   arguments <- ifelse(silent, paste(arguments, '--silent'), arguments)
   arguments <- ifelse(two_level, paste(arguments, '--two-level'), arguments)
   arguments <- paste(arguments,...)
-  call <- paste('./',infomap_executable, ' infomap.txt . -i link-list --tree ',arguments,sep='')
+  call <- paste('./',infomap_executable, ' infomap.txt . --tree ',arguments,sep='')
   
   # Write temporary file for Infomap
   write_delim(obs$edge_list_infomap, 'infomap.txt', delim = ' ', col_names = F)
