@@ -1,7 +1,7 @@
 Package: infomapecology
 Type: Package
 Title: Community Detection using Infomap, Inspired by Ecological Networks
-Version: 1.0.5
+Version: 1.0.6
 URL: https://github.com/Ecological-Complexity-Lab/infomap_ecology_package
 Date: 2022-04-22
 Author: Shai Pilosof <pilos@post.bgu.ac.il>

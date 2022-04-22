@@ -76,7 +76,7 @@ install_infomap <- function(target_folder=NULL, source="binary"){
   
   unlink("Infomap.zip")
   unlink("Infomap")
-  source_url <- "https://github.com/mapequation/infomap/releases/download/v2.0.0/"
+  source_url <- "https://github.com/mapequation/infomap/releases/download/v2.3.0/"
   os <- get_os()
   
   #get file name by OS
@@ -126,8 +126,8 @@ install_infomap <- function(target_folder=NULL, source="binary"){
     print("OpenMP Infomap check was unsuccessfull. Downloading no OpenMP Infomap.")
     name_parts <- unlist(str_split(file_name, "\\."))
     file_name_new <- paste(name_parts[1], "-noomp.", name_parts[2], sep = "")
-    url_new <- paste(source_url, file_name_new, sep = "")
-    download.file(url, destfile)
+    url_noomp <- paste(source_url, file_name_new, sep = "")
+    download.file(url_noomp, destfile)
     attempt(system(paste("unzip -o ", destfile, sep="")),
             msg = "unzip using commandline failed")
     is_working <- check_infomap()

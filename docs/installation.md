@@ -13,7 +13,7 @@ if (!all(installed)) install.packages(package.list[!installed], repos="http://cr
 devtools::install_github('Ecological-Complexity-Lab/infomap_ecology_package', force=T)
 library(infomapecology)
 
-# Check the version. Should be at least 1.03
+# Check the version.
 packageDescription('infomapecology')
 ```
 
