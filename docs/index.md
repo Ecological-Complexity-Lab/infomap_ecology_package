@@ -17,3 +17,6 @@ The basics of Infomap's input and output are [here](https://ecological-complexit
 * [Hypothesis testing](https://ecological-complexity-lab.github.io/infomap_ecology_package/hypothesis_test)
 * [Temporal multilayer network with global relax rates](https://ecological-complexity-lab.github.io/infomap_ecology_package/multilayer_relax)
 * [Temporal multilayer network with interlayer edges](https://ecological-complexity-lab.github.io/infomap_ecology_package/multilayer_interlayer)
+
+##Acknowledgements
+This work was supported by research grant ISF (Israel Science Foundation) 1281/20 to Shai Pilosof.
