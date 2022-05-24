@@ -37,8 +37,7 @@ The data set is in an extentded edge list format (layer_from
 \examples{
 data(siberia1982_7_links)
 data(siberia1982_7_nodes)
-create_multilayer_object(extended = siberia1982_7_links, nodes = siberia1982_7_nodes,
- intra_output_extended = TRUE, inter_output_extended = TRUE)
+create_multilayer_object(extended = siberia1982_7_links, nodes = siberia1982_7_nodes)
 }
 \references{
 Krasnov BR, Matthee S, Lareschi M, Korallo-Vinarskaya NP, Vinarski MV. Co-occurrence of ectoparasites on rodent hosts: null model analyses of data from three continents. Oikos. 2010;119: 120–128.

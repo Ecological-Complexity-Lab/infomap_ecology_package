@@ -178,7 +178,7 @@ run_infomap_multilayer <- function(M,
   # Get L
   L_output <- parse_number(read_lines('infomap_multilayer_states.tree')[6])
   #Read infomap's output file
-  modules <- suppressMessages(read_delim('infomap_multilayer_states.tree', delim = ' ', skip = 8, col_names = c('path', 'flow', 'name', 'state_id', 'node_id', 'layer_id')))
+  modules <- suppressMessages(read_delim('infomap_multilayer_states.tree', delim = ' ', skip = 11, col_names = c('path', 'flow', 'name', 'state_id', 'node_id', 'layer_id')))
   # Parse modules
   modules %<>% 
     filter(flow > 0) %>%
