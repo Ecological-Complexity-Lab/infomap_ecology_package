@@ -7,7 +7,7 @@ Date: 2022-01-19
 Author: Shai Pilosof <pilos@post.bgu.ac.il>
 Maintainer: Shai Pilosof <pilos@post.bgu.ac.il>, Geut Galai <geutg@post.bgu.ac.il>
 BugReports: https://github.com/Ecological-Complexity-Lab/infomap_ecology_package/issues
-Description: Collection of R functions to perform community detection analysis with Infomap. Also includes standardized objects to store and further analyze monolayer and multilayer networks. Inspired by ecological networks but can work for other networks too! Ideas/requests for features are welcome (open an issue here: https://github.com/Ecological-Complexity-Lab/infomap_ecology_package/issues).
+Description: Collection of R functions to perform community detection analysis with Infomap. Also includes standardized objects to store and further analyze monolayer and multilayer networks. Inspired by ecological networks but can work for other networks too! Ideas/requests for features are welcome (open an issue here: https://github.com/Ecological-Complexity-Lab/infomap_ecology_package/issues). This work was supported by research grant ISF (Israel Science Foundation) 1281/20 to Shai Pilosof
 License: GPL
 Encoding: UTF-8
 LazyData: true
