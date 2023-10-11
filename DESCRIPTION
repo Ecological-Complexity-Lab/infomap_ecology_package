@@ -25,7 +25,8 @@ Depends:
   tidyr,
   rlang,
   igraph,
-  vegan
+  vegan,
+  emln
 Suggests:
   bipartite
 RoxygenNote: 7.1.2
