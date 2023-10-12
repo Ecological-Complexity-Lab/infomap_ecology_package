@@ -103,5 +103,5 @@ This is a beta version, that should eventually replace
   \code{run_infomap_monolayer}.
 }
 \seealso{
-\code{create_monolayer_object, monolayer, shuffle_infomap, infomap_monolayer}
+\code{create_monolayer_network, monolayer, shuffle_infomap, infomap_monolayer}
 }

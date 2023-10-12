@@ -29,5 +29,5 @@ Depends:
   emln
 Suggests:
   bipartite
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.3
 Comment: Some functions are wrappers for the standalone file Infomap (independently installed) and their examples are set to "dontrun". Competibal only with Infomap version >=2.0.0.

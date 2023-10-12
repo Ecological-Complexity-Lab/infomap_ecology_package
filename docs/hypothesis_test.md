@@ -5,7 +5,7 @@
 The function `run_infomap_monolayer` can use shuffling algorithms built into `vegan`. To use this, we need to set `signif=T` and provide a shuffling method to `shuff_method`. The shuffling methods are the ones detailed in `?vegan::commsim`.
 
 ```R
-network_object <- create_monolayer_object(memmott1999, bipartite = T, directed = F, group_names = c('A','P'))
+network_object <- create_monolayer_network(memmott1999, bipartite = T, directed = F, group_names = c('A','P'))
 
 # Run with shuffling
 infomap_object <- run_infomap_monolayer(network_object, infomap_executable='Infomap',
@@ -69,7 +69,7 @@ tur2016_altitude2000 <- tur2016 %>%
   slice(c(-10,-13,-28)) %>%  # Remove singletons
   filter(from!=to) # Remove self loops
   
-tur_network <- create_monolayer_object(tur2016_altitude2000, directed = T, bipartite = F)
+tur_network <- create_monolayer_network(tur2016_altitude2000, directed = T, bipartite = F)
 
 # A dedicated function to shuffle the networks, considering the flow.
 shuffle_tur_networks <- function(x){ # x is a network object
@@ -102,7 +102,7 @@ shuffled <- NULL
 for (i in 1:nsim){
   print(i)
   x <- shuffle_tur_networks(tur_network) #Shuffle the network
-  x <- create_monolayer_object(x,directed = T,bipartite = F) # Create a monolayer object
+  x <- create_monolayer_network(x,directed = T,bipartite = F) # Create a monolayer object
   shuffled[[i]] <- create_infomap_linklist(x)$edge_list_infomap #Create a link-list
 }  
 

@@ -5,7 +5,7 @@ library(igraph)
 # Original network -------------------------------
 d <- read_csv('gillaranz.csv', col_types = 'ccilc')
 nodes <- tibble(node_name=as.character(1:20), color=rep(c('blue','green','orange','red'), each=5))
-x <- create_monolayer_object(d, directed = F, bipartite = F, node_metadata = nodes)
+x <- create_monolayer_network(d, directed = F, bipartite = F, node_metadata = nodes)
 g <- x$igraph_object
 list.vertex.attributes(g)
 list.edge.attributes(g)
@@ -57,7 +57,7 @@ for (w in seq(1,4, by=0.05)){
   d[d$from==3 & d$to==6,'weight'] <- w
   d[d$from==5 & d$to==8,'weight'] <- w
   nodes <- tibble(node_name=as.character(1:20), color=rep(c('blue','green','orange','red'), each=5))
-  x <- create_monolayer_object(d, directed = F, bipartite = F, node_metadata = nodes)
+  x <- create_monolayer_network(d, directed = F, bipartite = F, node_metadata = nodes)
   g <- x$igraph_object
   # list.vertex.attributes(g)
   # list.edge.attributes(g)
@@ -124,7 +124,7 @@ write_csv(NMI_res, 'Q_vs_I_changing_weights.csv')
 # Modules with Q
 d <- read_csv('gillaranz.csv', col_types = 'ccilc')
 nodes <- tibble(node_name=as.character(1:20), color=rep(c('blue','green','orange','red'), each=5))
-x <- create_monolayer_object(d, directed = F, bipartite = F, node_metadata = nodes)
+x <- create_monolayer_network(d, directed = F, bipartite = F, node_metadata = nodes)
 g <- x$igraph_object
 m <- igraph::fastgreedy.community(g, membership = T, weights = E(g)$weight)
 modules_Q <- m$membership
@@ -140,7 +140,7 @@ d_between <- bind_rows(d_between,
                        d_between %>% select(from=to, to=from, weight, within_mod, color)) %>% print(n=Inf)
 
 
-x <- create_monolayer_object(bind_rows(d_within %>% sample_n(33, replace=F), d_between), directed = T, bipartite = F, node_metadata = nodes)
+x <- create_monolayer_network(bind_rows(d_within %>% sample_n(33, replace=F), d_between), directed = T, bipartite = F, node_metadata = nodes)
 g <- x$igraph_object
 svg('gillaranz_directed_instance.svg',8,8)
 plot(g, vertex.color=V(g)$color, edge.color=E(g)$color, edge.width=E(g)$weight, edge.curved=0.5)
@@ -159,7 +159,7 @@ for (i in 1:500){
                  d_between)
   
   nodes <- tibble(node_name=as.character(1:20), color=rep(c('blue','green','orange','red'), each=5))
-  x <- create_monolayer_object(d, directed = T, bipartite = F, node_metadata = nodes)
+  x <- create_monolayer_network(d, directed = T, bipartite = F, node_metadata = nodes)
   # Modules with infomap
   infomap_object <- run_infomap_monolayer(x, infomap_executable='Infomap',
                                           flow_model = 'directed',

@@ -2,7 +2,7 @@
 #'
 #' Takes a monolayer object and returns a link list and a tibble with nodes.
 #'
-#' @param x A monolayer object created with \code{create_monolayer_object}.
+#' @param x A monolayer object created with \code{create_monolayer_network}.
 #' @param make_directed for undirected networks, create two sets of edges.
 #' @param write_to_file write the link list into a file?
 #' @param output_file the name of the output file (default is 'infomap_link_list.txt')
@@ -19,7 +19,7 @@
 #' \code{infomap_link_list}
 #' 
 #' @examples 
-#' network_object <- create_monolayer_object(bipartite::memmott1999,
+#' network_object <- create_monolayer_network(bipartite::memmott1999,
 #'  bipartite = TRUE, directed = FALSE, group_names = c('A','P'))
 #'  
 #' x <- create_infomap_linklist(network_object, make_directed = FALSE, 

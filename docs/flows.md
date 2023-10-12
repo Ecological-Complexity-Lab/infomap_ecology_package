@@ -20,7 +20,7 @@ tur2016_altitude2000 <- tur2016 %>%
   slice(c(-10,-13,-28)) %>%  # Remove singletons
   filter(from!=to) # Remove self loops
   
-network_object <- create_monolayer_object(tur2016_altitude2000, 
+network_object <- create_monolayer_network(tur2016_altitude2000, 
 directed = T, bipartite = F)
 res_dir <- run_infomap_monolayer(network_object, infomap_executable='Infomap',
                                  flow_model = 'directed',

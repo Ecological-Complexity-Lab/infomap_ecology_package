@@ -21,7 +21,7 @@ interactions<- kongsfjorden_links %>%
   mutate(weight=1)
 
 # Prepare network objects
-network_object <- create_monolayer_object(x=interactions, directed = T, bipartite = F, node_metadata = nodes)
+network_object <- create_monolayer_network(x=interactions, directed = T, bipartite = F, node_metadata = nodes)
 
 # Run infomap, allow hierarchical modules
 # Some species will have only incoming or outgoing links, so the next line will result in a warning
@@ -94,7 +94,7 @@ otago_links_2 <- otago_links %>%
 
 # Prepare network objects
 # Some species will have only incoming or outgoing links, so the next line will result in a warning
-network_object <- create_monolayer_object(x=otago_links_2, directed = T, bipartite = F, node_metadata = otago_nodes_2)
+network_object <- create_monolayer_network(x=otago_links_2, directed = T, bipartite = F, node_metadata = otago_nodes_2)
 
 # Run infomap without hieararchy
 infomap_object <- run_infomap_monolayer(network_object, infomap_executable='Infomap',

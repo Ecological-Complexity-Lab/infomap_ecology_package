@@ -12,7 +12,7 @@ setwd('~/GitHub/infomap_ecology')
 check_infomap()
 
 # Simple bipartite network ------------------------------------------------
-network_object <- create_monolayer_object(memmott1999, bipartite = T, directed = F, group_names = c('A','P'))
+network_object <- create_monolayer_network(memmott1999, bipartite = T, directed = F, group_names = c('A','P'))
 infomap_object <- run_infomap_monolayer(network_object, infomap_executable='Infomap',
                                         flow_model = 'undirected',
                                         silent=T, trials=20, two_level=T, seed=123)
@@ -33,7 +33,7 @@ tur2016_altitude2000 <- tur2016 %>%
   rename(from = donor, to = receptor, weight = n) %>% 
   ungroup() %>%   slice(c(-10,-13,-28)) # Remove singletons
 
-network_object <- create_monolayer_object(tur2016_altitude2000, directed = T, bipartite = F)
+network_object <- create_monolayer_network(tur2016_altitude2000, directed = T, bipartite = F)
 loops <- run_infomap_monolayer(network_object, infomap_executable='Infomap',
                                     flow_model = 'rawdir',
                                     silent=T,trials=100, two_level=T, seed=200952, ...='--include-self-links')
@@ -154,7 +154,7 @@ interactions<- kongsfjorden_links %>%
   mutate_if(is.factor, as.character) %>%
   mutate(weight=1)
 # Prepare network objects
-network_object <- create_monolayer_object(x=interactions, directed = T, bipartite = F, node_metadata = nodes)
+network_object <- create_monolayer_network(x=interactions, directed = T, bipartite = F, node_metadata = nodes)
 
 # Run infomap without hieararchy
 infomap_object <- run_infomap_monolayer(network_object, infomap_executable='Infomap',
@@ -226,7 +226,7 @@ otago_links_2 <- otago_links %>%
 
 # Prepare network objects
 # Some species will have only incoming or outgoing links, so the next line will result in a warning
-network_object <- create_monolayer_object(x=otago_links_2, directed = T, bipartite = F, node_metadata = otago_nodes_2)
+network_object <- create_monolayer_network(x=otago_links_2, directed = T, bipartite = F, node_metadata = otago_nodes_2)
 
 # Create an attribute -- attribute ID map
 node_attribute_map <- otago_nodes_2 %>% distinct(OrganismalGroup) %>%
@@ -333,7 +333,7 @@ tur2016_altitude2000 <- tur2016 %>%
   slice(c(-10,-13,-28)) %>%  # Remove singletons
   filter(from!=to) # Remove self loops
 
-network_object <- create_monolayer_object(tur2016_altitude2000, directed = T, bipartite = F)
+network_object <- create_monolayer_network(tur2016_altitude2000, directed = T, bipartite = F)
 res_dir <- run_infomap_monolayer(network_object, infomap_executable='Infomap',
                                  flow_model = 'directed',
                                  silent=T,trials=100, two_level=T, seed=200952)
@@ -569,7 +569,7 @@ relaxrate_grid
 
 # Hypothesis testing with infomapecology ----------------------------------
 
-network_object <- create_monolayer_object(memmott1999, bipartite = T, directed = F, group_names = c('A','P'))
+network_object <- create_monolayer_network(memmott1999, bipartite = T, directed = F, group_names = c('A','P'))
 
 # Run with shuffling
 infomap_object <- run_infomap_monolayer(network_object, infomap_executable='Infomap',
@@ -622,7 +622,7 @@ tur2016_altitude2000 <- tur2016 %>%
   ungroup() %>%
   slice(c(-10,-13,-28)) %>%  # Remove singletons
   filter(from!=to) # Remove self loops
-tur_network <- create_monolayer_object(tur2016_altitude2000, directed = T, bipartite = F)
+tur_network <- create_monolayer_network(tur2016_altitude2000, directed = T, bipartite = F)
 
 # A dedicated function to shuffle the networks, considering the flow.
 shuffle_tur_networks <- function(x){ # x is a network object
@@ -655,7 +655,7 @@ shuffled <- NULL
 for (i in 1:nsim){
   print(i)
   x <- shuffle_tur_networks(tur_network) #Shuffle the network
-  x <- create_monolayer_object(x,directed = T,bipartite = F) # Create a monolayer object
+  x <- create_monolayer_network(x,directed = T,bipartite = F) # Create a monolayer object
   shuffled[[i]] <- create_infomap_linklist(x)$edge_list_infomap #Create a link-list
 }  
 

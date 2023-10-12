@@ -39,7 +39,7 @@ Use ggplot to plot a matrix in which cells (network interactions)
 }
 \examples{
 \dontrun{
-network_object <- create_monolayer_object(bipartite::memmott1999,
+network_object <- create_monolayer_network(bipartite::memmott1999,
  bipartite = TRUE, directed = FALSE, group_names = c('A','P'))
  
 infomap_object <- run_infomap_monolayer(network_object, infomap_executable='Infomap',

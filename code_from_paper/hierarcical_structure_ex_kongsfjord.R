@@ -23,7 +23,7 @@ interactions<- kongsfjorden_links %>%
   mutate(weight=1)
 
 # Prepare network objects
-network_object <- create_monolayer_object(x=interactions, directed = T, bipartite = F, node_metadata = nodes)
+network_object <- create_monolayer_network(x=interactions, directed = T, bipartite = F, node_metadata = nodes)
 # AE: here we actually need something that states what are the crucial things to include!
 # Run infomap without hieararchy
 infomap_object <- run_infomap_monolayer(network_object, infomap_executable='Infomap',

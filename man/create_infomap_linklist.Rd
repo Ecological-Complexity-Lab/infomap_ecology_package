@@ -12,7 +12,7 @@ create_infomap_linklist(
 )
 }
 \arguments{
-\item{x}{A monolayer object created with \code{create_monolayer_object}.}
+\item{x}{A monolayer object created with \code{create_monolayer_network}.}
 
 \item{make_directed}{for undirected networks, create two sets of edges.}
 
@@ -34,7 +34,7 @@ Takes a monolayer object and returns a link list and a tibble with nodes.
 Used internally by \code{run_infomap_monolayer}, but also useful for writing the link list to a file.
 }
 \examples{
-network_object <- create_monolayer_object(bipartite::memmott1999,
+network_object <- create_monolayer_network(bipartite::memmott1999,
  bipartite = TRUE, directed = FALSE, group_names = c('A','P'))
  
 x <- create_infomap_linklist(network_object, make_directed = FALSE, 

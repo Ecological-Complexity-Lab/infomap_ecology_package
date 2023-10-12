@@ -67,7 +67,7 @@
 #'
 #' @return An object of class \code{infomap_monolayer}.
 #'
-#' @seealso \code{create_monolayer_object, monolayer, shuffle_infomap, infomap_monolayer}
+#' @seealso \code{create_monolayer_network, monolayer, shuffle_infomap, infomap_monolayer}
 #'
 #' @export
 ## @import dplyr

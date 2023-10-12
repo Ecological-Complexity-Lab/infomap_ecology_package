@@ -12,7 +12,7 @@ A [link list](https://www.mapequation.org/infomap/#InputLinkList) with columns `
 library(bipartite)
 data(memmott1999)
 
-network_object <- create_monolayer_object(memmott1999, bipartite = T, directed = F, group_names = c('A','P'))
+network_object <- create_monolayer_network(memmott1999, bipartite = T, directed = F, group_names = c('A','P'))
 infomap_object <- run_infomap_monolayer(network_object, infomap_executable='Infomap',
 flow_model = 'undirected',
 silent=T, trials=20, two_level=T, seed=123)
