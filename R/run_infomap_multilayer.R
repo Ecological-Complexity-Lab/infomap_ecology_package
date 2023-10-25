@@ -125,6 +125,36 @@ run_infomap_multilayer <- function(M,
                                    run_standalone=T,
                                    remove_auxilary_files=T,
                                    ...){
+  #infomap_ecology_v2
+  # Check if there are interlayer links
+  if (!"inter" %in% names(M)){
+  if (any(M$extended_ids$layer_from != M$extended_ids$layer_to) && relax == FALSE) {
+    # Create a sub-dataframe 'inter' with interlayer links
+    M$inter <- as.data.frame(M$extended_ids[M$extended_ids$layer_from != M$extended_ids$layer_to, ])
+    M$inter <- as.tbl(M$inter)
+    M$inter <- M$inter %>% mutate_all(as.numeric)}
+  } else {
+    # Set 'inter' to NULL if there are no interlayer links
+    inter <- NULL
+  }
+  
+  
+  # Create a sub-dataframe 'intra' with intralayer links and change column name
+  intra <- NULL
+  if (!"intra" %in% names(M) && relax == T) {
+  intra <- M$extended_ids[M$extended_ids$layer_from == M$extended_ids$layer_to, c("layer_from", "node_from", "node_to", "weight")]
+  colnames(intra)[1] <- "layer"
+  } else if (!"intra" %in% names(M) && relax == F){
+    intra <- M$extended_ids[M$extended_ids$layer_from == M$extended_ids$layer_to & as.numeric(M$extended_ids$weight) != 0, ]
+  }
+  
+  if (!is.null(intra)) {
+    M$intra <- as.data.frame(intra)
+    M$intra <- M$intra %>% as.tbl() %>% mutate_all(as.numeric)
+  }
+  
+  ### END infomap_ecology_v2
+  
   if(check_infomap(infomap_executable)==F){stop('Error in Infomap stand-alone file.')}
   if(class(M)!='multilayer'){stop('M must be of class multilayer')}
 
@@ -188,6 +218,15 @@ run_infomap_multilayer <- function(M,
     full_join(M$nodes, "node_id") %>% 
     select(node_id, starts_with("module"),  everything(), -leaf_id) %>% 
     arrange(node_id, layer_id)
+  
+  ### infomap_ecology_v2
+  if (any(is.na(modules$module))) {
+    print ('No modules were assigned nodes that lacked flow.\n')
+    print (modules[is.na(modules$module), c("node_id", "node_name")])
+    #delete rows with NA values in the modules$module 
+    modules <- modules[!is.na(modules$module), ]
+    }
+  ### END infomap_ecology_v2
   
   # For temporal networks, need to rename modules to be in a temporal order
   # because Infomap gives names by flow and not by order of appearence.

@@ -70,7 +70,7 @@
 ## @import dplyr
 ## @import magrittr
 
-create_multilayer_object <- function(extended=NULL, intra=NULL, inter=NULL, nodes=NULL, intra_output_extended=T, layers=NULL, write_to_file=F, filename_prefix=NULL){
+create_multilayer_object_toDelete <- function(extended=NULL, intra=NULL, inter=NULL, nodes=NULL, intra_output_extended=T, layers=NULL, write_to_file=F, filename_prefix=NULL){
   if(!is.null(layers)){
     if(names(layers)[1]!='layer_id') {stop('First column in layers must be named layer_id')}
   }

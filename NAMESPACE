@@ -3,7 +3,7 @@
 export(NMI)
 export(check_infomap)
 export(create_infomap_linklist)
-export(create_multilayer_object)
+export(create_multilayer_object_toDelete)
 export(install_infomap)
 export(plot_modular_matrix)
 export(plot_multilayer_alluvial)
