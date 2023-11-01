@@ -1,5 +1,5 @@
 name: "infomapecology package"
-output_dir: "docs_v2"
+output_dir: "docs"
 navbar:
   title: "The infomapecology package website"
   left:
