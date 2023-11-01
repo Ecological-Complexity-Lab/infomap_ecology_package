@@ -10,7 +10,8 @@ navbar:
     - 
 logo:
   image: ecompab.png
-  href: https://ecological-complexity-lab.github.io/emln_package/
+  #href: https://ecological-complexity-lab.github.io/emln_package/
+  href:  https://ecological-complexity-lab.github.io/infomap_ecology_package/infomap_ecology_v2
 output:
   html_document:
     theme: cerulean
