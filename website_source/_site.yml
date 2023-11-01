@@ -1,0 +1,16 @@
+name: "infomapecology package"
+output_dir: "docs_v2"
+navbar:
+  title: "The infomapecology package website"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Bipartite monolayer network example"
+      href: bipartite.html
+    - 
+logo:
+  image: ecompab.png
+  href: https://ecological-complexity-lab.github.io/emln_package/
+output:
+  html_document:
+    theme: cerulean
