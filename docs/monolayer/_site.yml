@@ -6,7 +6,7 @@ navbar:
     - text: "Home"
       href: index.html
     - text: "Monolayer"
-      #href: monolayer/index.html
+      href: monolayer/index.html
       menu:
         - text: "Bipartite monolayer network example"
           href: monolayer/bipartite.html
