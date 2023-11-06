@@ -6,12 +6,12 @@ navbar:
     - text: "Home"
       href: index.html
     - text: "Monolayer"
-      href: monolayer/index.html
+      #href: monolayer/index.html
       menu:
         - text: "Bipartite monolayer network example"
-          href: monolayer/bipartite.html
+          href: bipartite.html
         - text: "Monolayer directed network with hierarchical structure"
-          href: monolayer/monolayer_heirarchical.html  
+          href: monolayer_heirarchical.html  
     - text: "Monolayer directed network with node attributes"
       href: monolayer_node_attributes.html
     - text: "Flow models"

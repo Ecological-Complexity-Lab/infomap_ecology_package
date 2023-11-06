@@ -11,7 +11,7 @@
 
 
 
-<title>Temporal multilayer network with global relax rates</title>
+<title>Bipartite monolayer network example</title>
 
 <script src="site_libs/header-attrs-2.20/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -381,102 +381,66 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Temporal multilayer network with global
-relax rates</h1>
+<h1 class="title toc-ignore">Bipartite monolayer network example</h1>
 
 </div>
 
 
 <div id="data-set" class="section level3">
 <h3>Data set</h3>
-<p>A temporal multilayer network. Each layer is a host-parasite
-bipartite network. Intralayer edges between a parasite species and a
-host species are the number of parasite individuals divided by the
-number of host individuals. Interlayer edges are ignored. This data set
-was taken from <a
-href="https://www.nature.com/articles/s41559-017-0101?proof=true19"><em>Pilosof
-S, Porter MA, Pascual M, Kéfi S. The multilayer nature of ecological
-networks. Nature Ecology &amp; Evolution. 2017;1: 0101</em></a>.</p>
-<p>Data sets in infomapecology:</p>
-<pre class="r"><code># Get data
-data(&quot;siberia1982_7_links&quot;)
-data(&quot;siberia1982_7_nodes&quot;)</code></pre>
+<p>A weighted bipartite network describing a plant-flower visitor
+interaction web (25 plant species and 79 flower visitor species) in the
+vicinity of Bristol, U.K. To distinguish between the two node sets we
+number the pollinator species from 1-79 and the plants from 80-104. Data
+can be obtained using <code>data(memmott1999)</code> using package
+<code>bipartite</code> in <code>R</code>.</p>
 </div>
 <div id="input" class="section level3">
 <h3>Input</h3>
-<p>A <a
-href="https://www.mapequation.org/infomap/#InputMultilayer">multilayer
-link-list format</a>. With this format, a random walker moves within a
-layer and with a given relax rate <em>r</em> jumps to another layer
-without recording this movement, such that the constraints from moving
-in different layers can be gradually relaxed. If the <code>*Inter</code>
-exists, then interlayer edges can be used. However, if a relax rate is
-also used (Infomap input parameter
-<code>--multilayer-relax-rate</code>), the interlayer edges are ignored.
-Here we only include <code>*Intra</code>.</p>
-<pre class="python"><code># A network in multilayer format
-*Intra
-#layer node node weight
-1 1 23 0.15853658536585366
-1 1 25 0.024390243902439025
-1 1 27 0.0975609756097561
-... some more cases ...
-6 22 63 0.8181818181818182
-6 22 67 0.09090909090909091
-6 22 77 0.18181818181818182</code></pre>
+<p>A <a href="https://www.mapequation.org/infomap/#InputLinkList">link
+list</a> with columns <code>from</code>, <code>to</code> and
+<code>weight</code>. Because this is a bipartite network the
+<code>from</code> column can only contain nodes 1-79 and the
+<code>to</code> column nodes 84-104.</p>
 </div>
 <div id="r-code" class="section level3">
 <h3>R Code</h3>
-<p>The description of functions <code>create_multilayer_object</code>
-and <code>run_infomap_multilayer</code> in the
-<code>infomapecology</code> package contains everything you need to
-know. The <code>for</code> loop performs a sensitivity analysis to
-examine how structure changes with increasing relax rates.</p>
-<pre class="r"><code># Create a multilayer object
-NEE2017 &lt;- create_multilayer_object(extended = siberia1982_7_links, nodes = siberia1982_7_nodes, intra_output_extended = F)
+<pre class="r"><code># Import data
+library(infomapecology)
+library(bipartite)
+data(memmott1999)
 
-# Ignore interlayer edges
-NEE2017$inter &lt;- NULL
-
-#Run Infomap and return the network&#39;s modular structure at increasing relax-rates.
-relaxrate_modules &lt;- NULL
-for (r in seq(0.001,1, by = 0.0999)){
-  print(r)
-  modules_relax_rate &lt;- run_infomap_multilayer(NEE2017, relax = T, silent = T, trials = 50, seed = 497294, multilayer_relax_rate = r, multilayer_relax_limit_up = 1, multilayer_relax_limit_down = 0, temporal_network = T)
-  modules_relax_rate$modules$relax_rate &lt;- r
-  relaxrate_modules &lt;- rbind(relaxrate_modules, modules_relax_rate$modules)
-}</code></pre>
+network_object &lt;- create_monolayer_network(memmott1999, bipartite = T, directed = F, group_names = c(&#39;A&#39;,&#39;P&#39;))</code></pre>
+<pre><code>## [1] &quot;Input: a bipartite matrix&quot;</code></pre>
+<pre class="r"><code>infomap_object &lt;- run_infomap_monolayer(network_object, infomap_executable=&#39;Infomap&#39;,
+flow_model = &#39;undirected&#39;,
+silent=T, trials=20, two_level=T, seed=123)</code></pre>
+<pre><code>## [1] &quot;Creating a link list...&quot;
+## running: ./Infomap infomap.txt . --tree --seed 123 -N 20 -f undirected --silent --two-level</code></pre>
+<pre><code>## Warning: One or more parsing issues, call `problems()` on your data frame for details, e.g.:
+##   dat &lt;- vroom(...)
+##   problems(dat)</code></pre>
+<pre><code>## [1] &quot;Removing auxilary files...&quot;</code></pre>
+<pre class="r"><code># Plot the matrix (plotting function in beta)
+plot_modular_matrix(infomap_object)</code></pre>
+<p><img src="bipartite_files/figure-html/Bipartite_1-1.png" width="576" /></p>
 </div>
 <div id="infomap" class="section level3">
 <h3>Infomap</h3>
-<p>Under the hood, the function <code>run_infomap_multilayer</code>
+<p>Under the hood, the function <code>run_infomap_monolayer</code>
 runs:</p>
-<pre class="c++"><code>./Infomap infomap_multilayer.txt . -2 --seed 497294 -N 50 -i multilayer --multilayer-relax-rate 0.15 --multilayer-relax-limit-up 1 --multilayer-relax-limit-down 0 --silent</code></pre>
-<p>Explanation of key arguments: * <code>-i multilayer</code> indicates
-a multilayer input format, which is automatically recognized as a
-multilayer link list (and not as a general link list). *
-<code>--multilayer-relax-rate 0.15</code> defines the relax rate (here
-0.15). *
-<code>multilayer-relax-limit-up 1 --multilayer-relax-limit-down 0</code>
-limits relaxation to a single layer upwards (l to l+1), but never
-downwards, because time flows one-way.</p>
+<pre class="c++"><code>./Infomap infomap.txt . --tree -i link-list --seed 123 -N 20 -f undirected -2</code></pre>
+<p>With this command, Infomap detects modules that contain both plants
+and pollinators. * <code>-f undirected</code> indicates flow on an
+undirected network. * <code>-2</code> indicates a two-level solution,
+with no hierarchical modules.</p>
 </div>
 <div id="output" class="section level3">
 <h3>Output</h3>
-<p>For multilayer network the output file has a <code>_states</code>
-suffix, with the following format. This output is as in <a
-href="multilayer_interlayer.md">Temporal multilayer network with
-interlayer edges</a>.</p>
-<pre class="r"><code># path flow name stateId physicalId layerId
-1:1 0.000516265 &quot;0&quot; 0 1 1
-1:2 0.000211504 &quot;8&quot; 8 44 1
-1:3 0.000225137 &quot;19&quot; 19 75 1
-1:4 0.000124064 &quot;20&quot; 20 76 1</code></pre>
-<p>This output is parsed by <code>run_infomap_multilayer</code> to
-obtain a table in which each state node (combination of a physical node
-in a layer) is assigned to a module. This can be obtained by (after
-running the code above):</p>
-<pre class="r"><code>relaxrate_modules$modules</code></pre>
+<p>A <a href="https://www.mapequation.org/infomap/#OutputTree">tree
+file</a> is produced by Infomap, but is parsed by
+<code>run_infomap_monolayer</code> from infomapecology (in R:
+<code>?run_infomap_monolayer</code>).</p>
 </div>
 
 
