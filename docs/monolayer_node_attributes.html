@@ -11,7 +11,7 @@
 
 
 
-<title>A package for running Infomap, inspired by ecological networks</title>
+<title>Monolayer directed network with node attributes</title>
 
 <script src="site_libs/header-attrs-2.20/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -36,10 +36,6 @@
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<script src="site_libs/clipboard-1.7.1/clipboard.min.js"></script>
-<link href="site_libs/primer-tooltips-1.4.0/build.css" rel="stylesheet" />
-<link href="site_libs/klippy-0.0.0.9500/css/klippy.min.css" rel="stylesheet" />
-<script src="site_libs/klippy-0.0.0.9500/js/klippy.min.js"></script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -385,74 +381,180 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">A package for running Infomap, inspired by
-ecological networks</h1>
+<h1 class="title toc-ignore">Monolayer directed network with node
+attributes</h1>
 
 </div>
 
 
-<script>
-  addClassKlippyTo("pre.r, pre.markdown");
-  addKlippy('right', 'top', '#8B0000', '1', 'Copy code', 'Copied!');
-</script>
-<p><strong>Updated: 2023-11-1</strong></p>
-<p>This site is an extension of the paper <a
-href="https://onlinelibrary.wiley.com/doi/10.1111/2041-210X.13569">Identifying
-flow modules in ecological networks using Infomap</a> It contains
-installation instructions and very detailed Infomap commands and R code
-that we use in the examples that are presented in the paper. Infomap is
-a very rich implementation of the map equation, fully covered in <a
-href="https://www.mapequation.org/">https://www.mapequation.org/</a>. In
-this knowledge base we present what is most relevant for ecological
-network analysis and the R package <code>infomapecology</code>. The
-package is a convenient interface to use Infomap within R and to
-santdardize network data structures for a better workflow with other
-package such as igraph and bipartite. We will be updating this knowledge
-base with every improvement of <code>infomapecology</code>.</p>
-<div id="installation-of-infomap-and-infomapecology"
-class="section level1">
-<h1>Installation of Infomap and infomapecology</h1>
-<p>Currently, infomapecology uses a standalone version of Infomap. We
-are working hard to integrate Infomap directly into R. Until that
-happens, install Infomap and infomapecology as specified <a
-href="https://ecological-complexity-lab.github.io/infomap_ecology_package/installation">here</a>.</p>
+<div id="data-set" class="section level3">
+<h3>Data set</h3>
+<p>A binary directed food web from <a
+href="https://esajournals-onlinelibrary-wiley-com.ezproxy.bgu.ac.il/doi/abs/10.1890/11-0371.1">Mouritsen
+KN, Poulin R, McLaughlin JP, Thieltges DW. Food web including metazoan
+parasites for an intertidal ecosystem in New Zealand: Ecological
+Archives E092-173. Ecology. 2011;92: 2006–2006.</a></p>
+<p>In infomapecology:</p>
+<pre class="r"><code>data(otago_nodes)
+data(otago_links)</code></pre>
 </div>
-<div id="infomaps-basics" class="section level1">
-<h1>Infomap’s basics</h1>
-<p>The basics of Infomap’s input and output are <a
-href="https://ecological-complexity-lab.github.io/infomap_ecology_package/infomapbasics">here</a>.</p>
+<div id="input" class="section level3">
+<h3>Input</h3>
+<ol style="list-style-type: decimal">
+<li>A <a
+href="https://www.mapequation.org/infomap/#InputLinkList">link-list</a>.</li>
+<li>A second file that indicates the ID of the attribute for each node
+ID:</li>
+</ol>
+<pre><code>node_id attribute_id
+1 1
+2 1
+3 1
+4 2
+5 3</code></pre>
+<p>In this example, the attribute IDs are (example with first four):</p>
+<table>
+<thead>
+<tr class="header">
+<th>OrganismalGroup</th>
+<th>attribute_id</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Plant</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>Zooplankton</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>Meiofauna</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td>Bacteria</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<p>For now, Infomap can only handle categorical attributes, and only a
+single attribute type.</p>
 </div>
-<div id="examples-from-the-paper" class="section level1">
-<h1>Examples from the paper</h1>
-<ul>
-<li><a
-href="https://ecological-complexity-lab.github.io/infomap_ecology_package/bipartite">Bipartite
-monolayer network example</a></li>
-<li><a
-href="https://ecological-complexity-lab.github.io/infomap_ecology_package/monolayer_heirarchical">Monolayer
-directed network with hierarchical structure</a></li>
-<li><a
-href="https://ecological-complexity-lab.github.io/infomap_ecology_package/monolayer_node_attributes">Monolayer
-directed network with node attributes</a></li>
-<li><a
-href="https://ecological-complexity-lab.github.io/infomap_ecology_package/flows">Flow
-models</a></li>
-<li><a
-href="https://ecological-complexity-lab.github.io/infomap_ecology_package/hypothesis_test">Hypothesis
-testing</a></li>
-<li><a
-href="https://ecological-complexity-lab.github.io/infomap_ecology_package/multilayer_relax">Temporal
-multilayer network with global relax rates</a></li>
-<li><a
-href="https://ecological-complexity-lab.github.io/infomap_ecology_package/multilayer_interlayer">Temporal
-multilayer network with interlayer edges</a></li>
-</ul>
-<div id="acknowledgements" class="section level2">
-<h2>Acknowledgements</h2>
-<p>This work was supported by research grant ISF (Israel Science
-Foundation) 1281/20 to Shai Pilosof.</p>
-<p><img src="logos.png" height="80px" style="float:left, padding:10px" /></p>
+<div id="r-code" class="section level3">
+<h3>R Code</h3>
+<p>The code here depends on previous analysis of the otago network with
+hierarchical structure which should be run first.</p>
+<pre class="r"><code># Prepare data for hierarchical structure analysis -------------------------------
+otago_nodes_2 &lt;- otago_nodes %&gt;%
+  filter(StageID==1) %&gt;%
+  select(node_name=WorkingName, node_id_original=NodeID, WorkingName,StageID, everything())
+otago_links_2 &lt;- otago_links %&gt;%
+  filter(LinkType==&#39;Predation&#39;) %&gt;% # Only include predation links
+  filter(ConsumerSpecies.StageID==1) %&gt;%
+  filter(ResourceSpecies.StageID==1) %&gt;%
+  select(from=ResourceNodeID, to=ConsumerNodeID) %&gt;%
+  left_join(otago_nodes_2, by=c(&#39;from&#39;=&#39;node_id_original&#39;)) %&gt;%
+  select(from, node_name, to) %&gt;%
+  left_join(otago_nodes_2, by=c(&#39;to&#39;=&#39;node_id_original&#39;)) %&gt;%
+  select(from=node_name.x, to=node_name.y) %&gt;%
+  mutate(weight=1)
+
+# Prepare network objects
+# Some species will have only incoming or outgoing links, so the next line will result in a warning
+network_object &lt;- create_monolayer_network(x=otago_links_2, directed = T, bipartite = F, node_metadata = otago_nodes_2)
+
+
+# Prepare data for analysis with node attributes ---------------------------------
+# Create an attribute -- attribute ID map
+node_attribute_map &lt;- otago_nodes_2 %&gt;% distinct(OrganismalGroup) %&gt;%
+  mutate(attribute_id=1:n())
+
+# Create a file with node attributes
+node_attributes &lt;-
+  network_object$nodes %&gt;%
+  distinct(node_id, OrganismalGroup) %&gt;%
+  left_join(node_attribute_map) %&gt;%
+  select(-OrganismalGroup) %&gt;%
+  write_delim(&#39;otago_node_attributes.txt&#39;, delim = &#39; &#39;, col_names = F)
+
+# Run without metadata
+infomap_object &lt;- run_infomap_monolayer(network_object, infomap_executable=&#39;Infomap&#39;,
+                                        flow_model = &#39;directed&#39;,
+                                        silent=T,trials=20, two_level=T, seed=200952)
+
+# Run with metadata and eta=0.7
+infomap_object_metadata_07 &lt;- run_infomap_monolayer(network_object, infomap_executable=&#39;Infomap&#39;,
+                                                 flow_model = &#39;directed&#39;,
+                                                 silent=T,trials=20, two_level=T, seed=200952,
+                                                 ... = &#39;--meta-data otago_node_attributes.txt --meta-data-rate 0.7&#39;)
+# Run with metadata and eta=1.3
+infomap_object_metadata_13 &lt;- run_infomap_monolayer(network_object, infomap_executable=&#39;Infomap&#39;,
+                                                 flow_model = &#39;directed&#39;,
+                                                 silent=T,trials=20, two_level=T, seed=200952,
+                                                 ... = &#39;--meta-data otago_node_attributes.txt --meta-data-rate 1.3&#39;)
+
+
+# Compare the modules with and without metadata
+eta0 &lt;- infomap_object$modules %&gt;%
+  group_by(module_level1) %&gt;%
+  summarise(n=n_distinct(OrganismalGroup)) %&gt;%
+  mutate(eta=0) %&gt;%
+  arrange(desc(n), module_level1)
+eta07 &lt;- infomap_object_metadata_07$modules %&gt;%
+  group_by(module_level1) %&gt;%
+  summarise(n=n_distinct(OrganismalGroup)) %&gt;%
+  mutate(eta=0.7) %&gt;%
+  arrange(desc(n), module_level1)
+eta13 &lt;- infomap_object_metadata_13$modules %&gt;%
+  group_by(module_level1) %&gt;%
+  summarise(n=n_distinct(OrganismalGroup)) %&gt;%
+  mutate(eta=1.3) %&gt;%
+  arrange(desc(n), module_level1)
+
+bind_rows(eta0, eta07, eta13) %&gt;% 
+  mutate(eta=factor(eta, levels=c(&#39;0&#39;,&#39;0.7&#39;,&#39;1.3&#39;))) %&gt;% 
+  rename(num_OG=n, module_id=module_level1) %&gt;% 
+  group_by(num_OG, eta) %&gt;%
+  summarise(num_modules=n()) %&gt;%
+  ggplot(aes(x=num_OG, y=num_modules,fill=eta)) +
+  geom_col(position = &#39;dodge&#39;, color=&#39;black&#39;, width=0.7) +
+  scale_x_continuous(limits=c(0,18), breaks=0:18)+
+  scale_y_continuous(limits=c(0,37), breaks=seq(0,36,by=3))+
+  scale_fill_manual(values = c(&#39;#fc8d62&#39;,&#39;#8da0cb&#39;,&#39;#e78ac3&#39;))+
+  labs(x=&#39;Number of organismal groups&#39;, y=&#39;Number of modules&#39;, fill=&#39;eta&#39;)+
+  theme_bw()+
+  theme(panel.grid.minor = element_blank(),
+        panel.border = element_blank(),
+        axis.line = element_line(color = &#39;black&#39;),
+        legend.position = c(0.8,0.8),
+        legend.text = element_text(size=24),
+        legend.title = element_text(size=24),
+        legend.key.size = unit(2, &#39;line&#39;),
+        axis.text = element_text(size=24),
+        text=element_text(size=24))</code></pre>
 </div>
+<div id="infomap" class="section level3">
+<h3>Infomap</h3>
+<p>Under the hood, the function <code>run_infomap_monolayer</code>
+runs:</p>
+<pre class="c++"><code>./Infomap infomap.txt . -i link-list --tree --seed 200952 -N 20 -f directed --silent --two-level --meta-data otago_node_attributes.txt --meta-data-rate 0.7</code></pre>
+<p>Explanation of key arguments: *
+<code>--meta-data otago_node_attributes.txt</code> indicates the file
+name (<code>otago_node_attributes.txt</code>) with the attribute value
+for each node. * <code>--meta-data-rate 0.7</code> indicates the value
+of eta (here 0.7)</p>
+</div>
+<div id="output" class="section level3">
+<h3>Output</h3>
+<p>A <a href="https://www.mapequation.org/infomap/#OutputTree">tree
+file</a> is produced by Infomap, but is parsed by
+<code>run_infomap_monolayer</code> from infomapecology (in R:
+<code>?run_infomap_monolayer</code>). An analysis with metadata does not
+have a special output. So in this example the output format is the same
+as in <a href="docs/monolayer_heirarchical.md">Monolayer directed
+network with hierarchical structure</a></p>
 </div>
 
 

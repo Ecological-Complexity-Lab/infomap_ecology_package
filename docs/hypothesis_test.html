@@ -11,7 +11,7 @@
 
 
 
-<title>A package for running Infomap, inspired by ecological networks</title>
+<title>Hypothesis testing</title>
 
 <script src="site_libs/header-attrs-2.20/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -36,10 +36,6 @@
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<script src="site_libs/clipboard-1.7.1/clipboard.min.js"></script>
-<link href="site_libs/primer-tooltips-1.4.0/build.css" rel="stylesheet" />
-<link href="site_libs/klippy-0.0.0.9500/css/klippy.min.css" rel="stylesheet" />
-<script src="site_libs/klippy-0.0.0.9500/js/klippy.min.js"></script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -385,74 +381,133 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">A package for running Infomap, inspired by
-ecological networks</h1>
+<h1 class="title toc-ignore">Hypothesis testing</h1>
 
 </div>
 
 
-<script>
-  addClassKlippyTo("pre.r, pre.markdown");
-  addKlippy('right', 'top', '#8B0000', '1', 'Copy code', 'Copied!');
-</script>
-<p><strong>Updated: 2023-11-1</strong></p>
-<p>This site is an extension of the paper <a
-href="https://onlinelibrary.wiley.com/doi/10.1111/2041-210X.13569">Identifying
-flow modules in ecological networks using Infomap</a> It contains
-installation instructions and very detailed Infomap commands and R code
-that we use in the examples that are presented in the paper. Infomap is
-a very rich implementation of the map equation, fully covered in <a
-href="https://www.mapequation.org/">https://www.mapequation.org/</a>. In
-this knowledge base we present what is most relevant for ecological
-network analysis and the R package <code>infomapecology</code>. The
-package is a convenient interface to use Infomap within R and to
-santdardize network data structures for a better workflow with other
-package such as igraph and bipartite. We will be updating this knowledge
-base with every improvement of <code>infomapecology</code>.</p>
-<div id="installation-of-infomap-and-infomapecology"
-class="section level1">
-<h1>Installation of Infomap and infomapecology</h1>
-<p>Currently, infomapecology uses a standalone version of Infomap. We
-are working hard to integrate Infomap directly into R. Until that
-happens, install Infomap and infomapecology as specified <a
-href="https://ecological-complexity-lab.github.io/infomap_ecology_package/installation">here</a>.</p>
+<div id="built-in-randomisation-capabilities-for-bipartite-networks"
+class="section level2">
+<h2>1. Built in randomisation capabilities for bipartite networks</h2>
+<p>The function <code>run_infomap_monolayer</code> can use shuffling
+algorithms built into <code>vegan</code>. To use this, we need to set
+<code>signif=T</code> and provide a shuffling method to
+<code>shuff_method</code>. The shuffling methods are the ones detailed
+in <code>?vegan::commsim</code>.</p>
+<pre class="r"><code>network_object &lt;- create_monolayer_network(memmott1999, bipartite = T, directed = F, group_names = c(&#39;A&#39;,&#39;P&#39;))
+
+# Run with shuffling
+infomap_object &lt;- run_infomap_monolayer(network_object, infomap_executable=&#39;Infomap&#39;,
+                                        flow_model = &#39;undirected&#39;,
+                                        silent=T, trials=20, two_level=T, seed=123, 
+                                        signif = T, shuff_method = &#39;r00&#39;, nsim = 50)
+# Plot histograms
+plots &lt;- plot_signif(infomap_object, plotit = T)
+plot_grid(
+  plots$L_plot+
+    theme_bw()+
+    theme(legend.position=&#39;none&#39;, 
+          axis.text = element_text(size=20), 
+          axis.title = element_text(size=20)),
+  plots$m_plot+
+    theme_bw()+
+    theme(legend.position=&#39;none&#39;, 
+          axis.text = element_text(size=20), 
+          axis.title = element_text(size=20))
+)</code></pre>
+<p>Another way is to provide <code>shuff_method</code> with a list
+containing already shuffled networks. You can for example use the
+function <code>shuffle_infomap</code> to produce shuffled networks with
+<code>vegan</code>. This is necessary on the shuffling algorithm from
+<code>?vegan::commsim</code> needs additional arguments such as
+burning.</p>
+<pre class="r"><code># Or can shuffle like this, if additional arguments are needed for the shuffling algorithm
+shuffled &lt;- shuffle_infomap(network_object, shuff_method=&#39;curveball&#39;, nsim=50, burnin=2000)
+infomap_object &lt;- run_infomap_monolayer(network_object, infomap_executable=&#39;Infomap&#39;,
+                                        flow_model = &#39;undirected&#39;,
+                                        silent=T, trials=20, two_level=T, seed=123, 
+                                        signif = T, shuff_method = shuffled, nsim = 50)
+plots &lt;- plot_signif(infomap_object, plotit = F)
+plot_grid(
+  plots$L_plot+
+  theme_bw()+
+  theme(legend.position=&#39;none&#39;, 
+        axis.text = element_text(size=20), 
+        axis.title = element_text(size=20)),
+  plots$m_plot+
+    theme_bw()+
+    theme(legend.position=&#39;none&#39;, 
+          axis.text = element_text(size=20), 
+          axis.title = element_text(size=20))
+)</code></pre>
 </div>
-<div id="infomaps-basics" class="section level1">
-<h1>Infomap’s basics</h1>
-<p>The basics of Infomap’s input and output are <a
-href="https://ecological-complexity-lab.github.io/infomap_ecology_package/infomapbasics">here</a>.</p>
-</div>
-<div id="examples-from-the-paper" class="section level1">
-<h1>Examples from the paper</h1>
-<ul>
-<li><a
-href="https://ecological-complexity-lab.github.io/infomap_ecology_package/bipartite">Bipartite
-monolayer network example</a></li>
-<li><a
-href="https://ecological-complexity-lab.github.io/infomap_ecology_package/monolayer_heirarchical">Monolayer
-directed network with hierarchical structure</a></li>
-<li><a
-href="https://ecological-complexity-lab.github.io/infomap_ecology_package/monolayer_node_attributes">Monolayer
-directed network with node attributes</a></li>
-<li><a
-href="https://ecological-complexity-lab.github.io/infomap_ecology_package/flows">Flow
-models</a></li>
-<li><a
-href="https://ecological-complexity-lab.github.io/infomap_ecology_package/hypothesis_test">Hypothesis
-testing</a></li>
-<li><a
-href="https://ecological-complexity-lab.github.io/infomap_ecology_package/multilayer_relax">Temporal
-multilayer network with global relax rates</a></li>
-<li><a
-href="https://ecological-complexity-lab.github.io/infomap_ecology_package/multilayer_interlayer">Temporal
-multilayer network with interlayer edges</a></li>
-</ul>
-<div id="acknowledgements" class="section level2">
-<h2>Acknowledgements</h2>
-<p>This work was supported by research grant ISF (Israel Science
-Foundation) 1281/20 to Shai Pilosof.</p>
-<p><img src="logos.png" height="80px" style="float:left, padding:10px" /></p>
-</div>
+<div
+id="dedicated-randomisation-algorithm-for-the-tur-et-al.-2016-data-set."
+class="section level2">
+<h2>2. Dedicated randomisation algorithm for the Tur et al. 2016 data
+set.</h2>
+<p>You can also create your own shuffling algorithm and a list of
+shuffled link lists. As in this example.</p>
+<pre class="r"><code># Import data
+data(tur2016)
+tur2016_altitude2000 &lt;- tur2016 %&gt;% 
+  filter(altitude==2000) %&gt;% 
+  select(&quot;donor&quot;, &quot;receptor&quot;, &quot;total&quot;) %&gt;% 
+  group_by(donor, receptor) %&gt;% 
+  summarise(n=mean(total)) %&gt;% 
+  rename(from = donor, to = receptor, weight = n) %&gt;% 
+  ungroup() %&gt;%
+  slice(c(-10,-13,-28)) %&gt;%  # Remove singletons
+  filter(from!=to) # Remove self loops
+  
+tur_network &lt;- create_monolayer_network(tur2016_altitude2000, directed = T, bipartite = F)
+
+# A dedicated function to shuffle the networks, considering the flow.
+shuffle_tur_networks &lt;- function(x){ # x is a network object
+  m &lt;- x$mat
+
+  # Assign off-diagona values
+  off_diagonal_lower &lt;- m[lower.tri(m, diag = FALSE)]
+  off_diagonal_upper &lt;- m[upper.tri(m, diag = FALSE)]
+  out &lt;- matrix(0, nrow(m), ncol(m), dimnames = list(rownames(m), colnames(m)))
+  out[lower.tri(out, diag = FALSE)] &lt;- sample(off_diagonal_lower, size = length(off_diagonal_lower), replace = F)
+  out[upper.tri(out, diag = FALSE)] &lt;- sample(off_diagonal_upper, size = length(off_diagonal_upper), replace = F)
+
+  # Re-assign the diagonal (left intact)
+  diag(out) &lt;- diag(m)
+
+
+  # Sanity checks
+  t1 &lt;- setequal(out[upper.tri(out, diag = FALSE)], m[upper.tri(m, diag = FALSE)]) #Should be TRUE
+  t2 &lt;- setequal(out[lower.tri(out, diag = FALSE)], m[lower.tri(m, diag = FALSE)]) #Should be TRUE
+  t3 &lt;- identical(out[upper.tri(out, diag = FALSE)], m[upper.tri(m, diag = FALSE)]) #Should be FALSE
+  t4 &lt;- identical(out[lower.tri(out, diag = FALSE)], m[lower.tri(m, diag = FALSE)]) #Should be FALSE
+  t5 &lt;- all(table(m)==table(out))# Should be TRUE because it includes all the values, including diagonal
+  if (any(c(t1,t2,!t3,!t4,t5)==F)){stop(&#39;One or more sanity checks failed&#39;)}
+  return(out)
+}
+
+# Create a list with shuffled link lists
+nsim &lt;- 1000
+shuffled &lt;- NULL
+for (i in 1:nsim){
+  print(i)
+  x &lt;- shuffle_tur_networks(tur_network) #Shuffle the network
+  x &lt;- create_monolayer_network(x,directed = T,bipartite = F) # Create a monolayer object
+  shuffled[[i]] &lt;- create_infomap_linklist(x)$edge_list_infomap #Create a link-list
+}  
+
+# Use the shuffled link lists. 
+tur_signif &lt;- run_infomap_monolayer(tur_network, infomap_executable=&#39;Infomap&#39;,
+                      flow_model = &#39;rawdir&#39;,
+                      silent=T,
+                      trials=100, two_level=T, seed=200952,
+                      signif = T, shuff_method = shuffled)
+
+
+print(tur_signif$pvalue)
+
+plots &lt;- plot_signif(tur_signif, plotit = F)</code></pre>
 </div>
 
 

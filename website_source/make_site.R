@@ -7,6 +7,15 @@ setwd("/Users/shirlyf/Documents/GitHub/infomap_ecology_package")
 # Make the website
 rmarkdown::render_site(input = 'website_source')
 
+
+#rmarkdown::render("website_source/monolayer/bipartite.Rmd", output_format = "html_document")
+#rmarkdown::render("website_source/monolayer/monolayer_heirarchical.Rmd", output_format = "html_document")
+
+rmarkdown::render("website_source/monolayer/bipartite.Rmd", output_format = "html_document", output_dir = "website_source/docs/monolayer/")
+rmarkdown::render("website_source/monolayer/monolayer_heirarchical.Rmd", output_format = "html_document", output_dir = "website_source/docs/monolayer/")
+
+
+
 # Remove unnecesary files
 unlink('docs/', recursive = TRUE, force = FALSE)
 file.copy('website_source/docs/', '.', recursive = T)

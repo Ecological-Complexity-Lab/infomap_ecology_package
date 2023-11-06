@@ -11,7 +11,7 @@
 
 
 
-<title>A package for running Infomap, inspired by ecological networks</title>
+<title>Temporal multilayer network with global relax rates</title>
 
 <script src="site_libs/header-attrs-2.20/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -36,10 +36,6 @@
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<script src="site_libs/clipboard-1.7.1/clipboard.min.js"></script>
-<link href="site_libs/primer-tooltips-1.4.0/build.css" rel="stylesheet" />
-<link href="site_libs/klippy-0.0.0.9500/css/klippy.min.css" rel="stylesheet" />
-<script src="site_libs/klippy-0.0.0.9500/js/klippy.min.js"></script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -385,74 +381,102 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">A package for running Infomap, inspired by
-ecological networks</h1>
+<h1 class="title toc-ignore">Temporal multilayer network with global
+relax rates</h1>
 
 </div>
 
 
-<script>
-  addClassKlippyTo("pre.r, pre.markdown");
-  addKlippy('right', 'top', '#8B0000', '1', 'Copy code', 'Copied!');
-</script>
-<p><strong>Updated: 2023-11-1</strong></p>
-<p>This site is an extension of the paper <a
-href="https://onlinelibrary.wiley.com/doi/10.1111/2041-210X.13569">Identifying
-flow modules in ecological networks using Infomap</a> It contains
-installation instructions and very detailed Infomap commands and R code
-that we use in the examples that are presented in the paper. Infomap is
-a very rich implementation of the map equation, fully covered in <a
-href="https://www.mapequation.org/">https://www.mapequation.org/</a>. In
-this knowledge base we present what is most relevant for ecological
-network analysis and the R package <code>infomapecology</code>. The
-package is a convenient interface to use Infomap within R and to
-santdardize network data structures for a better workflow with other
-package such as igraph and bipartite. We will be updating this knowledge
-base with every improvement of <code>infomapecology</code>.</p>
-<div id="installation-of-infomap-and-infomapecology"
-class="section level1">
-<h1>Installation of Infomap and infomapecology</h1>
-<p>Currently, infomapecology uses a standalone version of Infomap. We
-are working hard to integrate Infomap directly into R. Until that
-happens, install Infomap and infomapecology as specified <a
-href="https://ecological-complexity-lab.github.io/infomap_ecology_package/installation">here</a>.</p>
+<div id="data-set" class="section level3">
+<h3>Data set</h3>
+<p>A temporal multilayer network. Each layer is a host-parasite
+bipartite network. Intralayer edges between a parasite species and a
+host species are the number of parasite individuals divided by the
+number of host individuals. Interlayer edges are ignored. This data set
+was taken from <a
+href="https://www.nature.com/articles/s41559-017-0101?proof=true19"><em>Pilosof
+S, Porter MA, Pascual M, Kéfi S. The multilayer nature of ecological
+networks. Nature Ecology &amp; Evolution. 2017;1: 0101</em></a>.</p>
+<p>Data sets in infomapecology:</p>
+<pre class="r"><code># Get data
+data(&quot;siberia1982_7_links&quot;)
+data(&quot;siberia1982_7_nodes&quot;)</code></pre>
 </div>
-<div id="infomaps-basics" class="section level1">
-<h1>Infomap’s basics</h1>
-<p>The basics of Infomap’s input and output are <a
-href="https://ecological-complexity-lab.github.io/infomap_ecology_package/infomapbasics">here</a>.</p>
+<div id="input" class="section level3">
+<h3>Input</h3>
+<p>A <a
+href="https://www.mapequation.org/infomap/#InputMultilayer">multilayer
+link-list format</a>. With this format, a random walker moves within a
+layer and with a given relax rate <em>r</em> jumps to another layer
+without recording this movement, such that the constraints from moving
+in different layers can be gradually relaxed. If the <code>*Inter</code>
+exists, then interlayer edges can be used. However, if a relax rate is
+also used (Infomap input parameter
+<code>--multilayer-relax-rate</code>), the interlayer edges are ignored.
+Here we only include <code>*Intra</code>.</p>
+<pre class="python"><code># A network in multilayer format
+*Intra
+#layer node node weight
+1 1 23 0.15853658536585366
+1 1 25 0.024390243902439025
+1 1 27 0.0975609756097561
+... some more cases ...
+6 22 63 0.8181818181818182
+6 22 67 0.09090909090909091
+6 22 77 0.18181818181818182</code></pre>
 </div>
-<div id="examples-from-the-paper" class="section level1">
-<h1>Examples from the paper</h1>
-<ul>
-<li><a
-href="https://ecological-complexity-lab.github.io/infomap_ecology_package/bipartite">Bipartite
-monolayer network example</a></li>
-<li><a
-href="https://ecological-complexity-lab.github.io/infomap_ecology_package/monolayer_heirarchical">Monolayer
-directed network with hierarchical structure</a></li>
-<li><a
-href="https://ecological-complexity-lab.github.io/infomap_ecology_package/monolayer_node_attributes">Monolayer
-directed network with node attributes</a></li>
-<li><a
-href="https://ecological-complexity-lab.github.io/infomap_ecology_package/flows">Flow
-models</a></li>
-<li><a
-href="https://ecological-complexity-lab.github.io/infomap_ecology_package/hypothesis_test">Hypothesis
-testing</a></li>
-<li><a
-href="https://ecological-complexity-lab.github.io/infomap_ecology_package/multilayer_relax">Temporal
-multilayer network with global relax rates</a></li>
-<li><a
-href="https://ecological-complexity-lab.github.io/infomap_ecology_package/multilayer_interlayer">Temporal
-multilayer network with interlayer edges</a></li>
-</ul>
-<div id="acknowledgements" class="section level2">
-<h2>Acknowledgements</h2>
-<p>This work was supported by research grant ISF (Israel Science
-Foundation) 1281/20 to Shai Pilosof.</p>
-<p><img src="logos.png" height="80px" style="float:left, padding:10px" /></p>
+<div id="r-code" class="section level3">
+<h3>R Code</h3>
+<p>The description of functions <code>create_multilayer_object</code>
+and <code>run_infomap_multilayer</code> in the
+<code>infomapecology</code> package contains everything you need to
+know. The <code>for</code> loop performs a sensitivity analysis to
+examine how structure changes with increasing relax rates.</p>
+<pre class="r"><code># Create a multilayer object
+NEE2017 &lt;- create_multilayer_object(extended = siberia1982_7_links, nodes = siberia1982_7_nodes, intra_output_extended = F)
+
+# Ignore interlayer edges
+NEE2017$inter &lt;- NULL
+
+#Run Infomap and return the network&#39;s modular structure at increasing relax-rates.
+relaxrate_modules &lt;- NULL
+for (r in seq(0.001,1, by = 0.0999)){
+  print(r)
+  modules_relax_rate &lt;- run_infomap_multilayer(NEE2017, relax = T, silent = T, trials = 50, seed = 497294, multilayer_relax_rate = r, multilayer_relax_limit_up = 1, multilayer_relax_limit_down = 0, temporal_network = T)
+  modules_relax_rate$modules$relax_rate &lt;- r
+  relaxrate_modules &lt;- rbind(relaxrate_modules, modules_relax_rate$modules)
+}</code></pre>
 </div>
+<div id="infomap" class="section level3">
+<h3>Infomap</h3>
+<p>Under the hood, the function <code>run_infomap_multilayer</code>
+runs:</p>
+<pre class="c++"><code>./Infomap infomap_multilayer.txt . -2 --seed 497294 -N 50 -i multilayer --multilayer-relax-rate 0.15 --multilayer-relax-limit-up 1 --multilayer-relax-limit-down 0 --silent</code></pre>
+<p>Explanation of key arguments: * <code>-i multilayer</code> indicates
+a multilayer input format, which is automatically recognized as a
+multilayer link list (and not as a general link list). *
+<code>--multilayer-relax-rate 0.15</code> defines the relax rate (here
+0.15). *
+<code>multilayer-relax-limit-up 1 --multilayer-relax-limit-down 0</code>
+limits relaxation to a single layer upwards (l to l+1), but never
+downwards, because time flows one-way.</p>
+</div>
+<div id="output" class="section level3">
+<h3>Output</h3>
+<p>For multilayer network the output file has a <code>_states</code>
+suffix, with the following format. This output is as in <a
+href="multilayer_interlayer.md">Temporal multilayer network with
+interlayer edges</a>.</p>
+<pre class="r"><code># path flow name stateId physicalId layerId
+1:1 0.000516265 &quot;0&quot; 0 1 1
+1:2 0.000211504 &quot;8&quot; 8 44 1
+1:3 0.000225137 &quot;19&quot; 19 75 1
+1:4 0.000124064 &quot;20&quot; 20 76 1</code></pre>
+<p>This output is parsed by <code>run_infomap_multilayer</code> to
+obtain a table in which each state node (combination of a physical node
+in a layer) is assigned to a module. This can be obtained by (after
+running the code above):</p>
+<pre class="r"><code>relaxrate_modules$modules</code></pre>
 </div>
 
 
