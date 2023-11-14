@@ -17,8 +17,12 @@ navbar:
     - text: "Multilayer"
       menu:
        - text: "Temporal multilayer network with global relax rates"
-         href: multilayer_relax.html
+         href: multilayer_relax_emln.html
        - text: "Temporal multilayer network with interlayer edges"
+         href: multilayer_interlayer_emln.html
+       - text: "Temporal multilayer network with global relax rates (OLD)"
+         href: multilayer_relax.html
+       - text: "Temporal multilayer network with interlayer edges (OLD)"
          href: multilayer_interlayer.html
     - text: "Flow models"
       href: flows.html

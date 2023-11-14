@@ -11,7 +11,7 @@
 
 
 
-<title>Temporal multilayer network with global relax rates (OLD)</title>
+<title>Temporal multilayer network with global relax rates</title>
 
 <script src="site_libs/header-attrs-2.20/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -401,7 +401,7 @@ div.tocify {
 
 
 <h1 class="title toc-ignore">Temporal multilayer network with global
-relax rates (OLD)</h1>
+relax rates</h1>
 
 </div>
 
@@ -412,18 +412,45 @@ relax rates (OLD)</h1>
 </script>
 <div id="data-set" class="section level3">
 <h3>Data set</h3>
-<p>A temporal multilayer network. Each layer is a host-parasite
-bipartite network. Intralayer edges between a parasite species and a
-host species are the number of parasite individuals divided by the
-number of host individuals. Interlayer edges are ignored. This data set
-was taken from <a
-href="https://www.nature.com/articles/s41559-017-0101?proof=true19"><em>Pilosof
-S, Porter MA, Pascual M, Kéfi S. The multilayer nature of ecological
-networks. Nature Ecology &amp; Evolution. 2017;1: 0101</em></a>.</p>
-<p>Data sets in infomapecology:</p>
-<pre class="r"><code># Get data
-data(&quot;siberia1982_7_links&quot;)
-data(&quot;siberia1982_7_nodes&quot;)</code></pre>
+<p>Load the 65th multilayer network from the <a
+href="https://github.com/Ecological-Complexity-Lab/emln"><em><code>emln package</code></em></a>.
+This particular network is a temporal plant pollinator multilayer
+network without interlayer interactions, and it consists of 6 layers,
+corresponding to the flowering season between 2006 and 2011.</p>
+<pre class="r"><code># Load multilayer network number 65
+emln_65 &lt;- load_emln(65)</code></pre>
+<pre><code>## [1] &quot;Creating state node map&quot;
+## [1] &quot;Creating extended link list with node IDs&quot;</code></pre>
+<pre class="r"><code>emln_65$layers</code></pre>
+<pre><code>## # A tibble: 6 × 7
+##   layer_id latitude location                                         longitude name            year layer_name
+##      &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;                                                &lt;dbl&gt; &lt;chr&gt;          &lt;int&gt; &lt;chr&gt;     
+## 1        1    -32.4 Villavicencio Nature Reserve, Mendoza, Argentina     -69.1 all_sites_2006  2006 layer_1   
+## 2        2    -32.4 Villavicencio Nature Reserve, Mendoza, Argentina     -69.1 all_sites_2007  2007 layer_2   
+## 3        3    -32.4 Villavicencio Nature Reserve, Mendoza, Argentina     -69.1 all_sites_2008  2008 layer_3   
+## 4        4    -32.4 Villavicencio Nature Reserve, Mendoza, Argentina     -69.1 all_sites_209   2009 layer_4   
+## 5        5    -32.4 Villavicencio Nature Reserve, Mendoza, Argentina     -69.1 all_sites_2010  2010 layer_5   
+## 6        6    -32.4 Villavicencio Nature Reserve, Mendoza, Argentina     -69.1 all_sites_2011  2011 layer_6</code></pre>
+<pre class="r"><code>head(emln_65$nodes)</code></pre>
+<pre><code>## # A tibble: 6 × 15
+##   node_id node_name type  corolla_length corolla_…¹ heigh…² flowe…³ body_…⁴ body_…⁵ probo…⁶ probo…⁷ body_…⁸ taxa_…⁹ verif…˟ speci…˟
+##     &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;          &lt;dbl&gt;      &lt;dbl&gt;   &lt;dbl&gt;   &lt;int&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  
+## 1       1 aca.ser   plant           3.15      0.912   0.154   42118      NA      NA      NA      NA      NA TRUE    species acanth…
+## 2       2 alo.gra   plant           5.01      1.02    0.525    5944      NA      NA      NA      NA      NA FALSE   &lt;NA&gt;    aloyss…
+## 3       3 arg.sub   plant          35.0      28.8     0.514       0      NA      NA      NA      NA      NA TRUE    species argemo…
+## 4       4 arj.lon   plant          14.5       1.67    0.222    3252      NA      NA      NA      NA      NA TRUE    species arjona…
+## 5       5 bou.spi   plant          10.2       1.48    1.77     1610      NA      NA      NA      NA      NA TRUE    species bougai…
+## 6       6 bre.mic   plant           4.17      2       0.32        0      NA      NA      NA      NA      NA TRUE    species bredem…
+## # … with abbreviated variable names ¹​corolla_aperture, ²​height_mean, ³​flower_abundance, ⁴​body_thickness, ⁵​body_length,
+## #   ⁶​proboscis_length, ⁷​proboscis_width, ⁸​body_width, ⁹​taxa_verified, ˟​verification_level, ˟​species_name</code></pre>
+<pre class="r"><code>head(emln_65$extended)</code></pre>
+<pre><code>##   layer_from node_from layer_to node_to weight        type
+## 1    layer_1   cop.sp2  layer_1 aca.ser     19 pollination
+## 2    layer_1   exo.sp1  layer_1 aca.ser      2 pollination
+## 3    layer_1   str.eur  layer_1 aca.ser      1 pollination
+## 4    layer_1   api.mel  layer_1 alo.gra    368 pollination
+## 5    layer_1    aug.sp  layer_1 alo.gra      3 pollination
+## 6    layer_1   bom.opi  layer_1 alo.gra      5 pollination</code></pre>
 </div>
 <div id="input" class="section level3">
 <h3>Input</h3>
@@ -440,13 +467,13 @@ Here we only include <code>*Intra</code>.</p>
 <pre class="python"><code># A network in multilayer format
 *Intra
 #layer node node weight
-1 1 23 0.15853658536585366
-1 1 25 0.024390243902439025
-1 1 27 0.0975609756097561
+1 101 1 19
+1 113 1 2
+1 152 1 1
 ... some more cases ...
-6 22 63 0.8181818181818182
-6 22 67 0.09090909090909091
-6 22 77 0.18181818181818182</code></pre>
+6 69 11 17
+6 70 11 2
+6 87 11 3</code></pre>
 </div>
 <div id="r-code" class="section level3">
 <h3>R Code</h3>
@@ -455,20 +482,80 @@ and <code>run_infomap_multilayer</code> in the
 <code>infomapecology</code> package contains everything you need to
 know. The <code>for</code> loop performs a sensitivity analysis to
 examine how structure changes with increasing relax rates.</p>
-<pre class="r"><code># Create a multilayer object
-NEE2017 &lt;- create_multilayer_object(extended = siberia1982_7_links, nodes = siberia1982_7_nodes, intra_output_extended = F)
-
-# Ignore interlayer edges
-NEE2017$inter &lt;- NULL
-
-#Run Infomap and return the network&#39;s modular structure at increasing relax-rates.
+<pre class="r"><code>#Run Infomap and return the network&#39;s modular structure at increasing relax-rates.
 relaxrate_modules &lt;- NULL
 for (r in seq(0.001,1, by = 0.0999)){
   print(r)
-  modules_relax_rate &lt;- run_infomap_multilayer(NEE2017, relax = T, silent = T, trials = 50, seed = 497294, multilayer_relax_rate = r, multilayer_relax_limit_up = 1, multilayer_relax_limit_down = 0, temporal_network = T)
+  modules_relax_rate &lt;- run_infomap_multilayer(emln_65, relax = T, silent = T, trials = 50, seed = 497294, multilayer_relax_rate = r, multilayer_relax_limit_up = 1, multilayer_relax_limit_down = 0, temporal_network = T)
   modules_relax_rate$modules$relax_rate &lt;- r
   relaxrate_modules &lt;- rbind(relaxrate_modules, modules_relax_rate$modules)
 }</code></pre>
+<pre><code>## [1] 0.001
+## [1] &quot;Using global relax to determine flow between layers.&quot;
+## [1] &quot;./Infomap infomap_multilayer.txt . --tree -2 -N 50 --seed 497294 --silent --multilayer-relax-rate 0.001 --multilayer-relax-limit-up 1 --multilayer-relax-limit-down 0&quot;
+## [1] &quot;Reorganizing modules...&quot;
+## [1] &quot;Removing auxilary files...&quot;
+## [1] &quot;Partitioned into 38 modules.&quot;
+## [1] 0.1009
+## [1] &quot;Using global relax to determine flow between layers.&quot;
+## [1] &quot;./Infomap infomap_multilayer.txt . --tree -2 -N 50 --seed 497294 --silent --multilayer-relax-rate 0.1009 --multilayer-relax-limit-up 1 --multilayer-relax-limit-down 0&quot;
+## [1] &quot;Reorganizing modules...&quot;
+## [1] &quot;Removing auxilary files...&quot;
+## [1] &quot;Partitioned into 38 modules.&quot;
+## [1] 0.2008
+## [1] &quot;Using global relax to determine flow between layers.&quot;
+## [1] &quot;./Infomap infomap_multilayer.txt . --tree -2 -N 50 --seed 497294 --silent --multilayer-relax-rate 0.2008 --multilayer-relax-limit-up 1 --multilayer-relax-limit-down 0&quot;
+## [1] &quot;Reorganizing modules...&quot;
+## [1] &quot;Removing auxilary files...&quot;
+## [1] &quot;Partitioned into 34 modules.&quot;
+## [1] 0.3007
+## [1] &quot;Using global relax to determine flow between layers.&quot;
+## [1] &quot;./Infomap infomap_multilayer.txt . --tree -2 -N 50 --seed 497294 --silent --multilayer-relax-rate 0.3007 --multilayer-relax-limit-up 1 --multilayer-relax-limit-down 0&quot;
+## [1] &quot;Reorganizing modules...&quot;
+## [1] &quot;Removing auxilary files...&quot;
+## [1] &quot;Partitioned into 31 modules.&quot;
+## [1] 0.4006
+## [1] &quot;Using global relax to determine flow between layers.&quot;
+## [1] &quot;./Infomap infomap_multilayer.txt . --tree -2 -N 50 --seed 497294 --silent --multilayer-relax-rate 0.4006 --multilayer-relax-limit-up 1 --multilayer-relax-limit-down 0&quot;
+## [1] &quot;Reorganizing modules...&quot;
+## [1] &quot;Removing auxilary files...&quot;
+## [1] &quot;Partitioned into 32 modules.&quot;
+## [1] 0.5005
+## [1] &quot;Using global relax to determine flow between layers.&quot;
+## [1] &quot;./Infomap infomap_multilayer.txt . --tree -2 -N 50 --seed 497294 --silent --multilayer-relax-rate 0.5005 --multilayer-relax-limit-up 1 --multilayer-relax-limit-down 0&quot;
+## [1] &quot;Reorganizing modules...&quot;
+## [1] &quot;Removing auxilary files...&quot;
+## [1] &quot;Partitioned into 30 modules.&quot;
+## [1] 0.6004
+## [1] &quot;Using global relax to determine flow between layers.&quot;
+## [1] &quot;./Infomap infomap_multilayer.txt . --tree -2 -N 50 --seed 497294 --silent --multilayer-relax-rate 0.6004 --multilayer-relax-limit-up 1 --multilayer-relax-limit-down 0&quot;
+## [1] &quot;Reorganizing modules...&quot;
+## [1] &quot;Removing auxilary files...&quot;
+## [1] &quot;Partitioned into 27 modules.&quot;
+## [1] 0.7003
+## [1] &quot;Using global relax to determine flow between layers.&quot;
+## [1] &quot;./Infomap infomap_multilayer.txt . --tree -2 -N 50 --seed 497294 --silent --multilayer-relax-rate 0.7003 --multilayer-relax-limit-up 1 --multilayer-relax-limit-down 0&quot;
+## [1] &quot;Reorganizing modules...&quot;
+## [1] &quot;Removing auxilary files...&quot;
+## [1] &quot;Partitioned into 25 modules.&quot;
+## [1] 0.8002
+## [1] &quot;Using global relax to determine flow between layers.&quot;
+## [1] &quot;./Infomap infomap_multilayer.txt . --tree -2 -N 50 --seed 497294 --silent --multilayer-relax-rate 0.8002 --multilayer-relax-limit-up 1 --multilayer-relax-limit-down 0&quot;
+## [1] &quot;Reorganizing modules...&quot;
+## [1] &quot;Removing auxilary files...&quot;
+## [1] &quot;Partitioned into 24 modules.&quot;
+## [1] 0.9001
+## [1] &quot;Using global relax to determine flow between layers.&quot;
+## [1] &quot;./Infomap infomap_multilayer.txt . --tree -2 -N 50 --seed 497294 --silent --multilayer-relax-rate 0.9001 --multilayer-relax-limit-up 1 --multilayer-relax-limit-down 0&quot;
+## [1] &quot;Reorganizing modules...&quot;
+## [1] &quot;Removing auxilary files...&quot;
+## [1] &quot;Partitioned into 23 modules.&quot;
+## [1] 1
+## [1] &quot;Using global relax to determine flow between layers.&quot;
+## [1] &quot;./Infomap infomap_multilayer.txt . --tree -2 -N 50 --seed 497294 --silent --multilayer-relax-rate 1 --multilayer-relax-limit-up 1 --multilayer-relax-limit-down 0&quot;
+## [1] &quot;Reorganizing modules...&quot;
+## [1] &quot;Removing auxilary files...&quot;
+## [1] &quot;Partitioned into 21 modules.&quot;</code></pre>
 </div>
 <div id="infomap" class="section level3">
 <h3>Infomap</h3>
@@ -490,16 +577,32 @@ downwards, because time flows one-way.</p>
 suffix, with the following format. This output is as in <a
 href="multilayer_interlayer.md">Temporal multilayer network with
 interlayer edges</a>.</p>
-<pre class="r"><code># path flow name stateId physicalId layerId
-1:1 0.000516265 &quot;0&quot; 0 1 1
-1:2 0.000211504 &quot;8&quot; 8 44 1
-1:3 0.000225137 &quot;19&quot; 19 75 1
-1:4 0.000124064 &quot;20&quot; 20 76 1</code></pre>
+<pre class="python"><code># path flow name stateId physicalId layerId
+# path flow name state_id node_id layer_id
+1:1 0.0208474 &quot;12&quot; 604 12 6
+1:2 0.0166813 &quot;100&quot; 531 100 6
+1:3 0.0103777 &quot;45&quot; 600 45 6
+1:4 0.00927889 &quot;58&quot; 526 58 6</code></pre>
 <p>This output is parsed by <code>run_infomap_multilayer</code> to
 obtain a table in which each state node (combination of a physical node
 in a layer) is assigned to a module. This can be obtained by (after
 running the code above):</p>
-<pre class="r"><code>relaxrate_modules$modules</code></pre>
+<pre class="r"><code>#relaxrate_modules$modules
+relaxrate_modules %&gt;% select(node_id, layer_id, node_name, type, module)</code></pre>
+<pre><code>## # A tibble: 7,062 × 5
+##    node_id layer_id node_name type  module
+##      &lt;int&gt;    &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;  &lt;int&gt;
+##  1       1        1 aca.ser   plant      1
+##  2       1        2 aca.ser   plant     10
+##  3       1        3 aca.ser   plant     15
+##  4       1        4 aca.ser   plant     25
+##  5       1        5 aca.ser   plant     31
+##  6       1        6 aca.ser   plant     37
+##  7       2        1 alo.gra   plant      1
+##  8       2        3 alo.gra   plant     16
+##  9       2        4 alo.gra   plant     25
+## 10       2        5 alo.gra   plant     35
+## # … with 7,052 more rows</code></pre>
 </div>
 
 

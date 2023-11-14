@@ -221,7 +221,7 @@ run_infomap_multilayer <- function(M,
   
   ### infomap_ecology_v2
   if (any(is.na(modules$module))) {
-    print ('No modules were assigned nodes that lacked flow.\n')
+    print ('No modules were assigned nodes that lacked flow: ')
     print (modules[is.na(modules$module), c("node_id", "node_name")])
     #delete rows with NA values in the modules$module 
     modules <- modules[!is.na(modules$module), ]

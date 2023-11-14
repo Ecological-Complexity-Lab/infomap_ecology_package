@@ -36,6 +36,10 @@
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/clipboard-1.7.1/clipboard.min.js"></script>
+<link href="site_libs/primer-tooltips-1.4.0/build.css" rel="stylesheet" />
+<link href="site_libs/klippy-0.0.0.9500/css/klippy.min.css" rel="stylesheet" />
+<script src="site_libs/klippy-0.0.0.9500/js/klippy.min.js"></script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -357,10 +361,16 @@ div.tocify {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="multilayer_relax.html">Temporal multilayer network with global relax rates</a>
+      <a href="multilayer_relax_emln.html">Temporal multilayer network with global relax rates</a>
     </li>
     <li>
-      <a href="multilayer_interlayer.html">Temporal multilayer network with interlayer edges</a>
+      <a href="multilayer_interlayer_emln.html">Temporal multilayer network with interlayer edges</a>
+    </li>
+    <li>
+      <a href="multilayer_relax.html">Temporal multilayer network with global relax rates (OLD)</a>
+    </li>
+    <li>
+      <a href="multilayer_interlayer.html">Temporal multilayer network with interlayer edges (OLD)</a>
     </li>
   </ul>
 </li>
@@ -395,6 +405,10 @@ div.tocify {
 </div>
 
 
+<script>
+  addClassKlippyTo("pre.r, pre.markdown");
+  addKlippy('right', 'top', '#8B0000', '1', 'Copy code', 'Copied!');
+</script>
 <div id="data-set" class="section level3">
 <h3>Data set</h3>
 <p>Weighted directed networks of pollen transfer from <a
@@ -421,18 +435,26 @@ tur2016_altitude2000 &lt;- tur2016 %&gt;%
   rename(from = donor, to = receptor, weight = n) %&gt;% 
   ungroup() %&gt;%
   slice(c(-10,-13,-28)) %&gt;%  # Remove singletons
-  filter(from!=to) # Remove self loops
-  
-network_object &lt;- create_monolayer_network(tur2016_altitude2000, 
-directed = T, bipartite = F)
-res_dir &lt;- run_infomap_monolayer(network_object, infomap_executable=&#39;Infomap&#39;,
+  filter(from!=to) # Remove self loops</code></pre>
+<pre><code>## `summarise()` has grouped output by &#39;donor&#39;. You can override using the `.groups` argument.</code></pre>
+<pre class="r"><code>network_object &lt;- create_monolayer_network(tur2016_altitude2000, 
+directed = T, bipartite = F)</code></pre>
+<pre><code>## [1] &quot;Input: an unipartite edge list&quot;</code></pre>
+<pre><code>## Warning: One or more rows sum to 0. This may be ok if you expect some links with only outgoing links (e.g., basal species in a food web)
+## Warning: One or more columns sum to 0. This may be ok if you expect some links with only incoming links (e.g., top predators in a food web)</code></pre>
+<pre class="r"><code>res_dir &lt;- run_infomap_monolayer(network_object, infomap_executable=&#39;Infomap&#39;,
                                  flow_model = &#39;directed&#39;,
-                                 silent=T,trials=100, two_level=T, seed=200952)
-res_rawdir &lt;- run_infomap_monolayer(network_object, infomap_executable=&#39;Infomap&#39;,
+                                 silent=T,trials=100, two_level=T, seed=200952)</code></pre>
+<pre><code>## [1] &quot;Creating a link list...&quot;
+## running: ./Infomap infomap.txt . --tree --seed 200952 -N 100 -f directed --silent --two-level
+## [1] &quot;Removing auxilary files...&quot;</code></pre>
+<pre class="r"><code>res_rawdir &lt;- run_infomap_monolayer(network_object, infomap_executable=&#39;Infomap&#39;,
 flow_model = &#39;rawdir&#39;,
-silent=T,trials=100, two_level=T, seed=200952)
-
-res_dir_modules &lt;- res_dir$modules %&gt;% drop_na()
+silent=T,trials=100, two_level=T, seed=200952)</code></pre>
+<pre><code>## [1] &quot;Creating a link list...&quot;
+## running: ./Infomap infomap.txt . --tree --seed 200952 -N 100 -f rawdir --silent --two-level
+## [1] &quot;Removing auxilary files...&quot;</code></pre>
+<pre class="r"><code>res_dir_modules &lt;- res_dir$modules %&gt;% drop_na()
 res_rawdir_modules &lt;- res_rawdir$modules %&gt;% drop_na()
 
 
@@ -441,11 +463,11 @@ N &lt;- res_dir_modules %&gt;% # Create confusion matrix
   select(-module_level2) %&gt;%
   inner_join(res_rawdir_modules %&gt;% select(node_id,module_level1), by=&#39;node_id&#39;) %&gt;%
   arrange(module_level1.x,module_level1.y) %&gt;%
-  group_by(module_level1.y) %&gt;% select(module_level1.x) %&gt;% table()
-
-# These two different modes of flow can result in different partitions.
-NMI(N)
-</code></pre>
+  group_by(module_level1.y) %&gt;% select(module_level1.x) %&gt;% table()</code></pre>
+<pre><code>## Adding missing grouping variables: `module_level1.y`</code></pre>
+<pre class="r"><code># These two different modes of flow can result in different partitions.
+NMI(N)</code></pre>
+<pre><code>## [1] 0.8295691</code></pre>
 </div>
 <div id="infomap" class="section level3">
 <h3>Infomap</h3>

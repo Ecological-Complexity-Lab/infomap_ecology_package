@@ -36,6 +36,10 @@
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/clipboard-1.7.1/clipboard.min.js"></script>
+<link href="site_libs/primer-tooltips-1.4.0/build.css" rel="stylesheet" />
+<link href="site_libs/klippy-0.0.0.9500/css/klippy.min.css" rel="stylesheet" />
+<script src="site_libs/klippy-0.0.0.9500/js/klippy.min.js"></script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -357,10 +361,16 @@ div.tocify {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="multilayer_relax.html">Temporal multilayer network with global relax rates</a>
+      <a href="multilayer_relax_emln.html">Temporal multilayer network with global relax rates</a>
     </li>
     <li>
-      <a href="multilayer_interlayer.html">Temporal multilayer network with interlayer edges</a>
+      <a href="multilayer_interlayer_emln.html">Temporal multilayer network with interlayer edges</a>
+    </li>
+    <li>
+      <a href="multilayer_relax.html">Temporal multilayer network with global relax rates (OLD)</a>
+    </li>
+    <li>
+      <a href="multilayer_interlayer.html">Temporal multilayer network with interlayer edges (OLD)</a>
     </li>
   </ul>
 </li>
@@ -395,6 +405,10 @@ div.tocify {
 </div>
 
 
+<script>
+  addClassKlippyTo("pre.r, pre.markdown");
+  addKlippy('right', 'top', '#8B0000', '1', 'Copy code', 'Copied!');
+</script>
 <div id="data-set" class="section level3">
 <h3>Data set</h3>
 <p>A weighted bipartite network describing a plant-flower visitor
@@ -425,11 +439,8 @@ network_object &lt;- create_monolayer_network(memmott1999, bipartite = T, direct
 flow_model = &#39;undirected&#39;,
 silent=T, trials=20, two_level=T, seed=123)</code></pre>
 <pre><code>## [1] &quot;Creating a link list...&quot;
-## running: ./Infomap infomap.txt . --tree --seed 123 -N 20 -f undirected --silent --two-level</code></pre>
-<pre><code>## Warning: One or more parsing issues, call `problems()` on your data frame for details, e.g.:
-##   dat &lt;- vroom(...)
-##   problems(dat)</code></pre>
-<pre><code>## [1] &quot;Removing auxilary files...&quot;</code></pre>
+## running: ./Infomap infomap.txt . --tree --seed 123 -N 20 -f undirected --silent --two-level
+## [1] &quot;Removing auxilary files...&quot;</code></pre>
 <pre class="r"><code># Plot the matrix (plotting function in beta)
 plot_modular_matrix(infomap_object)</code></pre>
 <p><img src="bipartite_files/figure-html/Bipartite_1-1.png" width="576" /></p>

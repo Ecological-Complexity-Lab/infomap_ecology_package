@@ -104,7 +104,7 @@ run_infomap_monolayer <- function(x, infomap_executable='Infomap', flow_model=NU
   m <- parse_number(tmp[[1]][2]) # Get number of modules
   L <- parse_number(read_lines('infomap.tree')[6]) # Get the map equation value, L
   # Read module results from Infomap
-  modules <- suppressMessages(read_delim('infomap.tree', delim = ' ', skip = 8, col_names = c('path', 'flow', 'name', 'node_id')))
+  modules <- suppressMessages(read_delim('infomap.tree', delim = ' ', skip = 9, col_names = c('path', 'flow', 'name', 'node_id')))
   # Get the modules
   suppressWarnings( # Need to suppress warnings because with hierarchical modules there are NA generated.
     modules %<>%

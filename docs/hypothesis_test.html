@@ -36,6 +36,10 @@
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/clipboard-1.7.1/clipboard.min.js"></script>
+<link href="site_libs/primer-tooltips-1.4.0/build.css" rel="stylesheet" />
+<link href="site_libs/klippy-0.0.0.9500/css/klippy.min.css" rel="stylesheet" />
+<script src="site_libs/klippy-0.0.0.9500/js/klippy.min.js"></script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -357,10 +361,16 @@ div.tocify {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="multilayer_relax.html">Temporal multilayer network with global relax rates</a>
+      <a href="multilayer_relax_emln.html">Temporal multilayer network with global relax rates</a>
     </li>
     <li>
-      <a href="multilayer_interlayer.html">Temporal multilayer network with interlayer edges</a>
+      <a href="multilayer_interlayer_emln.html">Temporal multilayer network with interlayer edges</a>
+    </li>
+    <li>
+      <a href="multilayer_relax.html">Temporal multilayer network with global relax rates (OLD)</a>
+    </li>
+    <li>
+      <a href="multilayer_interlayer.html">Temporal multilayer network with interlayer edges (OLD)</a>
     </li>
   </ul>
 </li>
@@ -395,6 +405,10 @@ div.tocify {
 </div>
 
 
+<script>
+  addClassKlippyTo("pre.r, pre.markdown");
+  addKlippy('right', 'top', '#8B0000', '1', 'Copy code', 'Copied!');
+</script>
 <div id="built-in-randomisation-capabilities-for-bipartite-networks"
 class="section level2">
 <h2>1. Built in randomisation capabilities for bipartite networks</h2>
@@ -403,27 +417,48 @@ algorithms built into <code>vegan</code>. To use this, we need to set
 <code>signif=T</code> and provide a shuffling method to
 <code>shuff_method</code>. The shuffling methods are the ones detailed
 in <code>?vegan::commsim</code>.</p>
-<pre class="r"><code>network_object &lt;- create_monolayer_network(memmott1999, bipartite = T, directed = F, group_names = c(&#39;A&#39;,&#39;P&#39;))
-
-# Run with shuffling
+<pre class="r"><code>network_object &lt;- create_monolayer_network(memmott1999, bipartite = T, directed = F, group_names = c(&#39;A&#39;,&#39;P&#39;))</code></pre>
+<pre><code>## [1] &quot;Input: a bipartite matrix&quot;</code></pre>
+<pre class="r"><code># Run with shuffling
 infomap_object &lt;- run_infomap_monolayer(network_object, infomap_executable=&#39;Infomap&#39;,
                                         flow_model = &#39;undirected&#39;,
                                         silent=T, trials=20, two_level=T, seed=123, 
-                                        signif = T, shuff_method = &#39;r00&#39;, nsim = 50)
-# Plot histograms
-plots &lt;- plot_signif(infomap_object, plotit = T)
-plot_grid(
+                                        signif = T, shuff_method = &#39;r00&#39;, nsim = 10) #nsim = 50</code></pre>
+<pre><code>## [1] &quot;Creating a link list...&quot;
+## running: ./Infomap infomap.txt . --tree --seed 123 -N 20 -f undirected --silent --two-level
+## [1] &quot;Shuffling...&quot;
+## [1] &quot;Running Infomap on shuffled network 1/10&quot;
+## [1] &quot;Running Infomap on shuffled network 2/10&quot;
+## [1] &quot;Running Infomap on shuffled network 3/10&quot;
+## [1] &quot;Running Infomap on shuffled network 4/10&quot;
+## [1] &quot;Running Infomap on shuffled network 5/10&quot;
+## [1] &quot;Running Infomap on shuffled network 6/10&quot;
+## [1] &quot;Running Infomap on shuffled network 7/10&quot;
+## [1] &quot;Running Infomap on shuffled network 8/10&quot;
+## [1] &quot;Running Infomap on shuffled network 9/10&quot;
+## [1] &quot;Running Infomap on shuffled network 10/10&quot;</code></pre>
+<pre><code>## Warning in run_infomap_monolayer(network_object, infomap_executable = &quot;Infomap&quot;, : pvalue is not really 0, it is &lt;0.1</code></pre>
+<pre><code>## [1] &quot;Removing auxilary files...&quot;</code></pre>
+<pre class="r"><code># Plot histograms
+plots &lt;- plot_signif(infomap_object, plotit = T)</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="hypothesis_test_files/figure-html/hypothesis_1-1.png" width="576" /></p>
+<pre class="r"><code>plot_grid(
   plots$L_plot+
     theme_bw()+
     theme(legend.position=&#39;none&#39;, 
-          axis.text = element_text(size=20), 
-          axis.title = element_text(size=20)),
+          legend.title = element_text(size=16),
+          axis.text = element_text(size=16)),
   plots$m_plot+
     theme_bw()+
     theme(legend.position=&#39;none&#39;, 
-          axis.text = element_text(size=20), 
-          axis.title = element_text(size=20))
+          legend.title = element_text(size=16),
+          axis.text = element_text(size=16))
 )</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="hypothesis_test_files/figure-html/hypothesis_1-2.png" width="576" /></p>
 <p>Another way is to provide <code>shuff_method</code> with a list
 containing already shuffled networks. You can for example use the
 function <code>shuffle_infomap</code> to produce shuffled networks with
@@ -431,24 +466,44 @@ function <code>shuffle_infomap</code> to produce shuffled networks with
 <code>?vegan::commsim</code> needs additional arguments such as
 burning.</p>
 <pre class="r"><code># Or can shuffle like this, if additional arguments are needed for the shuffling algorithm
-shuffled &lt;- shuffle_infomap(network_object, shuff_method=&#39;curveball&#39;, nsim=50, burnin=2000)
-infomap_object &lt;- run_infomap_monolayer(network_object, infomap_executable=&#39;Infomap&#39;,
+shuffled &lt;- shuffle_infomap(network_object, shuff_method=&#39;curveball&#39;, nsim=10, burnin=2000) #nsim=50</code></pre>
+<pre><code>## [1] &quot;Shuffling...&quot;</code></pre>
+<pre class="r"><code>infomap_object &lt;- run_infomap_monolayer(network_object, infomap_executable=&#39;Infomap&#39;,
                                         flow_model = &#39;undirected&#39;,
                                         silent=T, trials=20, two_level=T, seed=123, 
-                                        signif = T, shuff_method = shuffled, nsim = 50)
-plots &lt;- plot_signif(infomap_object, plotit = F)
+                                        signif = T, shuff_method = shuffled, nsim = 10) #nsim = 50</code></pre>
+<pre><code>## [1] &quot;Creating a link list...&quot;
+## running: ./Infomap infomap.txt . --tree --seed 123 -N 20 -f undirected --silent --two-level
+## [1] &quot;Running Infomap on shuffled network 1/10&quot;
+## [1] &quot;Running Infomap on shuffled network 2/10&quot;
+## [1] &quot;Running Infomap on shuffled network 3/10&quot;
+## [1] &quot;Running Infomap on shuffled network 4/10&quot;
+## [1] &quot;Running Infomap on shuffled network 5/10&quot;
+## [1] &quot;Running Infomap on shuffled network 6/10&quot;
+## [1] &quot;Running Infomap on shuffled network 7/10&quot;
+## [1] &quot;Running Infomap on shuffled network 8/10&quot;
+## [1] &quot;Running Infomap on shuffled network 9/10&quot;
+## [1] &quot;Running Infomap on shuffled network 10/10&quot;</code></pre>
+<pre><code>## Warning in run_infomap_monolayer(network_object, infomap_executable = &quot;Infomap&quot;, : pvalue is not really 0, it is &lt;0.1</code></pre>
+<pre><code>## [1] &quot;Removing auxilary files...&quot;</code></pre>
+<pre class="r"><code>plots &lt;- plot_signif(infomap_object, plotit = F)
 plot_grid(
   plots$L_plot+
   theme_bw()+
   theme(legend.position=&#39;none&#39;, 
-        axis.text = element_text(size=20), 
-        axis.title = element_text(size=20)),
+        axis.text = element_text(size=16), #20
+        legend.title = element_text(size=16),
+        axis.title = element_text(size=16)), #20
   plots$m_plot+
     theme_bw()+
     theme(legend.position=&#39;none&#39;, 
-          axis.text = element_text(size=20), 
-          axis.title = element_text(size=20))
+          axis.text = element_text(size=16), #20
+          legend.title = element_text(size=16),
+          axis.title = element_text(size=16)) #20
 )</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="hypothesis_test_files/figure-html/hypothesis_2-1.png" width="576" /></p>
 </div>
 <div
 id="dedicated-randomisation-algorithm-for-the-tur-et-al.-2016-data-set."
@@ -467,11 +522,13 @@ tur2016_altitude2000 &lt;- tur2016 %&gt;%
   rename(from = donor, to = receptor, weight = n) %&gt;% 
   ungroup() %&gt;%
   slice(c(-10,-13,-28)) %&gt;%  # Remove singletons
-  filter(from!=to) # Remove self loops
-  
-tur_network &lt;- create_monolayer_network(tur2016_altitude2000, directed = T, bipartite = F)
-
-# A dedicated function to shuffle the networks, considering the flow.
+  filter(from!=to) # Remove self loops</code></pre>
+<pre><code>## `summarise()` has grouped output by &#39;donor&#39;. You can override using the `.groups` argument.</code></pre>
+<pre class="r"><code>tur_network &lt;- create_monolayer_network(tur2016_altitude2000, directed = T, bipartite = F)</code></pre>
+<pre><code>## [1] &quot;Input: an unipartite edge list&quot;</code></pre>
+<pre><code>## Warning: One or more rows sum to 0. This may be ok if you expect some links with only outgoing links (e.g., basal species in a food web)
+## Warning: One or more columns sum to 0. This may be ok if you expect some links with only incoming links (e.g., top predators in a food web)</code></pre>
+<pre class="r"><code># A dedicated function to shuffle the networks, considering the flow.
 shuffle_tur_networks &lt;- function(x){ # x is a network object
   m &lt;- x$mat
 
@@ -497,26 +554,267 @@ shuffle_tur_networks &lt;- function(x){ # x is a network object
 }
 
 # Create a list with shuffled link lists
-nsim &lt;- 1000
+nsim &lt;- 100 #nsim &lt;- 1000
 shuffled &lt;- NULL
 for (i in 1:nsim){
   print(i)
   x &lt;- shuffle_tur_networks(tur_network) #Shuffle the network
   x &lt;- create_monolayer_network(x,directed = T,bipartite = F) # Create a monolayer object
   shuffled[[i]] &lt;- create_infomap_linklist(x)$edge_list_infomap #Create a link-list
-}  
-
-# Use the shuffled link lists. 
+}  </code></pre>
+<pre><code>## [1] 1
+## [1] 2
+## [1] 3
+## [1] 4
+## [1] 5
+## [1] 6
+## [1] &quot;Some nodes have no interactions. They will appear in the node table but not in the edge list&quot;
+## [1] 7
+## [1] 8
+## [1] &quot;Some nodes have no interactions. They will appear in the node table but not in the edge list&quot;
+## [1] 9
+## [1] &quot;Some nodes have no interactions. They will appear in the node table but not in the edge list&quot;
+## [1] 10
+## [1] 11
+## [1] 12
+## [1] &quot;Some nodes have no interactions. They will appear in the node table but not in the edge list&quot;
+## [1] 13
+## [1] &quot;Some nodes have no interactions. They will appear in the node table but not in the edge list&quot;
+## [1] 14
+## [1] 15
+## [1] 16
+## [1] 17
+## [1] 18
+## [1] &quot;Some nodes have no interactions. They will appear in the node table but not in the edge list&quot;
+## [1] 19
+## [1] &quot;Some nodes have no interactions. They will appear in the node table but not in the edge list&quot;
+## [1] 20
+## [1] 21
+## [1] 22
+## [1] 23
+## [1] &quot;Some nodes have no interactions. They will appear in the node table but not in the edge list&quot;
+## [1] 24
+## [1] 25
+## [1] &quot;Some nodes have no interactions. They will appear in the node table but not in the edge list&quot;
+## [1] 26
+## [1] 27
+## [1] 28
+## [1] 29
+## [1] 30
+## [1] 31
+## [1] 32
+## [1] 33
+## [1] 34
+## [1] 35
+## [1] 36
+## [1] &quot;Some nodes have no interactions. They will appear in the node table but not in the edge list&quot;
+## [1] 37
+## [1] 38
+## [1] &quot;Some nodes have no interactions. They will appear in the node table but not in the edge list&quot;
+## [1] 39
+## [1] &quot;Some nodes have no interactions. They will appear in the node table but not in the edge list&quot;
+## [1] 40
+## [1] &quot;Some nodes have no interactions. They will appear in the node table but not in the edge list&quot;
+## [1] 41
+## [1] 42
+## [1] &quot;Some nodes have no interactions. They will appear in the node table but not in the edge list&quot;
+## [1] 43
+## [1] 44
+## [1] 45
+## [1] &quot;Some nodes have no interactions. They will appear in the node table but not in the edge list&quot;
+## [1] 46
+## [1] 47
+## [1] 48
+## [1] &quot;Some nodes have no interactions. They will appear in the node table but not in the edge list&quot;
+## [1] 49
+## [1] 50
+## [1] 51
+## [1] &quot;Some nodes have no interactions. They will appear in the node table but not in the edge list&quot;
+## [1] 52
+## [1] 53
+## [1] &quot;Some nodes have no interactions. They will appear in the node table but not in the edge list&quot;
+## [1] 54
+## [1] &quot;Some nodes have no interactions. They will appear in the node table but not in the edge list&quot;
+## [1] 55
+## [1] 56
+## [1] &quot;Some nodes have no interactions. They will appear in the node table but not in the edge list&quot;
+## [1] 57
+## [1] 58
+## [1] 59
+## [1] 60
+## [1] &quot;Some nodes have no interactions. They will appear in the node table but not in the edge list&quot;
+## [1] 61
+## [1] 62
+## [1] 63
+## [1] 64
+## [1] &quot;Some nodes have no interactions. They will appear in the node table but not in the edge list&quot;
+## [1] 65
+## [1] &quot;Some nodes have no interactions. They will appear in the node table but not in the edge list&quot;
+## [1] 66
+## [1] &quot;Some nodes have no interactions. They will appear in the node table but not in the edge list&quot;
+## [1] 67
+## [1] 68
+## [1] 69
+## [1] 70
+## [1] 71
+## [1] 72
+## [1] &quot;Some nodes have no interactions. They will appear in the node table but not in the edge list&quot;
+## [1] 73
+## [1] &quot;Some nodes have no interactions. They will appear in the node table but not in the edge list&quot;
+## [1] 74
+## [1] 75
+## [1] 76
+## [1] 77
+## [1] 78
+## [1] 79
+## [1] 80
+## [1] 81
+## [1] 82
+## [1] 83
+## [1] 84
+## [1] &quot;Some nodes have no interactions. They will appear in the node table but not in the edge list&quot;
+## [1] 85
+## [1] &quot;Some nodes have no interactions. They will appear in the node table but not in the edge list&quot;
+## [1] 86
+## [1] &quot;Some nodes have no interactions. They will appear in the node table but not in the edge list&quot;
+## [1] 87
+## [1] &quot;Some nodes have no interactions. They will appear in the node table but not in the edge list&quot;
+## [1] 88
+## [1] 89
+## [1] 90
+## [1] 91
+## [1] 92
+## [1] 93
+## [1] 94
+## [1] 95
+## [1] 96
+## [1] 97
+## [1] &quot;Some nodes have no interactions. They will appear in the node table but not in the edge list&quot;
+## [1] 98
+## [1] 99
+## [1] 100</code></pre>
+<pre class="r"><code># Use the shuffled link lists. 
 tur_signif &lt;- run_infomap_monolayer(tur_network, infomap_executable=&#39;Infomap&#39;,
                       flow_model = &#39;rawdir&#39;,
                       silent=T,
                       trials=100, two_level=T, seed=200952,
-                      signif = T, shuff_method = shuffled)
+                      signif = T, shuff_method = shuffled)</code></pre>
+<pre><code>## [1] &quot;Creating a link list...&quot;
+## running: ./Infomap infomap.txt . --tree --seed 200952 -N 100 -f rawdir --silent --two-level
+## [1] &quot;Running Infomap on shuffled network 1/100&quot;
+## [1] &quot;Running Infomap on shuffled network 2/100&quot;
+## [1] &quot;Running Infomap on shuffled network 3/100&quot;
+## [1] &quot;Running Infomap on shuffled network 4/100&quot;
+## [1] &quot;Running Infomap on shuffled network 5/100&quot;
+## [1] &quot;Running Infomap on shuffled network 6/100&quot;
+## [1] &quot;Running Infomap on shuffled network 7/100&quot;
+## [1] &quot;Running Infomap on shuffled network 8/100&quot;
+## [1] &quot;Running Infomap on shuffled network 9/100&quot;
+## [1] &quot;Running Infomap on shuffled network 10/100&quot;
+## [1] &quot;Running Infomap on shuffled network 11/100&quot;
+## [1] &quot;Running Infomap on shuffled network 12/100&quot;
+## [1] &quot;Running Infomap on shuffled network 13/100&quot;
+## [1] &quot;Running Infomap on shuffled network 14/100&quot;
+## [1] &quot;Running Infomap on shuffled network 15/100&quot;
+## [1] &quot;Running Infomap on shuffled network 16/100&quot;
+## [1] &quot;Running Infomap on shuffled network 17/100&quot;
+## [1] &quot;Running Infomap on shuffled network 18/100&quot;
+## [1] &quot;Running Infomap on shuffled network 19/100&quot;
+## [1] &quot;Running Infomap on shuffled network 20/100&quot;
+## [1] &quot;Running Infomap on shuffled network 21/100&quot;
+## [1] &quot;Running Infomap on shuffled network 22/100&quot;
+## [1] &quot;Running Infomap on shuffled network 23/100&quot;
+## [1] &quot;Running Infomap on shuffled network 24/100&quot;
+## [1] &quot;Running Infomap on shuffled network 25/100&quot;
+## [1] &quot;Running Infomap on shuffled network 26/100&quot;
+## [1] &quot;Running Infomap on shuffled network 27/100&quot;
+## [1] &quot;Running Infomap on shuffled network 28/100&quot;
+## [1] &quot;Running Infomap on shuffled network 29/100&quot;
+## [1] &quot;Running Infomap on shuffled network 30/100&quot;
+## [1] &quot;Running Infomap on shuffled network 31/100&quot;
+## [1] &quot;Running Infomap on shuffled network 32/100&quot;
+## [1] &quot;Running Infomap on shuffled network 33/100&quot;
+## [1] &quot;Running Infomap on shuffled network 34/100&quot;
+## [1] &quot;Running Infomap on shuffled network 35/100&quot;
+## [1] &quot;Running Infomap on shuffled network 36/100&quot;
+## [1] &quot;Running Infomap on shuffled network 37/100&quot;
+## [1] &quot;Running Infomap on shuffled network 38/100&quot;
+## [1] &quot;Running Infomap on shuffled network 39/100&quot;
+## [1] &quot;Running Infomap on shuffled network 40/100&quot;
+## [1] &quot;Running Infomap on shuffled network 41/100&quot;
+## [1] &quot;Running Infomap on shuffled network 42/100&quot;
+## [1] &quot;Running Infomap on shuffled network 43/100&quot;
+## [1] &quot;Running Infomap on shuffled network 44/100&quot;
+## [1] &quot;Running Infomap on shuffled network 45/100&quot;
+## [1] &quot;Running Infomap on shuffled network 46/100&quot;
+## [1] &quot;Running Infomap on shuffled network 47/100&quot;
+## [1] &quot;Running Infomap on shuffled network 48/100&quot;
+## [1] &quot;Running Infomap on shuffled network 49/100&quot;
+## [1] &quot;Running Infomap on shuffled network 50/100&quot;
+## [1] &quot;Running Infomap on shuffled network 51/100&quot;
+## [1] &quot;Running Infomap on shuffled network 52/100&quot;
+## [1] &quot;Running Infomap on shuffled network 53/100&quot;
+## [1] &quot;Running Infomap on shuffled network 54/100&quot;
+## [1] &quot;Running Infomap on shuffled network 55/100&quot;
+## [1] &quot;Running Infomap on shuffled network 56/100&quot;
+## [1] &quot;Running Infomap on shuffled network 57/100&quot;
+## [1] &quot;Running Infomap on shuffled network 58/100&quot;
+## [1] &quot;Running Infomap on shuffled network 59/100&quot;
+## [1] &quot;Running Infomap on shuffled network 60/100&quot;
+## [1] &quot;Running Infomap on shuffled network 61/100&quot;
+## [1] &quot;Running Infomap on shuffled network 62/100&quot;
+## [1] &quot;Running Infomap on shuffled network 63/100&quot;
+## [1] &quot;Running Infomap on shuffled network 64/100&quot;
+## [1] &quot;Running Infomap on shuffled network 65/100&quot;
+## [1] &quot;Running Infomap on shuffled network 66/100&quot;
+## [1] &quot;Running Infomap on shuffled network 67/100&quot;
+## [1] &quot;Running Infomap on shuffled network 68/100&quot;
+## [1] &quot;Running Infomap on shuffled network 69/100&quot;
+## [1] &quot;Running Infomap on shuffled network 70/100&quot;
+## [1] &quot;Running Infomap on shuffled network 71/100&quot;
+## [1] &quot;Running Infomap on shuffled network 72/100&quot;
+## [1] &quot;Running Infomap on shuffled network 73/100&quot;
+## [1] &quot;Running Infomap on shuffled network 74/100&quot;
+## [1] &quot;Running Infomap on shuffled network 75/100&quot;
+## [1] &quot;Running Infomap on shuffled network 76/100&quot;
+## [1] &quot;Running Infomap on shuffled network 77/100&quot;
+## [1] &quot;Running Infomap on shuffled network 78/100&quot;
+## [1] &quot;Running Infomap on shuffled network 79/100&quot;
+## [1] &quot;Running Infomap on shuffled network 80/100&quot;
+## [1] &quot;Running Infomap on shuffled network 81/100&quot;
+## [1] &quot;Running Infomap on shuffled network 82/100&quot;
+## [1] &quot;Running Infomap on shuffled network 83/100&quot;
+## [1] &quot;Running Infomap on shuffled network 84/100&quot;
+## [1] &quot;Running Infomap on shuffled network 85/100&quot;
+## [1] &quot;Running Infomap on shuffled network 86/100&quot;
+## [1] &quot;Running Infomap on shuffled network 87/100&quot;
+## [1] &quot;Running Infomap on shuffled network 88/100&quot;
+## [1] &quot;Running Infomap on shuffled network 89/100&quot;
+## [1] &quot;Running Infomap on shuffled network 90/100&quot;
+## [1] &quot;Running Infomap on shuffled network 91/100&quot;
+## [1] &quot;Running Infomap on shuffled network 92/100&quot;
+## [1] &quot;Running Infomap on shuffled network 93/100&quot;
+## [1] &quot;Running Infomap on shuffled network 94/100&quot;
+## [1] &quot;Running Infomap on shuffled network 95/100&quot;
+## [1] &quot;Running Infomap on shuffled network 96/100&quot;
+## [1] &quot;Running Infomap on shuffled network 97/100&quot;
+## [1] &quot;Running Infomap on shuffled network 98/100&quot;
+## [1] &quot;Running Infomap on shuffled network 99/100&quot;
+## [1] &quot;Running Infomap on shuffled network 100/100&quot;</code></pre>
+<pre><code>## Warning in run_infomap_monolayer(tur_network, infomap_executable = &quot;Infomap&quot;, : pvalue is not really 0, it is &lt;0.01</code></pre>
+<pre><code>## [1] &quot;Removing auxilary files...&quot;</code></pre>
+<pre class="r"><code>print(tur_signif$pvalue)</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre class="r"><code>plots &lt;- plot_signif(tur_signif, plotit = F)
 
-
-print(tur_signif$pvalue)
-
-plots &lt;- plot_signif(tur_signif, plotit = F)</code></pre>
+plots</code></pre>
+<pre><code>## $L_plot</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="hypothesis_test_files/figure-html/hypothesis_3-1.png" width="576" /></p>
+<pre><code>## 
+## $m_plot</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="hypothesis_test_files/figure-html/hypothesis_3-2.png" width="576" /></p>
 </div>
 
 

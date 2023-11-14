@@ -11,7 +11,10 @@ output:
       collapsed: false
       number_sections: true
 ---
-
+```{r klippy, echo=FALSE, include=TRUE}
+# Use this to add a copy-code buttong
+klippy::klippy(position = c('top', 'right'), color = 'darkred')
+```
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -23,7 +26,7 @@ Weighted directed networks of pollen transfer from [Tur C, Sáez A, Traveset A, 
 A [link-list](https://www.mapequation.org/infomap/#InputLinkList).
 
 ### R Code
-```R
+```{r flow_1}
 # Import data
 data(tur2016)
 tur2016_altitude2000 <- tur2016 %>% 

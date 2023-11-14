@@ -11,7 +11,10 @@ output:
       collapsed: false
       number_sections: true
 ---
-
+```{r klippy, echo=FALSE, include=TRUE}
+# Use this to add a copy-code buttong
+klippy::klippy(position = c('top', 'right'), color = 'darkred')
+```
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -20,51 +23,53 @@ knitr::opts_chunk$set(echo = TRUE)
 
 The function `run_infomap_monolayer` can use shuffling algorithms built into `vegan`. To use this, we need to set `signif=T` and provide a shuffling method to `shuff_method`. The shuffling methods are the ones detailed in `?vegan::commsim`.
 
-```R
+```{r hypothesis_1}
 network_object <- create_monolayer_network(memmott1999, bipartite = T, directed = F, group_names = c('A','P'))
 
 # Run with shuffling
 infomap_object <- run_infomap_monolayer(network_object, infomap_executable='Infomap',
                                         flow_model = 'undirected',
                                         silent=T, trials=20, two_level=T, seed=123, 
-                                        signif = T, shuff_method = 'r00', nsim = 50)
+                                        signif = T, shuff_method = 'r00', nsim = 10) #nsim = 50
 # Plot histograms
 plots <- plot_signif(infomap_object, plotit = T)
 plot_grid(
   plots$L_plot+
     theme_bw()+
     theme(legend.position='none', 
-          axis.text = element_text(size=20), 
-          axis.title = element_text(size=20)),
+          legend.title = element_text(size=16),
+          axis.text = element_text(size=16)),
   plots$m_plot+
     theme_bw()+
     theme(legend.position='none', 
-          axis.text = element_text(size=20), 
-          axis.title = element_text(size=20))
+          legend.title = element_text(size=16),
+          axis.text = element_text(size=16))
 )
 ```
 
 Another way is to provide `shuff_method` with a list containing already shuffled networks. You can for example use the function `shuffle_infomap` to produce shuffled networks with `vegan`. This is necessary on the shuffling algorithm from `?vegan::commsim` needs additional arguments such as burning.
 
-```R
+```{r hypothesis_2}
 # Or can shuffle like this, if additional arguments are needed for the shuffling algorithm
-shuffled <- shuffle_infomap(network_object, shuff_method='curveball', nsim=50, burnin=2000)
+shuffled <- shuffle_infomap(network_object, shuff_method='curveball', nsim=10, burnin=2000) #nsim=50
 infomap_object <- run_infomap_monolayer(network_object, infomap_executable='Infomap',
                                         flow_model = 'undirected',
                                         silent=T, trials=20, two_level=T, seed=123, 
-                                        signif = T, shuff_method = shuffled, nsim = 50)
+                                        signif = T, shuff_method = shuffled, nsim = 10) #nsim = 50
 plots <- plot_signif(infomap_object, plotit = F)
 plot_grid(
   plots$L_plot+
   theme_bw()+
   theme(legend.position='none', 
-        axis.text = element_text(size=20), 
-        axis.title = element_text(size=20)),
+        axis.text = element_text(size=16), #20
+        legend.title = element_text(size=16),
+        axis.title = element_text(size=16)), #20
   plots$m_plot+
     theme_bw()+
     theme(legend.position='none', 
-          axis.text = element_text(size=20), 
-          axis.title = element_text(size=20))
+          axis.text = element_text(size=16), #20
+          legend.title = element_text(size=16),
+          axis.title = element_text(size=16)) #20
 )
 ```
  
@@ -72,7 +77,7 @@ plot_grid(
 ## 2. Dedicated randomisation algorithm for the Tur et al. 2016 data set.
 You can also create your own shuffling algorithm and a list of shuffled link lists. As in this example.
 
-```R
+```{r hypothesis_3}
 # Import data
 data(tur2016)
 tur2016_altitude2000 <- tur2016 %>% 
@@ -113,7 +118,7 @@ shuffle_tur_networks <- function(x){ # x is a network object
 }
 
 # Create a list with shuffled link lists
-nsim <- 1000
+nsim <- 100 #nsim <- 1000
 shuffled <- NULL
 for (i in 1:nsim){
   print(i)
@@ -133,4 +138,6 @@ tur_signif <- run_infomap_monolayer(tur_network, infomap_executable='Infomap',
 print(tur_signif$pvalue)
 
 plots <- plot_signif(tur_signif, plotit = F)
+
+plots
 ```

@@ -1,4 +1,5 @@
-devtools::install_github('Ecological-Complexity-Lab/infomap_ecology_package', force=T)
+#devtools::install_github('Ecological-Complexity-Lab/infomap_ecology_package', force=T)
+library(infomapecology)
 remotes::install_github("rlesur/klippy")
 
 #setwd("/Users/shai/GitHub/ecomplab/emln_package")

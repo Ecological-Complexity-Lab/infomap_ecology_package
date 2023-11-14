@@ -11,7 +11,7 @@
 
 
 
-<title>Install Infomap and infomapecology</title>
+<title>Temporal multilayer network with interlayer edges</title>
 
 <script src="site_libs/header-attrs-2.20/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -36,6 +36,10 @@
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/clipboard-1.7.1/clipboard.min.js"></script>
+<link href="site_libs/primer-tooltips-1.4.0/build.css" rel="stylesheet" />
+<link href="site_libs/klippy-0.0.0.9500/css/klippy.min.css" rel="stylesheet" />
+<script src="site_libs/klippy-0.0.0.9500/js/klippy.min.js"></script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -396,81 +400,225 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Install Infomap and infomapecology</h1>
+<h1 class="title toc-ignore">Temporal multilayer network with interlayer
+edges</h1>
 
 </div>
 
 
-<div id="install-the-r-package" class="section level2">
-<h2>1. Install the R package</h2>
-<p>The package was built under R 4.1 and depends on other packages.</p>
-<pre class="r"><code># Install  (if not installed) and load necessary packages
-package.list=c(&quot;attempt&quot;, &quot;cowplot&quot;, &quot;igraph&quot;, &quot;ggalluvial&quot;,&quot;magrittr&quot;,&quot;metafolio&quot;,&quot;tidyverse&quot;,&quot;vegan&quot;, &quot;devtools&quot;)
-loaded &lt;-  package.list %in% .packages()
-package.list &lt;-  package.list[!loaded]
-installed &lt;-  package.list %in% .packages(TRUE)
-if (!all(installed)) install.packages(package.list[!installed], repos=&quot;http://cran.rstudio.com/&quot;)
+<script>
+  addClassKlippyTo("pre.r, pre.markdown");
+  addKlippy('right', 'top', '#8B0000', '1', 'Copy code', 'Copied!');
+</script>
+<div id="data-set" class="section level3">
+<h3>Data set</h3>
+<p>A temporal multilayer network. Each layer is a host-parasite
+bipartite network. Intralayer edges between a parasite species and a
+host species are the number of parasite individuals divided by the
+number of host individuals. Interlayer coupling edges connect each
+physical node to itself in the next layer (e.g., host A in layer 1 to
+host A in layer 2), and are calculated as the number of individuals in
+layer l+1 divided by the number of individuals in layer l. They
+therefore represent population dynamics. Interlayer edges only go one
+way (<em>l–&gt;l+1</em>) because time flow one way. We represented the
+undirected edges within each layer as directed edges that go both ways
+(with the same weight) to be able to have a directed flow. This does not
+affect the calculation of L. This data set was taken from <a
+href="https://www.nature.com/articles/s41559-017-0101?proof=true19"><em>Pilosof
+S, Porter MA, Pascual M, Kéfi S. The multilayer nature of ecological
+networks. Nature Ecology &amp; Evolution. 2017;1: 0101</em></a>.</p>
+<p><strong>Data sets in infomapecology:</strong></p>
+<p>The data consists of several matrices representing the host-parasite
+bipartite network each year, an interlayer extended edge list defining
+the interlayer links between the same species in different years, and a
+table containing the attributes of the physical nodes (species).</p>
+<pre class="r"><code># Get data
+data(siberia1982_matrix)
+data(siberia1983_matrix)
+data(siberia1984_matrix)
+data(siberia1985_matrix)
+data(siberia1986_matrix)
+data(siberia1987_matrix)
+data(siberia_interlayer)
+data(siberia_nodes)</code></pre>
+</div>
+<div id="input" class="section level3">
+<h3>Input</h3>
+<p>A <a
+href="https://www.mapequation.org/infomap/#InputMultilayer">general
+multilayer link-list</a>. This multilayer format gives full control of
+the dynamics, and no other movements are encoded. <strong>When using
+this input format, it is expected that interlayer edges will be
+provided, otherwise there will be no inter-layer links in the final
+state network.</strong></p>
+<pre class="python"><code>*Multilayer
+#layer node layer node weight
+1 4 1 5 0.1585
+1 4 1 6 0.2143
+1 4 1 7 0.8276
+... some more links...
+4 20 4 74 0.0019
+4 23 4 10 24.6
+4 24 4 5 0.1143
+... some more links...
+2 16 3 16 1.14285714285714
+4 29 5 29 3.66666666666667
+5 57 6 57 0.841212121212121
+</code></pre>
+</div>
+<div id="r-code" class="section level3">
+<h3>R Code</h3>
+<p>The description of functions <code>create_multilayer_network</code>
+and <code>run_infomap_multilayer</code> in the <code>emln</code> and
+<code>infomapecology</code> packages contains everything you need to
+know. Plotting is done using two dedicated functions:
+<code>plot_multilayer_modules</code> and
+<code>plot_multilayer_alluvial</code>.</p>
+<pre class="r"><code># Create a multilayer object
+layer_attrib &lt;- tibble(layer_id=1:6, layer_name=c(&#39;1982&#39;,&#39;1983&#39;,&#39;1984&#39;,&#39;1985&#39;,&#39;1986&#39;,&#39;1987&#39;))                                     
 
-# Install infomapecology 
-devtools::install_github(&#39;Ecological-Complexity-Lab/infomap_ecology_package&#39;, force=T)
-library(infomapecology)
+multilayer_siberia &lt;- create_multilayer_network(list_of_layers = list(siberia1982_matrix,
+                                                                    siberia1983_matrix,
+                                                                    siberia1984_matrix,
+                                                                    siberia1985_matrix,
+                                                                    siberia1986_matrix,
+                                                                    siberia1987_matrix),
+                                              layer_attributes = layer_attrib,
+                                              interlayer_links = siberia_interlayer,       
+                                              bipartite = T,
+                                              directed = F,physical_node_attributes = siberia_nodes )</code></pre>
+<pre><code>## [1] &quot;Layer #1 processing.&quot;
+## [1] &quot;Input: a bipartite matrix&quot;
+## [1] &quot;Some node have no interactions. They will appear in the node table but not in the edge list&quot;
+## [1] &quot;Done.&quot;
+## [1] &quot;Layer #2 processing.&quot;
+## [1] &quot;Input: a bipartite matrix&quot;
+## [1] &quot;Some node have no interactions. They will appear in the node table but not in the edge list&quot;
+## [1] &quot;Done.&quot;
+## [1] &quot;Layer #3 processing.&quot;
+## [1] &quot;Input: a bipartite matrix&quot;
+## [1] &quot;Some node have no interactions. They will appear in the node table but not in the edge list&quot;
+## [1] &quot;Done.&quot;
+## [1] &quot;Layer #4 processing.&quot;
+## [1] &quot;Input: a bipartite matrix&quot;
+## [1] &quot;Some node have no interactions. They will appear in the node table but not in the edge list&quot;
+## [1] &quot;Done.&quot;
+## [1] &quot;Layer #5 processing.&quot;
+## [1] &quot;Input: a bipartite matrix&quot;
+## [1] &quot;Some node have no interactions. They will appear in the node table but not in the edge list&quot;
+## [1] &quot;Done.&quot;
+## [1] &quot;Layer #6 processing.&quot;
+## [1] &quot;Input: a bipartite matrix&quot;
+## [1] &quot;Some node have no interactions. They will appear in the node table but not in the edge list&quot;
+## [1] &quot;Done.&quot;
+## [1] &quot;Organizing state nodes&quot;
+## [1] &quot;Creating extended link list with node IDs&quot;
+## [1] &quot;Organizing state nodes&quot;</code></pre>
+<pre class="r"><code>#Run infomap
+multilayer_siberia_modules &lt;- run_infomap_multilayer(M=multilayer_siberia, relax = F, flow_model = &#39;directed&#39;, silent = T, trials = 100, seed = 497294, temporal_network = T)</code></pre>
+<pre><code>## [1] &quot;Using interlayer edge values to determine flow between layers.&quot;
+## [1] &quot;./Infomap infomap_multilayer.txt . --tree -2 -N 100 --seed 497294 -f directed --silent&quot;
+## [1] &quot;No modules were assigned nodes that lacked flow: &quot;
+## # A tibble: 5 × 2
+##   node_id node_name                  
+##     &lt;int&gt; &lt;chr&gt;                      
+## 1      22 Hirstionyssus_apodemi      
+## 2      27 Holoparasitus_gontscharovae
+## 3      32 Laelaps_micromydis         
+## 4      58 Parasitus_berlesei         
+## 5      61 Parasitus_convexus         
+## [1] &quot;Reorganizing modules...&quot;
+## [1] &quot;Removing auxilary files...&quot;
+## [1] &quot;Partitioned into 73 modules.&quot;</code></pre>
+<pre class="r"><code>#Module persistence
+modules_persistence &lt;- multilayer_siberia_modules$modules %&gt;%
+  group_by(module) %&gt;%
+  summarise(b=min(layer_id), d=max(layer_id), persistence=d-b+1) %&gt;%
+  count(persistence) %&gt;%
+  mutate(percent=(n/max(multilayer_siberia_modules$module$module))*100)
 
-# Check the version.
-packageDescription(&#39;infomapecology&#39;)</code></pre>
+# 1. Modules&#39; persistence
+plot_multilayer_modules(multilayer_siberia_modules, type = &#39;rectangle&#39;, color_modules = T)+
+  scale_x_continuous(breaks=seq(0,6,1))+
+  scale_y_continuous(breaks=seq(0,70,5))+
+  scale_fill_viridis_c()+
+  theme_bw()+
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        axis.title = element_text(size=20),
+        axis.text = element_text(size = 20),
+        legend.text =  element_text(size=15),
+        legend.title = element_text(size=20))</code></pre>
+<p><img src="multilayer_interlayer_emln_files/figure-html/multilayer_inter_2-1.png" width="576" /></p>
+<pre class="r"><code>#2. Species flow through modules in time
+plot_multilayer_alluvial(multilayer_siberia_modules, module_labels = F)+
+  scale_x_continuous(breaks=seq(0,6,1))+
+  scale_y_continuous(breaks=seq(0,70,5))+
+  labs(y=&#39;Number of species&#39;)+
+  theme_bw()+
+  theme(legend.position = &quot;none&quot;,
+        panel.grid = element_blank(),
+        axis.text = element_text(color=&#39;black&#39;, size = 20),
+        axis.title = element_text(size=20))</code></pre>
+<pre><code>## Warning: Computation failed in `stat_stratum()`
+## Caused by error in `default_missing()`:
+## ! could not find function &quot;default_missing&quot;</code></pre>
+<p><img src="multilayer_interlayer_emln_files/figure-html/multilayer_inter_2-2.png" width="576" /></p>
 </div>
-<div id="install-infomap" class="section level2">
-<h2>2. Install Infomap</h2>
-<p>We use Infomap version 1.x as a stand-alone file. Future versions (or
-a different package) will integrate Infomap directly intro R.</p>
-<div id="macos-linux-should-be-similar" class="section level3">
-<h3>MacOS (Linux should be similar)</h3>
-<div id="in-the-terminal-run" class="section level4">
-<h4>1. In the terminal run:</h4>
-<ul>
-<li><code>xcode-select --install</code></li>
-<li>For OpenMP support
-<ul>
-<li>Install homebrew as specified in <a
-href="https://brew.sh">https://brew.sh</a>. This will take a while.</li>
-<li>install packages: <code>brew install libomp</code>.</li>
-</ul></li>
-</ul>
+<div id="infomap" class="section level3">
+<h3>Infomap</h3>
+<p>Under the hood, the function <code>run_infomap_multilayer</code>
+runs:</p>
+<pre class="c++"><code>./Infomap infomap_multilayer.txt . -2 --seed 497294 -N 100 -i multilayer -f directed --silent</code></pre>
+<p>Explanation of key arguments: * <code>-i multilayer</code> indicates
+a multilayer input format, which is automatically recognized as a <a
+href="https://www.mapequation.org/infomap/#InputMultilayer">general
+multilayer link-list</a>. * <code>-f directed</code> indicates flow on a
+directed network. The visitation rates of nodes is obtained with a
+PageRank algorithm based on the direction and weight of edges. This
+includes interlayer edges.</p>
 </div>
-<div id="then-either" class="section level4">
-<h4>2. Then either:</h4>
-<p>Install Infomap via the <code>install_infomap</code> function in the
-package as below. Avoid folder names with spaces or non-english
-lettes.</p>
-<pre class="r"><code>setwd(&#39;where your Infomap file and R script will live&#39;)
-install_infomap()
-
-# Check Infomap is running
-setwd(&#39;where your Infomap file and R script now live&#39;)
-check_infomap() # Make sure file can be run correctly. Should return TRUE</code></pre>
-<p>or download a binary from <a
-href="https://github.com/mapequation/infomap/releases/latest">here</a>
-and put the file in the working folder.</p>
-</div>
-</div>
-<div id="windows" class="section level3">
-<h3>Windows</h3>
-<p>Install Infomap via the <code>install_infomap</code> function in the
-package as below. Avoid folder names with spaces or non-english
-lettes.</p>
-<pre class="r"><code>setwd(&#39;where your Infomap file and R script will live&#39;)
-install_infomap()
-
-# Check Infomap is running
-setwd(&#39;where your Infomap file and R script now live&#39;)
-check_infomap() # Make sure file can be run correctly. Should return TRUE</code></pre>
-<p>or download a binary from <a
-href="https://github.com/mapequation/infomap/releases/latest">here</a>
-and put the file in the working folder.</p>
-<p><strong>Important notes:</strong> 1. The best practice is to compile
-Infomap under the file name “Infomap” and place it in the same working
-folder in which the R code is run. 2. Other ways to install: <a
-href="https://www.mapequation.org/infomap/#Install">https://www.mapequation.org/infomap/#Install</a></p>
-</div>
+<div id="output" class="section level3">
+<h3>Output</h3>
+<p>For multilayer network the output file has a <code>_states</code>
+suffix, with the following format. Note the state_id column. For
+example, node 6 in layer 5 has a state_id of 377 (last line). The
+state_ids are created by Infomap but not used in our R code.</p>
+<pre class="python"><code># path flow name state_id node_id layer_id
+1:1 0.0350053 &quot;7&quot; 334 7 6
+1:2 0.0294496 &quot;7&quot; 205 7 4
+1:3 0.0291166 &quot;7&quot; 280 7 5
+1:4 0.0283014 &quot;7&quot; 137 7 3
+1:5 0.0124629 &quot;7&quot; 69 7 2
+1:6 0.00734334 &quot;7&quot; 3 7 1
+1:7 0.00180819 &quot;33&quot; 171 33 3
+         ...
+11:1 0.00929888 &quot;52&quot; 328 52 6
+11:2 0.00861513 &quot;52&quot; 272 52 5
+11:3 0.00694999 &quot;52&quot; 211 52 4
+11:4 0.00564292 &quot;52&quot; 146 52 3
+11:5 0.00256943 &quot;52&quot; 76 52 2
+11:6 0.00101397 &quot;52&quot; 14 52 1
+12:1 0.0083305 &quot;16&quot; 340 16 6
+         ...</code></pre>
+<p>This output is parsed by <code>run_infomap_multilayer</code> to
+obtain a table in which each state node (combination of a physical node
+in a layer) is assigned to a module. This can be obtained by:</p>
+<pre class="r"><code>multilayer_siberia_modules$modules %&gt;% select(node_id, layer_id, node_name, type, module)</code></pre>
+<pre><code>## # A tibble: 308 × 5
+##    node_id layer_id node_name               type  module
+##      &lt;int&gt;    &lt;int&gt; &lt;chr&gt;                   &lt;chr&gt;  &lt;int&gt;
+##  1       1        2 Amalaraeus_penicilliger paras     52
+##  2       1        3 Amalaraeus_penicilliger paras     52
+##  3       1        4 Amalaraeus_penicilliger paras     52
+##  4       1        5 Amalaraeus_penicilliger paras     52
+##  5       1        6 Amalaraeus_penicilliger paras     52
+##  6       2        2 Amerosejus_corbicula    paras     31
+##  7       2        3 Amerosejus_corbicula    paras     31
+##  8       3        2 Amphipsylla_sibirica    paras     26
+##  9       3        3 Amphipsylla_sibirica    paras     26
+## 10       3        4 Amphipsylla_sibirica    paras     26
+## # … with 298 more rows</code></pre>
 </div>
 
 
