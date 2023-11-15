@@ -22,10 +22,6 @@ navbar:
          href: multilayer_relax_emln.html
        - text: "Temporal multilayer network with interlayer edges"
          href: multilayer_interlayer_emln.html
-       - text: "Temporal multilayer network with global relax rates (OLD)"
-         href: multilayer_relax.html
-       - text: "Temporal multilayer network with interlayer edges (OLD)"
-         href: multilayer_interlayer.html
     - text: "Flow models"
       href: flows.html
     - text: "Hypothesis testing"
@@ -33,9 +29,6 @@ navbar:
    
 logo:
   image: ecompab.png
-  #href: https://ecological-complexity-lab.github.io/emln_package/
   href:  https://ecological-complexity-lab.github.io/infomap_ecology_package/
 output:
-  html_document:
-     theme: bootstrap4
-    #theme: cerulean
+  html_document
