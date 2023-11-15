@@ -76,7 +76,7 @@ install_infomap <- function(target_folder=NULL, source="binary"){
   
   unlink("Infomap.zip")
   unlink("Infomap")
-  source_url <- "https://github.com/mapequation/infomap/releases/download/v2.3.0/"
+  source_url <- "https://github.com/mapequation/infomap/releases/download/v2.7.1/"
   os <- get_os()
   
   #get file name by OS

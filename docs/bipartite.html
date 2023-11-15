@@ -13,7 +13,7 @@
 
 <title>Bipartite monolayer network example</title>
 
-<script src="site_libs/header-attrs-2.20/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.23/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
@@ -29,7 +29,7 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
@@ -430,8 +430,53 @@ list</a> with columns <code>from</code>, <code>to</code> and
 <h3>R Code</h3>
 <pre class="r"><code># Import data
 library(infomapecology)
-library(bipartite)
-data(memmott1999)
+library(bipartite)</code></pre>
+<pre><code>## Loading required package: sna</code></pre>
+<pre><code>## Loading required package: statnet.common</code></pre>
+<pre><code>## 
+## Attaching package: &#39;statnet.common&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:rlang&#39;:
+## 
+##     base_env, empty_env</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     attr, order</code></pre>
+<pre><code>## Loading required package: network</code></pre>
+<pre><code>## 
+## &#39;network&#39; 1.18.1 (2023-01-24), part of the Statnet Project
+## * &#39;news(package=&quot;network&quot;)&#39; for changes since last version
+## * &#39;citation(&quot;network&quot;)&#39; for citation information
+## * &#39;https://statnet.org&#39; for help, support, and other information</code></pre>
+<pre><code>## 
+## Attaching package: &#39;network&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:igraph&#39;:
+## 
+##     %c%, %s%, add.edges, add.vertices, delete.edges, delete.vertices, get.edge.attribute, get.edges,
+##     get.vertex.attribute, is.bipartite, is.directed, list.edge.attributes, list.vertex.attributes,
+##     set.edge.attribute, set.vertex.attribute</code></pre>
+<pre><code>## sna: Tools for Social Network Analysis
+## Version 2.7-1 created on 2023-01-24.
+## copyright (c) 2005, Carter T. Butts, University of California-Irvine
+##  For citation information, type citation(&quot;sna&quot;).
+##  Type help(package=&quot;sna&quot;) to get started.</code></pre>
+<pre><code>## 
+## Attaching package: &#39;sna&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:igraph&#39;:
+## 
+##     betweenness, bonpow, closeness, components, degree, dyad.census, evcent, hierarchy, is.connected,
+##     neighborhood, triad.census</code></pre>
+<pre><code>##  This is bipartite 2.18.
+##  For latest changes see versionlog in ?&quot;bipartite-package&quot;. For citation see: citation(&quot;bipartite&quot;).
+##  Have a nice time plotting and analysing two-mode networks.</code></pre>
+<pre><code>## 
+## Attaching package: &#39;bipartite&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:vegan&#39;:
+## 
+##     nullmodel</code></pre>
+<pre><code>## The following object is masked from &#39;package:igraph&#39;:
+## 
+##     strength</code></pre>
+<pre class="r"><code>data(memmott1999)
 
 network_object &lt;- create_monolayer_network(memmott1999, bipartite = T, directed = F, group_names = c(&#39;A&#39;,&#39;P&#39;))</code></pre>
 <pre><code>## [1] &quot;Input: a bipartite matrix&quot;</code></pre>

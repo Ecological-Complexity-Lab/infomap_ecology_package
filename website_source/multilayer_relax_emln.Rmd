@@ -20,10 +20,15 @@ klippy::klippy(position = c('top', 'right'), color = 'darkred')
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+```{r}
+library(infomapecology)
+```
+
 ### Data set
 Load the 65th multilayer network from the [_`emln package`_](https://github.com/Ecological-Complexity-Lab/emln). This particular network is a temporal plant pollinator multilayer network without interlayer interactions, and it consists of 6 layers, corresponding to the flowering season between 2006 and 2011.
 
 ```{r multilayer_emln_1}
+library(emln)
 # Load multilayer network number 65
 emln_65 <- load_emln(65)
 emln_65$layers
@@ -49,7 +54,7 @@ A [multilayer link-list format](https://www.mapequation.org/infomap/#InputMultil
 ### R Code
 The description of functions `create_multilayer_object` and `run_infomap_multilayer` in the `infomapecology` package contains everything you need to know. The `for` loop performs a sensitivity analysis to examine how structure changes with increasing relax rates.
 
-```{r multilayer_emln_2}
+```{r multilayer_emln_2, include=FALSE}
 #Run Infomap and return the network's modular structure at increasing relax-rates.
 relaxrate_modules <- NULL
 for (r in seq(0.001,1, by = 0.0999)){
@@ -58,6 +63,11 @@ for (r in seq(0.001,1, by = 0.0999)){
   modules_relax_rate$modules$relax_rate <- r
   relaxrate_modules <- rbind(relaxrate_modules, modules_relax_rate$modules)
 }
+```
+
+
+```{r}
+print('plot here')
 ```
 
 ### Infomap

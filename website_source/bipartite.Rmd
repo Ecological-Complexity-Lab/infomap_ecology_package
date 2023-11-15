@@ -24,8 +24,8 @@ navbar:
       href: multilayer_interlayer.html
 output:
   html_document: 
-    fig_height: 4
-    fig_width: 6
+    fig_height: 6
+    fig_width: 9
     theme: flatly
     code_folding: show
     toc: true

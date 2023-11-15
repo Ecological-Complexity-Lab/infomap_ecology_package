@@ -13,7 +13,7 @@
 
 <title>Temporal multilayer network with interlayer edges</title>
 
-<script src="site_libs/header-attrs-2.20/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.23/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
@@ -29,7 +29,7 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
@@ -516,6 +516,12 @@ multilayer_siberia &lt;- create_multilayer_network(list_of_layers = list(siberia
 ## [1] &quot;Organizing state nodes&quot;</code></pre>
 <pre class="r"><code>#Run infomap
 multilayer_siberia_modules &lt;- run_infomap_multilayer(M=multilayer_siberia, relax = F, flow_model = &#39;directed&#39;, silent = T, trials = 100, seed = 497294, temporal_network = T)</code></pre>
+<pre><code>## Warning: `as.tbl()` was deprecated in dplyr 1.0.0.
+## ℹ Please use `tibble::as_tibble()` instead.
+## ℹ The deprecated feature was likely used in the infomapecology package.
+##   Please report the issue at &lt;https://github.com/Ecological-Complexity-Lab/infomap_ecology_package/issues&gt;.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.</code></pre>
 <pre><code>## [1] &quot;Using interlayer edge values to determine flow between layers.&quot;
 ## [1] &quot;./Infomap infomap_multilayer.txt . --tree -2 -N 100 --seed 497294 -f directed --silent&quot;
 ## [1] &quot;No modules were assigned nodes that lacked flow: &quot;
@@ -560,9 +566,6 @@ plot_multilayer_alluvial(multilayer_siberia_modules, module_labels = F)+
         panel.grid = element_blank(),
         axis.text = element_text(color=&#39;black&#39;, size = 20),
         axis.title = element_text(size=20))</code></pre>
-<pre><code>## Warning: Computation failed in `stat_stratum()`
-## Caused by error in `default_missing()`:
-## ! could not find function &quot;default_missing&quot;</code></pre>
 <p><img src="multilayer_interlayer_emln_files/figure-html/multilayer_inter_2-2.png" width="576" /></p>
 </div>
 <div id="infomap" class="section level3">
@@ -618,7 +621,7 @@ in a layer) is assigned to a module. This can be obtained by:</p>
 ##  8       3        2 Amphipsylla_sibirica    paras     26
 ##  9       3        3 Amphipsylla_sibirica    paras     26
 ## 10       3        4 Amphipsylla_sibirica    paras     26
-## # … with 298 more rows</code></pre>
+## # ℹ 298 more rows</code></pre>
 </div>
 
 
