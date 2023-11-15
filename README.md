@@ -6,6 +6,14 @@ badger::badge_repostatus(status = 'Active')
 badger::badge_custom(x = 'devtools installation', y = 'v2.0', color = 'yellow')
 -->
 
+
+<!--
+* Make sure Infomap’s basics fits the latest version
+* Makes the packages in Installation are the dependencies
+* Are installation instructions still correct? Try to follow them
+* 
+-->
+
 [![](https://img.shields.io/badge/doi-10.1111/2041--210X.13569-orange.svg)](https://doi.org/10.1111/2041-210X.13569) [![](https://img.shields.io/badge/lifecycle-stable-green.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable) [![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active) ![](https://img.shields.io/badge/devtools%20installation-v2.0-yellow.svg)
 
 ## :wave: About
