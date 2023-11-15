@@ -5,6 +5,8 @@ navbar:
   left:
     - text: "Home"
       href: index.html
+    - text: "Installation"
+      href: installation.html
     - text: "Monolayer"
       #href: monolayer/index.html
       menu:

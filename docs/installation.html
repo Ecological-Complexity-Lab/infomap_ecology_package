@@ -36,6 +36,10 @@
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/clipboard-1.7.1/clipboard.min.js"></script>
+<link href="site_libs/primer-tooltips-1.4.0/build.css" rel="stylesheet" />
+<link href="site_libs/klippy-0.0.0.9500/css/klippy.min.css" rel="stylesheet" />
+<script src="site_libs/klippy-0.0.0.9500/js/klippy.min.js"></script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -331,6 +335,9 @@ div.tocify {
         <li>
   <a href="index.html">Home</a>
 </li>
+<li>
+  <a href="installation.html">Installation</a>
+</li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Monolayer
@@ -401,11 +408,16 @@ div.tocify {
 </div>
 
 
-<div id="install-the-r-package" class="section level2">
-<h2>1. Install the R package</h2>
+<script>
+  addClassKlippyTo("pre.r, pre.markdown");
+  addKlippy('right', 'top', '#8B0000', '1', 'Copy code', 'Copied!');
+</script>
+<p><br> <br></p>
+<div id="install-the-r-package" class="section level1">
+<h1>1. Install the R package</h1>
 <p>The package was built under R 4.1 and depends on other packages.</p>
 <pre class="r"><code># Install  (if not installed) and load necessary packages
-package.list=c(&quot;attempt&quot;, &quot;cowplot&quot;, &quot;igraph&quot;, &quot;ggalluvial&quot;,&quot;magrittr&quot;,&quot;metafolio&quot;,&quot;tidyverse&quot;,&quot;vegan&quot;, &quot;devtools&quot;)
+package.list=c(&quot;emln&quot;,&quot;attempt&quot;, &quot;cowplot&quot;, &quot;igraph&quot;, &quot;ggalluvial&quot;,&quot;magrittr&quot;,&quot;metafolio&quot;,&quot;tidyverse&quot;,&quot;vegan&quot;, &quot;devtools&quot;)
 loaded &lt;-  package.list %in% .packages()
 package.list &lt;-  package.list[!loaded]
 installed &lt;-  package.list %in% .packages(TRUE)
@@ -417,15 +429,16 @@ library(infomapecology)
 
 # Check the version.
 packageDescription(&#39;infomapecology&#39;)</code></pre>
+<p><br> <br></p>
 </div>
-<div id="install-infomap" class="section level2">
-<h2>2. Install Infomap</h2>
-<p>We use Infomap version 1.x as a stand-alone file. Future versions (or
-a different package) will integrate Infomap directly intro R.</p>
-<div id="macos-linux-should-be-similar" class="section level3">
-<h3>MacOS (Linux should be similar)</h3>
-<div id="in-the-terminal-run" class="section level4">
-<h4>1. In the terminal run:</h4>
+<div id="install-infomap" class="section level1">
+<h1>2. Install Infomap</h1>
+<p>We use Infomap version 2.x as a stand-alone file. We are working on
+integrating Infomap directly intro R.</p>
+<div id="macos-linux-should-be-similar" class="section level2">
+<h2>MacOS (Linux should be similar)</h2>
+<div id="in-the-terminal-run" class="section level3">
+<h3>1. In the terminal run:</h3>
 <ul>
 <li><code>xcode-select --install</code></li>
 <li>For OpenMP support
@@ -436,8 +449,8 @@ href="https://brew.sh">https://brew.sh</a>. This will take a while.</li>
 </ul></li>
 </ul>
 </div>
-<div id="then-either" class="section level4">
-<h4>2. Then either:</h4>
+<div id="then-either" class="section level3">
+<h3>2. Then either:</h3>
 <p>Install Infomap via the <code>install_infomap</code> function in the
 package as below. Avoid folder names with spaces or non-english
 lettes.</p>
@@ -450,7 +463,6 @@ check_infomap() # Make sure file can be run correctly. Should return TRUE</code>
 <p>or download a binary from <a
 href="https://github.com/mapequation/infomap/releases/latest">here</a>
 and put the file in the working folder.</p>
-</div>
 </div>
 <div id="windows" class="section level3">
 <h3>Windows</h3>
@@ -470,6 +482,7 @@ and put the file in the working folder.</p>
 Infomap under the file name “Infomap” and place it in the same working
 folder in which the R code is run. 2. Other ways to install: <a
 href="https://www.mapequation.org/infomap/#Install">https://www.mapequation.org/infomap/#Install</a></p>
+</div>
 </div>
 </div>
 

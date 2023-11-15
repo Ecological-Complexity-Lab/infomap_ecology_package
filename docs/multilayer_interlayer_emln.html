@@ -335,6 +335,9 @@ div.tocify {
         <li>
   <a href="index.html">Home</a>
 </li>
+<li>
+  <a href="installation.html">Installation</a>
+</li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Monolayer
@@ -516,12 +519,6 @@ multilayer_siberia &lt;- create_multilayer_network(list_of_layers = list(siberia
 ## [1] &quot;Organizing state nodes&quot;</code></pre>
 <pre class="r"><code>#Run infomap
 multilayer_siberia_modules &lt;- run_infomap_multilayer(M=multilayer_siberia, relax = F, flow_model = &#39;directed&#39;, silent = T, trials = 100, seed = 497294, temporal_network = T)</code></pre>
-<pre><code>## Warning: `as.tbl()` was deprecated in dplyr 1.0.0.
-## ℹ Please use `tibble::as_tibble()` instead.
-## ℹ The deprecated feature was likely used in the infomapecology package.
-##   Please report the issue at &lt;https://github.com/Ecological-Complexity-Lab/infomap_ecology_package/issues&gt;.
-## This warning is displayed once every 8 hours.
-## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.</code></pre>
 <pre><code>## [1] &quot;Using interlayer edge values to determine flow between layers.&quot;
 ## [1] &quot;./Infomap infomap_multilayer.txt . --tree -2 -N 100 --seed 497294 -f directed --silent&quot;
 ## [1] &quot;No modules were assigned nodes that lacked flow: &quot;
@@ -555,7 +552,7 @@ plot_multilayer_modules(multilayer_siberia_modules, type = &#39;rectangle&#39;, 
         axis.text = element_text(size = 20),
         legend.text =  element_text(size=15),
         legend.title = element_text(size=20))</code></pre>
-<p><img src="multilayer_interlayer_emln_files/figure-html/multilayer_inter_2-1.png" width="576" /></p>
+<p><img src="multilayer_interlayer_emln_files/figure-html/multilayer_inter_2-1.png" width="864" /></p>
 <pre class="r"><code>#2. Species flow through modules in time
 plot_multilayer_alluvial(multilayer_siberia_modules, module_labels = F)+
   scale_x_continuous(breaks=seq(0,6,1))+
@@ -566,7 +563,7 @@ plot_multilayer_alluvial(multilayer_siberia_modules, module_labels = F)+
         panel.grid = element_blank(),
         axis.text = element_text(color=&#39;black&#39;, size = 20),
         axis.title = element_text(size=20))</code></pre>
-<p><img src="multilayer_interlayer_emln_files/figure-html/multilayer_inter_2-2.png" width="576" /></p>
+<p><img src="multilayer_interlayer_emln_files/figure-html/multilayer_inter_2-2.png" width="864" /></p>
 </div>
 <div id="infomap" class="section level3">
 <h3>Infomap</h3>

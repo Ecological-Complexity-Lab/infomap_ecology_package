@@ -2,8 +2,8 @@
 title: "Monolayer directed network with hierarchical structure"
 output:
   html_document: 
-    fig_height: 4
-    fig_width: 6
+    fig_height: 6
+    fig_width: 9
     theme: flatly
     code_folding: show
     toc: true
@@ -17,18 +17,29 @@ output:
 klippy::klippy(position = c('top', 'right'), color = 'darkred')
 ```
 
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-### Data set
-A binary directed marine food web from [Jacob, Ute, Aaron Thierry, Ulrich Brose, Wolf E. Arntz, Sofia Berg, Thomas Brey, Ingo Fetzer, et al. 2011. “The Role of Body Size in Complex Food Webs: A Cold Case.” In Advances in Ecological Research, edited by Andrea Belgrano, 45:181–223. Academic Press.](https://www.sciencedirect.com/science/article/pii/B9780123864758000058) Kongsfjorden is a glacial fjord on the northwest corner of the Svalbard archipelago. It is a 30 km open fjord with no marked sill at the entrance, and with a maximum depth exceeding 300 m. The network consists of 262 species with 1,544 feeding interactions.
-Data is available [here](https://github.com/Ecological-Complexity-Lab/infomap_ecology_package/tree/master/code_from_paper)
+```{r echo=TRUE, results = "hide"}
+library(emln)
+library(infomapecology)
+```
 
-### Input
+<br>
+<br>
+
+# Example 1
+
+## Data set
+A binary directed marine food web from [Ute et al. 2011. “The Role of Body Size in Complex Food Webs: A Cold Case.” In Advances in Ecological Research, edited by Andrea Belgrano, 45:181–223. Academic Press.](https://www.sciencedirect.com/science/article/pii/B9780123864758000058). Kongsfjorden is a glacial fjord on the northwest corner of the Svalbard archipelago. It is a 30 km open fjord with no marked sill at the entrance, and with a maximum depth exceeding 300m. The network consists of 262 species with 1,544 feeding interactions.
+Data is available [here](https://github.com/Ecological-Complexity-Lab/infomap_ecology_package/tree/master/code_from_paper).
+
+## Input
 A [link-list](https://www.mapequation.org/infomap/#InputLinkList).
 
-### R Code
+## R Code
 ```{r monolayer_heirarchical_1}
 # Import data
 data("kongsfjorden_links")
@@ -51,7 +62,7 @@ infomap_object <- run_infomap_monolayer(network_object, infomap_executable='Info
                                         silent=T,trials=100, two_level=F, seed=123)
 ```
 
-### Infomap
+## Infomap
 Under the hood, the function `run_infomap_monolayer` runs:
 ```C++
 ./Infomap infomap.txt . -i link-list --tree --seed 123 -N 100 -f directed --silent
@@ -177,14 +188,12 @@ In the output excerpt below for the analysis of the Kongsfjorden food web, there
   </tr>
 </table>
 
-    
+<br>
+<br>
 
+## Example 2
 
-
-
-## A second example with different data 
-
-### Data set
+## Data set
 A binary directed food web from [Mouritsen KN, Poulin R, McLaughlin JP, Thieltges DW. Food web including metazoan parasites for an intertidal ecosystem in New Zealand: Ecological Archives E092-173. Ecology. 2011;92: 2006–2006.](https://esajournals.onlinelibrary.wiley.com/doi/abs/10.1890/11-0371.1)
 
 In infomapecology:
@@ -193,10 +202,10 @@ data(otago_nodes)
 data(otago_links)
 ```
 
-### Input
+## Input
 A [link-list](https://www.mapequation.org/code.html#Link-list-format).
 
-### R Code
+## R Code
 ```{r monolayer_heirarchical_2}
 # Prepare data
 otago_nodes_2 <- otago_nodes %>%

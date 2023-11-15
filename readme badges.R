@@ -1,0 +1,5 @@
+library(badger)
+badger::badge_doi(doi = "10.1111/2041-210X.13569", color = 'orange')
+badger::badge_lifecycle(stage = 'stable', color = 'green')
+badger::badge_repostatus(status = 'Active')
+badger::badge_custom(x = 'devtools installation', y = 'v2.0', color = 'yellow')

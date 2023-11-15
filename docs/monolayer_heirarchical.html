@@ -335,6 +335,9 @@ div.tocify {
         <li>
   <a href="index.html">Home</a>
 </li>
+<li>
+  <a href="installation.html">Installation</a>
+</li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Monolayer
@@ -410,27 +413,31 @@ hierarchical structure</h1>
   addClassKlippyTo("pre.r, pre.markdown");
   addKlippy('right', 'top', '#8B0000', '1', 'Copy code', 'Copied!');
 </script>
-<div id="data-set" class="section level3">
-<h3>Data set</h3>
+<pre class="r"><code>library(emln)
+library(infomapecology)</code></pre>
+<p><br> <br></p>
+<div id="example-1" class="section level1">
+<h1>Example 1</h1>
+<div id="data-set" class="section level2">
+<h2>Data set</h2>
 <p>A binary directed marine food web from <a
-href="https://www.sciencedirect.com/science/article/pii/B9780123864758000058">Jacob,
-Ute, Aaron Thierry, Ulrich Brose, Wolf E. Arntz, Sofia Berg, Thomas
-Brey, Ingo Fetzer, et al. 2011. “The Role of Body Size in Complex Food
-Webs: A Cold Case.” In Advances in Ecological Research, edited by Andrea
-Belgrano, 45:181–223. Academic Press.</a> Kongsfjorden is a glacial
-fjord on the northwest corner of the Svalbard archipelago. It is a 30 km
-open fjord with no marked sill at the entrance, and with a maximum depth
-exceeding 300 m. The network consists of 262 species with 1,544 feeding
+href="https://www.sciencedirect.com/science/article/pii/B9780123864758000058">Ute
+et al. 2011. “The Role of Body Size in Complex Food Webs: A Cold Case.”
+In Advances in Ecological Research, edited by Andrea Belgrano,
+45:181–223. Academic Press.</a>. Kongsfjorden is a glacial fjord on the
+northwest corner of the Svalbard archipelago. It is a 30 km open fjord
+with no marked sill at the entrance, and with a maximum depth exceeding
+300m. The network consists of 262 species with 1,544 feeding
 interactions. Data is available <a
-href="https://github.com/Ecological-Complexity-Lab/infomap_ecology_package/tree/master/code_from_paper">here</a></p>
+href="https://github.com/Ecological-Complexity-Lab/infomap_ecology_package/tree/master/code_from_paper">here</a>.</p>
 </div>
-<div id="input" class="section level3">
-<h3>Input</h3>
+<div id="input" class="section level2">
+<h2>Input</h2>
 <p>A <a
 href="https://www.mapequation.org/infomap/#InputLinkList">link-list</a>.</p>
 </div>
-<div id="r-code" class="section level3">
-<h3>R Code</h3>
+<div id="r-code" class="section level2">
+<h2>R Code</h2>
 <pre class="r"><code># Import data
 data(&quot;kongsfjorden_links&quot;)
 data(&quot;kongsfjorden_nodes&quot;)
@@ -457,8 +464,8 @@ infomap_object &lt;- run_infomap_monolayer(network_object, infomap_executable=&#
 ## running: ./Infomap infomap.txt . --tree --seed 123 -N 100 -f directed --silent
 ## [1] &quot;Removing auxilary files...&quot;</code></pre>
 </div>
-<div id="infomap" class="section level3">
-<h3>Infomap</h3>
+<div id="infomap" class="section level2">
+<h2>Infomap</h2>
 <p>Under the hood, the function <code>run_infomap_monolayer</code>
 runs:</p>
 <pre class="c++"><code>./Infomap infomap.txt . -i link-list --tree --seed 123 -N 100 -f directed --silent</code></pre>
@@ -468,7 +475,6 @@ argument</strong> <code>-2</code> (or <code>--two-level</code>), which
 allows for hierarchical modules (the default in Infomap).</li>
 <li><code>-f directed</code> indicates flow on a directed network.</li>
 </ul>
-</div>
 <div id="output" class="section level3">
 <h3>Output</h3>
 <p>A <a href="https://www.mapequation.org/infomap/#OutputTree">tree
@@ -777,11 +783,14 @@ pelagic
 </td>
 </tr>
 </table>
+<p><br> <br></p>
 </div>
-<div id="a-second-example-with-different-data" class="section level2">
-<h2>A second example with different data</h2>
-<div id="data-set-1" class="section level3">
-<h3>Data set</h3>
+</div>
+<div id="example-2" class="section level2">
+<h2>Example 2</h2>
+</div>
+<div id="data-set-1" class="section level2">
+<h2>Data set</h2>
 <p>A binary directed food web from <a
 href="https://esajournals.onlinelibrary.wiley.com/doi/abs/10.1890/11-0371.1">Mouritsen
 KN, Poulin R, McLaughlin JP, Thieltges DW. Food web including metazoan
@@ -791,13 +800,13 @@ Archives E092-173. Ecology. 2011;92: 2006–2006.</a></p>
 <pre class="r"><code>data(otago_nodes)
 data(otago_links)</code></pre>
 </div>
-<div id="input-1" class="section level3">
-<h3>Input</h3>
+<div id="input-1" class="section level2">
+<h2>Input</h2>
 <p>A <a
 href="https://www.mapequation.org/code.html#Link-list-format">link-list</a>.</p>
 </div>
-<div id="r-code-1" class="section level3">
-<h3>R Code</h3>
+<div id="r-code-1" class="section level2">
+<h2>R Code</h2>
 <pre class="r"><code># Prepare data
 otago_nodes_2 &lt;- otago_nodes %&gt;%
   filter(StageID==1) %&gt;%
@@ -836,7 +845,7 @@ infomap_object &lt;- run_infomap_monolayer(network_object, infomap_executable=&#
   scale_x_continuous(breaks = 1:infomap_object$m)+
   theme_bw()+theme(panel.grid.minor = element_blank())</code></pre>
 <pre><code>## `summarise()` has grouped output by &#39;module&#39;. You can override using the `.groups` argument.</code></pre>
-<p><img src="monolayer_heirarchical_files/figure-html/monolayer_heirarchical_2-1.png" width="576" /></p>
+<p><img src="monolayer_heirarchical_files/figure-html/monolayer_heirarchical_2-1.png" width="864" /></p>
 <pre class="r"><code># Run infomap with hieararchy
 infomap_object &lt;- run_infomap_monolayer(network_object, infomap_executable=&#39;Infomap&#39;,
                                         flow_model = &#39;directed&#39;,
@@ -851,7 +860,7 @@ infomap_object &lt;- run_infomap_monolayer(network_object, infomap_executable=&#
   scale_x_continuous(breaks = 1:infomap_object$m)+
   theme_bw()+theme(panel.grid.minor = element_blank())</code></pre>
 <pre><code>## `summarise()` has grouped output by &#39;module&#39;. You can override using the `.groups` argument.</code></pre>
-<p><img src="monolayer_heirarchical_files/figure-html/monolayer_heirarchical_2-2.png" width="576" /></p>
+<p><img src="monolayer_heirarchical_files/figure-html/monolayer_heirarchical_2-2.png" width="864" /></p>
 </div>
 </div>
 

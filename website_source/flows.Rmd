@@ -2,8 +2,8 @@
 title: "Flow models"
 output:
   html_document: 
-    fig_height: 4
-    fig_width: 6
+    fig_height: 6
+    fig_width: 9
     theme: flatly
     code_folding: show
     toc: true
@@ -11,10 +11,12 @@ output:
       collapsed: false
       number_sections: true
 ---
+
 ```{r klippy, echo=FALSE, include=TRUE}
 # Use this to add a copy-code buttong
 klippy::klippy(position = c('top', 'right'), color = 'darkred')
 ```
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```

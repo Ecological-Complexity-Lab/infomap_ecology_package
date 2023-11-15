@@ -335,6 +335,9 @@ div.tocify {
         <li>
   <a href="index.html">Home</a>
 </li>
+<li>
+  <a href="installation.html">Installation</a>
+</li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Monolayer
@@ -410,6 +413,8 @@ relax rates</h1>
   addClassKlippyTo("pre.r, pre.markdown");
   addKlippy('right', 'top', '#8B0000', '1', 'Copy code', 'Copied!');
 </script>
+<pre class="r"><code>library(emln)
+library(infomapecology)</code></pre>
 <div id="data-set" class="section level3">
 <h3>Data set</h3>
 <p>Load the 65th multilayer network from the <a
@@ -417,7 +422,8 @@ href="https://github.com/Ecological-Complexity-Lab/emln"><em><code>emln package<
 This particular network is a temporal plant pollinator multilayer
 network without interlayer interactions, and it consists of 6 layers,
 corresponding to the flowering season between 2006 and 2011.</p>
-<pre class="r"><code># Load multilayer network number 65
+<pre class="r"><code>library(emln)
+# Load multilayer network number 65
 emln_65 &lt;- load_emln(65)</code></pre>
 <pre><code>## [1] &quot;Creating state node map&quot;
 ## [1] &quot;Creating extended link list with node IDs&quot;</code></pre>
@@ -482,80 +488,8 @@ and <code>run_infomap_multilayer</code> in the
 <code>infomapecology</code> package contains everything you need to
 know. The <code>for</code> loop performs a sensitivity analysis to
 examine how structure changes with increasing relax rates.</p>
-<pre class="r"><code>#Run Infomap and return the network&#39;s modular structure at increasing relax-rates.
-relaxrate_modules &lt;- NULL
-for (r in seq(0.001,1, by = 0.0999)){
-  print(r)
-  modules_relax_rate &lt;- run_infomap_multilayer(emln_65, relax = T, silent = T, trials = 50, seed = 497294, multilayer_relax_rate = r, multilayer_relax_limit_up = 1, multilayer_relax_limit_down = 0, temporal_network = T)
-  modules_relax_rate$modules$relax_rate &lt;- r
-  relaxrate_modules &lt;- rbind(relaxrate_modules, modules_relax_rate$modules)
-}</code></pre>
-<pre><code>## [1] 0.001
-## [1] &quot;Using global relax to determine flow between layers.&quot;
-## [1] &quot;./Infomap infomap_multilayer.txt . --tree -2 -N 50 --seed 497294 --silent --multilayer-relax-rate 0.001 --multilayer-relax-limit-up 1 --multilayer-relax-limit-down 0&quot;
-## [1] &quot;Reorganizing modules...&quot;
-## [1] &quot;Removing auxilary files...&quot;
-## [1] &quot;Partitioned into 38 modules.&quot;
-## [1] 0.1009
-## [1] &quot;Using global relax to determine flow between layers.&quot;
-## [1] &quot;./Infomap infomap_multilayer.txt . --tree -2 -N 50 --seed 497294 --silent --multilayer-relax-rate 0.1009 --multilayer-relax-limit-up 1 --multilayer-relax-limit-down 0&quot;
-## [1] &quot;Reorganizing modules...&quot;
-## [1] &quot;Removing auxilary files...&quot;
-## [1] &quot;Partitioned into 38 modules.&quot;
-## [1] 0.2008
-## [1] &quot;Using global relax to determine flow between layers.&quot;
-## [1] &quot;./Infomap infomap_multilayer.txt . --tree -2 -N 50 --seed 497294 --silent --multilayer-relax-rate 0.2008 --multilayer-relax-limit-up 1 --multilayer-relax-limit-down 0&quot;
-## [1] &quot;Reorganizing modules...&quot;
-## [1] &quot;Removing auxilary files...&quot;
-## [1] &quot;Partitioned into 34 modules.&quot;
-## [1] 0.3007
-## [1] &quot;Using global relax to determine flow between layers.&quot;
-## [1] &quot;./Infomap infomap_multilayer.txt . --tree -2 -N 50 --seed 497294 --silent --multilayer-relax-rate 0.3007 --multilayer-relax-limit-up 1 --multilayer-relax-limit-down 0&quot;
-## [1] &quot;Reorganizing modules...&quot;
-## [1] &quot;Removing auxilary files...&quot;
-## [1] &quot;Partitioned into 31 modules.&quot;
-## [1] 0.4006
-## [1] &quot;Using global relax to determine flow between layers.&quot;
-## [1] &quot;./Infomap infomap_multilayer.txt . --tree -2 -N 50 --seed 497294 --silent --multilayer-relax-rate 0.4006 --multilayer-relax-limit-up 1 --multilayer-relax-limit-down 0&quot;
-## [1] &quot;Reorganizing modules...&quot;
-## [1] &quot;Removing auxilary files...&quot;
-## [1] &quot;Partitioned into 32 modules.&quot;
-## [1] 0.5005
-## [1] &quot;Using global relax to determine flow between layers.&quot;
-## [1] &quot;./Infomap infomap_multilayer.txt . --tree -2 -N 50 --seed 497294 --silent --multilayer-relax-rate 0.5005 --multilayer-relax-limit-up 1 --multilayer-relax-limit-down 0&quot;
-## [1] &quot;Reorganizing modules...&quot;
-## [1] &quot;Removing auxilary files...&quot;
-## [1] &quot;Partitioned into 30 modules.&quot;
-## [1] 0.6004
-## [1] &quot;Using global relax to determine flow between layers.&quot;
-## [1] &quot;./Infomap infomap_multilayer.txt . --tree -2 -N 50 --seed 497294 --silent --multilayer-relax-rate 0.6004 --multilayer-relax-limit-up 1 --multilayer-relax-limit-down 0&quot;
-## [1] &quot;Reorganizing modules...&quot;
-## [1] &quot;Removing auxilary files...&quot;
-## [1] &quot;Partitioned into 27 modules.&quot;
-## [1] 0.7003
-## [1] &quot;Using global relax to determine flow between layers.&quot;
-## [1] &quot;./Infomap infomap_multilayer.txt . --tree -2 -N 50 --seed 497294 --silent --multilayer-relax-rate 0.7003 --multilayer-relax-limit-up 1 --multilayer-relax-limit-down 0&quot;
-## [1] &quot;Reorganizing modules...&quot;
-## [1] &quot;Removing auxilary files...&quot;
-## [1] &quot;Partitioned into 25 modules.&quot;
-## [1] 0.8002
-## [1] &quot;Using global relax to determine flow between layers.&quot;
-## [1] &quot;./Infomap infomap_multilayer.txt . --tree -2 -N 50 --seed 497294 --silent --multilayer-relax-rate 0.8002 --multilayer-relax-limit-up 1 --multilayer-relax-limit-down 0&quot;
-## [1] &quot;Reorganizing modules...&quot;
-## [1] &quot;Removing auxilary files...&quot;
-## [1] &quot;Partitioned into 24 modules.&quot;
-## [1] 0.9001
-## [1] &quot;Using global relax to determine flow between layers.&quot;
-## [1] &quot;./Infomap infomap_multilayer.txt . --tree -2 -N 50 --seed 497294 --silent --multilayer-relax-rate 0.9001 --multilayer-relax-limit-up 1 --multilayer-relax-limit-down 0&quot;
-## [1] &quot;Reorganizing modules...&quot;
-## [1] &quot;Removing auxilary files...&quot;
-## [1] &quot;Partitioned into 23 modules.&quot;
-## [1] 1
-## [1] &quot;Using global relax to determine flow between layers.&quot;
-## [1] &quot;./Infomap infomap_multilayer.txt . --tree -2 -N 50 --seed 497294 --silent --multilayer-relax-rate 1 --multilayer-relax-limit-up 1 --multilayer-relax-limit-down 0&quot;
-## [1] &quot;Reorganizing modules...&quot;
-## [1] &quot;Removing auxilary files...&quot;
-## [1] &quot;Partitioned into 21 modules.&quot;</code></pre>
+<pre class="r"><code>print(&#39;plot here&#39;)</code></pre>
+<pre><code>## [1] &quot;plot here&quot;</code></pre>
 </div>
 <div id="infomap" class="section level3">
 <h3>Infomap</h3>

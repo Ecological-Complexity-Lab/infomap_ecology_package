@@ -335,6 +335,9 @@ div.tocify {
         <li>
   <a href="index.html">Home</a>
 </li>
+<li>
+  <a href="installation.html">Installation</a>
+</li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Monolayer
@@ -410,31 +413,112 @@ ecological networks</h1>
   addClassKlippyTo("pre.r, pre.markdown");
   addKlippy('right', 'top', '#8B0000', '1', 'Copy code', 'Copied!');
 </script>
-<p><strong>Updated: 2023-11-1</strong></p>
+<p><br> <br></p>
+<p><strong>Updated: 2023-11-15</strong></p>
 <p>This site is an extension of the paper <a
 href="https://onlinelibrary.wiley.com/doi/10.1111/2041-210X.13569">Identifying
-flow modules in ecological networks using Infomap</a> It contains
+flow modules in ecological networks using Infomap</a>. It contains
 installation instructions and very detailed Infomap commands and R code
-that we use in the examples that are presented in the paper. Infomap is
-a very rich implementation of the map equation, fully covered in <a
-href="https://www.mapequation.org/">https://www.mapequation.org/</a>. In
-this knowledge base we present what is most relevant for ecological
-network analysis and the R package <code>infomapecology</code>. The
-package is a convenient interface to use Infomap within R. We will be
-updating this knowledge base with every improvement of
-<code>infomapecology</code>.</p>
-<div id="installation-of-infomap-and-infomapecology"
-class="section level1">
-<h1>Installation of Infomap and infomapecology</h1>
+that we use in the examples that are presented in the paper. We present
+what is most relevant for ecological network analysis using the R
+package <code>infomapecology</code>, which is a convenient interface to
+use Infomap within R.</p>
+<p>This work was supported by: Israel Science Foundation (grant 1281/20)
+to Shai Pilosof; Swedish Research Council (grant no. 2016-00796) to
+Martin Rosvall; Swedish Research Council (grant no. 2016-04919) to Anna
+Eklof.</p>
+<p><img src="logos.png" width="464" height="80px" style="float:left, padding:10px" /></p>
+<p><br> <br></p>
+<div id="sources" class="section level1">
+<h1>Sources</h1>
+<ul>
+<li>Paper: <a
+href="https://onlinelibrary.wiley.com/doi/10.1111/2041-210X.13569">Identifying
+flow modules in ecological networks using Infomap</a>:</li>
+<li>Infomap website: <a
+href="https://www.mapequation.org/">https://www.mapequation.org/</a>.</li>
+<li>Full review of the map equation: <a
+href="https://arxiv.org/abs/2311.04036">https://arxiv.org/abs/2311.04036</a>.</li>
+</ul>
+<p><br> <br></p>
+</div>
+<div id="installation" class="section level1">
+<h1>Installation</h1>
 <p>Currently, infomapecology uses a standalone version of Infomap. We
 are working hard to integrate Infomap directly into R. Until that
 happens, install Infomap and infomapecology as specified <a
 href="https://ecological-complexity-lab.github.io/infomap_ecology_package/installation">here</a>.</p>
+<p><br> <br></p>
 </div>
 <div id="infomaps-basics" class="section level1">
 <h1>Infomap’s basics</h1>
-<p>The basics of Infomap’s input and output are <a
-href="https://ecological-complexity-lab.github.io/infomap_ecology_package/infomapbasics">here</a>.</p>
+<div id="infomap-arguments" class="section level2">
+<h2>Infomap arguments</h2>
+<p>Most of the Infomap arguments we use are common for all the examples
+and their detailed description can be found <a
+href="https://www.mapequation.org/infomap/#Parameters">here</a>. We
+explain in each example the most relevant specific arguments. Here is a
+typical running command:</p>
+<p><code>./Infomap infomap.txt . --tree -i link-list  --seed 123 -N 20 -f undirected -2</code>.</p>
+<ul>
+<li><code>infomap.txt</code> is the name of the input file</li>
+<li><code>.</code> indicates that the output will be written to the same
+folder as the input file.</li>
+<li><code>--tree</code> sets the output format.</li>
+<li><code>-i  link-list</code> indicates that the input is a <a
+href="https://www.mapequation.org/infomap/#InputLinkList">link
+list</a>.</li>
+<li><code>--seed 123</code> provides a seed to the random number
+generator such that each run will result in the same output, which is
+useful for replication.</li>
+<li><code>-N 20</code> tells infomap to run 20 trials and select the
+result of the best one.</li>
+<li><code>-f undirected</code> indicates flow on an undirected
+network.</li>
+<li><code>-2</code> indicates a two-level solution, with no hierarchical
+modules (modules within modules).</li>
+</ul>
+</div>
+<div id="infomap-output" class="section level2">
+<h2>Infomap output</h2>
+<p>The output, written into the <code>tree</code> file, is as follows
+(details <a
+href="https://www.mapequation.org/infomap/#OutputTree">here</a>).</p>
+<pre class="python"><code># v1.0.6
+# ./Infomap infomap.txt . -i link-list --out-name infomap_out --tree --seed 123 -N 20 -f undirected --silent --two-level
+# started at 2020-03-11 14:24:12
+# completed in 0.0300386 s
+# codelength 4.565 bits
+# relative codelength savings 2.4337%
+# path flow name node_id
+1:1 0.00091617 &quot;1&quot; 1
+1:2 0.00229043 &quot;7&quot; 7
+1:3 0.00114521 &quot;8&quot; 8
+1:4 0.00091617 &quot;10&quot; 10
+1:5 0.000458085 &quot;11&quot; 11</code></pre>
+<p>The first four lines are quite obvious. The 5th line provides the
+value of the map equations objective function (<em>L</em>) for the
+optimal partition. After the headings, rows describe module affiliation
+and flow. The <code>path</code> column is a tree-like format. The last
+integer after the colon indicates the ID of the leaf in the module, and
+not the ID of the node. See detailed explanations also in the R function
+(<code>run_infomap_monolayer</code>) in the package, which automatically
+reads this output and adds the affiliation of modules to the node table
+to create an output similar to this:</p>
+<pre class="python"><code>node_id node_name             module_level1 module_level2 node_type node_group
+ 1       1 Aglais.urticae                    1             1 c         A         
+ 2       2 Apis.mellifera                    2             1 c         A         
+ 3       3 Bombus.lapidarius                 2             2 c         A         
+ 4       4 Bombus.muscorum                   3             1 c         A         
+ 5       5 Bombus.pascuorum                  3             2 c         A         
+ 6       6 Bombus.terrestris                 2             3 c         A </code></pre>
+<p>Here, <code>module_level1</code> is the module ID and
+<code>module_level2</code> is the leaf ID, extracted from the
+<code>path</code> column. <code>node_type</code> is either
+<code>c</code> for column or <code>r</code> for row, indicating of the
+node appears in the column or row of the matrix format.</p>
+<p><br> <br></p>
+</div>
 </div>
 <div id="examples-from-the-paper" class="section level1">
 <h1>Examples from the paper</h1>
@@ -461,12 +545,6 @@ multilayer network with global relax rates</a></li>
 href="https://ecological-complexity-lab.github.io/infomap_ecology_package/multilayer_interlayer">Temporal
 multilayer network with interlayer edges</a></li>
 </ul>
-<div id="acknowledgements" class="section level2">
-<h2>Acknowledgements</h2>
-<p>This work was supported by research grant ISF (Israel Science
-Foundation) 1281/20 to Shai Pilosof.</p>
-<p><img src="logos.png" width="464" height="80px" style="float:left, padding:10px" /></p>
-</div>
 </div>
 
 

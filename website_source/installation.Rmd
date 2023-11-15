@@ -2,8 +2,8 @@
 title: "Install Infomap and infomapecology"
 output:
   html_document: 
-    fig_height: 4
-    fig_width: 6
+    fig_height: 6
+    fig_width: 9
     theme: flatly
     code_folding: show
     toc: true
@@ -12,16 +12,21 @@ output:
       number_sections: true
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r klippy, echo=FALSE, include=TRUE}
+# Use this to add a copy-code buttong
+klippy::klippy(position = c('top', 'right'), color = 'darkred')
 ```
 
-## 1. Install the R package
+
+<br>
+<br>
+
+# 1. Install the R package
 The package was built under R 4.1 and depends on other packages.
 
 ```R
 # Install  (if not installed) and load necessary packages
-package.list=c("attempt", "cowplot", "igraph", "ggalluvial","magrittr","metafolio","tidyverse","vegan", "devtools")
+package.list=c("emln","attempt", "cowplot", "igraph", "ggalluvial","magrittr","metafolio","tidyverse","vegan", "devtools")
 loaded <-  package.list %in% .packages()
 package.list <-  package.list[!loaded]
 installed <-  package.list %in% .packages(TRUE)
@@ -35,17 +40,20 @@ library(infomapecology)
 packageDescription('infomapecology')
 ```
 
-## 2. Install Infomap
-We use Infomap version 1.x as a stand-alone file. Future versions (or a different package) will integrate Infomap directly intro R.
+<br>
+<br>
 
-### MacOS (Linux should be similar)
-#### 1. In the terminal run:
+# 2. Install Infomap
+We use Infomap version 2.x as a stand-alone file. We are working on integrating Infomap directly intro R.
+
+## MacOS (Linux should be similar)
+### 1. In the terminal run:
 * `xcode-select --install`
 * For OpenMP support
   * Install homebrew as specified in [https://brew.sh](https://brew.sh). This will take a while.
   * install packages: `brew install libomp`.
 
-#### 2. Then either:
+### 2. Then either:
 Install Infomap via the `install_infomap` function in the package as below. Avoid folder names with spaces or non-english lettes.
 
 ```R
