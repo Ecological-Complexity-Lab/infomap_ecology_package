@@ -13,7 +13,7 @@
 
 <title>Temporal multilayer network with global relax rates</title>
 
-<script src="site_libs/header-attrs-2.23/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.20/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
@@ -29,7 +29,7 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
-<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
@@ -407,8 +407,6 @@ relax rates</h1>
   addClassKlippyTo("pre.r, pre.markdown");
   addKlippy('right', 'top', '#8B0000', '1', 'Copy code', 'Copied!');
 </script>
-<pre class="r"><code>library(emln)
-library(infomapecology)</code></pre>
 <div id="data-set" class="section level3">
 <h3>Data set</h3>
 <p>Load the 65th multilayer network from the <a
@@ -433,16 +431,16 @@ emln_65 &lt;- load_emln(65)</code></pre>
 ## 6        6    -32.4 Villavicencio Nature Reserve, Mendoza, Argentina     -69.1 all_sites_2011  2011 layer_6</code></pre>
 <pre class="r"><code>head(emln_65$nodes)</code></pre>
 <pre><code>## # A tibble: 6 × 15
-##   node_id node_name type  corolla_length corolla_aperture height_mean flower_abundance body_thickness body_length
-##     &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;          &lt;dbl&gt;            &lt;dbl&gt;       &lt;dbl&gt;            &lt;int&gt;          &lt;dbl&gt;       &lt;dbl&gt;
-## 1       1 aca.ser   plant           3.15            0.912       0.154            42118             NA          NA
-## 2       2 alo.gra   plant           5.01            1.02        0.525             5944             NA          NA
-## 3       3 arg.sub   plant          35.0            28.8         0.514                0             NA          NA
-## 4       4 arj.lon   plant          14.5             1.67        0.222             3252             NA          NA
-## 5       5 bou.spi   plant          10.2             1.48        1.77              1610             NA          NA
-## 6       6 bre.mic   plant           4.17            2           0.32                 0             NA          NA
-## # ℹ 6 more variables: proboscis_length &lt;dbl&gt;, proboscis_width &lt;dbl&gt;, body_width &lt;dbl&gt;, taxa_verified &lt;chr&gt;,
-## #   verification_level &lt;chr&gt;, species_name &lt;chr&gt;</code></pre>
+##   node_id node_name type  corolla_length corolla_aperture height_mean flower_abundance body_t…¹ body_…² probo…³ probo…⁴ body_…⁵ taxa_…⁶ verif…⁷ speci…⁸
+##     &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;          &lt;dbl&gt;            &lt;dbl&gt;       &lt;dbl&gt;            &lt;int&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  
+## 1       1 aca.ser   plant           3.15            0.912       0.154            42118       NA      NA      NA      NA      NA TRUE    species acanth…
+## 2       2 alo.gra   plant           5.01            1.02        0.525             5944       NA      NA      NA      NA      NA FALSE   &lt;NA&gt;    aloyss…
+## 3       3 arg.sub   plant          35.0            28.8         0.514                0       NA      NA      NA      NA      NA TRUE    species argemo…
+## 4       4 arj.lon   plant          14.5             1.67        0.222             3252       NA      NA      NA      NA      NA TRUE    species arjona…
+## 5       5 bou.spi   plant          10.2             1.48        1.77              1610       NA      NA      NA      NA      NA TRUE    species bougai…
+## 6       6 bre.mic   plant           4.17            2           0.32                 0       NA      NA      NA      NA      NA TRUE    species bredem…
+## # … with abbreviated variable names ¹​body_thickness, ²​body_length, ³​proboscis_length, ⁴​proboscis_width, ⁵​body_width, ⁶​taxa_verified,
+## #   ⁷​verification_level, ⁸​species_name</code></pre>
 <pre class="r"><code>head(emln_65$extended)</code></pre>
 <pre><code>##   layer_from node_from layer_to node_to weight        type
 ## 1    layer_1   cop.sp2  layer_1 aca.ser     19 pollination
@@ -482,8 +480,25 @@ and <code>run_infomap_multilayer</code> in the
 <code>infomapecology</code> package contains everything you need to
 know. The <code>for</code> loop performs a sensitivity analysis to
 examine how structure changes with increasing relax rates.</p>
-<pre class="r"><code>print(&#39;plot here&#39;)</code></pre>
-<pre><code>## [1] &quot;plot here&quot;</code></pre>
+<pre class="r"><code>#Run Infomap and return the network&#39;s modular structure at increasing relax-rates.
+relaxrate_modules &lt;- NULL
+# Initialize an empty data frame to store results
+results &lt;- data.frame(relax_rate = numeric(), module_count = numeric())
+
+for (r in seq(0.001,1, by = 0.0999)){
+  print(r)
+  modules_relax_rate &lt;- run_infomap_multilayer(emln_65, relax = T, silent = T, trials = 50, seed = 497294,    multilayer_relax_rate = r, multilayer_relax_limit_up = 1, multilayer_relax_limit_down = 0, temporal_network = T)
+  modules_relax_rate$modules$relax_rate &lt;- r
+  relaxrate_modules &lt;- rbind(relaxrate_modules, modules_relax_rate$modules)
+  # Append results to the data frame
+  results &lt;- rbind(results, data.frame(relax_rate = r, module_count = modules_relax_rate$m))
+
+}</code></pre>
+<pre class="r"><code>ggplot(results, aes(x = relax_rate, y = module_count)) +
+  geom_line(color = &quot;blue&quot;) +
+  labs(x = &quot;relax rate (r)&quot;, y = &quot;Number of modules&quot;)+
+  theme_bw()+theme(panel.grid.minor = element_blank())</code></pre>
+<p><img src="multilayer_relax_emln_files/figure-html/multilayer_emln_3-1.png" width="864" /></p>
 </div>
 <div id="infomap" class="section level3">
 <h3>Infomap</h3>
@@ -516,21 +531,21 @@ obtain a table in which each state node (combination of a physical node
 in a layer) is assigned to a module. This can be obtained by (after
 running the code above):</p>
 <pre class="r"><code>#relaxrate_modules$modules
-relaxrate_modules %&gt;% select(node_id, layer_id, node_name, type, module)</code></pre>
-<pre><code>## # A tibble: 7,062 × 5
-##    node_id layer_id node_name type  module
-##      &lt;int&gt;    &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;  &lt;int&gt;
-##  1       1        1 aca.ser   plant      1
-##  2       1        2 aca.ser   plant     10
-##  3       1        3 aca.ser   plant     15
-##  4       1        4 aca.ser   plant     25
-##  5       1        5 aca.ser   plant     31
-##  6       1        6 aca.ser   plant     37
-##  7       2        1 alo.gra   plant      1
-##  8       2        3 alo.gra   plant     16
-##  9       2        4 alo.gra   plant     25
-## 10       2        5 alo.gra   plant     35
-## # ℹ 7,052 more rows</code></pre>
+relaxrate_modules %&gt;% select(node_id, layer_id, node_name, type, module, relax_rate)</code></pre>
+<pre><code>## # A tibble: 7,062 × 6
+##    node_id layer_id node_name type  module relax_rate
+##      &lt;int&gt;    &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;  &lt;int&gt;      &lt;dbl&gt;
+##  1       1        1 aca.ser   plant      1      0.001
+##  2       1        2 aca.ser   plant     10      0.001
+##  3       1        3 aca.ser   plant     15      0.001
+##  4       1        4 aca.ser   plant     25      0.001
+##  5       1        5 aca.ser   plant     31      0.001
+##  6       1        6 aca.ser   plant     37      0.001
+##  7       2        1 alo.gra   plant      1      0.001
+##  8       2        3 alo.gra   plant     16      0.001
+##  9       2        4 alo.gra   plant     25      0.001
+## 10       2        5 alo.gra   plant     35      0.001
+## # … with 7,052 more rows</code></pre>
 </div>
 
 

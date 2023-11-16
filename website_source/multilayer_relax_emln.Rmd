@@ -22,7 +22,7 @@ klippy::klippy(position = c('top', 'right'), color = 'darkred')
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r}
+```{r eval=FALSE, include=FALSE}
 library(emln)
 library(infomapecology)
 ```
@@ -57,20 +57,29 @@ A [multilayer link-list format](https://www.mapequation.org/infomap/#InputMultil
 ### R Code
 The description of functions `create_multilayer_object` and `run_infomap_multilayer` in the `infomapecology` package contains everything you need to know. The `for` loop performs a sensitivity analysis to examine how structure changes with increasing relax rates.
 
-```{r multilayer_emln_2, include=FALSE}
+```{r multilayer_emln_2, echo = TRUE, results = 'hide'}
 #Run Infomap and return the network's modular structure at increasing relax-rates.
 relaxrate_modules <- NULL
+# Initialize an empty data frame to store results
+results <- data.frame(relax_rate = numeric(), module_count = numeric())
+
 for (r in seq(0.001,1, by = 0.0999)){
   print(r)
-  modules_relax_rate <- run_infomap_multilayer(emln_65, relax = T, silent = T, trials = 50, seed = 497294, multilayer_relax_rate = r, multilayer_relax_limit_up = 1, multilayer_relax_limit_down = 0, temporal_network = T)
+  modules_relax_rate <- run_infomap_multilayer(emln_65, relax = T, silent = T, trials = 50, seed = 497294,    multilayer_relax_rate = r, multilayer_relax_limit_up = 1, multilayer_relax_limit_down = 0, temporal_network = T)
   modules_relax_rate$modules$relax_rate <- r
   relaxrate_modules <- rbind(relaxrate_modules, modules_relax_rate$modules)
+  # Append results to the data frame
+  results <- rbind(results, data.frame(relax_rate = r, module_count = modules_relax_rate$m))
+
 }
 ```
 
 
-```{r}
-print('plot here')
+```{r multilayer_emln_3}
+ggplot(results, aes(x = relax_rate, y = module_count)) +
+  geom_line(color = "blue") +
+  labs(x = "relax rate (r)", y = "Number of modules")+
+  theme_bw()+theme(panel.grid.minor = element_blank())
 ```
 
 ### Infomap
@@ -96,7 +105,7 @@ For multilayer network the output file has a `_states` suffix, with the followin
 1:4 0.00927889 "58" 526 58 6
 ```
 This output is parsed by `run_infomap_multilayer` to obtain a table in which each state node (combination of a physical node in a layer) is assigned to a module. This can be obtained by (after running the code above):
-```{r multilayer_emln_3}
+```{r multilayer_emln_4}
 #relaxrate_modules$modules
-relaxrate_modules %>% select(node_id, layer_id, node_name, type, module)
+relaxrate_modules %>% select(node_id, layer_id, node_name, type, module, relax_rate)
 ```
