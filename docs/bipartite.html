@@ -377,6 +377,9 @@ div.tocify {
 <li>
   <a href="hypothesis_test.html">Hypothesis testing</a>
 </li>
+<li>
+  <a href="about.html">About</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -406,6 +409,7 @@ div.tocify {
   addClassKlippyTo("pre.r, pre.markdown");
   addKlippy('right', 'top', '#8B0000', '1', 'Copy code', 'Copied!');
 </script>
+<p><br> <br></p>
 <div id="data-set" class="section level3">
 <h3>Data set</h3>
 <p>A weighted bipartite network describing a plant-flower visitor
@@ -414,6 +418,7 @@ vicinity of Bristol, U.K. To distinguish between the two node sets we
 number the pollinator species from 1-79 and the plants from 80-104. Data
 can be obtained using <code>data(memmott1999)</code> in package
 <code>bipartite</code>.</p>
+<p><br> <br></p>
 </div>
 <div id="input" class="section level3">
 <h3>Input</h3>
@@ -422,6 +427,7 @@ list</a> with columns <code>from</code>, <code>to</code> and
 <code>weight</code>. Because this is a bipartite network the
 <code>from</code> column can only contain nodes 1-79 and the
 <code>to</code> column nodes 84-104.</p>
+<p><br> <br></p>
 </div>
 <div id="r-code" class="section level3">
 <h3>R Code</h3>
@@ -441,6 +447,7 @@ silent=T, trials=20, two_level=T, seed=123)</code></pre>
 <pre class="r"><code># Plot the matrix (plotting function in beta)
 plot_modular_matrix(infomap_object)</code></pre>
 <p><img src="bipartite_files/figure-html/Bipartite_1-1.png" width="864" /></p>
+<p><br></p>
 </div>
 <div id="infomap" class="section level3">
 <h3>Infomap</h3>
@@ -451,6 +458,7 @@ runs:</p>
 and pollinators. * <code>-f undirected</code> indicates flow on an
 undirected network. * <code>-2</code> indicates a two-level solution,
 with no hierarchical modules.</p>
+<p><br> <br></p>
 </div>
 <div id="output" class="section level3">
 <h3>Output</h3>

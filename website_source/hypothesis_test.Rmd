@@ -21,6 +21,9 @@ klippy::klippy(position = c('top', 'right'), color = 'darkred')
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+<br>
+<br>
+
 ## 1. Built in randomisation capabilities for bipartite networks
 
 The function `run_infomap_monolayer` can use shuffling algorithms built into `vegan`. To use this, we need to set `signif=T` and provide a shuffling method to `shuff_method`. The shuffling methods are the ones detailed in `?vegan::commsim`.
@@ -75,11 +78,13 @@ plot_grid(
 )
 ```
  
+<br>
+<br>
 
 ## 2. Dedicated randomisation algorithm for the Tur et al. 2016 data set.
 You can also create your own shuffling algorithm and a list of shuffled link lists. As in this example.
 
-```{r hypothesis_3}
+```{r hypothesis_3, results = 'hide'}
 # Import data
 data(tur2016)
 tur2016_altitude2000 <- tur2016 %>% 
@@ -137,6 +142,9 @@ tur_signif <- run_infomap_monolayer(tur_network, infomap_executable='Infomap',
                       signif = T, shuff_method = shuffled)
 
 
+```
+
+```{r hypothesis_4}
 print(tur_signif$pvalue)
 
 plots <- plot_signif(tur_signif, plotit = F)

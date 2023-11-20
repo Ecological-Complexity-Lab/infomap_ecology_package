@@ -377,6 +377,9 @@ div.tocify {
 <li>
   <a href="hypothesis_test.html">Hypothesis testing</a>
 </li>
+<li>
+  <a href="about.html">About</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -407,6 +410,7 @@ edges</h1>
   addClassKlippyTo("pre.r, pre.markdown");
   addKlippy('right', 'top', '#8B0000', '1', 'Copy code', 'Copied!');
 </script>
+<p><br> <br></p>
 <div id="data-set" class="section level3">
 <h3>Data set</h3>
 <p>A temporal multilayer network. Each layer is a host-parasite
@@ -438,6 +442,7 @@ data(siberia1986_matrix)
 data(siberia1987_matrix)
 data(siberia_interlayer)
 data(siberia_nodes)</code></pre>
+<p><br></p>
 </div>
 <div id="input" class="section level3">
 <h3>Input</h3>
@@ -462,6 +467,7 @@ state network.</strong></p>
 4 29 5 29 3.66666666666667
 5 57 6 57 0.841212121212121
 </code></pre>
+<p><br></p>
 </div>
 <div id="r-code" class="section level3">
 <h3>R Code</h3>
@@ -558,6 +564,7 @@ plot_multilayer_alluvial(multilayer_siberia_modules, module_labels = F)+
         axis.text = element_text(color=&#39;black&#39;, size = 20),
         axis.title = element_text(size=20))</code></pre>
 <p><img src="multilayer_interlayer_emln_files/figure-html/multilayer_inter_2-2.png" width="864" /></p>
+<p><br> <br></p>
 </div>
 <div id="infomap" class="section level3">
 <h3>Infomap</h3>
@@ -571,6 +578,7 @@ multilayer link-list</a>. * <code>-f directed</code> indicates flow on a
 directed network. The visitation rates of nodes is obtained with a
 PageRank algorithm based on the direction and weight of edges. This
 includes interlayer edges.</p>
+<p><br></p>
 </div>
 <div id="output" class="section level3">
 <h3>Output</h3>

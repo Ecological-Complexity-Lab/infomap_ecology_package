@@ -1,12 +1,15 @@
 #' A wrapper to install Infomap's standalone file.
-#'
+#' 
 #' Downloads the latest binary release version from MapEquation according to the 
 #' machine's operating system (Windows/MacOS/Linux). Unix based OS users have 
 #' the option to download the latest version in development from the git. 
 #' In that case it clones the GitHub repository and runs \code{make} via R's
 #' \code{system} command. This is merely a wrapper for commands that can be 
 #' easily run in the terminal.
-#
+#'
+#' Users have the option to download the specific version by providing the argument \code{version} 
+#' If \code{version} is not provided, it installs version 2.7.1.
+#'
 #' @param target_folder Where to install Infomap. Defaults to R's current
 #'   working directory (\code{getwd()}). 
 #'   Note: avoid using special characters or spaces in the folder's path.
@@ -14,6 +17,9 @@
 #' @param source The source to download Infomap from. Relevant only for Unix based operating systems.
 #'  "git" to download the latest version from development, 
 #'  "binary" (default) to download the latest release version. 
+#'  
+#' @param version The version of Infomap to install. By default, it installs version 2.7.1.
+#' Users are encouraged to check for the latest version.
 #'  
 #' @return FALSE and an error if Infomap is not installed correctly. TRUE (and
 #'   version number) if it is.
@@ -32,7 +38,10 @@
 #' @export
 ## @import attempt
 ## @import stringr
-install_infomap <- function(target_folder=NULL, source="binary"){
+install_infomap <- function(target_folder=NULL, source="binary", version = "2.7.1"){
+  message("Installing Infomap version ", version)
+  message ("Check for the latest version on the Infomap GitHub releases page https://github.com/mapequation/infomap/releases")
+  message("\n")
   # -------Auxilary functions----
   get_os <- function(){
     sysinf <- Sys.info()
@@ -76,7 +85,8 @@ install_infomap <- function(target_folder=NULL, source="binary"){
   
   unlink("Infomap.zip")
   unlink("Infomap")
-  source_url <- "https://github.com/mapequation/infomap/releases/download/v2.7.1/"
+  #source_url <- "https://github.com/mapequation/infomap/releases/download/v2.7.1/"
+  source_url <- paste0("https://github.com/mapequation/infomap/releases/download/v", version, "/")
   os <- get_os()
   
   #get file name by OS
@@ -143,4 +153,5 @@ install_infomap <- function(target_folder=NULL, source="binary"){
       return(FALSE)
     }
   }
+  
 }

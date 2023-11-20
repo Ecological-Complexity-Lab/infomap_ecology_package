@@ -17,12 +17,11 @@ output:
 klippy::klippy(position = c('top', 'right'), color = 'darkred')
 ```
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r echo=TRUE, results = "hide"}
+```{r monolayer_heirarchical_0, include=FALSE}
 library(emln)
 library(infomapecology)
 ```
@@ -32,12 +31,18 @@ library(infomapecology)
 
 # Example 1
 
+<br>
+
 ## Data set
 A binary directed marine food web from [Ute et al. 2011. “The Role of Body Size in Complex Food Webs: A Cold Case.” In Advances in Ecological Research, edited by Andrea Belgrano, 45:181–223. Academic Press.](https://www.sciencedirect.com/science/article/pii/B9780123864758000058). Kongsfjorden is a glacial fjord on the northwest corner of the Svalbard archipelago. It is a 30 km open fjord with no marked sill at the entrance, and with a maximum depth exceeding 300m. The network consists of 262 species with 1,544 feeding interactions.
 Data is available [here](https://github.com/Ecological-Complexity-Lab/infomap_ecology_package/tree/master/code_from_paper).
 
+<br>
+
 ## Input
 A [link-list](https://www.mapequation.org/infomap/#InputLinkList).
+
+<br>
 
 ## R Code
 ```{r monolayer_heirarchical_1}
@@ -62,6 +67,9 @@ infomap_object <- run_infomap_monolayer(network_object, infomap_executable='Info
                                         silent=T,trials=100, two_level=F, seed=123)
 ```
 
+<br>
+<br>
+
 ## Infomap
 Under the hood, the function `run_infomap_monolayer` runs:
 ```C++
@@ -69,6 +77,9 @@ Under the hood, the function `run_infomap_monolayer` runs:
 ```
 * Here, the most important feature is **the lack of the argument** `-2` (or `--two-level`), which allows for hierarchical modules (the default in Infomap).
 * `-f directed` indicates flow on a directed network.
+
+<br>
+<br>
 
 ### Output
 A [tree file](https://www.mapequation.org/infomap/#OutputTree) is produced by Infomap, but is parsed by `run_infomap_monolayer` from infomapecology. In Infomap's tree output, the `path` column has a tree-like format such as 1:3:2, which describes the path from the root of the tree to the leaf node. The first integer (1 in the 1:3:2 example) is the top module. The last integer after the colon (2 in the 1:3:2 example) indicates the ID of the leaf in the module, and not the ID of the node. In case a node has fewer levels because its module is not partitioned, the missing levels will show `NA`.
@@ -193,6 +204,8 @@ In the output excerpt below for the analysis of the Kongsfjorden food web, there
 
 ## Example 2
 
+<br>
+
 ## Data set
 A binary directed food web from [Mouritsen KN, Poulin R, McLaughlin JP, Thieltges DW. Food web including metazoan parasites for an intertidal ecosystem in New Zealand: Ecological Archives E092-173. Ecology. 2011;92: 2006–2006.](https://esajournals.onlinelibrary.wiley.com/doi/abs/10.1890/11-0371.1)
 
@@ -202,8 +215,12 @@ data(otago_nodes)
 data(otago_links)
 ```
 
+<br>
+
 ## Input
 A [link-list](https://www.mapequation.org/code.html#Link-list-format).
+
+<br>
 
 ## R Code
 ```{r monolayer_heirarchical_2}

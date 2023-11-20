@@ -21,11 +21,20 @@ klippy::klippy(position = c('top', 'right'), color = 'darkred')
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+<br>
+<br>
+
 ### Data set
 A weighted bipartite network describing a plant-flower visitor interaction web (25 plant species and 79 flower visitor species) in the vicinity of Bristol, U.K.  To distinguish between the two node sets we number the pollinator species from 1-79 and the plants from 80-104. Data can be obtained using `data(memmott1999)` in package `bipartite`.
 
+<br>
+<br>
+
 ### Input
 A [link list](https://www.mapequation.org/infomap/#InputLinkList) with columns `from`, `to` and `weight`. Because this is a bipartite network the `from` column can only contain nodes 1-79 and the `to` column nodes 84-104.
+
+<br>
+<br>
 
 ### R Code
 ```{r Bipartite_1}
@@ -43,6 +52,8 @@ silent=T, trials=20, two_level=T, seed=123)
 plot_modular_matrix(infomap_object)
 ```
 
+<br>
+
 ### Infomap
 Under the hood, the function `run_infomap_monolayer` runs:
 
@@ -54,6 +65,8 @@ With this command, Infomap detects modules that contain both plants and pollinat
 * `-f undirected` indicates flow on an undirected network.
 * `-2` indicates a two-level solution, with no hierarchical modules.
 
+<br>
+<br>
 
 ### Output
 A [tree file](https://www.mapequation.org/infomap/#OutputTree) is produced by Infomap, but is parsed by `run_infomap_monolayer` from infomapecology (in R: `?run_infomap_monolayer`).

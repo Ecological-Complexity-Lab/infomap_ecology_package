@@ -377,6 +377,9 @@ div.tocify {
 <li>
   <a href="hypothesis_test.html">Hypothesis testing</a>
 </li>
+<li>
+  <a href="about.html">About</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -407,11 +410,10 @@ hierarchical structure</h1>
   addClassKlippyTo("pre.r, pre.markdown");
   addKlippy('right', 'top', '#8B0000', '1', 'Copy code', 'Copied!');
 </script>
-<pre class="r"><code>library(emln)
-library(infomapecology)</code></pre>
 <p><br> <br></p>
 <div id="example-1" class="section level1">
 <h1>Example 1</h1>
+<p><br></p>
 <div id="data-set" class="section level2">
 <h2>Data set</h2>
 <p>A binary directed marine food web from <a
@@ -424,11 +426,13 @@ with no marked sill at the entrance, and with a maximum depth exceeding
 300m. The network consists of 262 species with 1,544 feeding
 interactions. Data is available <a
 href="https://github.com/Ecological-Complexity-Lab/infomap_ecology_package/tree/master/code_from_paper">here</a>.</p>
+<p><br></p>
 </div>
 <div id="input" class="section level2">
 <h2>Input</h2>
 <p>A <a
 href="https://www.mapequation.org/infomap/#InputLinkList">link-list</a>.</p>
+<p><br></p>
 </div>
 <div id="r-code" class="section level2">
 <h2>R Code</h2>
@@ -457,6 +461,7 @@ infomap_object &lt;- run_infomap_monolayer(network_object, infomap_executable=&#
 <pre><code>## [1] &quot;Creating a link list...&quot;
 ## running: ./Infomap infomap.txt . --tree --seed 123 -N 100 -f directed --silent
 ## [1] &quot;Removing auxilary files...&quot;</code></pre>
+<p><br> <br></p>
 </div>
 <div id="infomap" class="section level2">
 <h2>Infomap</h2>
@@ -469,6 +474,7 @@ argument</strong> <code>-2</code> (or <code>--two-level</code>), which
 allows for hierarchical modules (the default in Infomap).</li>
 <li><code>-f directed</code> indicates flow on a directed network.</li>
 </ul>
+<p><br> <br></p>
 <div id="output" class="section level3">
 <h3>Output</h3>
 <p>A <a href="https://www.mapequation.org/infomap/#OutputTree">tree
@@ -782,6 +788,7 @@ pelagic
 </div>
 <div id="example-2" class="section level2">
 <h2>Example 2</h2>
+<p><br></p>
 </div>
 <div id="data-set-1" class="section level2">
 <h2>Data set</h2>
@@ -793,11 +800,13 @@ Archives E092-173. Ecology. 2011;92: 2006–2006.</a></p>
 <p>In infomapecology:</p>
 <pre class="r"><code>data(otago_nodes)
 data(otago_links)</code></pre>
+<p><br></p>
 </div>
 <div id="input-1" class="section level2">
 <h2>Input</h2>
 <p>A <a
 href="https://www.mapequation.org/code.html#Link-list-format">link-list</a>.</p>
+<p><br></p>
 </div>
 <div id="r-code-1" class="section level2">
 <h2>R Code</h2>
@@ -838,7 +847,8 @@ infomap_object &lt;- run_infomap_monolayer(network_object, infomap_executable=&#
   ggplot(aes(x=module, y=OrganismalGroup, size=n))+geom_point()+
   scale_x_continuous(breaks = 1:infomap_object$m)+
   theme_bw()+theme(panel.grid.minor = element_blank())</code></pre>
-<pre><code>## `summarise()` has grouped output by &#39;module&#39;. You can override using the `.groups` argument.</code></pre>
+<pre><code>## `summarise()` has grouped output by &#39;module&#39;. You can override using the `.groups`
+## argument.</code></pre>
 <p><img src="monolayer_heirarchical_files/figure-html/monolayer_heirarchical_2-1.png" width="864" /></p>
 <pre class="r"><code># Run infomap with hieararchy
 infomap_object &lt;- run_infomap_monolayer(network_object, infomap_executable=&#39;Infomap&#39;,
@@ -853,7 +863,8 @@ infomap_object &lt;- run_infomap_monolayer(network_object, infomap_executable=&#
   ggplot(aes(x=module, y=OrganismalGroup, size=n))+geom_point()+
   scale_x_continuous(breaks = 1:infomap_object$m)+
   theme_bw()+theme(panel.grid.minor = element_blank())</code></pre>
-<pre><code>## `summarise()` has grouped output by &#39;module&#39;. You can override using the `.groups` argument.</code></pre>
+<pre><code>## `summarise()` has grouped output by &#39;module&#39;. You can override using the `.groups`
+## argument.</code></pre>
 <p><img src="monolayer_heirarchical_files/figure-html/monolayer_heirarchical_2-2.png" width="864" /></p>
 </div>
 </div>

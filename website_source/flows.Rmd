@@ -21,11 +21,18 @@ klippy::klippy(position = c('top', 'right'), color = 'darkred')
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+<br>
+<br>
+
 ### Data set
 Weighted directed networks of pollen transfer from [Tur C, Sáez A, Traveset A, Aizen MA. Evaluating the effects of pollinator-mediated interactions using pollen transfer networks: evidence of widespread facilitation in south Andean plant communities. Ecol Lett. 2016;19: 576–586](https://onlinelibrary.wiley.com/doi/abs/10.1111/ele.12594).
 
+<br>
+
 ### Input
 A [link-list](https://www.mapequation.org/infomap/#InputLinkList).
+
+<br>
 
 ### R Code
 ```{r flow_1}
@@ -66,6 +73,8 @@ NMI(N)
 
 ```
 
+<br>
+
 ### Infomap
 Under the hood, the function `run_infomap_monolayer` runs:
 
@@ -83,6 +92,7 @@ Explanation of key arguments:
 * `-f directed` indicates flow on a directed network. The visitation rates of nodes is obtained with a PageRank algorithm based on the direction and weight of edges.
 * `-f rawdir` or `-f directed`: In a `rawdir` flow model the visitation rates of nodes is determined without a PageRank algorithm but rather by the given direction and weight of edges. In a `directed` flow model edge weights are assumed to be constraints on flow, and a PageRank algorithm is run first to determine flow.
 
+<br>
 
 ### Output
 A [tree file](https://www.mapequation.org/infomap/#OutputTree) is produced by Infomap, but is parsed by `run_infomap_monolayer` from infomapecology (in R: `?run_infomap_monolayer`).

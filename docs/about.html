@@ -11,7 +11,7 @@
 
 
 
-<title>Hypothesis testing</title>
+<title>About</title>
 
 <script src="site_libs/header-attrs-2.20/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -36,10 +36,6 @@
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<script src="site_libs/clipboard-1.7.1/clipboard.min.js"></script>
-<link href="site_libs/primer-tooltips-1.4.0/build.css" rel="stylesheet" />
-<link href="site_libs/klippy-0.0.0.9500/css/klippy.min.css" rel="stylesheet" />
-<script src="site_libs/klippy-0.0.0.9500/js/klippy.min.js"></script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -400,192 +396,40 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Hypothesis testing</h1>
+<h1 class="title toc-ignore">About</h1>
 
 </div>
 
 
-<script>
-  addClassKlippyTo("pre.r, pre.markdown");
-  addKlippy('right', 'top', '#8B0000', '1', 'Copy code', 'Copied!');
-</script>
 <p><br> <br></p>
-<div id="built-in-randomisation-capabilities-for-bipartite-networks"
-class="section level2">
-<h2>1. Built in randomisation capabilities for bipartite networks</h2>
-<p>The function <code>run_infomap_monolayer</code> can use shuffling
-algorithms built into <code>vegan</code>. To use this, we need to set
-<code>signif=T</code> and provide a shuffling method to
-<code>shuff_method</code>. The shuffling methods are the ones detailed
-in <code>?vegan::commsim</code>.</p>
-<pre class="r"><code>network_object &lt;- create_monolayer_network(memmott1999, bipartite = T, directed = F, group_names = c(&#39;A&#39;,&#39;P&#39;))</code></pre>
-<pre><code>## [1] &quot;Input: a bipartite matrix&quot;</code></pre>
-<pre class="r"><code># Run with shuffling
-infomap_object &lt;- run_infomap_monolayer(network_object, infomap_executable=&#39;Infomap&#39;,
-                                        flow_model = &#39;undirected&#39;,
-                                        silent=T, trials=20, two_level=T, seed=123, 
-                                        signif = T, shuff_method = &#39;r00&#39;, nsim = 10) #nsim = 50</code></pre>
-<pre><code>## [1] &quot;Creating a link list...&quot;
-## running: ./Infomap infomap.txt . --tree --seed 123 -N 20 -f undirected --silent --two-level
-## [1] &quot;Shuffling...&quot;
-## [1] &quot;Running Infomap on shuffled network 1/10&quot;
-## [1] &quot;Running Infomap on shuffled network 2/10&quot;
-## [1] &quot;Running Infomap on shuffled network 3/10&quot;
-## [1] &quot;Running Infomap on shuffled network 4/10&quot;
-## [1] &quot;Running Infomap on shuffled network 5/10&quot;
-## [1] &quot;Running Infomap on shuffled network 6/10&quot;
-## [1] &quot;Running Infomap on shuffled network 7/10&quot;
-## [1] &quot;Running Infomap on shuffled network 8/10&quot;
-## [1] &quot;Running Infomap on shuffled network 9/10&quot;
-## [1] &quot;Running Infomap on shuffled network 10/10&quot;</code></pre>
-<pre><code>## Warning in run_infomap_monolayer(network_object, infomap_executable = &quot;Infomap&quot;, : pvalue
-## is not really 0, it is &lt;0.1</code></pre>
-<pre><code>## [1] &quot;Removing auxilary files...&quot;</code></pre>
-<pre class="r"><code># Plot histograms
-plots &lt;- plot_signif(infomap_object, plotit = T)</code></pre>
-<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<p><img src="hypothesis_test_files/figure-html/hypothesis_1-1.png" width="864" /></p>
-<pre class="r"><code>plot_grid(
-  plots$L_plot+
-    theme_bw()+
-    theme(legend.position=&#39;none&#39;, 
-          legend.title = element_text(size=16),
-          axis.text = element_text(size=16)),
-  plots$m_plot+
-    theme_bw()+
-    theme(legend.position=&#39;none&#39;, 
-          legend.title = element_text(size=16),
-          axis.text = element_text(size=16))
-)</code></pre>
-<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<p><img src="hypothesis_test_files/figure-html/hypothesis_1-2.png" width="864" /></p>
-<p>Another way is to provide <code>shuff_method</code> with a list
-containing already shuffled networks. You can for example use the
-function <code>shuffle_infomap</code> to produce shuffled networks with
-<code>vegan</code>. This is necessary on the shuffling algorithm from
-<code>?vegan::commsim</code> needs additional arguments such as
-burning.</p>
-<pre class="r"><code># Or can shuffle like this, if additional arguments are needed for the shuffling algorithm
-shuffled &lt;- shuffle_infomap(network_object, shuff_method=&#39;curveball&#39;, nsim=10, burnin=2000) #nsim=50</code></pre>
-<pre><code>## [1] &quot;Shuffling...&quot;</code></pre>
-<pre class="r"><code>infomap_object &lt;- run_infomap_monolayer(network_object, infomap_executable=&#39;Infomap&#39;,
-                                        flow_model = &#39;undirected&#39;,
-                                        silent=T, trials=20, two_level=T, seed=123, 
-                                        signif = T, shuff_method = shuffled, nsim = 10) #nsim = 50</code></pre>
-<pre><code>## [1] &quot;Creating a link list...&quot;
-## running: ./Infomap infomap.txt . --tree --seed 123 -N 20 -f undirected --silent --two-level
-## [1] &quot;Running Infomap on shuffled network 1/10&quot;
-## [1] &quot;Running Infomap on shuffled network 2/10&quot;
-## [1] &quot;Running Infomap on shuffled network 3/10&quot;
-## [1] &quot;Running Infomap on shuffled network 4/10&quot;
-## [1] &quot;Running Infomap on shuffled network 5/10&quot;
-## [1] &quot;Running Infomap on shuffled network 6/10&quot;
-## [1] &quot;Running Infomap on shuffled network 7/10&quot;
-## [1] &quot;Running Infomap on shuffled network 8/10&quot;
-## [1] &quot;Running Infomap on shuffled network 9/10&quot;
-## [1] &quot;Running Infomap on shuffled network 10/10&quot;</code></pre>
-<pre><code>## Warning in run_infomap_monolayer(network_object, infomap_executable = &quot;Infomap&quot;, : pvalue
-## is not really 0, it is &lt;0.1</code></pre>
-<pre><code>## [1] &quot;Removing auxilary files...&quot;</code></pre>
-<pre class="r"><code>plots &lt;- plot_signif(infomap_object, plotit = F)
-plot_grid(
-  plots$L_plot+
-  theme_bw()+
-  theme(legend.position=&#39;none&#39;, 
-        axis.text = element_text(size=16), #20
-        legend.title = element_text(size=16),
-        axis.title = element_text(size=16)), #20
-  plots$m_plot+
-    theme_bw()+
-    theme(legend.position=&#39;none&#39;, 
-          axis.text = element_text(size=16), #20
-          legend.title = element_text(size=16),
-          axis.title = element_text(size=16)) #20
-)</code></pre>
-<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<p><img src="hypothesis_test_files/figure-html/hypothesis_2-1.png" width="864" /></p>
+<p>The package and this website were developed by Shai Pilosof in the <a
+href="http://www.bgu.ac.il/ecomplab">Ecological Complexity Lab</a>, in
+Israel.</p>
+<p>The R package code is available on GitGub here: <a
+href="https://github.com/Ecological-Complexity-Lab/infomap_ecology_package">https://github.com/Ecological-Complexity-Lab/infomap_ecology_package</a></p>
+<p><br> <br></p>
+<div id="grants" class="section level1">
+<h1>Grants</h1>
+<ul>
+<li>Israel Science Foundation (grant number 1281/20): “Ecological
+multilayer networks: advancing theory and methodology for understanding
+the complexity of ecological systems”, awarded to Dr. Shai Pilosof.</li>
+<li>Swedish Research Council (grant no. 2016-00796) , awarded to Martin
+Rosvall.</li>
+<li>Swedish Research Council (grant no. 2016-04919), awarded to Anna
+Eklof.</li>
+</ul>
 <p><br> <br></p>
 </div>
-<div
-id="dedicated-randomisation-algorithm-for-the-tur-et-al.-2016-data-set."
-class="section level2">
-<h2>2. Dedicated randomisation algorithm for the Tur et al. 2016 data
-set.</h2>
-<p>You can also create your own shuffling algorithm and a list of
-shuffled link lists. As in this example.</p>
-<pre class="r"><code># Import data
-data(tur2016)
-tur2016_altitude2000 &lt;- tur2016 %&gt;% 
-  filter(altitude==2000) %&gt;% 
-  select(&quot;donor&quot;, &quot;receptor&quot;, &quot;total&quot;) %&gt;% 
-  group_by(donor, receptor) %&gt;% 
-  summarise(n=mean(total)) %&gt;% 
-  rename(from = donor, to = receptor, weight = n) %&gt;% 
-  ungroup() %&gt;%
-  slice(c(-10,-13,-28)) %&gt;%  # Remove singletons
-  filter(from!=to) # Remove self loops</code></pre>
-<pre><code>## `summarise()` has grouped output by &#39;donor&#39;. You can override using the `.groups` argument.</code></pre>
-<pre class="r"><code>tur_network &lt;- create_monolayer_network(tur2016_altitude2000, directed = T, bipartite = F)</code></pre>
-<pre><code>## Warning: One or more rows sum to 0. This may be ok if you expect some links with only outgoing links (e.g., basal species in a food web)
-## Warning: One or more columns sum to 0. This may be ok if you expect some links with only incoming links (e.g., top predators in a food web)</code></pre>
-<pre class="r"><code># A dedicated function to shuffle the networks, considering the flow.
-shuffle_tur_networks &lt;- function(x){ # x is a network object
-  m &lt;- x$mat
-
-  # Assign off-diagona values
-  off_diagonal_lower &lt;- m[lower.tri(m, diag = FALSE)]
-  off_diagonal_upper &lt;- m[upper.tri(m, diag = FALSE)]
-  out &lt;- matrix(0, nrow(m), ncol(m), dimnames = list(rownames(m), colnames(m)))
-  out[lower.tri(out, diag = FALSE)] &lt;- sample(off_diagonal_lower, size = length(off_diagonal_lower), replace = F)
-  out[upper.tri(out, diag = FALSE)] &lt;- sample(off_diagonal_upper, size = length(off_diagonal_upper), replace = F)
-
-  # Re-assign the diagonal (left intact)
-  diag(out) &lt;- diag(m)
-
-
-  # Sanity checks
-  t1 &lt;- setequal(out[upper.tri(out, diag = FALSE)], m[upper.tri(m, diag = FALSE)]) #Should be TRUE
-  t2 &lt;- setequal(out[lower.tri(out, diag = FALSE)], m[lower.tri(m, diag = FALSE)]) #Should be TRUE
-  t3 &lt;- identical(out[upper.tri(out, diag = FALSE)], m[upper.tri(m, diag = FALSE)]) #Should be FALSE
-  t4 &lt;- identical(out[lower.tri(out, diag = FALSE)], m[lower.tri(m, diag = FALSE)]) #Should be FALSE
-  t5 &lt;- all(table(m)==table(out))# Should be TRUE because it includes all the values, including diagonal
-  if (any(c(t1,t2,!t3,!t4,t5)==F)){stop(&#39;One or more sanity checks failed&#39;)}
-  return(out)
-}
-
-# Create a list with shuffled link lists
-nsim &lt;- 100 #nsim &lt;- 1000
-shuffled &lt;- NULL
-for (i in 1:nsim){
-  print(i)
-  x &lt;- shuffle_tur_networks(tur_network) #Shuffle the network
-  x &lt;- create_monolayer_network(x,directed = T,bipartite = F) # Create a monolayer object
-  shuffled[[i]] &lt;- create_infomap_linklist(x)$edge_list_infomap #Create a link-list
-}  
-
-# Use the shuffled link lists. 
-tur_signif &lt;- run_infomap_monolayer(tur_network, infomap_executable=&#39;Infomap&#39;,
-                      flow_model = &#39;rawdir&#39;,
-                      silent=T,
-                      trials=100, two_level=T, seed=200952,
-                      signif = T, shuff_method = shuffled)</code></pre>
-<pre><code>## Warning in run_infomap_monolayer(tur_network, infomap_executable = &quot;Infomap&quot;, : pvalue is
-## not really 0, it is &lt;0.01</code></pre>
-<pre class="r"><code>print(tur_signif$pvalue)</code></pre>
-<pre><code>## [1] 0</code></pre>
-<pre class="r"><code>plots &lt;- plot_signif(tur_signif, plotit = F)
-
-plots</code></pre>
-<pre><code>## $L_plot</code></pre>
-<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<p><img src="hypothesis_test_files/figure-html/hypothesis_4-1.png" width="864" /></p>
-<pre><code>## 
-## $m_plot</code></pre>
-<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<p><img src="hypothesis_test_files/figure-html/hypothesis_4-2.png" width="864" /></p>
+<div id="feedback" class="section level1">
+<h1>Feedback</h1>
+<p>We welcome any feedback on the paper and this website! The best way
+to provide feedback is to open an issue on the GitHub repository of the
+package: <a
+href="https://github.com/Ecological-Complexity-Lab/infomap_ecology_package/issues">https://github.com/Ecological-Complexity-Lab/infomap_ecology_package/issues</a>.</p>
+<p><br></p>
+<hr />
+<p><img src="logos_6.png" width="968" height="80px" style="float:left, padding:10px" /></p>
 </div>
 
 

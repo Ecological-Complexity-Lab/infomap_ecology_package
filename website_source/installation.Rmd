@@ -17,7 +17,6 @@ output:
 klippy::klippy(position = c('top', 'right'), color = 'darkred')
 ```
 
-
 <br>
 <br>
 
@@ -26,7 +25,7 @@ The package was built under R 4.1 and depends on other packages.
 
 ```R
 # Install  (if not installed) and load necessary packages
-package.list=c("emln","attempt", "cowplot", "igraph", "ggalluvial","magrittr","metafolio","tidyverse","vegan", "devtools")
+package.list=c("emln","attempt", "cowplot", "igraph", "ggalluvial","magrittr","vegan", "dplyr","readr","ggplot2","stringr","tibble","tidyr","rlang","igraph","bipartite")
 loaded <-  package.list %in% .packages()
 package.list <-  package.list[!loaded]
 installed <-  package.list %in% .packages(TRUE)
@@ -45,6 +44,8 @@ packageDescription('infomapecology')
 
 # 2. Install Infomap
 We use Infomap version 2.x as a stand-alone file. We are working on integrating Infomap directly intro R.
+
+<br>
 
 ## MacOS (Linux should be similar)
 ### 1. In the terminal run:
@@ -67,8 +68,9 @@ check_infomap() # Make sure file can be run correctly. Should return TRUE
 
 or download a binary from [here](https://github.com/mapequation/infomap/releases/latest) and put the file in the working folder.
 
+<br>
 
-### Windows
+## Windows
 
 Install Infomap via the `install_infomap` function in the package as below. Avoid folder names with spaces or non-english lettes.
 
@@ -85,6 +87,8 @@ or download a binary from [here](https://github.com/mapequation/infomap/releases
 
 
 **Important notes:**
+
 1. The best practice is to compile Infomap under the file name "Infomap" and place it in the
 same working folder in which the R code is run.
+
 2. Other ways to install: [https://www.mapequation.org/infomap/#Install](https://www.mapequation.org/infomap/#Install)

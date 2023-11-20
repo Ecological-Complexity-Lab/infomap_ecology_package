@@ -21,6 +21,9 @@ klippy::klippy(position = c('top', 'right'), color = 'darkred')
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+<br>
+<br>
+
 ### Data set
 A binary directed food web from [Mouritsen KN, Poulin R, McLaughlin JP, Thieltges DW. Food web including metazoan parasites for an intertidal ecosystem in New Zealand: Ecological Archives E092-173. Ecology. 2011;92: 2006–2006.](https://esajournals-onlinelibrary-wiley-com.ezproxy.bgu.ac.il/doi/abs/10.1890/11-0371.1)
 
@@ -29,6 +32,9 @@ In infomapecology:
 data(otago_nodes)
 data(otago_links)
 ```
+
+<br>
+<br>
 
 ### Input
 1. A [link-list](https://www.mapequation.org/infomap/#InputLinkList).
@@ -70,6 +76,9 @@ In this example, the attribute IDs are (example with first four):
 
 
 For now, Infomap can only handle categorical attributes, and only a single attribute type.
+
+<br>
+<br>
 
 ### R Code
 The code here depends on previous analysis of the otago network with hierarchical structure which should be run first.
@@ -164,6 +173,9 @@ bind_rows(eta0, eta09, eta13) %>%
         text=element_text(size=16))
 ```
 
+<br>
+<br>
+
 ### Infomap
 Under the hood, the function `run_infomap_monolayer` runs:
 ```C++
@@ -173,6 +185,9 @@ Under the hood, the function `run_infomap_monolayer` runs:
 Explanation of key arguments:
 * `--meta-data otago_node_attributes.txt` indicates the file name (`otago_node_attributes.txt`) with the attribute value for each node.
 * `--meta-data-rate 0.9` indicates the value of eta (here 0.9)
+
+<br>
+<br>
 
 ### Output
 A [tree file](https://www.mapequation.org/infomap/#OutputTree) is produced by Infomap, but is parsed by `run_infomap_monolayer` from infomapecology (in R: `?run_infomap_monolayer`). An analysis with metadata does not have a special output. So in this example the output format is the same as in [Monolayer directed network with hierarchical structure](docs/monolayer_heirarchical.md)

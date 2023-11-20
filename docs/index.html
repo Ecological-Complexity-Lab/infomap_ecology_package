@@ -377,6 +377,9 @@ div.tocify {
 <li>
   <a href="hypothesis_test.html">Hypothesis testing</a>
 </li>
+<li>
+  <a href="about.html">About</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -421,7 +424,7 @@ use Infomap within R.</p>
 to Shai Pilosof; Swedish Research Council (grant no. 2016-00796) to
 Martin Rosvall; Swedish Research Council (grant no. 2016-04919) to Anna
 Eklof.</p>
-<p><img src="logos.png" width="464" height="80px" style="float:left, padding:10px" /></p>
+<p><img src="logos_6.png" width="968" height="80px" style="float:left, padding:10px" /></p>
 <p><br> <br></p>
 <div id="sources" class="section level1">
 <h1>Sources</h1>
@@ -446,6 +449,7 @@ href="https://ecological-complexity-lab.github.io/infomap_ecology_package/instal
 </div>
 <div id="infomaps-basics" class="section level1">
 <h1>Infomap’s basics</h1>
+<p><br></p>
 <div id="infomap-arguments" class="section level2">
 <h2>Infomap arguments</h2>
 <p>Most of the Infomap arguments we use are common for all the examples
@@ -453,15 +457,12 @@ and their detailed description can be found <a
 href="https://www.mapequation.org/infomap/#Parameters">here</a>. We
 explain in each example the most relevant specific arguments. Here is a
 typical running command:</p>
-<p><code>./Infomap infomap.txt . --tree -i link-list  --seed 123 -N 20 -f undirected -2</code>.</p>
+<p><code>./Infomap infomap.txt . --tree  --seed 123 -N 20 -f undirected -2</code>.</p>
 <ul>
 <li><code>infomap.txt</code> is the name of the input file</li>
 <li><code>.</code> indicates that the output will be written to the same
 folder as the input file.</li>
 <li><code>--tree</code> sets the output format.</li>
-<li><code>-i  link-list</code> indicates that the input is a <a
-href="https://www.mapequation.org/infomap/#InputLinkList">link
-list</a>.</li>
 <li><code>--seed 123</code> provides a seed to the random number
 generator such that each run will result in the same output, which is
 useful for replication.</li>
@@ -472,24 +473,28 @@ network.</li>
 <li><code>-2</code> indicates a two-level solution, with no hierarchical
 modules (modules within modules).</li>
 </ul>
+<p><br></p>
 </div>
 <div id="infomap-output" class="section level2">
 <h2>Infomap output</h2>
 <p>The output, written into the <code>tree</code> file, is as follows
 (details <a
 href="https://www.mapequation.org/infomap/#OutputTree">here</a>).</p>
-<pre class="python"><code># v1.0.6
-# ./Infomap infomap.txt . -i link-list --out-name infomap_out --tree --seed 123 -N 20 -f undirected --silent --two-level
-# started at 2020-03-11 14:24:12
-# completed in 0.0300386 s
-# codelength 4.565 bits
-# relative codelength savings 2.4337%
+<pre class="python"><code># v2.6.1
+# ./Infomap two_triangles . --tree  --seed 123 -N 20 -f undirected -2
+# started at 2023-11-20 11:17:55
+# completed in 0.074 s
+# partitioned into 2 levels with 2 top modules
+# codelength 2.32073 bits
+# relative codelength savings 9.22792%
+# flow model undirected
 # path flow name node_id
-1:1 0.00091617 &quot;1&quot; 1
-1:2 0.00229043 &quot;7&quot; 7
-1:3 0.00114521 &quot;8&quot; 8
-1:4 0.00091617 &quot;10&quot; 10
-1:5 0.000458085 &quot;11&quot; 11</code></pre>
+1:1 0.214286 &quot;1&quot; 1
+1:2 0.142857 &quot;2&quot; 2
+1:3 0.142857 &quot;3&quot; 3
+2:1 0.214286 &quot;4&quot; 4
+2:2 0.142857 &quot;5&quot; 5
+2:3 0.142857 &quot;6&quot; 6</code></pre>
 <p>The first four lines are quite obvious. The 5th line provides the
 value of the map equations objective function (<em>L</em>) for the
 optimal partition. After the headings, rows describe module affiliation

@@ -17,7 +17,6 @@ output:
 klippy::klippy(position = c('top', 'right'), color = 'darkred')
 ```
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -26,6 +25,9 @@ knitr::opts_chunk$set(echo = TRUE)
 library(emln)
 library(infomapecology)
 ```
+
+<br>
+<br>
 
 ### Data set
 Load the 65th multilayer network from the [_`emln package`_](https://github.com/Ecological-Complexity-Lab/emln). This particular network is a temporal plant pollinator multilayer network without interlayer interactions, and it consists of 6 layers, corresponding to the flowering season between 2006 and 2011.
@@ -38,6 +40,9 @@ emln_65$layers
 head(emln_65$nodes)
 head(emln_65$extended)
 ```
+
+<br>
+
 ### Input
 A [multilayer link-list format](https://www.mapequation.org/infomap/#InputMultilayer). With this format, a random walker moves within a layer and with a given relax rate _r_ jumps to another layer without recording this movement, such that the constraints from moving in different layers can be gradually relaxed. If the `*Inter` exists, then interlayer edges can be used. However, if a relax rate is also used (Infomap input parameter `--multilayer-relax-rate`), the interlayer edges are ignored. Here we only include `*Intra`.
 
@@ -53,6 +58,7 @@ A [multilayer link-list format](https://www.mapequation.org/infomap/#InputMultil
 6 70 11 2
 6 87 11 3
 ```
+<br>
 
 ### R Code
 The description of functions `create_multilayer_object` and `run_infomap_multilayer` in the `infomapecology` package contains everything you need to know. The `for` loop performs a sensitivity analysis to examine how structure changes with increasing relax rates.
@@ -82,6 +88,9 @@ ggplot(results, aes(x = relax_rate, y = module_count)) +
   theme_bw()+theme(panel.grid.minor = element_blank())
 ```
 
+<br>
+<br>
+
 ### Infomap
 Under the hood, the function `run_infomap_multilayer` runs:
 ```C++
@@ -92,6 +101,8 @@ Explanation of key arguments:
 * `-i multilayer` indicates a multilayer input format, which is automatically recognized as a multilayer link list (and not as a general link list).
 * `--multilayer-relax-rate 0.15` defines the relax rate (here 0.15).
 * `multilayer-relax-limit-up 1 --multilayer-relax-limit-down 0` limits relaxation to a single layer upwards (l to l+1), but never downwards, because time flows one-way.
+
+<br>
 
 ### Output
 For multilayer network the output file has a `_states` suffix, with the following format. This output is as in [Temporal multilayer network with interlayer edges](multilayer_interlayer.md). 

@@ -26,6 +26,8 @@ navbar:
       href: flows.html
     - text: "Hypothesis testing"
       href: hypothesis_test.html
+    - text: "About"
+      href: about.html
    
 logo:
   image: ecompab.png

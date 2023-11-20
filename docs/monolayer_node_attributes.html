@@ -377,6 +377,9 @@ div.tocify {
 <li>
   <a href="hypothesis_test.html">Hypothesis testing</a>
 </li>
+<li>
+  <a href="about.html">About</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -407,6 +410,7 @@ attributes</h1>
   addClassKlippyTo("pre.r, pre.markdown");
   addKlippy('right', 'top', '#8B0000', '1', 'Copy code', 'Copied!');
 </script>
+<p><br> <br></p>
 <div id="data-set" class="section level3">
 <h3>Data set</h3>
 <p>A binary directed food web from <a
@@ -417,6 +421,7 @@ Archives E092-173. Ecology. 2011;92: 2006–2006.</a></p>
 <p>In infomapecology:</p>
 <pre class="r"><code>data(otago_nodes)
 data(otago_links)</code></pre>
+<p><br> <br></p>
 </div>
 <div id="input" class="section level3">
 <h3>Input</h3>
@@ -477,6 +482,7 @@ Bacteria
 </table>
 <p>For now, Infomap can only handle categorical attributes, and only a
 single attribute type.</p>
+<p><br> <br></p>
 </div>
 <div id="r-code" class="section level3">
 <h3>R Code</h3>
@@ -578,8 +584,10 @@ bind_rows(eta0, eta09, eta13) %&gt;%
         legend.key.size = unit(1, &#39;line&#39;),
         axis.text = element_text(size=16),
         text=element_text(size=16))</code></pre>
-<pre><code>## `summarise()` has grouped output by &#39;num_OG&#39;. You can override using the `.groups` argument.</code></pre>
+<pre><code>## `summarise()` has grouped output by &#39;num_OG&#39;. You can override using the `.groups`
+## argument.</code></pre>
 <p><img src="monolayer_node_attributes_files/figure-html/monolayer_node_attribut_2-1.png" width="864" /></p>
+<p><br> <br></p>
 </div>
 <div id="infomap" class="section level3">
 <h3>Infomap</h3>
@@ -591,6 +599,7 @@ runs:</p>
 name (<code>otago_node_attributes.txt</code>) with the attribute value
 for each node. * <code>--meta-data-rate 0.9</code> indicates the value
 of eta (here 0.9)</p>
+<p><br> <br></p>
 </div>
 <div id="output" class="section level3">
 <h3>Output</h3>

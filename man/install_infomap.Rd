@@ -4,7 +4,7 @@
 \alias{install_infomap}
 \title{A wrapper to install Infomap's standalone file.}
 \usage{
-install_infomap(target_folder = NULL, source = "binary")
+install_infomap(target_folder = NULL, source = "binary", version = "2.7.1")
 }
 \arguments{
 \item{target_folder}{Where to install Infomap. Defaults to R's current
@@ -14,6 +14,9 @@ Note: avoid using special characters or spaces in the folder's path.}
 \item{source}{The source to download Infomap from. Relevant only for Unix based operating systems.
 "git" to download the latest version from development, 
 "binary" (default) to download the latest release version.}
+
+\item{version}{The version of Infomap to install. By default, it installs version 2.7.1.
+Users are encouraged to check for the latest version.}
 }
 \value{
 FALSE and an error if Infomap is not installed correctly. TRUE (and
@@ -28,6 +31,9 @@ In that case it clones the GitHub repository and runs \code{make} via R's
 easily run in the terminal.
 }
 \details{
+Users have the option to download the specific version by providing the argument \code{version} 
+If \code{version} is not provided, it installs version 2.7.1.
+
 For now, this package depends on Infomap's stand-alone version.
   Future versions or another package will incorporate Infomap directly into R. 
   Therefore it is necessary to install infomap, in the same folder where the code is Run. 

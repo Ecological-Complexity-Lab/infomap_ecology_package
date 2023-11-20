@@ -377,6 +377,9 @@ div.tocify {
 <li>
   <a href="hypothesis_test.html">Hypothesis testing</a>
 </li>
+<li>
+  <a href="about.html">About</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -411,7 +414,7 @@ div.tocify {
 <h1>1. Install the R package</h1>
 <p>The package was built under R 4.1 and depends on other packages.</p>
 <pre class="r"><code># Install  (if not installed) and load necessary packages
-package.list=c(&quot;emln&quot;,&quot;attempt&quot;, &quot;cowplot&quot;, &quot;igraph&quot;, &quot;ggalluvial&quot;,&quot;magrittr&quot;,&quot;metafolio&quot;,&quot;tidyverse&quot;,&quot;vegan&quot;, &quot;devtools&quot;)
+package.list=c(&quot;emln&quot;,&quot;attempt&quot;, &quot;cowplot&quot;, &quot;igraph&quot;, &quot;ggalluvial&quot;,&quot;magrittr&quot;,&quot;vegan&quot;, &quot;dplyr&quot;,&quot;readr&quot;,&quot;ggplot2&quot;,&quot;stringr&quot;,&quot;tibble&quot;,&quot;tidyr&quot;,&quot;rlang&quot;,&quot;igraph&quot;,&quot;bipartite&quot;)
 loaded &lt;-  package.list %in% .packages()
 package.list &lt;-  package.list[!loaded]
 installed &lt;-  package.list %in% .packages(TRUE)
@@ -429,6 +432,7 @@ packageDescription(&#39;infomapecology&#39;)</code></pre>
 <h1>2. Install Infomap</h1>
 <p>We use Infomap version 2.x as a stand-alone file. We are working on
 integrating Infomap directly intro R.</p>
+<p><br></p>
 <div id="macos-linux-should-be-similar" class="section level2">
 <h2>MacOS (Linux should be similar)</h2>
 <div id="in-the-terminal-run" class="section level3">
@@ -457,9 +461,11 @@ check_infomap() # Make sure file can be run correctly. Should return TRUE</code>
 <p>or download a binary from <a
 href="https://github.com/mapequation/infomap/releases/latest">here</a>
 and put the file in the working folder.</p>
+<p><br></p>
 </div>
-<div id="windows" class="section level3">
-<h3>Windows</h3>
+</div>
+<div id="windows" class="section level2">
+<h2>Windows</h2>
 <p>Install Infomap via the <code>install_infomap</code> function in the
 package as below. Avoid folder names with spaces or non-english
 lettes.</p>
@@ -472,11 +478,14 @@ check_infomap() # Make sure file can be run correctly. Should return TRUE</code>
 <p>or download a binary from <a
 href="https://github.com/mapequation/infomap/releases/latest">here</a>
 and put the file in the working folder.</p>
-<p><strong>Important notes:</strong> 1. The best practice is to compile
-Infomap under the file name “Infomap” and place it in the same working
-folder in which the R code is run. 2. Other ways to install: <a
-href="https://www.mapequation.org/infomap/#Install">https://www.mapequation.org/infomap/#Install</a></p>
-</div>
+<p><strong>Important notes:</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>The best practice is to compile Infomap under the file name
+“Infomap” and place it in the same working folder in which the R code is
+run.</p></li>
+<li><p>Other ways to install: <a
+href="https://www.mapequation.org/infomap/#Install">https://www.mapequation.org/infomap/#Install</a></p></li>
+</ol>
 </div>
 </div>
 

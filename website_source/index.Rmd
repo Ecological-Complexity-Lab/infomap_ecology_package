@@ -17,7 +17,6 @@ output:
 klippy::klippy(position = c('top', 'right'), color = 'darkred')
 ```
 
-
 <br>
 <br>
 
@@ -29,7 +28,7 @@ This work was supported by: Israel Science Foundation (grant 1281/20) to Shai Pi
 
 
 ```{r out.height="80px", out.extra='style="float:left, padding:10px"', echo=FALSE}
-knitr::include_graphics("logos.png")
+knitr::include_graphics("logos_6.png")
 ```
 
 <br>
@@ -45,43 +44,54 @@ knitr::include_graphics("logos.png")
 <br>
 
 # Installation
+
 Currently, infomapecology uses a standalone version of Infomap. We are working hard to integrate Infomap directly into R. Until that happens, install Infomap and infomapecology as specified [here](https://ecological-complexity-lab.github.io/infomap_ecology_package/installation).
- 
+
 <br>
-<br>
+<br> 
 
 # Infomap's basics
 
+<br>
+
 ## Infomap arguments
+
 Most of the Infomap arguments we use are common for all the examples and their detailed description can be found [here](https://www.mapequation.org/infomap/#Parameters). We explain in each example the most relevant specific arguments. Here is a typical running command:
 
-`./Infomap infomap.txt . --tree -i link-list  --seed 123 -N 20 -f undirected -2`.
+`./Infomap infomap.txt . --tree  --seed 123 -N 20 -f undirected -2`.
 
 * `infomap.txt` is the name of the input file
 *  `.` indicates that the output will be written to the same folder as the input file.
 * `--tree` sets the output format.
-* `-i  link-list` indicates that the input is a [link list](https://www.mapequation.org/infomap/#InputLinkList).
 * `--seed 123` provides a seed to the random number generator such that each run will result in the same output, which is useful for replication.
 * `-N 20` tells infomap to run 20 trials and select the result of the best one.
 * `-f undirected` indicates flow on an undirected network.
 * `-2` indicates a two-level solution, with no hierarchical modules (modules within modules).
 
+<br>
+
 ## Infomap output
+
 The output, written into the `tree` file, is as follows (details [here](https://www.mapequation.org/infomap/#OutputTree)). 
+
 ```python
-# v1.0.6
-# ./Infomap infomap.txt . -i link-list --out-name infomap_out --tree --seed 123 -N 20 -f undirected --silent --two-level
-# started at 2020-03-11 14:24:12
-# completed in 0.0300386 s
-# codelength 4.565 bits
-# relative codelength savings 2.4337%
+# v2.6.1
+# ./Infomap two_triangles . --tree  --seed 123 -N 20 -f undirected -2
+# started at 2023-11-20 11:17:55
+# completed in 0.074 s
+# partitioned into 2 levels with 2 top modules
+# codelength 2.32073 bits
+# relative codelength savings 9.22792%
+# flow model undirected
 # path flow name node_id
-1:1 0.00091617 "1" 1
-1:2 0.00229043 "7" 7
-1:3 0.00114521 "8" 8
-1:4 0.00091617 "10" 10
-1:5 0.000458085 "11" 11
+1:1 0.214286 "1" 1
+1:2 0.142857 "2" 2
+1:3 0.142857 "3" 3
+2:1 0.214286 "4" 4
+2:2 0.142857 "5" 5
+2:3 0.142857 "6" 6
 ```
+
 
 The first four lines are quite obvious. The 5th line provides the value of the map equations objective function (_L_) for the optimal partition. After the headings, rows describe module affiliation and flow. The `path` column is a tree-like format. The last integer after the colon indicates the ID of the leaf in the module, and not the ID of the node. See detailed explanations also in the R function (`run_infomap_monolayer`) in the package, which automatically reads this output and adds the affiliation of modules to the node table to create an output similar to this:
 
