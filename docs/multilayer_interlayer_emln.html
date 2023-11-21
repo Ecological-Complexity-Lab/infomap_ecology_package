@@ -13,7 +13,7 @@
 
 <title>Temporal multilayer network with interlayer edges</title>
 
-<script src="site_libs/header-attrs-2.20/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.23/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
@@ -29,7 +29,7 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
@@ -419,12 +419,13 @@ host species are the number of parasite individuals divided by the
 number of host individuals. Interlayer coupling edges connect each
 physical node to itself in the next layer (e.g., host A in layer 1 to
 host A in layer 2), and are calculated as the number of individuals in
-layer l+1 divided by the number of individuals in layer l. They
-therefore represent population dynamics. Interlayer edges only go one
-way (<em>l–&gt;l+1</em>) because time flow one way. We represented the
-undirected edges within each layer as directed edges that go both ways
-(with the same weight) to be able to have a directed flow. This does not
-affect the calculation of L. This data set was taken from <a
+layer <em>l+1</em> divided by the number of individuals in layer
+<em>l</em>. They therefore represent population dynamics. Interlayer
+edges only go one way (<em>l–&gt;l+1</em>) because time flow one way. We
+represented the undirected edges within each layer as directed edges
+that go both ways (with the same weight) to be able to have a directed
+flow. This does not affect the calculation of <span
+class="math inline">\(L\)</span>. This data set was taken from <a
 href="https://www.nature.com/articles/s41559-017-0101?proof=true19"><em>Pilosof
 S, Porter MA, Pascual M, Kéfi S. The multilayer nature of ecological
 networks. Nature Ecology &amp; Evolution. 2017;1: 0101</em></a>.</p>
@@ -446,8 +447,8 @@ data(siberia_nodes)</code></pre>
 </div>
 <div id="input" class="section level3">
 <h3>Input</h3>
-<p>A <a
-href="https://www.mapequation.org/infomap/#InputMultilayer">general
+<p>An <a
+href="https://www.mapequation.org/infomap/#InputMultilayer">extended
 multilayer link-list</a>. This multilayer format gives full control of
 the dynamics, and no other movements are encoded. <strong>When using
 this input format, it is expected that interlayer edges will be
@@ -500,11 +501,12 @@ for (i in 1982:1987) {
   # Assign a name to the matrix
   assign(paste0(&quot;square_matrix_&quot;, i), square_matrix, envir = .GlobalEnv)
 }</code></pre>
-<p>The description of functions <code>create_multilayer_network</code>
-and <code>run_infomap_multilayer</code> in the <code>emln</code> and
-<code>infomapecology</code> packages contains everything you need to
-know. Plotting is done using two dedicated functions:
-<code>plot_multilayer_modules</code> and
+<p>Now, we will create the multilayer network. Although effectively it
+is a bipartite network, we will treat it as an unipartite network to be
+able to account for link directions. The description of function
+<code>create_multilayer_network</code> is in the package
+<code>emln</code>. Plotting is done using two dedicated functions in
+<code>infomapecology</code>: <code>plot_multilayer_modules</code> and
 <code>plot_multilayer_alluvial</code>.</p>
 <pre class="r"><code># Create a multilayer object
 layer_attrib &lt;- tibble(layer_id=1:6, layer_name=c(&#39;1982&#39;,&#39;1983&#39;,&#39;1984&#39;,&#39;1985&#39;,&#39;1986&#39;,&#39;1987&#39;))                                     
@@ -542,6 +544,12 @@ multilayer_siberia &lt;- create_multilayer_network(list_of_layers = list(square_
 ## [1] &quot;Organizing state nodes&quot;</code></pre>
 <pre class="r"><code>#Run infomap
 multilayer_siberia_modules &lt;- run_infomap_multilayer(M=multilayer_siberia, relax = F, flow_model = &#39;directed&#39;, silent = T, trials = 100, seed = 497294, temporal_network = T)</code></pre>
+<pre><code>## Warning: `as.tbl()` was deprecated in dplyr 1.0.0.
+## ℹ Please use `tibble::as_tibble()` instead.
+## ℹ The deprecated feature was likely used in the infomapecology package.
+##   Please report the issue at &lt;https://github.com/Ecological-Complexity-Lab/infomap_ecology_package/issues&gt;.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.</code></pre>
 <pre><code>## [1] &quot;Using interlayer edge values to determine flow between layers.&quot;
 ## [1] &quot;./Infomap infomap_multilayer.txt . --tree -2 -N 100 --seed 497294 -f directed --silent&quot;
 ## [1] &quot;Reorganizing modules...&quot;
@@ -634,7 +642,7 @@ in a layer) is assigned to a module. This can be obtained by:</p>
 ##  8       2        2 Amerosejus_corbicula    paras     22
 ##  9       2        3 Amerosejus_corbicula    paras     22
 ## 10       3        1 Amphipsylla_sibirica    paras     19
-## # … with 368 more rows</code></pre>
+## # ℹ 368 more rows</code></pre>
 </div>
 
 

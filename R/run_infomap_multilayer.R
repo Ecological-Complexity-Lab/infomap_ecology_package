@@ -4,7 +4,7 @@
 #' Returns the value of the map equation and a tibble with module affiliations
 #' that includes additional node metadata (if exists).
 #'
-#' @param M An object of class \code{multilayer}.
+#' @param M An object of class \code{multilayer} (see package \code{emln} for definition).
 #' @param infomap_executable Name of Infomap standalone file (default is
 #'   Infomap).
 #' @param flow_model See details in

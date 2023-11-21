@@ -26,7 +26,7 @@ The R package code is available on GitGub here: [https://github.com/Ecological-C
 
 - Israel Science Foundation (grant number 1281/20): "Ecological multilayer networks: advancing theory and methodology for understanding the complexity of ecological systems", awarded to Dr. Shai Pilosof.
 - Swedish Research Council (grant no. 2016-00796) , awarded to Martin Rosvall.
-- Swedish Research Council (grant no. 2016-04919), awarded to Anna Eklof.
+- Swedish Research Council (grant no. 2016-04919), awarded to Anna Eklöf.
 
 <br>
 <br>

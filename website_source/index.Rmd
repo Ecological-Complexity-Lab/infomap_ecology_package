@@ -22,7 +22,7 @@ klippy::klippy(position = c('top', 'right'), color = 'darkred')
 
 **Updated: 2023-11-15**
 
-This site is an extension of the paper [Identifying flow modules in ecological networks using Infomap](https://onlinelibrary.wiley.com/doi/10.1111/2041-210X.13569). It contains installation instructions and very detailed Infomap commands and R code that we use in the examples that are presented in the paper. We present what is most relevant for ecological network analysis using the R package `infomapecology`, which is a convenient interface to use Infomap within R.
+This site accompanies the paper [Identifying flow modules in ecological networks using Infomap](https://onlinelibrary.wiley.com/doi/10.1111/2041-210X.13569). It contains installation instructions and very detailed Infomap commands and R code that we use in the examples that are presented in the paper (and more). We present what is most relevant for ecological network analysis using the R package `infomapecology`, which is a convenient interface to use Infomap within R.
 
 <br>
 <br>
@@ -104,6 +104,8 @@ Here, `module_level1` is the module ID and `module_level2` is the leaf ID, extra
 <br>
 
 # Examples from the paper
+
+You can also navigate to the examples via the website's menu.
 
 * [Bipartite monolayer network example](https://ecological-complexity-lab.github.io/infomap_ecology_package/bipartite)
 * [Monolayer directed network with hierarchical structure](https://ecological-complexity-lab.github.io/infomap_ecology_package/monolayer_heirarchical)

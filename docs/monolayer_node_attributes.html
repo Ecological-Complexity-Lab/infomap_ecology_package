@@ -13,7 +13,7 @@
 
 <title>Monolayer directed network with node attributes</title>
 
-<script src="site_libs/header-attrs-2.20/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.23/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
@@ -29,7 +29,7 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
@@ -414,7 +414,7 @@ attributes</h1>
 <div id="data-set" class="section level3">
 <h3>Data set</h3>
 <p>A binary directed food web from <a
-href="https://esajournals-onlinelibrary-wiley-com.ezproxy.bgu.ac.il/doi/abs/10.1890/11-0371.1">Mouritsen
+href="https://esajournals.onlinelibrary.wiley.com/doi/abs/10.1890/11-0371.1">Mouritsen
 KN, Poulin R, McLaughlin JP, Thieltges DW. Food web including metazoan
 parasites for an intertidal ecosystem in New Zealand: Ecological
 Archives E092-173. Ecology. 2011;92: 2006–2006.</a></p>
@@ -486,8 +486,10 @@ single attribute type.</p>
 </div>
 <div id="r-code" class="section level3">
 <h3>R Code</h3>
-<p>The code here depends on previous analysis of the otago network with
-hierarchical structure which should be run first.</p>
+<p>The code here depends on <a
+href="https://ecological-complexity-lab.github.io/infomap_ecology_package/monolayer_heirarchical.html#Example_2">previous
+analysis of the Otago network with hierarchical structure</a>, which
+should be run first.</p>
 <pre class="r"><code># Prepare data for hierarchical structure analysis -------------------------------
 otago_nodes_2 &lt;- otago_nodes %&gt;%
   filter(StageID==1) %&gt;%

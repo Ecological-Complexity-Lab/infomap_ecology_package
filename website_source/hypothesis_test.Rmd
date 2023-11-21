@@ -24,7 +24,7 @@ knitr::opts_chunk$set(echo = TRUE)
 <br>
 <br>
 
-## 1. Built in randomisation capabilities for bipartite networks
+## 1. Built in randomization capabilities for bipartite networks
 
 The function `run_infomap_monolayer` can use shuffling algorithms built into `vegan`. To use this, we need to set `signif=T` and provide a shuffling method to `shuff_method`. The shuffling methods are the ones detailed in `?vegan::commsim`.
 
@@ -81,8 +81,9 @@ plot_grid(
 <br>
 <br>
 
-## 2. Dedicated randomisation algorithm for the Tur et al. 2016 data set.
-You can also create your own shuffling algorithm and a list of shuffled link lists. As in this example.
+## 2. Dedicated randomization algorithm 
+
+You can also create your own shuffling algorithm and a list of shuffled link lists. As in this example with the Tur et al. 2016 data set..
 
 ```{r hypothesis_3, results = 'hide'}
 # Import data

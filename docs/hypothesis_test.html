@@ -13,7 +13,7 @@
 
 <title>Hypothesis testing</title>
 
-<script src="site_libs/header-attrs-2.20/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.23/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
@@ -29,7 +29,7 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
@@ -410,9 +410,9 @@ div.tocify {
   addKlippy('right', 'top', '#8B0000', '1', 'Copy code', 'Copied!');
 </script>
 <p><br> <br></p>
-<div id="built-in-randomisation-capabilities-for-bipartite-networks"
+<div id="built-in-randomization-capabilities-for-bipartite-networks"
 class="section level2">
-<h2>1. Built in randomisation capabilities for bipartite networks</h2>
+<h2>1. Built in randomization capabilities for bipartite networks</h2>
 <p>The function <code>run_infomap_monolayer</code> can use shuffling
 algorithms built into <code>vegan</code>. To use this, we need to set
 <code>signif=T</code> and provide a shuffling method to
@@ -438,7 +438,8 @@ infomap_object &lt;- run_infomap_monolayer(network_object, infomap_executable=&#
 ## [1] &quot;Running Infomap on shuffled network 8/10&quot;
 ## [1] &quot;Running Infomap on shuffled network 9/10&quot;
 ## [1] &quot;Running Infomap on shuffled network 10/10&quot;</code></pre>
-<pre><code>## Warning in run_infomap_monolayer(network_object, infomap_executable = &quot;Infomap&quot;, : pvalue is not really 0, it is &lt;0.1</code></pre>
+<pre><code>## Warning in run_infomap_monolayer(network_object, infomap_executable = &quot;Infomap&quot;, : pvalue is not really 0,
+## it is &lt;0.1</code></pre>
 <pre><code>## [1] &quot;Removing auxilary files...&quot;</code></pre>
 <pre class="r"><code># Plot histograms
 plots &lt;- plot_signif(infomap_object, plotit = T)</code></pre>
@@ -485,7 +486,8 @@ shuffled &lt;- shuffle_infomap(network_object, shuff_method=&#39;curveball&#39;,
 ## [1] &quot;Running Infomap on shuffled network 8/10&quot;
 ## [1] &quot;Running Infomap on shuffled network 9/10&quot;
 ## [1] &quot;Running Infomap on shuffled network 10/10&quot;</code></pre>
-<pre><code>## Warning in run_infomap_monolayer(network_object, infomap_executable = &quot;Infomap&quot;, : pvalue is not really 0, it is &lt;0.1</code></pre>
+<pre><code>## Warning in run_infomap_monolayer(network_object, infomap_executable = &quot;Infomap&quot;, : pvalue is not really 0,
+## it is &lt;0.1</code></pre>
 <pre><code>## [1] &quot;Removing auxilary files...&quot;</code></pre>
 <pre class="r"><code>plots &lt;- plot_signif(infomap_object, plotit = F)
 plot_grid(
@@ -507,13 +509,11 @@ plot_grid(
 <p><img src="hypothesis_test_files/figure-html/hypothesis_2-1.png" width="864" /></p>
 <p><br> <br></p>
 </div>
-<div
-id="dedicated-randomisation-algorithm-for-the-tur-et-al.-2016-data-set."
-class="section level2">
-<h2>2. Dedicated randomisation algorithm for the Tur et al. 2016 data
-set.</h2>
+<div id="dedicated-randomization-algorithm" class="section level2">
+<h2>2. Dedicated randomization algorithm</h2>
 <p>You can also create your own shuffling algorithm and a list of
-shuffled link lists. As in this example.</p>
+shuffled link lists. As in this example with the Tur et al. 2016 data
+set..</p>
 <pre class="r"><code># Import data
 data(tur2016)
 tur2016_altitude2000 &lt;- tur2016 %&gt;% 
@@ -570,7 +570,8 @@ tur_signif &lt;- run_infomap_monolayer(tur_network, infomap_executable=&#39;Info
                       silent=T,
                       trials=100, two_level=T, seed=200952,
                       signif = T, shuff_method = shuffled)</code></pre>
-<pre><code>## Warning in run_infomap_monolayer(tur_network, infomap_executable = &quot;Infomap&quot;, : pvalue is not really 0, it is &lt;0.01</code></pre>
+<pre><code>## Warning in run_infomap_monolayer(tur_network, infomap_executable = &quot;Infomap&quot;, : pvalue is not really 0, it
+## is &lt;0.01</code></pre>
 <pre class="r"><code>print(tur_signif$pvalue)</code></pre>
 <pre><code>## [1] 0</code></pre>
 <pre class="r"><code>plots &lt;- plot_signif(tur_signif, plotit = F)

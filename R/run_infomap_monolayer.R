@@ -9,7 +9,7 @@
 #' @note This is a beta version, that should eventually replace
 #'   \code{run_infomap_monolayer}.
 #'
-#' @param x An object of class \code{monolayer}.
+#' @param x An object of class \code{monolayer} (see package \code{emln} for definition).
 #' @param infomap_executable Name of Infomap standalone file.
 #' @param flow_model See details
 #'   \href{https://www.mapequation.org/infomap/#ParamsAlgorithm}{here}.
