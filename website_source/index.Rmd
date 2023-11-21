@@ -24,18 +24,11 @@ klippy::klippy(position = c('top', 'right'), color = 'darkred')
 
 This site is an extension of the paper [Identifying flow modules in ecological networks using Infomap](https://onlinelibrary.wiley.com/doi/10.1111/2041-210X.13569). It contains installation instructions and very detailed Infomap commands and R code that we use in the examples that are presented in the paper. We present what is most relevant for ecological network analysis using the R package `infomapecology`, which is a convenient interface to use Infomap within R.
 
-This work was supported by: Israel Science Foundation (grant 1281/20) to Shai Pilosof; Swedish Research Council (grant no. 2016-00796) to Martin Rosvall; Swedish Research Council (grant no. 2016-04919) to Anna Eklof.
-
-
-```{r out.height="80px", out.extra='style="float:left, padding:10px"', echo=FALSE}
-knitr::include_graphics("logos_6.png")
-```
-
 <br>
 <br>
 
-# Sources
-
+# Code & sources
+- Package repository and code: [https://github.com/Ecological-Complexity-Lab/infomap_ecology_package](https://github.com/Ecological-Complexity-Lab/infomap_ecology_package)
 - Paper: [Identifying flow modules in ecological networks using Infomap](https://onlinelibrary.wiley.com/doi/10.1111/2041-210X.13569):
 - Infomap website: [https://www.mapequation.org/](https://www.mapequation.org/).
 - Full review of the map equation: [https://arxiv.org/abs/2311.04036](https://arxiv.org/abs/2311.04036).

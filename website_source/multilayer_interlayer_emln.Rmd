@@ -69,7 +69,16 @@ A [general multilayer link-list](https://www.mapequation.org/infomap/#InputMulti
 <br>
 
 ### R Code
+Because this is a directed bipartite network (interlayer links move from layer to layer in time), we will also consider the intralayer links as directed. To do that, we will copnvert each bipartite matrix to a symmetric unipartite matrix (see Figure XXX our paper...). This does not change the network itself because each link is exactly the same, in both directions.
+
+```{r bipartite_to_unipartite}
+
+```
+
 The description of functions `create_multilayer_network` and `run_infomap_multilayer` in the `emln` and `infomapecology` packages contains everything you need to know. Plotting is done using two dedicated functions: `plot_multilayer_modules` and `plot_multilayer_alluvial`.
+
+
+
 
 ```{r multilayer_inter_2}
 # Create a multilayer object
@@ -84,7 +93,7 @@ multilayer_siberia <- create_multilayer_network(list_of_layers = list(siberia198
                                               layer_attributes = layer_attrib,
                                               interlayer_links = siberia_interlayer,       
                                               bipartite = T,
-                                              directed = F,physical_node_attributes = siberia_nodes )
+                                              directed = T, physical_node_attributes = siberia_nodes )
 
 #Run infomap
 multilayer_siberia_modules <- run_infomap_multilayer(M=multilayer_siberia, relax = F, flow_model = 'directed', silent = T, trials = 100, seed = 497294, temporal_network = T)
