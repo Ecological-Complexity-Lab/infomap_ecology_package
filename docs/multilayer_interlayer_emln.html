@@ -471,6 +471,35 @@ state network.</strong></p>
 </div>
 <div id="r-code" class="section level3">
 <h3>R Code</h3>
+<p>Because this is a directed bipartite network (interlayer links move
+from layer to layer in time), we will also consider the intralayer links
+as directed. To do that, we will convert each bipartite matrix to a
+symmetric unipartite matrix (see Figure 2, <a
+href="https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.14225">Practical
+guidelines and the EMLN R package for handling ecological multilayer
+networks</a>). This does not change the network itself because each link
+is exactly the same, in both directions.</p>
+<pre class="r"><code># Iterate through the layers
+for (i in 1982:1987) {
+  matrix_data &lt;- get(paste0(&quot;siberia&quot;, i, &quot;_matrix&quot;))  # Get the matrix by its name
+  
+  m &lt;- nrow(matrix_data)
+  n &lt;- ncol(matrix_data)
+  
+  # Create names for rows and columns
+  rcnames &lt;- c(colnames(matrix_data), rownames(matrix_data))
+  
+  # Create the square matrix
+  square_matrix &lt;- matrix(0, nrow = m + n, ncol = m + n, dimnames = list(rcnames, rcnames))
+  
+  # Convert the bipartite matrix to a symmetric unipartite matrix
+  # Copy the values from the rectangular matrix into the appropriate positions in the square matrix
+  square_matrix[(n + 1):(n + m), 1:n] &lt;- matrix_data
+  square_matrix[1:n, (n + 1):(n + m)] &lt;- t(matrix_data)
+  
+  # Assign a name to the matrix
+  assign(paste0(&quot;square_matrix_&quot;, i), square_matrix, envir = .GlobalEnv)
+}</code></pre>
 <p>The description of functions <code>create_multilayer_network</code>
 and <code>run_infomap_multilayer</code> in the <code>emln</code> and
 <code>infomapecology</code> packages contains everything you need to
@@ -480,39 +509,33 @@ know. Plotting is done using two dedicated functions:
 <pre class="r"><code># Create a multilayer object
 layer_attrib &lt;- tibble(layer_id=1:6, layer_name=c(&#39;1982&#39;,&#39;1983&#39;,&#39;1984&#39;,&#39;1985&#39;,&#39;1986&#39;,&#39;1987&#39;))                                     
 
-multilayer_siberia &lt;- create_multilayer_network(list_of_layers = list(siberia1982_matrix,
-                                                                    siberia1983_matrix,
-                                                                    siberia1984_matrix,
-                                                                    siberia1985_matrix,
-                                                                    siberia1986_matrix,
-                                                                    siberia1987_matrix),
+multilayer_siberia &lt;- create_multilayer_network(list_of_layers = list(square_matrix_1982,
+                                                                      square_matrix_1983,
+                                                                      square_matrix_1984,
+                                                                      square_matrix_1985,
+                                                                      square_matrix_1986,
+                                                                      square_matrix_1987),
                                               layer_attributes = layer_attrib,
                                               interlayer_links = siberia_interlayer,       
-                                              bipartite = T,
-                                              directed = F,physical_node_attributes = siberia_nodes )</code></pre>
+                                              bipartite = F,
+                                              directed = T, physical_node_attributes = siberia_nodes )</code></pre>
 <pre><code>## [1] &quot;Layer #1 processing.&quot;
-## [1] &quot;Input: a bipartite matrix&quot;
-## [1] &quot;Some node have no interactions. They will appear in the node table but not in the edge list&quot;
+## [1] &quot;Some nodes have no interactions. They will appear in the node table but not in the edge list&quot;
 ## [1] &quot;Done.&quot;
 ## [1] &quot;Layer #2 processing.&quot;
-## [1] &quot;Input: a bipartite matrix&quot;
-## [1] &quot;Some node have no interactions. They will appear in the node table but not in the edge list&quot;
+## [1] &quot;Some nodes have no interactions. They will appear in the node table but not in the edge list&quot;
 ## [1] &quot;Done.&quot;
 ## [1] &quot;Layer #3 processing.&quot;
-## [1] &quot;Input: a bipartite matrix&quot;
-## [1] &quot;Some node have no interactions. They will appear in the node table but not in the edge list&quot;
+## [1] &quot;Some nodes have no interactions. They will appear in the node table but not in the edge list&quot;
 ## [1] &quot;Done.&quot;
 ## [1] &quot;Layer #4 processing.&quot;
-## [1] &quot;Input: a bipartite matrix&quot;
-## [1] &quot;Some node have no interactions. They will appear in the node table but not in the edge list&quot;
+## [1] &quot;Some nodes have no interactions. They will appear in the node table but not in the edge list&quot;
 ## [1] &quot;Done.&quot;
 ## [1] &quot;Layer #5 processing.&quot;
-## [1] &quot;Input: a bipartite matrix&quot;
-## [1] &quot;Some node have no interactions. They will appear in the node table but not in the edge list&quot;
+## [1] &quot;Some nodes have no interactions. They will appear in the node table but not in the edge list&quot;
 ## [1] &quot;Done.&quot;
 ## [1] &quot;Layer #6 processing.&quot;
-## [1] &quot;Input: a bipartite matrix&quot;
-## [1] &quot;Some node have no interactions. They will appear in the node table but not in the edge list&quot;
+## [1] &quot;Some nodes have no interactions. They will appear in the node table but not in the edge list&quot;
 ## [1] &quot;Done.&quot;
 ## [1] &quot;Organizing state nodes&quot;
 ## [1] &quot;Creating extended link list with node IDs&quot;
@@ -521,18 +544,9 @@ multilayer_siberia &lt;- create_multilayer_network(list_of_layers = list(siberia
 multilayer_siberia_modules &lt;- run_infomap_multilayer(M=multilayer_siberia, relax = F, flow_model = &#39;directed&#39;, silent = T, trials = 100, seed = 497294, temporal_network = T)</code></pre>
 <pre><code>## [1] &quot;Using interlayer edge values to determine flow between layers.&quot;
 ## [1] &quot;./Infomap infomap_multilayer.txt . --tree -2 -N 100 --seed 497294 -f directed --silent&quot;
-## [1] &quot;No modules were assigned nodes that lacked flow: &quot;
-## # A tibble: 5 × 2
-##   node_id node_name                  
-##     &lt;int&gt; &lt;chr&gt;                      
-## 1      22 Hirstionyssus_apodemi      
-## 2      27 Holoparasitus_gontscharovae
-## 3      32 Laelaps_micromydis         
-## 4      58 Parasitus_berlesei         
-## 5      61 Parasitus_convexus         
 ## [1] &quot;Reorganizing modules...&quot;
 ## [1] &quot;Removing auxilary files...&quot;
-## [1] &quot;Partitioned into 73 modules.&quot;</code></pre>
+## [1] &quot;Partitioned into 38 modules.&quot;</code></pre>
 <pre class="r"><code>#Module persistence
 modules_persistence &lt;- multilayer_siberia_modules$modules %&gt;%
   group_by(module) %&gt;%
@@ -607,20 +621,20 @@ state_ids are created by Infomap but not used in our R code.</p>
 obtain a table in which each state node (combination of a physical node
 in a layer) is assigned to a module. This can be obtained by:</p>
 <pre class="r"><code>multilayer_siberia_modules$modules %&gt;% select(node_id, layer_id, node_name, type, module)</code></pre>
-<pre><code>## # A tibble: 308 × 5
+<pre><code>## # A tibble: 378 × 5
 ##    node_id layer_id node_name               type  module
 ##      &lt;int&gt;    &lt;int&gt; &lt;chr&gt;                   &lt;chr&gt;  &lt;int&gt;
-##  1       1        2 Amalaraeus_penicilliger paras     52
-##  2       1        3 Amalaraeus_penicilliger paras     52
-##  3       1        4 Amalaraeus_penicilliger paras     52
-##  4       1        5 Amalaraeus_penicilliger paras     52
-##  5       1        6 Amalaraeus_penicilliger paras     52
-##  6       2        2 Amerosejus_corbicula    paras     31
-##  7       2        3 Amerosejus_corbicula    paras     31
-##  8       3        2 Amphipsylla_sibirica    paras     26
-##  9       3        3 Amphipsylla_sibirica    paras     26
-## 10       3        4 Amphipsylla_sibirica    paras     26
-## # … with 298 more rows</code></pre>
+##  1       1        1 Amalaraeus_penicilliger paras      2
+##  2       1        2 Amalaraeus_penicilliger paras      2
+##  3       1        3 Amalaraeus_penicilliger paras      2
+##  4       1        4 Amalaraeus_penicilliger paras      2
+##  5       1        5 Amalaraeus_penicilliger paras      2
+##  6       1        6 Amalaraeus_penicilliger paras      2
+##  7       2        1 Amerosejus_corbicula    paras     22
+##  8       2        2 Amerosejus_corbicula    paras     22
+##  9       2        3 Amerosejus_corbicula    paras     22
+## 10       3        1 Amphipsylla_sibirica    paras     19
+## # … with 368 more rows</code></pre>
 </div>
 
 

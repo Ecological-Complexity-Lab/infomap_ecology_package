@@ -104,41 +104,9 @@ Currently only works with two-level solutions (no modules within
   The function will wait to parse the results.
 }
 \examples{
-\dontrun{
- data("siberia1982_7_links") # Links are an extended edge list
- data("siberia1982_7_nodes") # nodes
- layers <- tibble(layer_id=1:6, year=1982:1987) # Information on layers
+ # Examples are available on the our website 
+ # https://ecological-complexity-lab.github.io/infomap_ecology_package/multilayer_relax_emln.html
 
- # Using interlayer edges:
- # Create a multilayer object with an extended list.
- emln <- create_multilayer_object(extended = siberia1982_7_links,
- nodes = siberia1982_7_nodes,
- layers=layers)
-
- # Run modularity for a temporal network with provided interlayer 
- # edges (no relax rate)
- emln_modularity <- run_infomap_multilayer(M=emln, relax = FALSE,
- flow_model = 'directed', silent = TRUE,
- trials = 100, seed = 497294,
- temporal_network = TRUE)
-
- # for relax rates:
- # Create a multilayer object with an extended list.
- emln <- create_multilayer_object(extended = siberia1982_7_links,
- nodes = siberia1982_7_nodes,
- layers=layers, 
- intra_output_extended = F)
-  
- # Assume that interlayer edges are not provided and run modularity with relax rate.
- # Limit relaxation to the next layer only (as this is a temporal network).
- emln$inter <- NULL
- emln_modularity_r <- run_infomap_multilayer(emln, relax = T, silent = TRUE, 
- trials = 50, seed = 497294,
- multilayer_relax_rate = 0.15,
- multilayer_relax_limit_up = 1,
- multilayer_relax_limit_down = 0, 
- temporal_network = T)
-}
 
   
 }

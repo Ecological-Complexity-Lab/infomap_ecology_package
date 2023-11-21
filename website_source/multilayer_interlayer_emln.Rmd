@@ -69,9 +69,30 @@ A [general multilayer link-list](https://www.mapequation.org/infomap/#InputMulti
 <br>
 
 ### R Code
-Because this is a directed bipartite network (interlayer links move from layer to layer in time), we will also consider the intralayer links as directed. To do that, we will copnvert each bipartite matrix to a symmetric unipartite matrix (see Figure XXX our paper...). This does not change the network itself because each link is exactly the same, in both directions.
+Because this is a directed bipartite network (interlayer links move from layer to layer in time), we will also consider the intralayer links as directed. To do that, we will convert each bipartite matrix to a symmetric unipartite matrix (see Figure 2, [Practical guidelines and the EMLN R package for handling ecological multilayer networks](https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.14225)). This does not change the network itself because each link is exactly the same, in both directions.
 
 ```{r bipartite_to_unipartite}
+# Iterate through the layers
+for (i in 1982:1987) {
+  matrix_data <- get(paste0("siberia", i, "_matrix"))  # Get the matrix by its name
+  
+  m <- nrow(matrix_data)
+  n <- ncol(matrix_data)
+  
+  # Create names for rows and columns
+  rcnames <- c(colnames(matrix_data), rownames(matrix_data))
+  
+  # Create the square matrix
+  square_matrix <- matrix(0, nrow = m + n, ncol = m + n, dimnames = list(rcnames, rcnames))
+  
+  # Convert the bipartite matrix to a symmetric unipartite matrix
+  # Copy the values from the rectangular matrix into the appropriate positions in the square matrix
+  square_matrix[(n + 1):(n + m), 1:n] <- matrix_data
+  square_matrix[1:n, (n + 1):(n + m)] <- t(matrix_data)
+  
+  # Assign a name to the matrix
+  assign(paste0("square_matrix_", i), square_matrix, envir = .GlobalEnv)
+}
 
 ```
 
@@ -84,15 +105,15 @@ The description of functions `create_multilayer_network` and `run_infomap_multil
 # Create a multilayer object
 layer_attrib <- tibble(layer_id=1:6, layer_name=c('1982','1983','1984','1985','1986','1987'))                                     
 
-multilayer_siberia <- create_multilayer_network(list_of_layers = list(siberia1982_matrix,
-                                                                    siberia1983_matrix,
-                                                                    siberia1984_matrix,
-                                                                    siberia1985_matrix,
-                                                                    siberia1986_matrix,
-                                                                    siberia1987_matrix),
+multilayer_siberia <- create_multilayer_network(list_of_layers = list(square_matrix_1982,
+                                                                      square_matrix_1983,
+                                                                      square_matrix_1984,
+                                                                      square_matrix_1985,
+                                                                      square_matrix_1986,
+                                                                      square_matrix_1987),
                                               layer_attributes = layer_attrib,
                                               interlayer_links = siberia_interlayer,       
-                                              bipartite = T,
+                                              bipartite = F,
                                               directed = T, physical_node_attributes = siberia_nodes )
 
 #Run infomap

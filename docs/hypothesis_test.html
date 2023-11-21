@@ -438,8 +438,7 @@ infomap_object &lt;- run_infomap_monolayer(network_object, infomap_executable=&#
 ## [1] &quot;Running Infomap on shuffled network 8/10&quot;
 ## [1] &quot;Running Infomap on shuffled network 9/10&quot;
 ## [1] &quot;Running Infomap on shuffled network 10/10&quot;</code></pre>
-<pre><code>## Warning in run_infomap_monolayer(network_object, infomap_executable = &quot;Infomap&quot;, : pvalue
-## is not really 0, it is &lt;0.1</code></pre>
+<pre><code>## Warning in run_infomap_monolayer(network_object, infomap_executable = &quot;Infomap&quot;, : pvalue is not really 0, it is &lt;0.1</code></pre>
 <pre><code>## [1] &quot;Removing auxilary files...&quot;</code></pre>
 <pre class="r"><code># Plot histograms
 plots &lt;- plot_signif(infomap_object, plotit = T)</code></pre>
@@ -486,8 +485,7 @@ shuffled &lt;- shuffle_infomap(network_object, shuff_method=&#39;curveball&#39;,
 ## [1] &quot;Running Infomap on shuffled network 8/10&quot;
 ## [1] &quot;Running Infomap on shuffled network 9/10&quot;
 ## [1] &quot;Running Infomap on shuffled network 10/10&quot;</code></pre>
-<pre><code>## Warning in run_infomap_monolayer(network_object, infomap_executable = &quot;Infomap&quot;, : pvalue
-## is not really 0, it is &lt;0.1</code></pre>
+<pre><code>## Warning in run_infomap_monolayer(network_object, infomap_executable = &quot;Infomap&quot;, : pvalue is not really 0, it is &lt;0.1</code></pre>
 <pre><code>## [1] &quot;Removing auxilary files...&quot;</code></pre>
 <pre class="r"><code>plots &lt;- plot_signif(infomap_object, plotit = F)
 plot_grid(
@@ -572,8 +570,7 @@ tur_signif &lt;- run_infomap_monolayer(tur_network, infomap_executable=&#39;Info
                       silent=T,
                       trials=100, two_level=T, seed=200952,
                       signif = T, shuff_method = shuffled)</code></pre>
-<pre><code>## Warning in run_infomap_monolayer(tur_network, infomap_executable = &quot;Infomap&quot;, : pvalue is
-## not really 0, it is &lt;0.01</code></pre>
+<pre><code>## Warning in run_infomap_monolayer(tur_network, infomap_executable = &quot;Infomap&quot;, : pvalue is not really 0, it is &lt;0.01</code></pre>
 <pre class="r"><code>print(tur_signif$pvalue)</code></pre>
 <pre><code>## [1] 0</code></pre>
 <pre class="r"><code>plots &lt;- plot_signif(tur_signif, plotit = F)

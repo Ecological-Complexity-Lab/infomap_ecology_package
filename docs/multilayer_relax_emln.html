@@ -425,29 +425,26 @@ emln_65 &lt;- load_emln(65)</code></pre>
 ## [1] &quot;Creating extended link list with node IDs&quot;</code></pre>
 <pre class="r"><code>emln_65$layers</code></pre>
 <pre><code>## # A tibble: 6 × 7
-##   layer_id latitude location                                     longi…¹ name   year layer…²
-##      &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;                                          &lt;dbl&gt; &lt;chr&gt; &lt;int&gt; &lt;chr&gt;  
-## 1        1    -32.4 Villavicencio Nature Reserve, Mendoza, Arge…   -69.1 all_…  2006 layer_1
-## 2        2    -32.4 Villavicencio Nature Reserve, Mendoza, Arge…   -69.1 all_…  2007 layer_2
-## 3        3    -32.4 Villavicencio Nature Reserve, Mendoza, Arge…   -69.1 all_…  2008 layer_3
-## 4        4    -32.4 Villavicencio Nature Reserve, Mendoza, Arge…   -69.1 all_…  2009 layer_4
-## 5        5    -32.4 Villavicencio Nature Reserve, Mendoza, Arge…   -69.1 all_…  2010 layer_5
-## 6        6    -32.4 Villavicencio Nature Reserve, Mendoza, Arge…   -69.1 all_…  2011 layer_6
-## # … with abbreviated variable names ¹​longitude, ²​layer_name</code></pre>
+##   layer_id latitude location                                         longitude name            year layer_name
+##      &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;                                                &lt;dbl&gt; &lt;chr&gt;          &lt;int&gt; &lt;chr&gt;     
+## 1        1    -32.4 Villavicencio Nature Reserve, Mendoza, Argentina     -69.1 all_sites_2006  2006 layer_1   
+## 2        2    -32.4 Villavicencio Nature Reserve, Mendoza, Argentina     -69.1 all_sites_2007  2007 layer_2   
+## 3        3    -32.4 Villavicencio Nature Reserve, Mendoza, Argentina     -69.1 all_sites_2008  2008 layer_3   
+## 4        4    -32.4 Villavicencio Nature Reserve, Mendoza, Argentina     -69.1 all_sites_209   2009 layer_4   
+## 5        5    -32.4 Villavicencio Nature Reserve, Mendoza, Argentina     -69.1 all_sites_2010  2010 layer_5   
+## 6        6    -32.4 Villavicencio Nature Reserve, Mendoza, Argentina     -69.1 all_sites_2011  2011 layer_6</code></pre>
 <pre class="r"><code>head(emln_65$nodes)</code></pre>
 <pre><code>## # A tibble: 6 × 15
-##   node_id node_name type  corolla_…¹ corol…² heigh…³ flowe…⁴ body_…⁵ body_…⁶ probo…⁷ probo…⁸
-##     &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;      &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;int&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
-## 1       1 aca.ser   plant       3.15   0.912   0.154   42118      NA      NA      NA      NA
-## 2       2 alo.gra   plant       5.01   1.02    0.525    5944      NA      NA      NA      NA
-## 3       3 arg.sub   plant      35.0   28.8     0.514       0      NA      NA      NA      NA
-## 4       4 arj.lon   plant      14.5    1.67    0.222    3252      NA      NA      NA      NA
-## 5       5 bou.spi   plant      10.2    1.48    1.77     1610      NA      NA      NA      NA
-## 6       6 bre.mic   plant       4.17   2       0.32        0      NA      NA      NA      NA
-## # … with 4 more variables: body_width &lt;dbl&gt;, taxa_verified &lt;chr&gt;, verification_level &lt;chr&gt;,
-## #   species_name &lt;chr&gt;, and abbreviated variable names ¹​corolla_length, ²​corolla_aperture,
-## #   ³​height_mean, ⁴​flower_abundance, ⁵​body_thickness, ⁶​body_length, ⁷​proboscis_length,
-## #   ⁸​proboscis_width</code></pre>
+##   node_id node_name type  corolla_le…¹ corol…² heigh…³ flowe…⁴ body_…⁵ body_…⁶ probo…⁷ probo…⁸ body_…⁹ taxa_…˟ verif…˟ speci…˟
+##     &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;        &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;int&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  
+## 1       1 aca.ser   plant         3.15   0.912   0.154   42118      NA      NA      NA      NA      NA TRUE    species acanth…
+## 2       2 alo.gra   plant         5.01   1.02    0.525    5944      NA      NA      NA      NA      NA FALSE   &lt;NA&gt;    aloyss…
+## 3       3 arg.sub   plant        35.0   28.8     0.514       0      NA      NA      NA      NA      NA TRUE    species argemo…
+## 4       4 arj.lon   plant        14.5    1.67    0.222    3252      NA      NA      NA      NA      NA TRUE    species arjona…
+## 5       5 bou.spi   plant        10.2    1.48    1.77     1610      NA      NA      NA      NA      NA TRUE    species bougai…
+## 6       6 bre.mic   plant         4.17   2       0.32        0      NA      NA      NA      NA      NA TRUE    species bredem…
+## # … with abbreviated variable names ¹​corolla_length, ²​corolla_aperture, ³​height_mean, ⁴​flower_abundance, ⁵​body_thickness,
+## #   ⁶​body_length, ⁷​proboscis_length, ⁸​proboscis_width, ⁹​body_width, ˟​taxa_verified, ˟​verification_level, ˟​species_name</code></pre>
 <pre class="r"><code>head(emln_65$extended)</code></pre>
 <pre><code>##   layer_from node_from layer_to node_to weight        type
 ## 1    layer_1   cop.sp2  layer_1 aca.ser     19 pollination
