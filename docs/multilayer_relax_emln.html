@@ -13,7 +13,7 @@
 
 <title>Temporal multilayer network with global relax rates</title>
 
-<script src="site_libs/header-attrs-2.23/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.20/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
@@ -29,7 +29,7 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
-<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
@@ -425,26 +425,26 @@ emln_65 &lt;- load_emln(65)</code></pre>
 ## [1] &quot;Creating extended link list with node IDs&quot;</code></pre>
 <pre class="r"><code>emln_65$layers</code></pre>
 <pre><code>## # A tibble: 6 × 7
-##   layer_id latitude location                                         longitude name           year layer_name
-##      &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;                                                &lt;dbl&gt; &lt;chr&gt;         &lt;int&gt; &lt;chr&gt;     
-## 1        1    -32.4 Villavicencio Nature Reserve, Mendoza, Argentina     -69.1 all_sites_20…  2006 layer_1   
-## 2        2    -32.4 Villavicencio Nature Reserve, Mendoza, Argentina     -69.1 all_sites_20…  2007 layer_2   
-## 3        3    -32.4 Villavicencio Nature Reserve, Mendoza, Argentina     -69.1 all_sites_20…  2008 layer_3   
-## 4        4    -32.4 Villavicencio Nature Reserve, Mendoza, Argentina     -69.1 all_sites_209  2009 layer_4   
-## 5        5    -32.4 Villavicencio Nature Reserve, Mendoza, Argentina     -69.1 all_sites_20…  2010 layer_5   
-## 6        6    -32.4 Villavicencio Nature Reserve, Mendoza, Argentina     -69.1 all_sites_20…  2011 layer_6</code></pre>
+##   layer_id latitude location                                         longitude name            year layer_name
+##      &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;                                                &lt;dbl&gt; &lt;chr&gt;          &lt;int&gt; &lt;chr&gt;     
+## 1        1    -32.4 Villavicencio Nature Reserve, Mendoza, Argentina     -69.1 all_sites_2006  2006 layer_1   
+## 2        2    -32.4 Villavicencio Nature Reserve, Mendoza, Argentina     -69.1 all_sites_2007  2007 layer_2   
+## 3        3    -32.4 Villavicencio Nature Reserve, Mendoza, Argentina     -69.1 all_sites_2008  2008 layer_3   
+## 4        4    -32.4 Villavicencio Nature Reserve, Mendoza, Argentina     -69.1 all_sites_209   2009 layer_4   
+## 5        5    -32.4 Villavicencio Nature Reserve, Mendoza, Argentina     -69.1 all_sites_2010  2010 layer_5   
+## 6        6    -32.4 Villavicencio Nature Reserve, Mendoza, Argentina     -69.1 all_sites_2011  2011 layer_6</code></pre>
 <pre class="r"><code>head(emln_65$nodes)</code></pre>
 <pre><code>## # A tibble: 6 × 15
-##   node_id node_name type  corolla_length corolla_aperture height_mean flower_abundance body_thickness
-##     &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;          &lt;dbl&gt;            &lt;dbl&gt;       &lt;dbl&gt;            &lt;int&gt;          &lt;dbl&gt;
-## 1       1 aca.ser   plant           3.15            0.912       0.154            42118             NA
-## 2       2 alo.gra   plant           5.01            1.02        0.525             5944             NA
-## 3       3 arg.sub   plant          35.0            28.8         0.514                0             NA
-## 4       4 arj.lon   plant          14.5             1.67        0.222             3252             NA
-## 5       5 bou.spi   plant          10.2             1.48        1.77              1610             NA
-## 6       6 bre.mic   plant           4.17            2           0.32                 0             NA
-## # ℹ 7 more variables: body_length &lt;dbl&gt;, proboscis_length &lt;dbl&gt;, proboscis_width &lt;dbl&gt;, body_width &lt;dbl&gt;,
-## #   taxa_verified &lt;chr&gt;, verification_level &lt;chr&gt;, species_name &lt;chr&gt;</code></pre>
+##   node_id node_name type  corolla_le…¹ corol…² heigh…³ flowe…⁴ body_…⁵ body_…⁶ probo…⁷ probo…⁸ body_…⁹ taxa_…˟ verif…˟ speci…˟
+##     &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;        &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;int&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  
+## 1       1 aca.ser   plant         3.15   0.912   0.154   42118      NA      NA      NA      NA      NA TRUE    species acanth…
+## 2       2 alo.gra   plant         5.01   1.02    0.525    5944      NA      NA      NA      NA      NA FALSE   &lt;NA&gt;    aloyss…
+## 3       3 arg.sub   plant        35.0   28.8     0.514       0      NA      NA      NA      NA      NA TRUE    species argemo…
+## 4       4 arj.lon   plant        14.5    1.67    0.222    3252      NA      NA      NA      NA      NA TRUE    species arjona…
+## 5       5 bou.spi   plant        10.2    1.48    1.77     1610      NA      NA      NA      NA      NA TRUE    species bougai…
+## 6       6 bre.mic   plant         4.17   2       0.32        0      NA      NA      NA      NA      NA TRUE    species bredem…
+## # … with abbreviated variable names ¹​corolla_length, ²​corolla_aperture, ³​height_mean, ⁴​flower_abundance, ⁵​body_thickness,
+## #   ⁶​body_length, ⁷​proboscis_length, ⁸​proboscis_width, ⁹​body_width, ˟​taxa_verified, ˟​verification_level, ˟​species_name</code></pre>
 <pre class="r"><code>head(emln_65$extended)</code></pre>
 <pre><code>##   layer_from node_from layer_to node_to weight        type
 ## 1    layer_1   cop.sp2  layer_1 aca.ser     19 pollination
@@ -553,7 +553,7 @@ relaxrate_modules %&gt;% select(node_id, layer_id, node_name, type, module, rela
 ##  8       2        3 alo.gra   plant     16      0.001
 ##  9       2        4 alo.gra   plant     25      0.001
 ## 10       2        5 alo.gra   plant     35      0.001
-## # ℹ 7,052 more rows</code></pre>
+## # … with 7,052 more rows</code></pre>
 </div>
 
 

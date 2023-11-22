@@ -17,7 +17,7 @@ output:
 
 The package and this website were developed in the [Ecological Complexity Lab](http://www.bgu.ac.il/ecomplab), in Israel.
 
-The R package code is available on GitGub here: [https://github.com/Ecological-Complexity-Lab/infomap_ecology_package](https://github.com/Ecological-Complexity-Lab/infomap_ecology_package)
+The R package code is available on GitHub here: [https://github.com/Ecological-Complexity-Lab/infomap_ecology_package](https://github.com/Ecological-Complexity-Lab/infomap_ecology_package)
 
 <br>
 <br>

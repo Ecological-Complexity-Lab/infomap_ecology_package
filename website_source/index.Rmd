@@ -20,7 +20,7 @@ klippy::klippy(position = c('top', 'right'), color = 'darkred')
 <br>
 <br>
 
-**Updated: 2023-11-15**
+**Updated: 2023-11-22**
 
 This site accompanies the paper [Identifying flow modules in ecological networks using Infomap](https://onlinelibrary.wiley.com/doi/10.1111/2041-210X.13569). It contains installation instructions and very detailed Infomap commands and R code that we use in the examples that are presented in the paper (and more). We present what is most relevant for ecological network analysis using the R package `infomapecology`, which is a convenient interface to use Infomap within R.
 
