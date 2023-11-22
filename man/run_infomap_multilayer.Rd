@@ -23,7 +23,7 @@ run_infomap_multilayer(
 )
 }
 \arguments{
-\item{M}{An object of class \code{multilayer}.}
+\item{M}{An object of class \code{multilayer} (see package \code{emln} for definition).}
 
 \item{infomap_executable}{Name of Infomap standalone file (default is
 Infomap).}

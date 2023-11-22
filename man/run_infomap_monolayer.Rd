@@ -21,7 +21,7 @@ run_infomap_monolayer(
 )
 }
 \arguments{
-\item{x}{An object of class \code{monolayer}.}
+\item{x}{An object of class \code{monolayer} (see package \code{emln} for definition).}
 
 \item{infomap_executable}{Name of Infomap standalone file.}
 
