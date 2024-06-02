@@ -25,7 +25,7 @@ The package was built under R 4.1 and depends on other packages.
 
 ```R
 # Install  (if not installed) and load necessary packages
-package.list=c("emln","attempt", "cowplot", "igraph", "ggalluvial","magrittr","vegan", "dplyr","readr","ggplot2","stringr","tibble","tidyr","rlang","bipartite","tidyverse", "Matrix","DT","hablar","devtools")
+package.list=c("attempt", "cowplot", "igraph", "ggalluvial","magrittr","vegan", "dplyr","readr","ggplot2","stringr","tibble","tidyr","rlang","bipartite","tidyverse", "Matrix","DT","hablar","devtools")
 loaded <-  package.list %in% .packages()
 package.list <-  package.list[!loaded]
 installed <-  package.list %in% .packages(TRUE)

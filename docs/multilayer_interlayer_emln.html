@@ -544,10 +544,6 @@ multilayer_siberia &lt;- create_multilayer_network(list_of_layers = list(square_
 ## [1] &quot;Organizing state nodes&quot;</code></pre>
 <pre class="r"><code>#Run infomap
 multilayer_siberia_modules &lt;- run_infomap_multilayer(M=multilayer_siberia, relax = F, flow_model = &#39;directed&#39;, silent = T, trials = 100, seed = 497294, temporal_network = T)</code></pre>
-<pre><code>## Warning: `as.tbl()` was deprecated in dplyr 1.0.0.
-## ℹ Please use `tibble::as_tibble()` instead.
-## ℹ The deprecated feature was likely used in the infomapecology package.
-##   Please report the issue at &lt;]8;;https://github.com/Ecological-Complexity-Lab/infomap_ecology_package/issueshttps://github.com/Ecological-Complexity-Lab/infomap_ecology_package/issues]8;;&gt;.</code></pre>
 <pre><code>## [1] &quot;Using interlayer edge values to determine flow between layers.&quot;
 ## [1] &quot;./Infomap infomap_multilayer.txt . --tree -2 -N 100 --seed 497294 -f directed --silent&quot;
 ## [1] &quot;Reorganizing modules...&quot;
