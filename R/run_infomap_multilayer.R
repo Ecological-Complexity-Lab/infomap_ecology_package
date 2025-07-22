@@ -139,7 +139,9 @@ run_infomap_multilayer <- function(M,
     # Write file for Infomap
     write_lines('*Multilayer', 'infomap_multilayer.txt')
     write_delim(M$intra, 'infomap_multilayer.txt', delim = ' ', append = T)
-    write_delim(M$inter, 'infomap_multilayer.txt', delim = ' ', append = T)
+    if (!is.null(M$inter)) {
+      write_delim(M$inter, 'infomap_multilayer.txt', delim = ' ', append = T)
+    }
   } else { # If using relax rates
     if (ncol(M$intra)==5){stop('Cannot use relax rates with extended format of intralayer edges. See function create_multilayer_object.')}
     print('Using global relax to determine flow between layers.')
