@@ -5,8 +5,8 @@
 #' that includes additional node metadata (if exists).
 #'
 #' @param M An object of class \code{multilayer} (see package \code{emln} for definition).
-#' @param infomap_executable Name of Infomap standalone file (default is
-#'   Infomap).
+#' @param infomap_executable Path to the Infomap standalone file (default is
+#'   ./Infomap).
 #' @param flow_model See details in
 #'   \href{https://www.mapequation.org/infomap/#ParamsAlgorithm}{https://www.mapequation.org/infomap/#ParamsAlgorithm}.
 #' @param silent Run in silent mode (argumnt --silent in Infomap).
@@ -79,7 +79,7 @@
 ## @importFrom tidyr separate
 #'   
 run_infomap_multilayer <- function(M,
-                                   infomap_executable='Infomap',
+                                   infomap_executable='./Infomap',
                                    flow_model=NULL,
                                    silent=T,
                                    trials=100,
@@ -99,7 +99,7 @@ run_infomap_multilayer <- function(M,
   if (any(M$extended_ids$layer_from != M$extended_ids$layer_to) && relax == FALSE) {
     # Create a sub-dataframe 'inter' with interlayer links
     M$inter <- as.data.frame(M$extended_ids[M$extended_ids$layer_from != M$extended_ids$layer_to, ])
-    M$inter <- as.tbl(M$inter)
+    M$inter <- as_tibble(M$inter)
     M$inter <- M$inter %>% mutate_all(as.numeric)}
   } else {
     # Set 'inter' to NULL if there are no interlayer links
@@ -118,7 +118,7 @@ run_infomap_multilayer <- function(M,
   
   if (!is.null(intra)) {
     M$intra <- as.data.frame(intra)
-    M$intra <- M$intra %>% as.tbl() %>% mutate_all(as.numeric)
+    M$intra <- M$intra %>% as_tibble() %>% mutate_all(as.numeric)
   }
   
   ### END infomap_ecology_v2
@@ -162,7 +162,7 @@ run_infomap_multilayer <- function(M,
   }
   
   # Run Infomap
-  call <- paste('./',infomap_executable,' infomap_multilayer.txt . ', arguments, sep='')
+  call <- paste(infomap_executable,' infomap_multilayer.txt . ', arguments, sep='')
   
   # If running within R
   if (run_standalone==T){
