@@ -54,8 +54,8 @@ multilayer_siberia <- create_multilayer_network(list_of_layers = list(siberia198
                                                                       siberia1986_matrix,
                                                                       siberia1987_matrix),
                                                 layer_attributes = layer_attrib,
-                                                bipartite = T,
-                                                directed = F, physical_node_attributes = siberia_nodes )
+                                                bipartite = TRUE,
+                                                directed = FALSE, physical_node_attributes = siberia_nodes )
 }
 \references{
 Krasnov BR, Matthee S, Lareschi M, Korallo-Vinarskaya NP, Vinarski MV. Co-occurrence of ectoparasites on rodent hosts: null model analyses of data from three continents. Oikos. 2010;119: 120–128.

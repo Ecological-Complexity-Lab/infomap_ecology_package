@@ -4,7 +4,7 @@
 \alias{check_infomap}
 \title{Check if Infomap's standalone file is installed.}
 \usage{
-check_infomap(x = "Infomap")
+check_infomap(x = "./Infomap")
 }
 \arguments{
 \item{x}{The name of the Infomap executable file.}

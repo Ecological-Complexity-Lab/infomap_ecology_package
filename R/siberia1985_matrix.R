@@ -54,8 +54,8 @@
 #'                                                                       siberia1986_matrix,
 #'                                                                       siberia1987_matrix),
 #'                                                 layer_attributes = layer_attrib,
-#'                                                 bipartite = T,
-#'                                                 directed = F, physical_node_attributes = siberia_nodes )
+#'                                                 bipartite = TRUE,
+#'                                                 directed = FALSE, physical_node_attributes = siberia_nodes )
 
 siberia1985_matrix <- matrix(c(1, 0, 1, 0, 0, 1, 1, 1, 0, 1, 0, 0), nrow = 3, ncol = 4)
 

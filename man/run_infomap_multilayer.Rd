@@ -6,7 +6,7 @@
 \usage{
 run_infomap_multilayer(
   M,
-  infomap_executable = "Infomap",
+  infomap_executable = "./Infomap",
   flow_model = NULL,
   silent = T,
   trials = 100,
@@ -25,8 +25,8 @@ run_infomap_multilayer(
 \arguments{
 \item{M}{An object of class \code{multilayer} (see package \code{emln} for definition).}
 
-\item{infomap_executable}{Name of Infomap standalone file (default is
-Infomap).}
+\item{infomap_executable}{Path to the Infomap standalone file (default is
+./Infomap).}
 
 \item{flow_model}{See details in
 \href{https://www.mapequation.org/infomap/#ParamsAlgorithm}{https://www.mapequation.org/infomap/#ParamsAlgorithm}.}
@@ -88,7 +88,7 @@ Currently only works with two-level solutions (no modules within
   (use `intra_output_extended=F` in `create_multilayer_object`) and the links
   between layers are generated automatically by inter-layer relaxation
   (parameter `multilayer-relax-rate`). Relaxing between layers can also be
-  constraied by interlayer links. For this, include interlayer links and set
+  constrained by interlayer links. For this, include interlayer links and set
   `inter_output_extended=F` in `create_multilayer_object`. Relaxing requires
   specification of relax rates and limits. When these are not specified,
   Infomap uses defaults as detailed
@@ -104,7 +104,7 @@ Currently only works with two-level solutions (no modules within
   The function will wait to parse the results.
 }
 \examples{
- # Examples are available on the our website 
+ # Examples are available on our website 
  # https://ecological-complexity-lab.github.io/infomap_ecology_package/multilayer_relax_emln.html
 
 
