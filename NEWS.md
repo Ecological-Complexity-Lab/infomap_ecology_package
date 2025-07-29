@@ -1,6 +1,6 @@
 # *News*
 
-# infomap_ecology_package 2.0.1 (2025-02-15)
+# infomap_ecology_package 2.0.1 (2025-07-28)
 
 ## Enhancments
 * Adding path flexibility for Infomap standalone file.
