@@ -5,8 +5,8 @@
 #' that includes additional node metadata (if exists).
 #'
 #' @param M An object of class \code{multilayer} (see package \code{emln} for definition).
-#' @param infomap_executable Name of Infomap standalone file (default is
-#'   Infomap).
+#' @param infomap_executable Path to the Infomap standalone file (default is
+#'   ./Infomap).
 #' @param flow_model See details in
 #'   \href{https://www.mapequation.org/infomap/#ParamsAlgorithm}{https://www.mapequation.org/infomap/#ParamsAlgorithm}.
 #' @param silent Run in silent mode (argumnt --silent in Infomap).
@@ -46,7 +46,7 @@
 #'   (use `intra_output_extended=F` in `create_multilayer_object`) and the links
 #'   between layers are generated automatically by inter-layer relaxation
 #'   (parameter `multilayer-relax-rate`). Relaxing between layers can also be
-#'   constraied by interlayer links. For this, include interlayer links and set
+#'   constrained by interlayer links. For this, include interlayer links and set
 #'   `inter_output_extended=F` in `create_multilayer_object`. Relaxing requires
 #'   specification of relax rates and limits. When these are not specified,
 #'   Infomap uses defaults as detailed
@@ -68,7 +68,7 @@
 #' @export
 #'
 #' @examples
-#'  # Examples are available on the our website 
+#'  # Examples are available on our website 
 #'  # https://ecological-complexity-lab.github.io/infomap_ecology_package/multilayer_relax_emln.html
 #' 
 #'
@@ -79,7 +79,7 @@
 ## @importFrom tidyr separate
 #'   
 run_infomap_multilayer <- function(M,
-                                   infomap_executable='Infomap',
+                                   infomap_executable='./Infomap',
                                    flow_model=NULL,
                                    silent=T,
                                    trials=100,
@@ -94,31 +94,32 @@ run_infomap_multilayer <- function(M,
                                    remove_auxilary_files=T,
                                    ...){
   #infomap_ecology_v2
+  inter <- M$extended_ids %>% filter(layer_from != layer_to)
+  
   # Check if there are interlayer links
-  if (!"inter" %in% names(M)){
+  if (nrow(inter) > 0){
   if (any(M$extended_ids$layer_from != M$extended_ids$layer_to) && relax == FALSE) {
     # Create a sub-dataframe 'inter' with interlayer links
-    M$inter <- as.data.frame(M$extended_ids[M$extended_ids$layer_from != M$extended_ids$layer_to, ])
-    M$inter <- as.tbl(M$inter)
+    M$inter <- as.data.frame(M$extended_ids[M$extended_ids$layer_from != M$extended_ids$layer_to, c("layer_from", "node_from", "node_to", "weight")])
+    M$inter <- as_tibble(M$inter)
     M$inter <- M$inter %>% mutate_all(as.numeric)}
   } else {
     # Set 'inter' to NULL if there are no interlayer links
     inter <- NULL
   }
   
-  
   # Create a sub-dataframe 'intra' with intralayer links and change column name
   intra <- NULL
-  if (!"intra" %in% names(M) && relax == T) {
+  if (relax == T) {
   intra <- M$extended_ids[M$extended_ids$layer_from == M$extended_ids$layer_to, c("layer_from", "node_from", "node_to", "weight")]
   colnames(intra)[1] <- "layer"
-  } else if (!"intra" %in% names(M) && relax == F){
-    intra <- M$extended_ids[M$extended_ids$layer_from == M$extended_ids$layer_to & as.numeric(M$extended_ids$weight) != 0, ]
+  } else {
+    intra <- M$extended_ids[M$extended_ids$layer_from == M$extended_ids$layer_to & as.numeric(M$extended_ids$weight) != 0, c("layer_from", "node_from", "node_to", "weight")]
   }
-  
+
   if (!is.null(intra)) {
     M$intra <- as.data.frame(intra)
-    M$intra <- M$intra %>% as.tbl() %>% mutate_all(as.numeric)
+    M$intra <- M$intra %>% as_tibble() %>% mutate_all(as.numeric)
   }
   
   ### END infomap_ecology_v2
@@ -133,21 +134,24 @@ run_infomap_multilayer <- function(M,
   arguments <- ifelse(silent, paste(arguments, '--silent'), arguments)
   arguments <- paste(arguments,...)
 
+  
   # If using interlayer edges to determine flow
   if (relax==F){
     print('Using interlayer edge values to determine flow between layers.')
     # Write file for Infomap
     write_lines('*Multilayer', 'infomap_multilayer.txt')
     write_delim(M$intra, 'infomap_multilayer.txt', delim = ' ', append = T)
-    write_delim(M$inter, 'infomap_multilayer.txt', delim = ' ', append = T)
+    if (!is.null(M$inter)) {
+      write_delim(M$inter, 'infomap_multilayer.txt', delim = ' ', append = T)
+    }
   } else { # If using relax rates
-    if (ncol(M$intra)==5){stop('Cannot use relax rates with extended format of intralayer edges. See function create_multilayer_object.')}
+    if (ncol(M$intra)==5){stop('Cannot use relax rates with extended format of intralayer edges.')}
     print('Using global relax to determine flow between layers.')
     # Write file for Infomap
     write_lines('*Intra', 'infomap_multilayer.txt')
     write_delim(M$intra, 'infomap_multilayer.txt', delim = ' ', append = T)
     if(!is.null(M$inter)){
-      if (ncol(M$inter)==5){stop('Cannot use relax rates with extended format of interlayer edges. See function create_multilayer_object.')}
+      if (ncol(M$inter)==5){stop('Cannot use relax rates with extended format of interlayer edges.')}
       print('Global relax will be constrained by interlayer edges.')
       write_lines('*Inter', 'infomap_multilayer.txt', append = T)
       write_delim(M$inter, 'infomap_multilayer.txt', delim = ' ', append = T)
@@ -160,7 +164,7 @@ run_infomap_multilayer <- function(M,
   }
   
   # Run Infomap
-  call <- paste('./',infomap_executable,' infomap_multilayer.txt . ', arguments, sep='')
+  call <- paste(infomap_executable,' infomap_multilayer.txt . ', arguments, sep='')
   
   # If running within R
   if (run_standalone==T){

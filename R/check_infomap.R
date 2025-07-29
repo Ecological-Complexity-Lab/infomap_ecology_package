@@ -12,8 +12,8 @@
 #'
 #' @export
 
-check_infomap <- function(x='Infomap'){
-    out <- attempt(system(paste('./',x,' -V',sep='')), msg = 'Infomap not installed correctly. See www.mapequation.org for instructions on how to install.')
+check_infomap <- function(x='./Infomap'){
+    out <- attempt(system(paste(x,'-V',sep=' ')), msg = 'Infomap not installed correctly. See www.mapequation.org for instructions on how to install.')
     if (out==0) {
       return(T)
     } else {

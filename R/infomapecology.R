@@ -18,7 +18,7 @@
 #'Ideas/requests for features are welcome (open an issue
 #'\href{https://github.com/Ecological-Complexity-Lab/infomap_ecology_package/issues}{https://github.com/Ecological-Complexity-Lab/infomap_ecology_package/issues}).
 #'
-#'@docType package
+#'@docType _PACKAGE
 #'@name infomapecology
 #'
 #'@author Shai Pilosof
