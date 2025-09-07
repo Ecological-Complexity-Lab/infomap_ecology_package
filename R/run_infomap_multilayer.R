@@ -100,7 +100,7 @@ run_infomap_multilayer <- function(M,
   if (nrow(inter) > 0){
   if (any(M$extended_ids$layer_from != M$extended_ids$layer_to) && relax == FALSE) {
     # Create a sub-dataframe 'inter' with interlayer links
-    M$inter <- as.data.frame(M$extended_ids[M$extended_ids$layer_from != M$extended_ids$layer_to, c("layer_from", "node_from", "node_to", "weight")])
+    M$inter <- as.data.frame(M$extended_ids[M$extended_ids$layer_from != M$extended_ids$layer_to, c("layer_from", "node_from", "layer_to", "node_to", "weight")])
     M$inter <- as_tibble(M$inter)
     M$inter <- M$inter %>% mutate_all(as.numeric)}
   } else {
@@ -111,10 +111,11 @@ run_infomap_multilayer <- function(M,
   # Create a sub-dataframe 'intra' with intralayer links and change column name
   intra <- NULL
   if (relax == T) {
-  intra <- M$extended_ids[M$extended_ids$layer_from == M$extended_ids$layer_to, c("layer_from", "node_from", "node_to", "weight")]
+  intra <- M$extended_ids[M$extended_ids$layer_from == M$extended_ids$layer_to, c("layer_from", "node_from", "layer_to", "node_to", "weight")]
   colnames(intra)[1] <- "layer"
   } else {
-    intra <- M$extended_ids[M$extended_ids$layer_from == M$extended_ids$layer_to & as.numeric(M$extended_ids$weight) != 0, c("layer_from", "node_from", "node_to", "weight")]
+    intra <- M$extended_ids[M$extended_ids$layer_from == M$extended_ids$layer_to & as.numeric(M$extended_ids$weight) != 0, c("layer_from", "node_from", "layer_to", "node_to", "weight")]
+    colnames(intra)[1] <- "layer"
   }
 
   if (!is.null(intra)) {

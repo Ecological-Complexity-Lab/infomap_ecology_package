@@ -1,5 +1,10 @@
 # *News*
 
+# infomap_ecology_package 2.0.2 (2025-09-07)
+
+## Bug Fixes
+* Fix issue with the intra-layer egdes dataframe when running infomap on multilayer networks.
+
 # infomap_ecology_package 2.0.1 (2025-07-28)
 
 ## Enhancments

@@ -1,13 +1,13 @@
 Package: infomapecology
 Type: Package
 Title: Community Detection using Infomap, Inspired by Ecological Networks
-Version: 2.0.1
+Version: 2.0.2
 URL: https://github.com/Ecological-Complexity-Lab/infomap_ecology_package
-Date: 2025-07-28
+Date: 2025-09-07
 Author: Shai Pilosof <pilos@post.bgu.ac.il>
 Maintainer: Geut Galai <geutg@post.bgu.ac.il>, Shai Pilosof <pilos@post.bgu.ac.il>
 BugReports: https://github.com/Ecological-Complexity-Lab/infomap_ecology_package/issues
-Description: Collection of R functions to perform community detection analysis with Infomap. Inspired by ecological networks but can work for other networks too! Ideas/requests for features are welcome (open an issue here: https://github.com/Ecological-Complexity-Lab/infomap_ecology_package/issues). This work was supported by research grant ISF (Israel Science Foundation) 1281/20 to Shai Pilosof
+Description: Collection of R functions to perform community detection analysis with Infomap. Inspired by ecological networks but can work for other networks too! Ideas/requests for features are welcome (open an issue here: https://github.com/Ecological-Complexity-Lab/infomap_ecology_package/issues). This work was supported by research grant ISF (Israel Science Foundation) 1281/20 to Shai Pilosof.
 License: GPL
 Encoding: UTF-8
 LazyData: true
