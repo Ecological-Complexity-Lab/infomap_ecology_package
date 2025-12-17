@@ -113,6 +113,7 @@ run_infomap_multilayer <- function(M,
   if (relax == T) {
   intra <- M$extended_ids[M$extended_ids$layer_from == M$extended_ids$layer_to, c("layer_from", "node_from", "layer_to", "node_to", "weight")]
   colnames(intra)[1] <- "layer"
+  intra <- intra[,-3]
   } else {
     intra <- M$extended_ids[M$extended_ids$layer_from == M$extended_ids$layer_to & as.numeric(M$extended_ids$weight) != 0, c("layer_from", "node_from", "layer_to", "node_to", "weight")]
     colnames(intra)[1] <- "layer"
