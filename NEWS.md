@@ -1,9 +1,14 @@
 # *News*
 
+# infomap_ecology_package 2.0.3 (2025-12-18)
+
+## Bug Fixes
+* Fix issue with relax rates - even when there are no interlayer edges.
+
 # infomap_ecology_package 2.0.2 (2025-09-07)
 
 ## Bug Fixes
-* Fix issue with the intra-layer egdes dataframe when running infomap on multilayer networks.
+* Fix issue with the intra-layer edges dataframe when running infomap on multilayer networks.
 
 # infomap_ecology_package 2.0.1 (2025-07-28)
 
