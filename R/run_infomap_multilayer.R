@@ -128,7 +128,13 @@ run_infomap_multilayer <- function(M,
   
   if(check_infomap(infomap_executable)==F){stop('Error in Infomap stand-alone file.')}
   if(class(M)!='multilayer'){stop('M must be of class multilayer')}
-
+  
+  # if there is a difference between the directed value in 
+  # the mln object and the flow model argument, give warning
+  #if(flow_model!=M$directed){
+  #  warning('Please Note: The flow model argument does not match the directedness of the multilayer object.')
+  #} # right now emln only saves directedness in some workflows. add this when it is fully implemented.
+  
   # Infomap arguments
   arguments <- paste('--tree -2 -N ',trials, sep='')
   arguments <- ifelse(!is.null(seed), paste(arguments, '--seed',seed), arguments)
