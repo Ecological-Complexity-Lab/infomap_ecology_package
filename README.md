@@ -30,8 +30,8 @@ This work was supported by:
 * Swedish Research Council (grant no. 2016-04919) to Anna Eklof.
 
 ## :package: Installation
-Current installation uses devtools. Instructions: https://ecological-complexity-lab.github.io/infomap_ecology_package/installation
+Current installation uses devtools. Instructions: https://infomapecology.ecomplab.com/installation
 
 
 ## :globe_with_meridians: Website
-Complete instructions for installation and many examples are in [https://ecological-complexity-lab.github.io/infomap_ecology_package/](https://ecological-complexity-lab.github.io/infomap_ecology_package/).
+Complete instructions for installation and many examples are in [https://infomapecology.ecomplab.com](https://infomapecology.ecomplab.com).
