@@ -50,10 +50,10 @@ tur2016_altitude2000 <- tur2016 %>%
   
 network_object <- create_monolayer_network(tur2016_altitude2000, 
 directed = T, bipartite = F)
-res_dir <- run_infomap_monolayer(network_object, infomap_executable='Infomap',
+res_dir <- run_infomap_monolayer(network_object, infomap_executable='./Infomap',
                                  flow_model = 'directed',
                                  silent=T,trials=100, two_level=T, seed=200952)
-res_rawdir <- run_infomap_monolayer(network_object, infomap_executable='Infomap',
+res_rawdir <- run_infomap_monolayer(network_object, infomap_executable='./Infomap',
 flow_model = 'rawdir',
 silent=T,trials=100, two_level=T, seed=200952)
 

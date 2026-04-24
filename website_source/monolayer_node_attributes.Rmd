@@ -118,17 +118,17 @@ node_attributes <-
   write_delim('otago_node_attributes.txt', delim = ' ', col_names = F)
 
 # Run without metadata
-infomap_object <- run_infomap_monolayer(network_object, infomap_executable='Infomap',
+infomap_object <- run_infomap_monolayer(network_object, infomap_executable='./Infomap',
                                         flow_model = 'directed',
                                         silent=T,trials=5, two_level=T, seed=200952)
 
 # Run with metadata and eta=0.7
-infomap_object_metadata_09 <- run_infomap_monolayer(network_object, infomap_executable='Infomap',
+infomap_object_metadata_09 <- run_infomap_monolayer(network_object, infomap_executable='./Infomap',
                                                  flow_model = 'directed',
                                                  silent=T,trials=5, two_level=T, seed=200952,
                                                  ... = '--meta-data otago_node_attributes.txt --meta-data-rate 0.9')
 # Run with metadata and eta=1.3
-infomap_object_metadata_13 <- run_infomap_monolayer(network_object, infomap_executable='Infomap',
+infomap_object_metadata_13 <- run_infomap_monolayer(network_object, infomap_executable='./Infomap',
                                                  flow_model = 'directed',
                                                  silent=T,trials=5, two_level=T, seed=200952,
                                                  ... = '--meta-data otago_node_attributes.txt --meta-data-rate 1.3')

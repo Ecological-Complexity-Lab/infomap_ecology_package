@@ -62,7 +62,7 @@ network_object <- create_monolayer_network(x=interactions, directed = T, biparti
 
 # Run infomap, allow hierarchical modules
 # Some species will have only incoming or outgoing links, so the next line will result in a warning
-infomap_object <- run_infomap_monolayer(network_object, infomap_executable='Infomap',
+infomap_object <- run_infomap_monolayer(network_object, infomap_executable='./Infomap',
                                         flow_model = 'directed',
                                         silent=T,trials=100, two_level=F, seed=123)
 ```
@@ -245,7 +245,7 @@ otago_links_2 <- otago_links %>%
 network_object <- create_monolayer_network(x=otago_links_2, directed = T, bipartite = F, node_metadata = otago_nodes_2)
 
 # Run infomap without hieararchy
-infomap_object <- run_infomap_monolayer(network_object, infomap_executable='Infomap',
+infomap_object <- run_infomap_monolayer(network_object, infomap_executable='./Infomap',
                                         flow_model = 'directed',
                                         silent=T,trials=100, two_level=T, seed=123)
 
@@ -258,7 +258,7 @@ infomap_object$modules %>%
 
 
 # Run infomap with hieararchy
-infomap_object <- run_infomap_monolayer(network_object, infomap_executable='Infomap',
+infomap_object <- run_infomap_monolayer(network_object, infomap_executable='./Infomap',
                                         flow_model = 'directed',
                                         silent=T,trials=100, two_level=F, seed=123)
 infomap_object$modules %>%

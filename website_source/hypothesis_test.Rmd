@@ -32,7 +32,7 @@ The function `run_infomap_monolayer` can use shuffling algorithms built into `ve
 network_object <- create_monolayer_network(memmott1999, bipartite = T, directed = F, group_names = c('A','P'))
 
 # Run with shuffling
-infomap_object <- run_infomap_monolayer(network_object, infomap_executable='Infomap',
+infomap_object <- run_infomap_monolayer(network_object, infomap_executable='./Infomap',
                                         flow_model = 'undirected',
                                         silent=T, trials=20, two_level=T, seed=123, 
                                         signif = T, shuff_method = 'r00', nsim = 10) #nsim = 50
@@ -57,7 +57,7 @@ Another way is to provide `shuff_method` with a list containing already shuffled
 ```{r hypothesis_2}
 # Or can shuffle like this, if additional arguments are needed for the shuffling algorithm
 shuffled <- shuffle_infomap(network_object, shuff_method='curveball', nsim=10, burnin=2000) #nsim=50
-infomap_object <- run_infomap_monolayer(network_object, infomap_executable='Infomap',
+infomap_object <- run_infomap_monolayer(network_object, infomap_executable='./Infomap',
                                         flow_model = 'undirected',
                                         silent=T, trials=20, two_level=T, seed=123, 
                                         signif = T, shuff_method = shuffled, nsim = 10) #nsim = 50
@@ -136,7 +136,7 @@ for (i in 1:nsim){
 }  
 
 # Use the shuffled link lists. 
-tur_signif <- run_infomap_monolayer(tur_network, infomap_executable='Infomap',
+tur_signif <- run_infomap_monolayer(tur_network, infomap_executable='./Infomap',
                       flow_model = 'rawdir',
                       silent=T,
                       trials=100, two_level=T, seed=200952,
