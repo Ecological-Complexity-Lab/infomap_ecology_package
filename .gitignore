@@ -6,3 +6,6 @@ src/*.o
 src/*.so
 src/*.dll
 .Rproj.user/shared/notebooks/paths
+.DS_Store
+Infomap
+Infomap.zip
